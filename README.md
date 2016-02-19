@@ -9,6 +9,7 @@ Django App using Docker and GulpJS.
 
 ## Installation
 sudo apt-get install libpq-dev python3-dev
+
 1. run `$ docker-compose run web` to ..
 2. run `$ docker-compose up` to..
 3. run `$ npm install`
