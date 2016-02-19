@@ -1,0 +1,5 @@
+# Install with: `pip install -r requirements.txt`
+
+Django==1.9.1
+psycopg2==2.6.1
+# django-gulp==2.3.0
