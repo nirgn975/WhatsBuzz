@@ -94,6 +94,7 @@ media
 ### Sass ###
 .sass-cache/
 *.css.map
+whats_buzz/static/css/
 
 
 ### Python ###

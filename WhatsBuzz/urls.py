@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import TemplateView
 from whats_buzz import views
 
 urlpatterns = [
     url(r'^$', views.index, name='home'),
+    url(r'^facebook-games/$', TemplateView.as_view(template_name='pages/facebook-games.html'), name='facebook-games'),
+    url(r'^test-yourself/$', TemplateView.as_view(template_name='pages/test-yourself.html'), name='test-yourself'),
+    url(r'^viral/$', TemplateView.as_view(template_name='pages/viral.html'), name='viral'),
     url(r'^admin/', admin.site.urls),
 ]

@@ -10,6 +10,8 @@ RUN apt-get -y update
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py
 
+RUN python3 ./init_project.py
+
 # Install git
 RUN apt-get install git
 
