@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ post.name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            <div class="col-sm-8">
+                <div class="categories-header">
+                    <h2>{{ post.name }}</h2>
+                </div>
+                <div class="post">
+                    {% if post.image_banner %}
+                        <img src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
+                    {% endif %}
+                    <p>{{ post.description }}</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="categories-header">
+                    <h2>באזז השבוע</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

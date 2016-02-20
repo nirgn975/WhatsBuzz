@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<div class="post">
+    <h2>{{ post.name }}</h2>
+    {% if post.image_banner %}
+        <img class="banner-image" src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
+    {% endif %}
+    <a href="{% url 'post_detail' slug=post.slug %}">
+        <div class="row link">
+            <p>התחל משחק</p>
+        </div>
+    </a>
+</div>

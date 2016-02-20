@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -80,18 +79,18 @@ WSGI_APPLICATION = 'WhatsBuzz.wsgi.application'
 DATABASES = {
     'default': {
         # Docker Postgres Database.
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgres',
-        # 'USER': 'postgres',
-        # 'HOST': 'db',
-        # 'PORT': 5432,
-
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'whatsbuzz',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
         'PORT': 5432,
+
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'whatsbuzz',
+        # 'USER': 'admin',
+        # 'PASSWORD': 'admin',
+        # 'HOST': 'localhost',
+        # 'PORT': 5432,
     }
 }
 
@@ -133,3 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+PROJECT_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+MEDIA_ROOT = PROJECT_ROOT + '/whats_buzz/static/uploads'
+MEDIA_URL = 'uploads/'
