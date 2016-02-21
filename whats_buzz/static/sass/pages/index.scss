@@ -5,14 +5,41 @@ body {
 
 #top-nav {
   background: $header;
-  border: 0px ;
+  border: 0;
   border-bottom: solid 2px $bottom_stroke;
   border-radius: 0;
   font-size: $navbar_text;
 
-  li {
-    padding: 10px;
+  ul.nav.navbar-nav {
+    padding: 0;
+    margin: 0;
   }
+
+  li {
+    transition: all 350ms ease;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 4px;
+  }
+
+  li:hover {
+    background: rgba(35, 53, 92, .57);
+  }
+
+  a {
+    color: #fff;
+  }
+}
+
+#main-content {
+  margin: 0;
+}
+
+#footer-nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .navbar-brand {
@@ -41,7 +68,7 @@ body {
   padding: 20px;
   border-radius: $posts_radius;
   border: $post_border;
-  margin: 20px 0;
+  margin: 10px 0;
   background: $categories_color;
 
   h2 {
@@ -50,7 +77,6 @@ body {
     margin: 0;
     color: $post_color_title;
   }
-
 
   a {
     color: #fff;
@@ -77,5 +103,40 @@ body {
 
   .banner-image {
     width: 100%;
+    margin: 10px 0;
+    height: 200px;
+  }
+}
+
+a.show-more {
+  color: #fff;
+  text-decoration: none;
+
+  .link {
+    width: 95%;
+    background: $post_button_color;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 17px;
+    transition: all 350ms ease;
+    border-radius: $posts_radius;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.show-more > .link:hover {
+  background: $post_hover_color;
+}
+
+#footer-nav {
+  margin-top: 50px;
+
+  p {
+    height: 50px;
+    line-height: 50px;
   }
 }

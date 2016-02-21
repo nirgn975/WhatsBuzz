@@ -5,5 +5,31 @@
 {% endblock %}
 
 {% block content %}
-    <h1>משחקי פייסבוק</h1>
+    <div id="main-content" class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            <div class="col-sm-8">
+                <div class="categories-header">
+                    <h2>משחקי פייסבוק</h2>
+                </div>
+                <div class="row">
+                    {% for post in facebook_games_posts %}
+                        <div class="col-sm-6">
+                            {% include 'partials/post-card.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="show-more" href="">
+                    <div class="row link">
+                        <p>הצג עוד</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <div class="categories-header">
+                    <h2>באזז השבוע</h2>
+                </div>
+                {% include 'partials/long-post-card.html' %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

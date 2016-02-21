@@ -21,7 +21,7 @@ from whats_buzz import views
 urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^posts/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
-    url(r'^facebook-games/$', TemplateView.as_view(template_name='pages/facebook-games.html'), name='facebook-games'),
-    url(r'^test-yourself/$', TemplateView.as_view(template_name='pages/test-yourself.html'), name='test-yourself'),
+    url(r'^facebook-games/$', views.get_all_posts_by_type, name='facebook-games'),
+    url(r'^test-yourself/$', views.get_all_posts_by_type, name='test-yourself'),
     url(r'^admin/', admin.site.urls),
 ]

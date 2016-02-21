@@ -12,3 +12,4 @@ class Post(models.Model):
                                       ),
                                       default='FG')
     image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank = True)
+    buzz = models.BooleanField()
