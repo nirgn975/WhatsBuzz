@@ -6,17 +6,29 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div id="main-content" class="row">
         <div class="col-sm-offset-1 col-sm-10">
             <div class="col-sm-8">
                 <div class="categories-header">
                     <h2>{{ post.name }}</h2>
                 </div>
                 <div class="post">
+                    <img id="first-ad" src="{% static 'images/demo-ad.gif' %}" alt="google ad"/>
                     {% if post.image_banner %}
-                        <img src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
+                        <img id="banner" src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
                     {% endif %}
-                    <p>{{ post.description }}</p>
+                    <div id="second-ad" class="row">
+                        <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>
+                    </div>
+                    <div id="description" class="row">
+                        <p>{{ post.description }}</p>
+                    </div>
+                    <div id="facebook-login">
+
+                    </div>
+                    <div class="row caution">
+                        <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -26,4 +38,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'javascript/facebook.js' %}"></script>
 {% endblock %}
