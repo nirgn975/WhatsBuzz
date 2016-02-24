@@ -391,8 +391,15 @@ body {
   border: 0;
   border-radius: 0; }
 
-.navbar-brand img {
-  width: 50px; }
+.navbar-brand {
+  padding: 0; }
+  .navbar-brand img {
+    height: 85%;
+    display: inline-block;
+    margin: -15px 0 0 10px; }
+  .navbar-brand h1 {
+    display: inline-block;
+    margin: 15px 0 0 0; }
 
 #footer-nav {
   background: #042b3a;
@@ -463,6 +470,11 @@ a.show-more {
     height: 50px;
     line-height: 50px; }
 
+@media only screen and (max-device-width: 770px) {
+  .navbar-brand h1 {
+    font-size: 1.5em; }
+  .navbar-brand img {
+    height: 75%; } }
 #first-ad {
   width: 100%; }
 
