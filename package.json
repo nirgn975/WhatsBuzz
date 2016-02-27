@@ -2,7 +2,9 @@
   "name": "whats_fun",
   "version": "1.0.0",
   "description": "Docker Docker-compose sudo apt-get install libpq-dev python3-dev",
-  "main": "main_site/templates/index.html",
+  "type": "git",
+  "url": "https://github.com/Whats-Buzz/main-site.git",
+  "main": "whats_buzz/templates/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +13,7 @@
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.2.0"
   }
 }

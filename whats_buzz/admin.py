@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     model = Post
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'slug', 'post_type', 'image_banner', 'buzz')
+            'fields': ('title', 'body', 'slug', 'post_type', 'image_banner', 'buzz')
         }),
         ('Facebook - Profile', {
             'classes': ('collapse',),
@@ -25,7 +25,7 @@ class PostAdmin(admin.ModelAdmin):
         }),
     )
     prepopulated_fields = {
-        'slug': ('name',)
+        'slug': ('title',)
     }
 
 

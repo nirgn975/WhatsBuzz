@@ -1,27 +1,23 @@
-FROM python:3-onbuild
-MAINTAINER Nir Galon "nirgn975@gmail.com"
+FROM python:3.5-onbuild
+MAINTAINER Nir Galon <nirgn975@gmail.com>
+ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /code
-WORKDIR /code
+#RUN apt-get update
 
-RUN apt-get -y update
+# Install nodejs for npm modules.
+#RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+#RUN apt-get install -y nodejs
 
-# Download and install pip
-RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python3 get-pip.py
+# Install npm dependencies.
+#COPY package.json /usr/src/app/
+#RUN \
+#  npm install \
+#  gulp deploy
 
-RUN python3 ./init_project.py
+# Create superuser.
+#COPY init_project.sh /usr/src/app/
 
-# Install git
-RUN apt-get install git
-
-# Install python requirements.
-# ADD requirements.txt /code/
-# RUN pip install -r requirements.txt
-
-# Install front-end
-# RUN apt-get -y install nodejs npm
-# ADD package.json /code/
-# RUN npm install
-
-ADD . /code/
+# Suppose you have run.sh in the same directory as the Dockerfile
+ADD init_project.sh /usr/src/app/init_project.sh
+RUN chmod +x /usr/src/app/init_project.sh
+CMD ["/usr/src/app/init_project.sh"]
