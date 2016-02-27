@@ -3,6 +3,7 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
+var concat      = require('gulp-concat');
 
 /**
  * Convert SASS to CSS, minify all the files and add prefix.
@@ -43,3 +44,9 @@ gulp.task('watch', function () {
  * compile the jekyll site, launch BrowserSync & watch files.
  */
 gulp.task('default', ['browser-sync', 'watch']);
+
+/**
+ *
+ *
+ */
+gulp.task('deploy', ['sass']);
