@@ -21,9 +21,24 @@ gulp.task('sass', function () {
 });
 
 /**
+ *
+ */
+gulp.task('javascript', function() {
+  //return gulp.src('./whats_buzz/static/javascript/partials/*.js')
+  return gulp.src([
+      './whats_buzz/static/javascript/partials/facebook_init.js',
+      './whats_buzz/static/javascript/partials/facebook_data.js',
+      './whats_buzz/static/javascript/partials/app.js'
+  ])
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('./whats_buzz/static/javascript/'))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+/**
  * Static server
  */
-gulp.task('browser-sync', ['sass'], function() {
+gulp.task('browser-sync', ['sass', 'javascript'], function() {
     browserSync.init({
         proxy: "localhost:8000"
     });
@@ -35,7 +50,7 @@ gulp.task('browser-sync', ['sass'], function() {
  */
 gulp.task('watch', function () {
     gulp.watch('./whats_buzz/templates/**', browserSync.reload);
-    gulp.watch('./whats_buzz/static/javascript/*.js', browserSync.reload);
+    gulp.watch('./whats_buzz/static/javascript/partials/*.js', ['javascript']);
     gulp.watch('./whats_buzz/static/sass/**', ['sass']);
 });
 
@@ -46,7 +61,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['browser-sync', 'watch']);
 
 /**
- *
- *
+ *  Convert SASS to CSS, concat JavaScript and SASS, ...
+ *  TODO: minify js and sass, and insert autoprefixer.
  */
-gulp.task('deploy', ['sass']);
+gulp.task('deploy', ['sass', 'javascript']);

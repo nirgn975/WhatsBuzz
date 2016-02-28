@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    {{ post.name }} - {{ block.super }}
+    {{ post.title }} - {{ block.super }}
 {% endblock %}
 
 {% block content %}
@@ -10,18 +10,18 @@
         <div class="col-sm-offset-1 col-sm-10">
             <div class="col-sm-8">
                 <div class="categories-header">
-                    <h2>{{ post.name }}</h2>
+                    <h2>{{ post.title }}</h2>
                 </div>
                 <div class="post">
                     <img id="first-ad" src="{% static 'images/demo-ad.gif' %}" alt="google ad"/>
                     {% if post.image_banner %}
-                        <img id="banner" src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
+                        <img id="banner" src="{% static post.image_banner.url %}" alt="{{ post.title }}" />
                     {% endif %}
                     <div id="second-ad" class="row">
                         <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>
                     </div>
                     <div id="description" class="row">
-                        <p>{{ post.description }}</p>
+                        <p>{{ post.body }}</p>
                     </div>
                     <div id="facebook-login">
 
@@ -29,6 +29,10 @@
                     <div class="row caution">
                         <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
                     </div>
+                    <div>
+                      <button id="loginToFacebookButton">Login with Facebook</button>
+                    </div>
+                    <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -41,5 +45,5 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static 'javascript/facebook.js' %}"></script>
+
 {% endblock %}

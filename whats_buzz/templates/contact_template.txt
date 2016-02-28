@@ -1,0 +1,5 @@
+Contact Name:
+{{ contact_name |striptags }}
+
+Content:
+{{ form_content|striptags }}
