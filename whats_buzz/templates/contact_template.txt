@@ -1,5 +1,7 @@
-Contact Name:
-{{ contact_name |striptags }}
+Contact Name: {{ contact_name |striptags }}
 
-Content:
+Content Body:
 {{ form_content|striptags }}
+
+Name will be displayed:
+{{ content_checkbox|striptags }}
