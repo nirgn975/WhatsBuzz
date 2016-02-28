@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.views.generic import TemplateView
 from whats_buzz import views
 
 urlpatterns = [
@@ -23,5 +22,6 @@ urlpatterns = [
     url(r'^posts/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
     url(r'^facebook-games/$', views.get_all_posts_by_type, name='facebook-games'),
     url(r'^test-yourself/$', views.get_all_posts_by_type, name='test-yourself'),
+    url(r'^contact/$', views.contact, name='contact'),
     url(r'^admin/', admin.site.urls),
 ]

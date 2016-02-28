@@ -1,29 +1,16 @@
 {% load staticfiles %}
 
 <div class="long-post">
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     {% for post in buzz_posts %}
         <a href="{% url 'post_detail' slug=post.slug %}" alt="post">
             <div class="row">
-                <h2>{{ forloop.counter }}. {{ post.name }}</h2>
+                <h2>{{ forloop.counter }}. {{ post.title }}</h2>
                 {% if post.image_banner %}
-                    <img class="side-image pull-left" src="{% static post.image_banner.url %}" alt="{{ post.name }}" />
+                    <img class="side-image pull-left" src="{% static post.image_banner.url %}" alt="{{ post.title }}" />
                 {% endif %}
             </div>
         </a>
     {% endfor %}
-    <form>
-        <h2>תיבת הצעות</h2>
-        <p class="help-block">מכירים את זה שפתאום צץ לכם רעיון למשחק
-פייסבוק שבטוח יצליח? רוצים לקחת חלק מזה?</p>
-      <div class="form-group">
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="שם מלא">
-      </div>
-      <textarea class="form-control" rows="3" placeholder="כתבו כאן את הרעיון.."></textarea>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox">אני מעוניין שהשם שלי יופיע על המשחק
-        </label>
-      </div>
-      <button type="submit" class="btn btn-default">שלח את הרעיון</button>
-    </form>
+    {% include 'partials/contact.html' %}
 </div>
