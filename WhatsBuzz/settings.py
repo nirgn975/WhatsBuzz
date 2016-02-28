@@ -137,9 +137,17 @@ PROJECT_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.
 MEDIA_ROOT = PROJECT_ROOT + '/whats_buzz/static/uploads'
 MEDIA_URL = 'uploads/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-EMAIL_PORT = 1025
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# DEFAULT_FROM_EMAIL = 'whastbuz@gmail.com'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_TLS = False
+# EMAIL_PORT = 1025
+
+#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'pqysksrowsrrdhax'
+EMAIL_HOST_USER = 'nirgn975@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
