@@ -14,6 +14,13 @@ RUN \
   npm install \
   gulp deploy
 
+# add a bash script to finalize all
+ADD run.sh /usr/src/app/run.sh
+RUN chmod +x /usr/src/app/run.sh
+
+# default command to run
+#CMD /usr/src/app/init_project.sh
+
 # Create superuser.
 #COPY init_project.sh /usr/src/app/
 
