@@ -3,9 +3,16 @@
 echo "[run] go to project folder"
 cd /usr/src/app/
 
+echo "[run] Install npm dependencies"
+npm install 
+
+echo "[run] gulp deploy"
+gulp deploy
+
 echo "[run] syncdb"
 python manage.py syncdb --noinput
 
+echo "[run] Migrate DB"
 python manage.py migrate
 
 echo "[run] create superuser"
