@@ -35,9 +35,15 @@
                     <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div id="buzz" class="col-sm-4">
                 <div class="categories-header">
                     <h2>באזז השבוע</h2>
+                </div>
+                <div class="long-post">
+                  {% for single_rand_post in random_posts %}
+                    <h2 class="random-title">{{ single_rand_post.title }}</h2>
+                    <img class="random-image" src="{% static single_rand_post.image_banner.url %}" alt="{{ single_rand_post.title }}" />
+                  {% endfor %}
                 </div>
             </div>
         </div>
