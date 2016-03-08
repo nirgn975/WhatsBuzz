@@ -500,6 +500,16 @@ a.show-more {
   font-size: 13px;
   text-align: center; }
 
+#buzz > .long-post {
+  padding: 0; }
+  #buzz > .long-post .random-image {
+    width: 100%;
+    border-bottom: #e6e6e6 1px solid;
+    padding: 0 20px 20px 20px; }
+  #buzz > .long-post .random-title {
+    width: 100%;
+    text-align: center; }
+
 .long-post {
   padding: 20px;
   border-radius: 4px;
