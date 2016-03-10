@@ -4,6 +4,8 @@ var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 var concat      = require('gulp-concat');
+var uglify      = require('gulp-uglify');
+var cssmin      = require('gulp-cssmin');
 
 /**
  * Convert SASS to CSS, minify all the files and add prefix.
@@ -16,6 +18,7 @@ gulp.task('sass', function () {
       onError: browserSync.notify
     }))
     //.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+    .pipe(cssmin())
     .pipe(gulp.dest('./whats_buzz/static/css'))
     .pipe(browserSync.reload({stream:true}));
 });
@@ -31,6 +34,7 @@ gulp.task('javascript', function() {
       './whats_buzz/static/javascript/partials/app.js'
   ])
     .pipe(concat('main.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('./whats_buzz/static/javascript/'))
     .pipe(browserSync.reload({stream:true}));
 });
