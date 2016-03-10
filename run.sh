@@ -7,7 +7,7 @@ echo "[run] Install npm dependencies"
 npm install 
 
 echo "[run] gulp deploy"
-gulp deploy
+npm run gulp deploy
 
 echo "[run] syncdb"
 python manage.py syncdb --noinput
