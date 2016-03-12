@@ -10,8 +10,24 @@ var cssmin      = require('gulp-cssmin');
 /**
  * Convert SASS to CSS, minify all the files and add prefix.
  */
-gulp.task('sass', function () {
+gulp.task('sass', ['sass-admin'], function () {
   return gulp.src('./whats_buzz/static/sass/main.scss')
+    //.pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: ['css'],
+      onError: browserSync.notify
+    }))
+    //.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+    .pipe(cssmin())
+    .pipe(gulp.dest('./whats_buzz/static/css'))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+/**
+ * Convert **Admin** SASS to CSS, minify all the files and add prefix.
+ */
+gulp.task('sass-admin', function () {
+  return gulp.src('./whats_buzz/static/sass/admin.scss')
     //.pipe(sass().on('error', sass.logError))
     .pipe(sass({
       includePaths: ['css'],
@@ -32,7 +48,7 @@ gulp.task('javascript', function() {
       './whats_buzz/static/javascript/partials/facebook_init.js',
       './whats_buzz/static/javascript/partials/facebook_data.js',
       './whats_buzz/static/javascript/partials/app.js'
-  ])
+    ])
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./whats_buzz/static/javascript/'))

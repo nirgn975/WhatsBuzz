@@ -1,9 +1,7 @@
 'use strict';
 
-console.log("this is app");
-
-$('#loginToFacebookButton').click(function(){
-  var blaa = FB.login();
+$('.loginBtn--facebook').click(function(){
+  var blaa = checkLoginState();
   console.log(blaa);
 });
 
