@@ -29,8 +29,13 @@
                     <div class="row caution">
                         <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
                     </div>
-                    <div>
-                      <button id="loginToFacebookButton">Login with Facebook</button>
+                    <div id="facebooklogin">
+                        <button class="loginBtn loginBtn--facebook">
+                            Continue with Facebook
+                        </button>
+
+                        <div id="status">
+                        </div>
                     </div>
                     <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
                 </div>
@@ -40,10 +45,10 @@
                     <h2>באזז השבוע</h2>
                 </div>
                 <div class="long-post">
-                  {% for single_rand_post in random_posts %}
-                    <h2 class="random-title">{{ single_rand_post.title }}</h2>
-                    <img class="random-image" src="{% static single_rand_post.image_banner.url %}" alt="{{ single_rand_post.title }}" />
-                  {% endfor %}
+                    {% for single_rand_post in random_posts %}
+                        <h2 class="random-title">{{ single_rand_post.title }}</h2>
+                        <img class="random-image" src="{% static single_rand_post.image_banner.url %}" alt="{{ single_rand_post.title }}" />
+                    {% endfor %}
                 </div>
             </div>
         </div>

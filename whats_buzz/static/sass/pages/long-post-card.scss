@@ -56,4 +56,8 @@
   button.btn-default:hover {
     background: $post_hover_color;
   }
+
+  .checkbox > label {
+    padding: 0;
+  }
 }

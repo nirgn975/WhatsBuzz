@@ -17,3 +17,15 @@ class Post(models.Model):
                                       default='FG')
     image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank = True)
     buzz = models.BooleanField()
+
+
+class Games(models.Model):
+    post = models.ForeignKey(Post, related_name="games")
+    facebook_user_name = models.CharField(max_length=4,
+                                          choices=(
+                                              ('empty', ''),
+                                              ('first_name', 'First name ONLY'),
+                                              ('last_name', 'Last name ONLY'),
+                                              ('full_name', 'The full user name'),
+                                          ),
+                                          default='empty')
