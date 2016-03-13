@@ -19,7 +19,7 @@ class Post(models.Model):
     buzz = models.BooleanField()
 
 
-class User_Name_Game(models.Model):
+class UserNameFB(models.Model):
     post = models.ForeignKey(Post)
     facebook_user_name = models.CharField(max_length=255,
                                           choices=(
@@ -32,3 +32,10 @@ class User_Name_Game(models.Model):
     profile_image_x = models.PositiveIntegerField()
     profile_image_y = models.PositiveIntegerField()
 
+
+class UserProfileImageFB(models.Model):
+    post = models.ForeignKey(Post)
+    profile_image_x = models.PositiveIntegerField()
+    profile_image_y = models.PositiveIntegerField()
+    profile_width = models.PositiveIntegerField()
+    profile_height = models.PositiveIntegerField()
