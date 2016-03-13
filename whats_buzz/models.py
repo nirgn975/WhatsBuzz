@@ -19,9 +19,9 @@ class Post(models.Model):
     buzz = models.BooleanField()
 
 
-class Games(models.Model):
-    post = models.ForeignKey(Post, related_name="games")
-    facebook_user_name = models.CharField(max_length=4,
+class User_Name_Game(models.Model):
+    post = models.ForeignKey(Post)
+    facebook_user_name = models.CharField(max_length=255,
                                           choices=(
                                               ('empty', ''),
                                               ('first_name', 'First name ONLY'),
@@ -29,3 +29,6 @@ class Games(models.Model):
                                               ('full_name', 'The full user name'),
                                           ),
                                           default='empty')
+    profile_image_x = models.PositiveIntegerField()
+    profile_image_y = models.PositiveIntegerField()
+
