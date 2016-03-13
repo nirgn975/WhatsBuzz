@@ -28,6 +28,9 @@
                     </div>
                     <div class="row caution">
                         <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
+                        {{ facebook_user_name.facebook_user_name }}
+                        {{ facebook_user_name.profile_image_x }}
+                        {{ facebook_user_name.profile_image_y }}
                     </div>
                     <div id="facebooklogin">
                         <button class="loginBtn loginBtn--facebook">
@@ -56,5 +59,9 @@
 {% endblock %}
 
 {% block javascript %}
-
+  {% if facebook_user_name %}
+    <script>
+      console.log('get the name of the user for the game.');
+    </script>
+  {% endif %}
 {% endblock %}
