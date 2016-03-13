@@ -123,8 +123,8 @@ pip-delete-this-directory.txt
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
-.whats_buzz/static/javascript/main.js
-.whats_buzz/static/css/main.css
+whats_buzz/static/javascript/main.js
+whats_buzz/static/css/*
 
 ## File-based project format:
 *.ipr
