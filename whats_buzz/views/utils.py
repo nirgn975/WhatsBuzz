@@ -4,6 +4,7 @@ from django.template import Context
 from django.template.loader import get_template
 from whats_buzz.forms import ContactForm
 
+
 def contact(request):
     form_class = ContactForm
 
@@ -26,7 +27,7 @@ def contact(request):
             email = EmailMessage('New contact form submssion',
                                  content,
                                  'You website <something>',
-                                 ['nirgn975@gmail.com'],
+                                 ['whatsbuz@gmail.com'],
                                  )
             email.send()
             return redirect('/')
