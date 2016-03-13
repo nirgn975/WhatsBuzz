@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from whats_buzz.models import Post
 from whats_buzz.models import User_Name_Game
 
