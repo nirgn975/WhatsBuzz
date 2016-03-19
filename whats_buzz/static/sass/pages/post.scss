@@ -19,9 +19,15 @@
 }
 
 #description {
+  position: relative;
   font-size: 20px;
   text-align: center;
   line-height: 23px;
+
+  #FB-text-game {
+    position: absolute;
+    z-index: 100;
+  }
 }
 
 .caution {

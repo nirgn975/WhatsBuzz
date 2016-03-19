@@ -22,23 +22,13 @@
                     </div>
                     <div id="description" class="row">
                         <p>{{ post.body }}</p>
-                    </div>
-                    <div id="facebook-login">
-
+                        <img id="FB-image-game" src="{% static image_fb_game.images.url %}">
                     </div>
                     <div class="row caution">
                         <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
-                        {{ facebook_user_name.facebook_user_name }}
-                        {{ facebook_user_name.profile_image_x }}
-                        {{ facebook_user_name.profile_image_y }}
                     </div>
-                    <div id="facebooklogin">
-                        <button class="loginBtn loginBtn--facebook">
-                            Continue with Facebook
-                        </button>
-
-                        <div id="status">
-                        </div>
+                    <div id="facebooklogin" data-post="{{ post.id }}">
+                        {% include 'partials/FB-post.html' %}
                     </div>
                     <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
                 </div>
@@ -58,10 +48,3 @@
     </div>
 {% endblock %}
 
-{% block javascript %}
-  {% if facebook_user_name %}
-    <script>
-      console.log('get the name of the user for the game.');
-    </script>
-  {% endif %}
-{% endblock %}

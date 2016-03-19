@@ -16,10 +16,24 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from whats_buzz import views
+from django.contrib.sitemaps.views import sitemap
+from whats_buzz.sitemap import (
+    PostSitemap,
+    StaticSitemap,
+    HomepageSitemap,
+)
+sitemaps = {
+    'posts': PostSitemap,
+    'static': StaticSitemap,
+    'homepage': HomepageSitemap
+}
+
 
 urlpatterns = [
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^$', views.index, name='home'),
     url(r'^posts/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
+    url(r'^posts/get_data/(?P<data_model>[-\w]+)/(?P<post_id>[-\w]+)/$', views.get_data, name='get_data'),
     url(r'^facebook-games/$', views.get_all_posts_by_type, name='facebook-games'),
     url(r'^test-yourself/$', views.get_all_posts_by_type, name='test-yourself'),
     url(r'^contact/$', views.contact, name='contact'),

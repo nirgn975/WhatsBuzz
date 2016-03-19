@@ -11,17 +11,14 @@ if (typeof(FB) != 'undefined' && FB != null ) {
 
   /**
    * Called with the results from from FB.getLoginStatus().
+   * Check if the user already login
    *
    * @param response
    */
   function statusChangeCallback(response) {
-    console.log('Check if the user already login');
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
     if (response.status === 'connected') {
-      testAPI();  // Logged into your app and Facebook.
+      // Logged into your app and Facebook.
+      getPermissions();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not the app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
@@ -33,13 +30,73 @@ if (typeof(FB) != 'undefined' && FB != null ) {
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+  function getPermissions() {
+    var permissions = $('.loginBtn--facebook').data();
+
+    // Loop through the data attributes.
+    $.map(permissions, function(value, index) {
+      // For each attributes.
+      if (index === 'full_user_name') {
+        getUserFullName();
+      }
+      if (index === 'first_user_name') {
+        getUserFirstName();
+      }
+      if (index === 'last_user_name') {
+        getUserLastName();
+      }
+      if (index === 'profile_image') {
+          getUserProfileImage();
+      }
     });
   }
+}
 
+/**
+ * Get the user full name from FB.
+ */
+function getUserFullName() {
+  FB.api('/me', {fields: 'name'}, function(response) {
+    if (response && !response.error) {
+      var post_id = $('#facebooklogin').data('post');
+      $.get("/posts/get_data/user_name/" + post_id, function (data) {
+        console.log(data[0]);
+        var title = $('<p>').attr('id', 'FB-text-game').css("left", data[0].x).css("top", data[0].y).text(response.name);
+        $('#description').append(title);
+        });
+    }
+  });
+}
+
+/**
+ * Get the user first name from FB.
+ */
+function getUserFirstName() {
+    FB.api('/me', {fields: 'first_name'}, function(response) {
+    if (response && !response.error) {
+      console.log(response.first_name);
+    }
+  });
+}
+
+/**
+ * Get the user last name from FB.
+ */
+function getUserLastName() {
+  FB.api('/me', {fields: 'last_name'}, function(response) {
+    if (response && !response.error) {
+      console.log(response.last_name);
+    }
+  });
+}
+
+/**
+ * Get the user profile image from FB.
+ */
+function getUserProfileImage() {
+  FB.api('/me', {fields: 'picture'}, function(response) {
+    if (response && !response.error) {
+      console.log(response.picture.data.url);
+    }
+  });
 }
