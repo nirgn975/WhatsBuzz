@@ -15,8 +15,16 @@ class Post(models.Model):
                                           ('TY', 'בחן את עצמך'),
                                       ),
                                       default='FG')
-    image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank = True)
+    image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField()
+
+    def get_absolute_url(self):
+        return "/posts/%s/" % self.slug
+
+
+class GamesImagesFB(models.Model):
+    post = models.ForeignKey(Post)
+    images = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
 
 
 class UserNameFB(models.Model):
@@ -29,8 +37,8 @@ class UserNameFB(models.Model):
                                               ('full_name', 'The full user name'),
                                           ),
                                           default='empty')
-    profile_image_x = models.PositiveIntegerField()
-    profile_image_y = models.PositiveIntegerField()
+    name_x = models.PositiveIntegerField()
+    name_y = models.PositiveIntegerField()
 
 
 class UserProfileImageFB(models.Model):

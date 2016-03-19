@@ -4,6 +4,7 @@ from django.contrib import admin
 from whats_buzz.models import Post
 from whats_buzz.models import UserNameFB
 from whats_buzz.models import UserProfileImageFB
+from whats_buzz.models import GamesImagesFB
 
 
 class UserNameAdmin(admin.StackedInline):
@@ -18,11 +19,19 @@ class UserNameAdmin(admin.StackedInline):
             'classes': ('collapse',),
             'fields': (
                 'facebook_user_name',
-                'profile_image_x',
-                'profile_image_y',
+                'name_x',
+                'name_y',
             )
         })
     )
+
+
+class GamesUploadImageAdmin(admin.TabularInline):
+    model = GamesImagesFB
+    extra = 1
+    max_num = 25
+    list_display = ('images',)
+
 
 
 class UserProfileImageAdmin(admin.StackedInline):
@@ -52,7 +61,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('title',)
     }
-    inlines = [UserNameAdmin, UserProfileImageAdmin]
+    inlines = [GamesUploadImageAdmin, UserNameAdmin, UserProfileImageAdmin]
 
     class Media:
         css = {
