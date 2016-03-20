@@ -4,6 +4,7 @@ from whats_buzz.models import Post
 from whats_buzz.models import UserNameFB
 from whats_buzz.models import UserProfileImageFB
 from whats_buzz.models import GamesImagesFB
+from whats_buzz.models import Quizzes
 
 
 def post_detail(request, slug):
@@ -20,6 +21,12 @@ def post_detail(request, slug):
     image_fb_game = GamesImagesFB.objects.filter(post=post).order_by('?').first()
     random_posts = Post.objects.all().order_by('?')[:5]
 
+    # Get the HTML quizzes if there is any.
+    try:
+        quizzes = Quizzes.objects.get(post=post)
+    except Quizzes.DoesNotExist:
+        quizzes = None
+
     # Get the user name from facebook API.
     try:
         facebook_user_name = UserNameFB.objects.get(post=post)
@@ -34,6 +41,7 @@ def post_detail(request, slug):
 
     return render(request, 'pages/post.html', {
         'post': post,
+        'quizzes': quizzes,
         'image_fb_game': image_fb_game,
         'random_posts': random_posts,
         'facebook_user_name': facebook_user_name,

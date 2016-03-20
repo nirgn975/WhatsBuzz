@@ -5,4 +5,12 @@ $('.loginBtn--facebook').click(function(){
   console.log(blaa);
 });
 
+/**
+ * Handle the quizzes button, when displayed.
+ */
+$('#quizzes-game').click(function(){
+  $('#quizzes').show();
+  $(this).hide();
+});
+
 
