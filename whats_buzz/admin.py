@@ -5,6 +5,7 @@ from whats_buzz.models import Post
 from whats_buzz.models import UserNameFB
 from whats_buzz.models import UserProfileImageFB
 from whats_buzz.models import GamesImagesFB
+from whats_buzz.models import Quizzes
 
 
 class UserNameAdmin(admin.StackedInline):
@@ -29,9 +30,7 @@ class UserNameAdmin(admin.StackedInline):
 class GamesUploadImageAdmin(admin.TabularInline):
     model = GamesImagesFB
     extra = 1
-    max_num = 25
     list_display = ('images',)
-
 
 
 class UserProfileImageAdmin(admin.StackedInline):
@@ -54,6 +53,23 @@ class UserProfileImageAdmin(admin.StackedInline):
     )
 
 
+class QuizzesAdmin(admin.StackedInline):
+    model = Quizzes
+    extra = 1
+    max_num = 1
+    fieldsets = (
+        (None, {
+            'fields': ()
+        }),
+        ('Quizzes', {
+            'classes': ('collapse',),
+            'fields': (
+                'code',
+            )
+        })
+    )
+
+
 # Set up automated slug creation
 class PostAdmin(admin.ModelAdmin):
     model = Post
@@ -61,7 +77,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('title',)
     }
-    inlines = [GamesUploadImageAdmin, UserNameAdmin, UserProfileImageAdmin]
+    inlines = [GamesUploadImageAdmin, QuizzesAdmin, UserNameAdmin, UserProfileImageAdmin]
 
     class Media:
         css = {

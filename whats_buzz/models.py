@@ -27,6 +27,11 @@ class GamesImagesFB(models.Model):
     images = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
 
 
+class Quizzes(models.Model):
+    post = models.ForeignKey(Post)
+    code = models.TextField()
+
+
 class UserNameFB(models.Model):
     post = models.ForeignKey(Post)
     facebook_user_name = models.CharField(max_length=255,
