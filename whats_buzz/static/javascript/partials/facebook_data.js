@@ -46,7 +46,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         getUserLastName();
       }
       if (index === 'profile_image') {
-          getUserProfileImage();
+        getUserProfileImage();
       }
     });
   }
@@ -56,15 +56,14 @@ if (typeof(FB) != 'undefined' && FB != null ) {
  * Get the user full name from FB.
  */
 function getUserFullName() {
-  FB.api('/me', {fields: 'name'}, function(response) {
-    if (response && !response.error) {
-      var post_id = $('#facebooklogin').data('post');
-      $.get("/posts/get_data/user_name/" + post_id, function (data) {
-        console.log(data[0]);
-        var title = $('<p>').attr('id', 'FB-text-game').css("left", data[0].x).css("top", data[0].y).text(response.name);
+  var post_id = $('#facebooklogin').data('post');
+  $.get("/posts/get_data/user_name/" + post_id, function (data) {
+    FB.api('/me', {fields: 'name'}, function (response) {
+      if (response && !response.error) {
+        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.name);
         $('#description').append(title);
-        });
-    }
+      }
+    });
   });
 }
 
@@ -72,10 +71,14 @@ function getUserFullName() {
  * Get the user first name from FB.
  */
 function getUserFirstName() {
+  var post_id = $('#facebooklogin').data('post');
+  $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'first_name'}, function(response) {
-    if (response && !response.error) {
-      console.log(response.first_name);
-    }
+      if (response && !response.error) {
+        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.first_name);
+        $('#description').append(title);
+      }
+    });
   });
 }
 
@@ -83,10 +86,14 @@ function getUserFirstName() {
  * Get the user last name from FB.
  */
 function getUserLastName() {
-  FB.api('/me', {fields: 'last_name'}, function(response) {
-    if (response && !response.error) {
-      console.log(response.last_name);
-    }
+  var post_id = $('#facebooklogin').data('post');
+  $.get("/posts/get_data/user_name/" + post_id, function (data) {
+    FB.api('/me', {fields: 'last_name'}, function(response) {
+      if (response && !response.error) {
+        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.last_name);
+        $('#description').append(title);
+      }
+    });
   });
 }
 
@@ -94,9 +101,13 @@ function getUserLastName() {
  * Get the user profile image from FB.
  */
 function getUserProfileImage() {
-  FB.api('/me', {fields: 'picture'}, function(response) {
-    if (response && !response.error) {
-      console.log(response.picture.data.url);
-    }
+  var post_id = $('#facebooklogin').data('post');
+  $.get("/posts/get_data/user_name/" + post_id, function (data) {
+    FB.api('me/picture?type=large', function (response) {
+      if (response && !response.error) {
+        var img = $('<img>').attr('id', 'FB-image-game').attr('src', response.picture.data.url).css('width', data[0].profile_width).css('height', data[0].profile_height).css('left', data[0].profile_image_x).css('top', data[0].profile_image_y);
+        $('#description').append(img);
+      }
+    });
   });
 }
