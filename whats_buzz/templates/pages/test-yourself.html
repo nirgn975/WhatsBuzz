@@ -11,14 +11,14 @@
                 <div class="categories-header">
                     <h2>בחן את עצמך</h2>
                 </div>
-                <div class="row">
+                <div id="main-posts" class="row">
                     {% for post in test_yourself_posts %}
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 posts">
                             {% include 'partials/post-card.html' %}
                         </div>
                     {% endfor %}
                 </div>
-                <a class="show-more" href="">
+                <a class="show-more" href="#" data-posts-type="test-yourself">
                     <div class="row link">
                         <p>הצג עוד</p>
                     </div>
