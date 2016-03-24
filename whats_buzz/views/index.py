@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.http import JsonResponse
+from django.core import serializers
 from whats_buzz.models import Post
 
 
@@ -47,3 +49,18 @@ def get_all_posts_by_type(request):
             'test_yourself_posts': posts,
             'buzz_posts': buzz_posts,
         })
+
+
+def get_more_posts(request, page_type, start):
+    if page_type == "facebook-games":
+        request_post_type = 'FG'
+    else:
+        request_post_type = 'TY'
+
+    new_start = int(start)
+    posts = Post.objects.filter(post_type=request_post_type)[new_start:new_start + 6]
+    serialized_obj = serializers.serialize('json', [post for post in posts])
+
+    return JsonResponse([{
+        'posts': serialized_obj,
+    }], safe=False)

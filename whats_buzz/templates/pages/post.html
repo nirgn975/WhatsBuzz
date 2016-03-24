@@ -46,8 +46,10 @@
                 </div>
                 <div class="long-post">
                     {% for single_rand_post in random_posts %}
-                        <h2 class="random-title">{{ single_rand_post.title }}</h2>
-                        <img class="random-image" src="{% static single_rand_post.image_banner.url %}" alt="{{ single_rand_post.title }}" />
+                        <a href="{% url 'post_detail' slug=single_rand_post.slug %}" target="_blank">
+                          <h2 class="random-title">{{ single_rand_post.title }}</h2>
+                          <img class="random-image" src="{% static single_rand_post.image_banner.url %}" alt="{{ single_rand_post.title }}" />
+                        </a>
                     {% endfor %}
                 </div>
             </div>

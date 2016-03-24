@@ -18,6 +18,8 @@ class Post(models.Model):
     image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField()
 
+    REQUIRED_FIRLDS = ['title', 'body', 'slug', 'image_banner',]
+
     def get_absolute_url(self):
         return "/posts/%s/" % self.slug
 
