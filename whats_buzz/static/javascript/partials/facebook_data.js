@@ -102,10 +102,12 @@ function getUserLastName() {
  */
 function getUserProfileImage() {
   var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
+  $.get("/posts/get_data/profile_image/" + post_id, function (data) {
+    console.log(data);
     FB.api('me/picture?type=large', function (response) {
+      console.log(response.data.url);
       if (response && !response.error) {
-        var img = $('<img>').attr('id', 'FB-image-game').attr('src', response.picture.data.url).css('width', data[0].profile_width).css('height', data[0].profile_height).css('left', data[0].profile_image_x).css('top', data[0].profile_image_y);
+        var img = $('<img>').attr('id', 'FB-image-game2').attr('src', response.data.url).css('width', data[0].profile_width).css('height', data[0].profile_height).css('left', data[0].profile_image_x).css('top', data[0].profile_image_y).css('position', 'absolute').css('z-index', 100);
         $('#description').append(img);
       }
     });

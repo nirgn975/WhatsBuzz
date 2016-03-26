@@ -10,6 +10,15 @@ body {
   border-radius: 0;
   font-size: $navbar_text;
 
+  .navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+  }
+
   ul.nav.navbar-nav {
     padding: 0;
     margin: 0;
@@ -159,5 +168,9 @@ a.show-more {
     img {
       height: 75%;
     }
+  }
+
+  #main-content > .col-sm-12 > div:nth-child(3){
+    display: none;
   }
 }

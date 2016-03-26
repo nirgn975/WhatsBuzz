@@ -3,10 +3,30 @@
 var STATIC_URL = '/static/';
 var MEDIA_URL = 'uploads/';
 
+/**
+ * Handle login with facebook button.
+ */
 $('.loginBtn--facebook').click(function(){
-  var blaa = checkLoginState();
-  console.log(blaa);
+  checkLoginState();
+
+  // Check if the "share" button was clicked.
+  if($(this).hasClass('fb-share')) {
+    shareThisPost();
+  }
+
+  $('.loginBtn--facebook').text("Share with Facebook");
+  $(this).addClass('fb-share');
 });
+
+/**
+ * Share a post to facebook.
+ */
+function shareThisPost(){
+  FB.ui({
+    method: 'share',
+    href: window.location.href,
+  }, function(response){});
+}
 
 /**
  * Handle the quizzes button, when displayed.
@@ -16,7 +36,10 @@ $('#quizzes-game').click(function(){
   $(this).hide();
 });
 
-
+/**
+ * Handle "show more" button in the nav pages.
+ * Get posts, by type, from server and display them on the page.
+ */
 $('.show-more').click(function(event){
   event.preventDefault();
   var type = $('.show-more').data('posts-type');
