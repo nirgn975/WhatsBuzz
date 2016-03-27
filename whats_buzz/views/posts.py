@@ -19,7 +19,7 @@ def post_detail(request, slug):
     """
     post = Post.objects.get(slug=slug)
     image_fb_game = GamesImagesFB.objects.filter(post=post).order_by('?').first()
-    random_posts = Post.objects.all().order_by('?')[:5]
+    random_posts = Post.objects.filter(age_categories=post.age_categories).order_by('?')[:5]
 
     # Get the HTML quizzes if there is any.
     try:

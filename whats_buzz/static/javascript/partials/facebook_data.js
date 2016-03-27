@@ -33,22 +33,30 @@ if (typeof(FB) != 'undefined' && FB != null ) {
   function getPermissions() {
     var permissions = $('.loginBtn--facebook').data();
 
-    // Loop through the data attributes.
-    $.map(permissions, function(value, index) {
-      // For each attributes.
-      if (index === 'full_user_name') {
-        getUserFullName();
-      }
-      if (index === 'first_user_name') {
-        getUserFirstName();
-      }
-      if (index === 'last_user_name') {
-        getUserLastName();
-      }
-      if (index === 'profile_image') {
-        getUserProfileImage();
-      }
-    });
+    // Spinner
+    $('.loader').append($('<img>').attr('src', '/static/images/spinner.svg').css('animation', 'spin 5.250s infinite ease').css('margin', '25px').css('width', '30%'));
+    $('.loader').delay(5000).fadeOut(250);
+
+    setTimeout(function(){
+      $('#FB-image-game').show();
+
+      // Loop through the data attributes.
+      $.map(permissions, function(value, index) {
+        // For each attributes.
+        if (index === 'full_user_name') {
+          getUserFullName();
+        }
+        if (index === 'first_user_name') {
+          getUserFirstName();
+        }
+        if (index === 'last_user_name') {
+          getUserLastName();
+        }
+        if (index === 'profile_image') {
+          getUserProfileImage();
+        }
+      });
+     }, 5250);
   }
 }
 

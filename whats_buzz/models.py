@@ -17,6 +17,12 @@ class Post(models.Model):
                                       default='FG')
     image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField()
+    age_categories = models.CharField(max_length=3,
+                                      choices=(
+                                          ('C', 'ילדים'),
+                                          ('Y', 'נוער'),
+                                          ('A', 'מבוגרים'),
+                                      ),)
 
     REQUIRED_FIRLDS = ['title', 'body', 'slug', 'image_banner',]
 
