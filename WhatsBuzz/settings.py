@@ -79,18 +79,18 @@ WSGI_APPLICATION = 'WhatsBuzz.wsgi.application'
 DATABASES = {
     'default': {
         # Docker Postgres Database.
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'whatsbuzz',
-        # 'USER': 'admin',
-        # 'PASSWORD': 'admin',
-        # 'HOST': 'localhost',
+        # 'NAME': 'postgres',
+        # 'USER': 'postgres',
+        # 'HOST': 'db',
         # 'PORT': 5432,
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'whatsbuzz',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
