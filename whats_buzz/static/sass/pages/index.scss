@@ -157,6 +157,11 @@ a.show-more {
     height: 50px;
     line-height: 50px;
   }
+
+  a, a:hover {
+    text-decoration: none;
+    color: $footer_text;
+  }
 }
 
 @media only screen and (max-device-width: 770px) {

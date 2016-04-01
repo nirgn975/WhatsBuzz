@@ -46,6 +46,10 @@ urlpatterns = [
     url(r'^get-more-posts/(?P<page_type>[-\w]+)/(?P<start>[-\w]+)/$', views.get_more_posts, name='get-more-posts'),
     # Send an EMAIL from the contact partial.
     url(r'^contact/$', views.contact, name='contact'),
+    # Privacy policy page.
+    url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
+    # Email Us.
+    url(r'^email-us/$', views.email_us, name='email-us'),
     # The admin section.
     url(r'^admin/', admin.site.urls),
 ]

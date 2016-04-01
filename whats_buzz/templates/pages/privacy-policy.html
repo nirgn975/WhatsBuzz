@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Privacy Policy - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="col-sm-12">
+            <div class="col-sm-8">
+                <div class="categories-header">
+                    <h2>מדיניות פרטיות</h2>
+                </div>
+                <div class="post">
+                    <p>something</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="categories-header">
+                    <h2>באזז השבוע</h2>
+                </div>
+                {% include 'partials/long-post-card.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
