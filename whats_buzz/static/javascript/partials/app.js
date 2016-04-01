@@ -32,8 +32,8 @@ function shareThisPost(){
     method: 'share',
     name: 'Something',
     picture: image,
-    href: 'http://google.com',
-    link: 'http://google.com',
+    href: url,
+    link: url,
     description: captionText,
     caption: 'http://www.whatsbuzz.co.il'
 
