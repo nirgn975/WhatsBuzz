@@ -2,6 +2,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
+from PIL import Image
 from whats_buzz.forms import ContactForm
 from whats_buzz.models import Post
 
@@ -44,3 +45,9 @@ def privacy_policy(request):
 def email_us(request):
     buzz_posts = Post.objects.filter(buzz=True)
     return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})
+
+
+def create_fb_image(path):
+    img = Image.open(path)
+    img = img.resize((230,230), Image.ANTIALIAS)
+    img.save(path)

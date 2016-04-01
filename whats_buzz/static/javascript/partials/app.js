@@ -22,9 +22,21 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
+  var captionText = $('p.to-FB-share').text();
+  var url = $(location).attr('href');
+  url = url.split("/")[0] + '//' + url.split("/")[2];
+  var image = url + $('#FB-image-game').attr('src');
+  console.log(image);
+
   FB.ui({
     method: 'share',
-    href: window.location.href,
+    name: 'Something',
+    picture: image,
+    href: 'http://google.com',
+    link: 'http://google.com',
+    description: captionText,
+    caption: 'http://www.whatsbuzz.co.il'
+
   }, function(response){});
 }
 
