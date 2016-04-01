@@ -32,8 +32,13 @@ function shareThisPost(){
  * Handle the quizzes button, when displayed.
  */
 $('#quizzes-game').click(function(){
-  $('#quizzes').show();
   $(this).hide();
+  showSpinner();
+
+  // Show the quiz and hide the play button
+  setTimeout(function(){
+    $('#quizzes').show();
+  }, 5250);
 });
 
 /**

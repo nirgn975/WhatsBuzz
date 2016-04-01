@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
 from whats_buzz.forms import ContactForm
+from whats_buzz.models import Post
 
 
 def contact(request):
@@ -33,3 +34,13 @@ def contact(request):
             return redirect('/')
 
     return render(request, 'partials/contact.html', {'form': form_class,})
+
+
+def privacy_policy(request):
+    buzz_posts = Post.objects.filter(buzz=True)
+    return render(request, 'pages/privacy-policy.html', {'buzz_posts': buzz_posts,})
+
+
+def email_us(request):
+    buzz_posts = Post.objects.filter(buzz=True)
+    return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})

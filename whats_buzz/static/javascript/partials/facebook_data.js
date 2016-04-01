@@ -32,10 +32,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
   // successful.  See statusChangeCallback() for when this call is made.
   function getPermissions() {
     var permissions = $('.loginBtn--facebook').data();
-
-    // Spinner
-    $('.loader').append($('<img>').attr('src', '/static/images/spinner.svg').css('animation', 'spin 5.250s infinite ease').css('margin', '25px').css('width', '30%'));
-    $('.loader').delay(5000).fadeOut(250);
+    showSpinner();
 
     setTimeout(function(){
       $('#FB-image-game').show();
@@ -58,6 +55,15 @@ if (typeof(FB) != 'undefined' && FB != null ) {
       });
      }, 5250);
   }
+}
+
+/**
+ * Show a spinner when loading anything on the website.
+ */
+function showSpinner() {
+  // Add spinner
+  $('.loader').append($('<img>').attr('src', '/static/images/spinner.svg').css('animation', 'spin 5.250s infinite ease').css('margin', '25px').css('width', '30%'));
+  $('.loader').delay(5000).fadeOut(250);
 }
 
 /**
