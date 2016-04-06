@@ -10,7 +10,7 @@ npm-debug.log*
 build/Release
 
 # Dependency directory
-../web/node_modules/socket.io-client/node_modules
+web/node_modules
 
 # Optional npm cache directory
 .npm
