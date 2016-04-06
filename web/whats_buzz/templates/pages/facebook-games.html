@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Facebook Games - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="col-sm-12">
+            <div class="col-sm-8">
+                <div class="categories-header">
+                    <h2>משחקי פייסבוק</h2>
+                </div>
+                <div id="main-posts" class="row">
+                    {% for post in facebook_games_posts %}
+                        <div class="col-sm-6 posts">
+                            {% include 'partials/post-card.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="show-more" href="#" data-posts-type="facebook-games">
+                    <div class="row link">
+                        <p>הצג עוד</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <div class="categories-header">
+                    <h2>באזז השבוע</h2>
+                </div>
+                {% include 'partials/long-post-card.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
