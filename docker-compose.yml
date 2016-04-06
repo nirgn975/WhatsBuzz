@@ -1,11 +1,26 @@
-db:
-  image: postgres
 web:
-  build: .
-  command: ./run.sh
+  restart: always
+  build: ./web
   volumes:
-    - .:/usr/src/app
+    - ./web:/usr/src/app
   ports:
     - "8080:8000"
   links:
-    - db
+    - postgres:postgres
+  #command: /user/src/app/run.sh
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /www/static
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+postgres:
+  image: postgres
+  restart: always
