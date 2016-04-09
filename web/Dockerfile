@@ -11,3 +11,6 @@ RUN apt-get install -y nodejs
 # add a bash script to finalize all
 ADD run.sh /usr/src/app/run.sh
 RUN chmod +x /usr/src/app/run.sh
+
+ADD . /usr/src/app/
+WORKDIR /usr/src/app
