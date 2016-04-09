@@ -1,26 +1,40 @@
-web:
-  restart: always
-  build: ./web
-  volumes:
-    - ./web:/usr/src/app
-  ports:
-    - "8080:8000"
-  links:
-    - postgres:postgres
-  #command: /user/src/app/run.sh
+version: '2'
+services:
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "8081:80"
+    volumes:
+      - /www/static
+    volumes_from:
+      - web
+    links:
+      - web:web
 
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "8081:80"
-  volumes:
-    - /www/static
-  volumes_from:
-    - web
-  links:
-    - web:web
+  db:
+    restart: always
+    image: postgres
 
-postgres:
-  image: postgres
-  restart: always
+  web:
+    restart: always
+    build: ./web
+    command: ./run.sh
+    volumes:
+      - ./web:/usr/src/app
+      - ./web/static:/usr/src/app/static
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+#    links:
+#    - db:db
+#    - redis:redis
+
+#  redis:
+#    restart: always
+#    image: redis:latest
+#    ports:
+#      - "6379:6379"

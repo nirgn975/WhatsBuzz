@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'whats_buzz',
-    # 'django_gulp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,13 +83,6 @@ DATABASES = {
         'USER': 'postgres',
         'HOST': 'db',
         'PORT': 5432,
-
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'whatsbuzz',
-        # 'USER': 'admin',
-        # 'PASSWORD': 'admin',
-        # 'HOST': 'localhost',
-        # 'PORT': 5432,
     }
 }
 
@@ -132,19 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-PROJECT_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
-MEDIA_ROOT = PROJECT_ROOT + '/whats_buzz/static/uploads'
+MEDIA_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)) + '/whats_buzz/static/uploads'
 MEDIA_URL = 'uploads/'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# DEFAULT_FROM_EMAIL = 'whastbuz@gmail.com'
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# EMAIL_USE_TLS = False
-# EMAIL_PORT = 1025
-
-#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+# Content Email section.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = 'pqysksrowsrrdhax'
