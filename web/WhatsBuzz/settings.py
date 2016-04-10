@@ -23,9 +23,9 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 SECRET_KEY = '0q2_r+s1u4_qvp!+3gu3mhgu(#!262)2awmxleu985fn@f$+6*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -126,8 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)) + '/whats_buzz/static/uploads'
-MEDIA_URL = 'uploads/'
+MEDIA_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)) + '/static/uploads'
+MEDIA_URL = os.path.join(BASE_DIR, 'static') + '/uploads/'
 
 # Content Email section.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

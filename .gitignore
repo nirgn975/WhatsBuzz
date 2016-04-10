@@ -125,6 +125,7 @@ pip-delete-this-directory.txt
 # User-specific stuff:
 web/whats_buzz/static/javascript/main.js
 web/whats_buzz/static/css/*
+web/static/*
 
 ## File-based project format:
 *.ipr
