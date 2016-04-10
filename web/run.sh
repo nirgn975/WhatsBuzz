@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "[run] go to project folder"
-cd /usr/src/app/
+cd /usr/src/app
 
 echo "[run] Install npm dependencies"
 npm install 
@@ -14,6 +14,9 @@ python3 manage.py syncdb --noinput
 
 echo "[run] Migrate DB"
 python3 manage.py migrate
+
+echo "[run] Collect static files"
+python3 manage.py collectstatic --noinput
 
 echo "[run] create superuser"
 echo "from django.contrib.auth.models import User
