@@ -22,12 +22,12 @@ from whats_buzz.sitemap import (
     StaticSitemap,
     HomepageSitemap,
 )
+
 sitemaps = {
     'posts': PostSitemap,
     'static': StaticSitemap,
     'homepage': HomepageSitemap
 }
-
 
 urlpatterns = [
     # The sitemap of the website.
