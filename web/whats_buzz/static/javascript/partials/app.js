@@ -40,7 +40,7 @@ $('#quizzes-game').click(function(){
  * Handle "show more" button in the nav pages.
  * Get posts, by type, from server and display them on the page.
  */
-$('.show-more').click(function(event){
+$('#show-more-in-page').click(function(event){
   event.preventDefault();
   var type = $('.show-more').data('posts-type');
   var start = $('.posts').length;

@@ -27,9 +27,11 @@
                 {% for post in test_yourself_posts %}
                     {% include 'partials/post-card.html' %}
                 {% endfor %}
-                <div class="row link">
-                  <a class="show-more" href="{% url 'test-yourself' %}">הצג עוד</a>
-                </div>
+                <a class="show-more" href="{% url 'test-yourself' %}">
+                    <div class="row link">
+                        <p>הצג עוד</p>
+                    </div>
+                </a>
             </div>
             <div class="col-sm-4">
                 <div class="categories-header">
