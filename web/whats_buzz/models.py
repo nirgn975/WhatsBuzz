@@ -24,7 +24,7 @@ class Post(models.Model):
                                           ('A', 'מבוגרים'),
                                       ),)
 
-    REQUIRED_FIRLDS = ['title', 'body', 'slug', 'image_banner',]
+    REQUIRED_FIELDS = ['title', 'body', 'slug', 'image_banner',]
 
     def get_absolute_url(self):
         return "/posts/%s/" % self.slug

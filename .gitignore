@@ -10,7 +10,7 @@ npm-debug.log*
 build/Release
 
 # Dependency directory
-node_modules
+web/node_modules
 
 # Optional npm cache directory
 .npm
@@ -123,8 +123,9 @@ pip-delete-this-directory.txt
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
-whats_buzz/static/javascript/main.js
-whats_buzz/static/css/*
+web/whats_buzz/static/javascript/main.js
+web/whats_buzz/static/css/*
+web/static
 
 ## File-based project format:
 *.ipr

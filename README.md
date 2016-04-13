@@ -1,6 +1,10 @@
 # Whats Buzz main website
-Django App using Docker and GulpJS.
-
+A Django App using:
+ * Bootstrap
+ * GulpJS
+ * Facebook API
+ * Pillow
+ * Docker
 
 ## Pre Requirements
 1. install [docker](https://www.docker.com/).
