@@ -25,5 +25,4 @@ if not User.objects.filter(username='admin').count():
 " | python3 manage.py shell
 
 echo "[run] runserver"
-#python3 manage.py runserver 0.0.0.0:8000
 /usr/local/bin/gunicorn WhatsBuzz.wsgi:application -w 2 -b :8000 --reload
