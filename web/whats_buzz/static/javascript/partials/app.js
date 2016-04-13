@@ -70,7 +70,7 @@ $('#show-more-in-page').click(function(event){
       // The title.
       var postTitle = $('<h2>').text(postObject.fields.title);
       // The image banner.
-      var postImage = $('<img>').addClass('banner-image').attr('src', STATIC_URL + MEDIA_URL + postObject.fields.image_banner).attr('alt', postObject.fields.image_banner);
+      var postImage = $('<img>').addClass('banner-image').attr('src', MEDIA_URL + postObject.fields.image_banner).attr('alt', postObject.fields.image_banner);
       // The button link.
       var postSlog = $('<a>').attr('href', "/posts/" + postObject.fields.slug).append($('<div>').addClass('row link').append($('<p>').text("התחל משחק")));
 
