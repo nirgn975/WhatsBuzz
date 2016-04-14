@@ -1,7 +1,6 @@
 'use strict';
 
-var STATIC_URL = '/static/';
-var MEDIA_URL = 'uploads/';
+var MEDIA_URL = '/staticuploads/';
 
 /**
  * Handle login with facebook button.
