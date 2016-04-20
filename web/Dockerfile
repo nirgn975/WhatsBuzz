@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update
 
 # Install nodejs for npm modules.
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+# RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs
 
 # add a bash script to finalize all
