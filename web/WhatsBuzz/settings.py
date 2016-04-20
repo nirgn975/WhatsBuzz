@@ -77,7 +77,6 @@ WSGI_APPLICATION = 'WhatsBuzz.wsgi.application'
 
 DATABASES = {
     'default': {
-        # Docker Postgres Database.
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
