@@ -10,3 +10,5 @@ RUN chmod +x /usr/src/app/run.sh
 
 ADD . /usr/src/app/
 WORKDIR /usr/src/app
+
+ENTRYPOINT ["/usr/src/app/run.sh"]
