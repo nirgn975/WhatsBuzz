@@ -173,6 +173,10 @@ a.show-more {
     img {
       height: 75%;
     }
+
+    #main-content > .col-sm-12 {
+      padding: 0;
+    }
   }
 
   #main-content > .col-sm-12 > div:nth-child(3){
