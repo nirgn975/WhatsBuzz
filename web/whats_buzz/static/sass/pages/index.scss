@@ -52,7 +52,7 @@ body {
 }
 
 .navbar-brand {
-  padding: 0;
+  padding: 0 0 0 20px;
 
   img {
     height: 85%;
@@ -172,10 +172,25 @@ a.show-more {
 
     img {
       height: 75%;
+      margin: -15px 0 0 0;
+    }
+  }
+
+  .navbar-header {
+    .navbar-toggle > span.icon-bar {
+      background-color: #ffffff;
     }
   }
 
   #main-content > .col-sm-12 > div:nth-child(3){
     display: none;
+  }
+
+  #main-content > .col-sm-12 {
+    padding: 0;
+
+    .col-sm-4 {
+      padding: 0;
+    }
   }
 }
