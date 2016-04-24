@@ -25,17 +25,18 @@
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     color: $post_color_title;
     display: inline-block;
     height: 48px;
-    line-height: 48px;
-    padding-right: 5px;
+    width: 70%;
+    padding: 2px;
   }
 
   .side-image {
     height: 48px;
+    height: 75px;
   }
 
   input[type='checkbox'] {
