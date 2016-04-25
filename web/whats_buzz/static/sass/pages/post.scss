@@ -137,3 +137,13 @@
     text-align: center;
   }
 }
+
+@media only screen and (max-device-width: 770px) {
+  #main-content > .col-sm-12 {
+    padding: 0;
+
+    .col-sm-4 {
+      padding: 0;
+    }
+  }
+}
