@@ -19,10 +19,12 @@ class Post(models.Model):
     buzz = models.BooleanField()
     age_categories = models.CharField(max_length=3,
                                       choices=(
+                                          ('D', 'ברירת מחדל'),
                                           ('C', 'ילדים'),
                                           ('Y', 'נוער'),
                                           ('A', 'מבוגרים'),
-                                      ),)
+                                      ),
+                                      default='D')
 
     REQUIRED_FIELDS = ['title', 'body', 'slug', 'image_banner',]
 
