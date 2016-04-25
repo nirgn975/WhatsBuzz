@@ -3,6 +3,10 @@ body {
   background: $background;
 }
 
+body > .container {
+  min-height: calc(100vh - 180px);
+}
+
 #top-nav {
   background: $header;
   border: 0;

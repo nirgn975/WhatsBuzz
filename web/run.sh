@@ -4,7 +4,7 @@ echo "[run] go to project folder"
 cd /usr/src/app
 
 echo "[run] install nodejs and npm"
-curl -sL https://deb.nodesource.com/setup_5.x | -E bash -
+curl -sL https://deb.nodesource.com/setup_5.x | bash -
 apt-get install -y nodejs
 
 echo "[run] Install npm dependencies"
