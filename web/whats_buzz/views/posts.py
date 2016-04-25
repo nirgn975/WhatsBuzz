@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.db.models import Q
 from whats_buzz.models import Post
 from whats_buzz.models import UserNameFB
 from whats_buzz.models import UserProfileImageFB
@@ -19,7 +20,7 @@ def post_detail(request, slug):
     """
     post = Post.objects.get(slug=slug)
     image_fb_game = GamesImagesFB.objects.filter(post=post).order_by('?').first()
-    random_posts = Post.objects.filter(age_categories=post.age_categories).order_by('?')[:5]
+    random_posts = Post.objects.filter(Q(age_categories=post.age_categories) | Q(age_categories="D")).order_by('?')[:5]
 
     # Get the HTML quizzes if there is any.
     try:
