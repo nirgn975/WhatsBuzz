@@ -8,7 +8,6 @@ RUN apt-get update
 ADD run.sh /usr/src/app/run.sh
 RUN chmod +x /usr/src/app/run.sh
 
-ADD . /usr/src/app/
-WORKDIR /usr/src/app
+#VOLUME ["/usr/src"]
 
 ENTRYPOINT ["/usr/src/app/run.sh"]

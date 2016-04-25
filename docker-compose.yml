@@ -4,7 +4,7 @@ services:
     restart: always
     build: ./nginx/
     ports:
-      - "8081:80"
+      - "80:80"
     volumes:
       - /www/static
     volumes_from:
