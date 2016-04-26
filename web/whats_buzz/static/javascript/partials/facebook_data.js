@@ -41,13 +41,13 @@ if (typeof(FB) != 'undefined' && FB != null ) {
       $.map(permissions, function(value, index) {
         // For each attributes.
         if (index === 'full_user_name') {
-          getUserFullName();
+          getUserName('full-name');
         }
         if (index === 'first_user_name') {
-          getUserFirstName();
+          getUserName('first-name');
         }
         if (index === 'last_user_name') {
-          getUserLastName();
+          getUserName('last-name');
         }
         if (index === 'profile_image') {
           getUserProfileImage();
@@ -67,44 +67,30 @@ function showSpinner() {
 }
 
 /**
- * Get the user full name from FB.
+ * Get the user name from FB.
+ *
+ * @param namePart
+ *  Take the part of the name to retrieve:
+ *  'full-name' / 'first-name' / 'last-name'
  */
-function getUserFullName() {
+function getUserName(namePart) {
   var post_id = $('#facebooklogin').data('post');
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'name'}, function (response) {
-      if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.name);
-        $('#description').append(title);
-      }
-    });
-  });
-}
+    var facebookNameField = '';
 
-/**
- * Get the user first name from FB.
- */
-function getUserFirstName() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'first_name'}, function(response) {
-      if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.first_name);
-        $('#description').append(title);
-      }
-    });
-  });
-}
+    // Check what part of the user name to get.
+    if (namePart === 'full-name') {
+      facebookNameField = 'name';
+    } else if (namePart === 'first-name') {
+      facebookNameField = 'first_name';
+    } else if (namePart === 'last-name') {
+      facebookNameField = 'last_name';
+    }
 
-/**
- * Get the user last name from FB.
- */
-function getUserLastName() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'last_name'}, function(response) {
+    // Get the name and append it to the image.
+    FB.api('/me', {fields: facebookNameField}, function (response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.last_name);
+        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.name);
         $('#description').append(title);
       }
     });

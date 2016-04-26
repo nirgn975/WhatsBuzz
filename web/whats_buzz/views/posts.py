@@ -59,6 +59,8 @@ def get_data(request, data_model, post_id):
             return JsonResponse([{
                 'x': facebook_user_name.name_x,
                 'y': facebook_user_name.name_y,
+                'color': facebook_user_name.font_color,
+                'size': facebook_user_name.font_size,
             }], safe=False)
         except UserNameFB.DoesNotExist:
             facebook_user_name = None
