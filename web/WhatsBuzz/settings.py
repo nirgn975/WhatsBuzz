@@ -27,10 +27,15 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+GOOGLE_ANALYTICS_DISPLAY_ADVERTISING = True
+GOOGLE_ANALYTICS_SITE_SPEED = True
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-76952917-1'
+
 # Application definition
 
 INSTALLED_APPS = [
     'whats_buzz',
+    'analytical',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
