@@ -22,6 +22,8 @@ class UserNameAdmin(admin.StackedInline):
                 'facebook_user_name',
                 'name_x',
                 'name_y',
+                'font_color',
+                'font_size',
             )
         })
     )

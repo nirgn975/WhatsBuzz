@@ -74,7 +74,7 @@ function getUserFullName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'name'}, function (response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.name);
+        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.name);
         $('#description').append(title);
       }
     });
@@ -89,7 +89,7 @@ function getUserFirstName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'first_name'}, function(response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.first_name);
+        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.first_name);
         $('#description').append(title);
       }
     });
@@ -104,7 +104,7 @@ function getUserLastName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'last_name'}, function(response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('left', data[0].x).css('top', data[0].y).text(response.last_name);
+        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.last_name);
         $('#description').append(title);
       }
     });

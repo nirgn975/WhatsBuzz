@@ -54,6 +54,8 @@ class UserNameFB(models.Model):
                                           default='empty')
     name_x = models.PositiveIntegerField()
     name_y = models.PositiveIntegerField()
+    font_color = models.CharField(max_length=255)
+    font_size = models.PositiveIntegerField()
 
 
 class UserProfileImageFB(models.Model):
