@@ -33,8 +33,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
    * Set the 'login with facebook' button to share.
    */
   function setFbButtonToShare() {
-    $('.loginBtn--facebook').text("Share with Facebook");
-    $(this).addClass('fb-share');
+    $('.loginBtn--facebook').text("Share with Facebook").addClass('fb-share');
   }
 
   /**
