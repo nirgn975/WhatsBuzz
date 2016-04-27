@@ -151,3 +151,12 @@
     }
   }
 }
+
+@media only screen and (max-device-width: 991px) {
+  .post {
+    .row.caution {
+      padding: 0 15px;
+    }
+  }
+
+}
