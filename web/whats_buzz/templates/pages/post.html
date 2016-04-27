@@ -1,10 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% load staticfiles %}
 
-{% block title %}
-    {{ post.title }} - {{ block.super }}
-{% endblock %}
-
 {% block content %}
     <div id="main-content">
         <div class="col-sm-12">
@@ -17,17 +13,14 @@
                     {% if post.image_banner %}
                         <img id="banner" src="{% static post.image_banner.url %}" alt="{{ post.title }}" />
                     {% endif %}
-                    <div id="second-ad" class="row">
-                        <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>
-                    </div>
+{#                    <div id="second-ad" class="row">#}
+{#                        <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>#}
+{#                    </div>#}
                     <div id="description" class="row">
                         <p>{{ post.body }}</p>
                         {% if not quizzes.code %}
                           <img id="FB-image-game" src="{% static image_fb_game.images.url %}">
                         {% endif %}
-                    </div>
-                    <div class="row caution">
-                        <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
                     </div>
 
                     <div class="loader"></div>
@@ -36,15 +29,15 @@
                       <div id="quizzes">
                         {{ quizzes.code|safe }}
                       </div>
-                      <div id="facebooklogin">
+                      <div id="facebooklogin" class="loginFB">
                         <button id="quizzes-game">המשך למשחק</button>
                       </div>
                     {% else %}
-                    <div id="facebooklogin" data-post="{{ post.id }}">
+                    <div id="facebooklogin" class="loginFB" data-post="{{ post.id }}">
                         {% include 'partials/FB-post.html' %}
                     </div>
                     {% endif %}
-                    <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
+                    <div class="fb-comments" data-href="http://whatsbuzz.co.il/{{ post.slug }}" data-width="100%"></div>
                 </div>
             </div>
             <div id="buzz" class="col-sm-4">
