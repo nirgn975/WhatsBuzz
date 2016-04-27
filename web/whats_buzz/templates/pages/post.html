@@ -13,9 +13,9 @@
                     {% if post.image_banner %}
                         <img id="banner" src="{% static post.image_banner.url %}" alt="{{ post.title }}" />
                     {% endif %}
-                    <div id="second-ad" class="row">
-                        <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>
-                    </div>
+{#                    <div id="second-ad" class="row">#}
+{#                        <img src="{% static 'images/google-ad.jpg' %}" alt="google ad"/>#}
+{#                    </div>#}
                     <div id="description" class="row">
                         <p>{{ post.body }}</p>
                         {% if not quizzes.code %}
