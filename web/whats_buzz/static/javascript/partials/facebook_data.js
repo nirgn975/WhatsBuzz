@@ -33,7 +33,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
    * Set the 'login with facebook' button to share.
    */
   function setFbButtonToShare() {
-    $('.loginBtn--facebook').text("Share with Facebook").addClass('fb-share');
+    $('.loginBtn--facebook').text("Share with Facebook");
   }
 
   /**
@@ -60,7 +60,8 @@ if (typeof(FB) != 'undefined' && FB != null ) {
 
     setTimeout(function(){
       $('#FB-image-game').show();
-
+      $('.loginBtn--facebook').addClass('fb-share');
+      
       // Loop through the data attributes.
       $.map(permissions, function(value, index) {
         // For each attributes.
