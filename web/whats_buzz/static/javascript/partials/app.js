@@ -12,16 +12,13 @@ $('.loginBtn--facebook').click(function(){
   if($(this).hasClass('fb-share')) {
     shareThisPost();
   }
-
-  $('.loginBtn--facebook').text("Share with Facebook");
-  $(this).addClass('fb-share');
 });
 
 /**
  * Share a post to facebook.
  */
 function shareThisPost(){
-  var captionText = $('p.to-FB-share').text();
+  var captionText = $('#description').text();
   var url = $(location).attr('href');
   url = url.split("/")[0] + '//' + url.split("/")[2];
   var image = url + $('#FB-image-game').attr('src');

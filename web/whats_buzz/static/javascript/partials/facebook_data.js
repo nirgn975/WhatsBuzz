@@ -19,13 +19,38 @@ if (typeof(FB) != 'undefined' && FB != null ) {
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       getPermissions();
+      setFbButtonToShare();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not the app.
-      document.getElementById('status').innerHTML = 'Please log into this app.';
+     loginFBpopup();
     } else {
       // The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log into Facebook.';
+      loginFBpopup();
     }
+  }
+
+  /**
+   * Set the 'login with facebook' button to share.
+   */
+  function setFbButtonToShare() {
+    $('.loginBtn--facebook').text("Share with Facebook");
+    $(this).addClass('fb-share');
+  }
+
+  /**
+   * Ask for the user to login with facebook.
+   * Handle permissions, and display share button only when connected.
+   */
+  function loginFBpopup() {
+    FB.login(function(response) {
+      if (response.status === "connected") {
+        getPermissions();
+        setFbButtonToShare();
+      }
+    }, {
+      scope: 'user_posts, user_about_me, user_tagged_places, user_relationships, user_birthday, user_status, user_likes',
+      return_scopes: true
+    });
   }
 
   // Here we run a very simple test of the Graph API after login is
