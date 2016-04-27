@@ -26,9 +26,6 @@
                           <img id="FB-image-game" src="{% static image_fb_game.images.url %}">
                         {% endif %}
                     </div>
-                    <div class="row caution">
-                        <span>אנחנו לעולם לא נפרסם דברים בשמך! וגם לא נשמור את המידע שלך!</span>
-                    </div>
 
                     <div class="loader"></div>
 
@@ -36,15 +33,15 @@
                       <div id="quizzes">
                         {{ quizzes.code|safe }}
                       </div>
-                      <div id="facebooklogin">
+                      <div id="facebooklogin" class="loginFB">
                         <button id="quizzes-game">המשך למשחק</button>
                       </div>
                     {% else %}
-                    <div id="facebooklogin" data-post="{{ post.id }}">
+                    <div id="facebooklogin" class="loginFB" data-post="{{ post.id }}">
                         {% include 'partials/FB-post.html' %}
                     </div>
                     {% endif %}
-                    <div class="fb-comments" data-href="http://whatsbuzz.club/{{ post.slug }}" data-width="100%"></div>
+                    <div class="fb-comments" data-href="http://whatsbuzz.co.il/{{ post.slug }}" data-width="100%"></div>
                 </div>
             </div>
             <div id="buzz" class="col-sm-4">

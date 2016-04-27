@@ -113,13 +113,15 @@
   background-image: linear-gradient(#5B7BD5, #4864B1);
 }
 
-#facebooklogin {
+.post > .loginFB {
   text-align: center;
+  background-color: #ebf4f8;
+  padding: 15px;
+  border-radius: 4px;
 }
 
 #quizzes-game {
   padding: 0 50px;
-  text-align: center;
 }
 
 
