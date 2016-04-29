@@ -55,12 +55,18 @@ if (typeof(FB) != 'undefined' && FB != null ) {
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function getPermissions() {
+    // Check if the user already load the game.
+    if ($('.loginBtn--facebook').hasClass('loading')) {
+      return;
+    }
+
     var permissions = $('.loginBtn--facebook').data();
+    $('.loginBtn--facebook').addClass('loading');
     showSpinner();
 
     setTimeout(function(){
       $('#FB-image-game').show();
-      $('.loginBtn--facebook').addClass('fb-share');
+      $('.loginBtn--facebook').addClass('fb-share').removeClass('loading');
       
       // Loop through the data attributes.
       $.map(permissions, function(value, index) {
