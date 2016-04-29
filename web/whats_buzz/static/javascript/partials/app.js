@@ -40,7 +40,7 @@ function shareThisPost(){
  * Handle the quizzes button, when displayed.
  */
 $('#quizzes-game').click(function(){
-  $(this).hide();
+  $('#facebooklogin').hide();
   showSpinner();
 
   // Show the quiz and hide the play button
