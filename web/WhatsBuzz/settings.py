@@ -136,7 +136,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
 # Content Email section.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'pqysksrowsrrdhax'
-EMAIL_HOST_USER = 'nirgn975@gmail.com'
+EMAIL_HOST_PASSWORD = 'yqzmkvndqlgrhtuo'
+EMAIL_HOST_USER = 'whatsbuzz.email@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
