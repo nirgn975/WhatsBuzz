@@ -1,7 +1,7 @@
-Contact Name: {{ contact_name |striptags }}
+שם מלא: {{ contact_name |striptags }}
 
-Content Body:
+הרעיון:
 {{ form_content|striptags }}
 
-Name will be displayed:
+האם הוא מעוניין שהשם יופיע על המשחק:
 {{ content_checkbox|striptags }}
