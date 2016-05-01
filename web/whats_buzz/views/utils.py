@@ -2,7 +2,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
-from PIL import Image
+from PIL import Image, ImageDraw
 from whats_buzz.forms import ContactForm
 from whats_buzz.models import Post
 
@@ -48,6 +48,15 @@ def email_us(request):
 
 
 def create_fb_image(path):
-    img = Image.open(path)
-    img = img.resize((230,230), Image.ANTIALIAS)
-    img.save(path)
+    img1 = Image.open('../static/images/fb-share-banner.jpg')
+    img2 = Image.open('../static/images/404.png')
+    print(img1.width)
+    img1 = img1.resize((230,230), Image.ANTIALIAS)
+    img1.save(path)
+
+    # Write "hello" on the image, in x=10 and y=10
+    image = img1.copy()
+    draw = ImageDraw.Draw(image)
+    draw.text((10, 10), "hello")
+
+    # https://pillow.readthedocs.io/en/3.2.x/handbook/tutorial.html#cutting-pasting-and-merging-images
