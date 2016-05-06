@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
 from PIL import Image, ImageDraw
+import urllib
+from django.http import JsonResponse
 from whats_buzz.forms import ContactForm
 from whats_buzz.models import Post
 
@@ -47,16 +49,35 @@ def email_us(request):
     return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})
 
 
-def create_fb_image(path):
-    img1 = Image.open('../static/images/fb-share-banner.jpg')
-    img2 = Image.open('../static/images/404.png')
-    print(img1.width)
-    img1 = img1.resize((230,230), Image.ANTIALIAS)
-    img1.save(path)
+def create_fb_image(request):
+    base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
+    text = request.GET.get('text')
 
-    # Write "hello" on the image, in x=10 and y=10
-    image = img1.copy()
+    # # Write "hello" on the image, in x=10 and y=10
+    image = base_image.copy()
     draw = ImageDraw.Draw(image)
-    draw.text((10, 10), "hello")
+    draw.text((10, 10), text)
+    image.save('/usr/src/app/users_photos' + request.GET.get('base_image')[4])
+
+
+    response = JsonResponse([{
+        'id': 'hi'
+    }], safe=False)
+
+    return response
+
+
+    # urllib.urlretrieve(user_image_path, "../../static/" + user_name + '.jpg')
+    # background_image = Image.open(base_path)
+    # user_image = Image.open(user_image_path, "../../static/" + user_name + '.jpg')
+    #
+    # print(background_image.width)
+    # background_image = background_image.resize((230,230), Image.ANTIALIAS)
+    # background_image.save(path)
+    #
+    # # Write "hello" on the image, in x=10 and y=10
+    # image = background_image.copy()
+    # draw = ImageDraw.Draw(image)
+    # draw.text((10, 10), "hello")
 
     # https://pillow.readthedocs.io/en/3.2.x/handbook/tutorial.html#cutting-pasting-and-merging-images

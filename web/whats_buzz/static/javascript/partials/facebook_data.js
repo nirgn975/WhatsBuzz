@@ -110,6 +110,32 @@ function getUserFullName() {
       }
     });
   });
+
+
+  $.get("/posts/get_data/user_name/" + post_id, function (data) {
+    FB.api('/me', {fields: 'name'}, function (response) {
+      if (response && !response.error) {
+        $.ajax({
+          url: '/create-fb-share-image/',
+          success: function(response) {
+            var response = response[0];
+            console.log(response.id);
+          },
+          error: function(response) {
+            console.log('error2');
+          },
+          data: {
+            'base_image': $('#FB-image-game').attr('src'),
+            'text': response.name,
+            'color': data[0].color,
+            'font_size': data[0].size,
+            'x': data[0].x,
+            'y': data[0].y
+          }
+        });
+      }
+    });
+  });
 }
 
 /**
