@@ -105,28 +105,18 @@ function getUserFullName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'name'}, function (response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.name);
-        $('#description').append(title);
-      }
-    });
-  });
-
-
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'name'}, function (response) {
-      if (response && !response.error) {
+        var userName = response.name;
         $.ajax({
           url: '/create-fb-share-image/',
           success: function(response) {
-            var response = response[0];
-            console.log(response.id);
+            $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg');
           },
           error: function(response) {
             console.log('error2');
           },
           data: {
             'base_image': $('#FB-image-game').attr('src'),
-            'text': response.name,
+            'text': userName,
             'color': data[0].color,
             'font_size': data[0].size,
             'x': data[0].x,

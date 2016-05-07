@@ -1,8 +1,11 @@
+from random import choice
+from string import ascii_uppercase
+
 from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import urllib
 from django.http import JsonResponse
 from whats_buzz.forms import ContactForm
@@ -51,17 +54,16 @@ def email_us(request):
 
 def create_fb_image(request):
     base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
-    text = request.GET.get('text')
 
-    # # Write "hello" on the image, in x=10 and y=10
+    print(request.GET.get('base_image'))
+
     image = base_image.copy()
-    draw = ImageDraw.Draw(image)
-    draw.text((10, 10), text)
-    image.save('/usr/src/app/users_photos' + request.GET.get('base_image')[4])
-
+    set_text_on_image(image, request.GET.get('text'), request.GET.get('x'), request.GET.get('y'), request.GET.get('color'), request.GET.get('font_size'))
+    chars = ''.join(choice(ascii_uppercase) for i in range(12))
+    image.save('/usr/src/app/users_photos/' + chars + '.jpg')
 
     response = JsonResponse([{
-        'id': 'hi'
+        'image_name': chars
     }], safe=False)
 
     return response
@@ -81,3 +83,10 @@ def create_fb_image(request):
     # draw.text((10, 10), "hello")
 
     # https://pillow.readthedocs.io/en/3.2.x/handbook/tutorial.html#cutting-pasting-and-merging-images
+
+
+def set_text_on_image(image, text, x, y, color, size):
+    font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(size))
+    draw = ImageDraw.Draw(image)
+    draw.text((int(x), int(y)), text, fill=color, font=font)
+    return draw
