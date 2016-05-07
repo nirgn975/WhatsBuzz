@@ -97,6 +97,26 @@ function showSpinner() {
   $('.loader').delay(5000).fadeOut(250);
 }
 
+function makeAnImageWithText(text, color, size, x, y) {
+  $.ajax({
+    url: '/create-fb-image-with-text/',
+    success: function (response) {
+      $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg');
+    },
+    error: function (response) {
+      console.log('error2');
+    },
+    data: {
+      'base_image': $('#FB-image-game').attr('src'),
+      'text': text,
+      'color': color,
+      'font_size': size,
+      'x': x,
+      'y': y
+    }
+  });
+}
+
 /**
  * Get the user full name from FB.
  */
@@ -105,24 +125,7 @@ function getUserFullName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'name'}, function (response) {
       if (response && !response.error) {
-        var userName = response.name;
-        $.ajax({
-          url: '/create-fb-share-image/',
-          success: function(response) {
-            $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg');
-          },
-          error: function(response) {
-            console.log('error2');
-          },
-          data: {
-            'base_image': $('#FB-image-game').attr('src'),
-            'text': userName,
-            'color': data[0].color,
-            'font_size': data[0].size,
-            'x': data[0].x,
-            'y': data[0].y
-          }
-        });
+        makeAnImageWithText(response.name, data[0].color, data[0].size, data[0].x, data[0].y);
       }
     });
   });
@@ -136,8 +139,7 @@ function getUserFirstName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'first_name'}, function(response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.first_name);
-        $('#description').append(title);
+        makeAnImageWithText(response.first_name, data[0].color, data[0].size, data[0].x, data[0].y);
       }
     });
   });
@@ -151,8 +153,7 @@ function getUserLastName() {
   $.get("/posts/get_data/user_name/" + post_id, function (data) {
     FB.api('/me', {fields: 'last_name'}, function(response) {
       if (response && !response.error) {
-        var title = $('<p>').attr('id', 'FB-text-game').css('color', data[0].color).css('font-size', data[0].size + 'px').css('left', data[0].x).css('top', data[0].y).text(response.last_name);
-        $('#description').append(title);
+        makeAnImageWithText(response.last_name, data[0].color, data[0].size, data[0].x, data[0].y);
       }
     });
   });
@@ -166,8 +167,26 @@ function getUserProfileImage() {
   $.get("/posts/get_data/profile_image/" + post_id, function (data) {
     FB.api('me/picture?type=large', function (response) {
       if (response && !response.error) {
-        var img = $('<img>').attr('id', 'FB-image-game2').attr('src', response.data.url).css('width', data[0].profile_width).css('height', data[0].profile_height).css('left', data[0].profile_image_x).css('top', data[0].profile_image_y).css('position', 'absolute').css('z-index', 100);
-        $('#description').append(img);
+        $.ajax({
+          url: '/create-fb-image-with-image/',
+          success: function (response) {
+            console.log(response);
+            $('#FB-image-game').attr('src', '/users_photos/' + response[0].new_image_name + '.jpg');
+          },
+          error: function (response) {
+            console.log('error2');
+          },
+          data: {
+            'base_image': $('#FB-image-game').attr('src'),
+            'image': '/static/images/404.png',
+            'width': data[0].profile_width,
+            'hight': data[0].profile_height,
+            'x': data[0].profile_image_x,
+            'y': data[0].profile_image_y
+          }
+        });
+
+
       }
     });
   });

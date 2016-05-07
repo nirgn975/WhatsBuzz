@@ -52,11 +52,8 @@ def email_us(request):
     return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})
 
 
-def create_fb_image(request):
+def create_fb_image_with_text(request):
     base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
-
-    print(request.GET.get('base_image'))
-
     image = base_image.copy()
     set_text_on_image(image, request.GET.get('text'), request.GET.get('x'), request.GET.get('y'), request.GET.get('color'), request.GET.get('font_size'))
     chars = ''.join(choice(ascii_uppercase) for i in range(12))
@@ -69,24 +66,30 @@ def create_fb_image(request):
     return response
 
 
-    # urllib.urlretrieve(user_image_path, "../../static/" + user_name + '.jpg')
-    # background_image = Image.open(base_path)
-    # user_image = Image.open(user_image_path, "../../static/" + user_name + '.jpg')
-    #
-    # print(background_image.width)
-    # background_image = background_image.resize((230,230), Image.ANTIALIAS)
-    # background_image.save(path)
-    #
-    # # Write "hello" on the image, in x=10 and y=10
-    # image = background_image.copy()
-    # draw = ImageDraw.Draw(image)
-    # draw.text((10, 10), "hello")
-
-    # https://pillow.readthedocs.io/en/3.2.x/handbook/tutorial.html#cutting-pasting-and-merging-images
-
-
 def set_text_on_image(image, text, x, y, color, size):
     font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(size))
     draw = ImageDraw.Draw(image)
     draw.text((int(x), int(y)), text, fill=color, font=font)
     return draw
+
+
+def create_fb_image_with_image(request):
+    # Create alpha background with the same width and height as the original background.
+    base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
+    background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+    background.paste(base_image)
+
+    # Add the image to the background.
+    image = Image.open('/usr/src/app' + request.GET.get('image'))
+    image = image.resize((int(request.GET.get('width')), int(request.GET.get('hight'))))
+    background.paste(image, (int(request.GET.get('x')), int(request.GET.get('y'))), image)
+
+    # Save the background image.
+    chars = ''.join(choice(ascii_uppercase) for i in range(12))
+    background.save('/usr/src/app/users_photos/' + chars + '.jpg')
+
+    response = JsonResponse([{
+        'new_image_name': chars
+    }], safe=False)
+
+    return response
