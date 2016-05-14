@@ -23,19 +23,17 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 SECRET_KEY = '0q2_r+s1u4_qvp!+3gu3mhgu(#!262)2awmxleu985fn@f$+6*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Analytical module settings
 GOOGLE_ANALYTICS_DISPLAY_ADVERTISING = True
 GOOGLE_ANALYTICS_SITE_SPEED = True
 GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-76952917-1'
 
 # Application definition
-
 INSTALLED_APPS = [
-    'whats_buzz',
-    'analytical',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'whats_buzz',
+    'analytical',
 ]
 
 MIDDLEWARE_CLASSES = [
