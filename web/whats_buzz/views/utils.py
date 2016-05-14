@@ -6,10 +6,10 @@ from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
 from PIL import Image, ImageDraw, ImageFont
-import urllib
+import urllib.request
 from django.http import JsonResponse
 from whats_buzz.forms import ContactForm
-from whats_buzz.models import Post
+from whats_buzz.models import Post, UserNameFB, GamesImagesFB, UserProfileImageFB
 
 
 def contact(request):
@@ -52,44 +52,91 @@ def email_us(request):
     return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})
 
 
-def create_fb_image_with_text(request):
-    base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
-    image = base_image.copy()
-    set_text_on_image(image, request.GET.get('text'), request.GET.get('x'), request.GET.get('y'), request.GET.get('color'), request.GET.get('font_size'))
-    chars = ''.join(choice(ascii_uppercase) for i in range(12))
-    image.save('/usr/src/app/users_photos/' + chars + '.jpg')
+# def create_fb_image_with_image(request):
+#     # Create alpha background with the same width and height as the original background.
+#     base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
+#     background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+#     background.paste(base_image)
+#
+#     # Add the image to the background.
+#     image = Image.open('/usr/src/app' + request.GET.get('image'))
+#     image = image.resize((int(request.GET.get('width')), int(request.GET.get('hight'))))
+#     background.paste(image, (int(request.GET.get('x')), int(request.GET.get('y'))), image)
+#
+#     # Save the background image.
+#     chars = ''.join(choice(ascii_uppercase) for i in range(12))
+#     background.save('/usr/src/app/users_photos/' + chars + '.jpg')
+#
+#     response = JsonResponse([{
+#         'new_image_name': chars
+#     }], safe=False)
+#
+#     return response
 
-    response = JsonResponse([{
+
+def create_image(request):
+    slug = request.GET.get('slug')
+    name = request.GET.get('name')
+
+    post = Post.objects.get(slug=slug)
+    imagesPost = GamesImagesFB.objects.filter(post=post).order_by('?').first()
+    base_image = '/usr/src/app/staticuploads/' + str(imagesPost.images)
+
+    try:
+        fbTextPost = UserNameFB.objects.get(post=post)
+        x = fbTextPost.name_x
+        y = fbTextPost.name_y
+        color = fbTextPost.font_color
+        size = fbTextPost.font_size
+    except UserNameFB.DoesNotExist:
+        fbTextPost = None
+
+    if fbTextPost:
+        base_image = Image.open(base_image)
+        image = base_image.copy()
+        font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(size))
+        draw = ImageDraw.Draw(image)
+        draw.text((int(x), int(y)), name, fill=color, font=font)
+        chars = ''.join(choice(ascii_uppercase) for i in range(12))
+        image.save('/usr/src/app/users_photos/' + chars + '.jpg')
+
+        base_image = '/usr/src/app/users_photos/' + chars + '.jpg'
+    else:
+        chars = 'Error'
+
+    try:
+        fbImagePost = UserProfileImageFB.objects.get(post=post)
+        profile_image_x = fbImagePost.profile_image_x
+        profile_image_y = fbImagePost.profile_image_y
+        profile_width = fbImagePost.profile_width
+        profile_height = fbImagePost.profile_height
+    except UserProfileImageFB.DoesNotExist:
+        fbImagePost = None
+
+    if fbImagePost:
+        # Create alpha background with the same width and height as the original background.
+        base_image = Image.open(base_image)
+        background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+        background.paste(base_image)
+
+        # Add the image to the background.
+        # image = Image.open('/usr/src/app' + request.GET.get('image'))
+        (tmp_image_path, headers) = urllib.request.urlretrieve(request.GET.get('image'))
+        print(tmp_image_path)
+        image = Image.open(tmp_image_path)
+
+
+        image = image.resize((int(profile_width), int(profile_height)))
+        print(image)
+        # background.paste(image, (int(profile_image_x), int(profile_image_y)), image)
+        background.paste(image, (int(profile_image_x), int(profile_image_y)))
+
+        # Save the background image.
+        chars = ''.join(choice(ascii_uppercase) for i in range(12))
+        background.save('/usr/src/app/users_photos/' + chars + '.jpg')
+
+    # Return json with path to image.
+    return JsonResponse([{
         'image_name': chars
     }], safe=False)
 
-    return response
-
-
-def set_text_on_image(image, text, x, y, color, size):
-    font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(size))
-    draw = ImageDraw.Draw(image)
-    draw.text((int(x), int(y)), text, fill=color, font=font)
-    return draw
-
-
-def create_fb_image_with_image(request):
-    # Create alpha background with the same width and height as the original background.
-    base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
-    background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
-    background.paste(base_image)
-
-    # Add the image to the background.
-    image = Image.open('/usr/src/app' + request.GET.get('image'))
-    image = image.resize((int(request.GET.get('width')), int(request.GET.get('hight'))))
-    background.paste(image, (int(request.GET.get('x')), int(request.GET.get('y'))), image)
-
-    # Save the background image.
-    chars = ''.join(choice(ascii_uppercase) for i in range(12))
-    background.save('/usr/src/app/users_photos/' + chars + '.jpg')
-
-    response = JsonResponse([{
-        'new_image_name': chars
-    }], safe=False)
-
-    return response

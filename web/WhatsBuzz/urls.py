@@ -46,8 +46,8 @@ urlpatterns = [
     url(r'^get-more-posts/(?P<page_type>[-\w]+)/(?P<start>[-\w]+)/$', views.get_more_posts, name='get-more-posts'),
     # Send an EMAIL from the contact partial.
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^create-fb-image-with-text/', views.create_fb_image_with_text, name='create-fb-image-with-text'),
-    url(r'^create-fb-image-with-image/', views.create_fb_image_with_image, name='create-fb-image-with-image'),
+    # Create game image for facebook share
+    url(r'^create-image/', views.create_image, name='create-image'),
     # Privacy policy page.
     url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
     # Email Us.

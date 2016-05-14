@@ -4,7 +4,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
    * Called when the user press on the "Continue with Facebook" button.
    */
   function checkLoginState() {
-    FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function (response) {
       statusChangeCallback(response);
     });
   }
@@ -22,7 +22,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
       setFbButtonToShare();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not the app.
-     loginFBpopup();
+      loginFBpopup();
     } else {
       // The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
       loginFBpopup();
@@ -41,7 +41,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
    * Handle permissions, and display share button only when connected.
    */
   function loginFBpopup() {
-    FB.login(function(response) {
+    FB.login(function (response) {
       if (response.status === "connected") {
         getPermissions();
         setFbButtonToShare();
@@ -55,36 +55,86 @@ if (typeof(FB) != 'undefined' && FB != null ) {
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function getPermissions() {
+    var permissions = $('.loginBtn--facebook').data();
+    var textToPaste = '';
     // Check if the user already load the game.
     if ($('.loginBtn--facebook').hasClass('loading')) {
       return;
     }
 
-    var permissions = $('.loginBtn--facebook').data();
     $('.loginBtn--facebook').addClass('loading');
     showSpinner();
 
-    setTimeout(function(){
-      $('#FB-image-game').show();
-      $('.loginBtn--facebook').addClass('fb-share').removeClass('loading');
+    var promise = new Promise(function(resolve, reject) {
+      var post_id = $('#facebooklogin').data('post');
       
-      // Loop through the data attributes.
-      $.map(permissions, function(value, index) {
-        // For each attributes.
-        if (index === 'full_user_name') {
-          getUserFullName();
-        }
-        if (index === 'first_user_name') {
-          getUserFirstName();
-        }
-        if (index === 'last_user_name') {
-          getUserLastName();
-        }
-        if (index === 'profile_image') {
-          getUserProfileImage();
-        }
-      });
-     }, 5250);
+      if (JSON.stringify(permissions)==JSON.stringify({profile_image: true, full_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({profile_image: true, first_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'first_name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.first_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({profile_image: true, last_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'last_name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.last_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({profile_image: true})) {
+        $.get("/posts/get_data/profile_image/" + post_id, function (data) {
+          FB.api('me/picture?type=large', function (response) {
+            if (response && !response.error) {
+              resolve({'image': response.data.url});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({full_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.name});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({first_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'first_name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.first_name});
+            }
+          });
+        });
+      } else if (JSON.stringify(permissions)==JSON.stringify({last_user_name: true})) {
+        $.get("/posts/get_data/user_name/" + post_id, function (data) {
+          FB.api('/me', {fields: 'last_name'}, function (response) {
+            if (response && !response.error) {
+              resolve({'text': response.last_name});
+            }
+          });
+        });
+      }
+    });
+
+    promise.then(function(result) {
+      // "Stuff worked!"
+      getImageGame(result.text, result.image);
+    }, function(err) {
+      // Error
+      console.log(err);
+    });
+
   }
 }
 
@@ -97,97 +147,25 @@ function showSpinner() {
   $('.loader').delay(5000).fadeOut(250);
 }
 
-function makeAnImageWithText(text, color, size, x, y) {
+/**
+ *
+ * @param textToPaste
+ */
+function getImageGame(textToPaste, imageToPaste) {
   $.ajax({
-    url: '/create-fb-image-with-text/',
+    url: '/create-image/',
     success: function (response) {
-      $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg');
+      $('.loader').hide();
+      $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg').show();
+      $('.loginBtn--facebook').addClass('fb-share').removeClass('loading');
     },
     error: function (response) {
       console.log('error2');
     },
     data: {
-      'base_image': $('#FB-image-game').attr('src'),
-      'text': text,
-      'color': color,
-      'font_size': size,
-      'x': x,
-      'y': y
+      'slug': window.location.href.split('/')[window.location.href.split('/').length - 2],
+      'name': textToPaste,
+      'image': imageToPaste
     }
-  });
-}
-
-/**
- * Get the user full name from FB.
- */
-function getUserFullName() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'name'}, function (response) {
-      if (response && !response.error) {
-        makeAnImageWithText(response.name, data[0].color, data[0].size, data[0].x, data[0].y);
-      }
-    });
-  });
-}
-
-/**
- * Get the user first name from FB.
- */
-function getUserFirstName() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'first_name'}, function(response) {
-      if (response && !response.error) {
-        makeAnImageWithText(response.first_name, data[0].color, data[0].size, data[0].x, data[0].y);
-      }
-    });
-  });
-}
-
-/**
- * Get the user last name from FB.
- */
-function getUserLastName() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/user_name/" + post_id, function (data) {
-    FB.api('/me', {fields: 'last_name'}, function(response) {
-      if (response && !response.error) {
-        makeAnImageWithText(response.last_name, data[0].color, data[0].size, data[0].x, data[0].y);
-      }
-    });
-  });
-}
-
-/**
- * Get the user profile image from FB.
- */
-function getUserProfileImage() {
-  var post_id = $('#facebooklogin').data('post');
-  $.get("/posts/get_data/profile_image/" + post_id, function (data) {
-    FB.api('me/picture?type=large', function (response) {
-      if (response && !response.error) {
-        $.ajax({
-          url: '/create-fb-image-with-image/',
-          success: function (response) {
-            console.log(response);
-            $('#FB-image-game').attr('src', '/users_photos/' + response[0].new_image_name + '.jpg');
-          },
-          error: function (response) {
-            console.log('error2');
-          },
-          data: {
-            'base_image': $('#FB-image-game').attr('src'),
-            'image': '/static/images/404.png',
-            'width': data[0].profile_width,
-            'hight': data[0].profile_height,
-            'x': data[0].profile_image_x,
-            'y': data[0].profile_image_y
-          }
-        });
-
-
-      }
-    });
   });
 }
