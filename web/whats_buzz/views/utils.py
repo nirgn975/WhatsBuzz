@@ -52,28 +52,6 @@ def email_us(request):
     return render(request, 'pages/email-us.html', {'buzz_posts': buzz_posts,})
 
 
-# def create_fb_image_with_image(request):
-#     # Create alpha background with the same width and height as the original background.
-#     base_image = Image.open('/usr/src/app' + request.GET.get('base_image'))
-#     background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
-#     background.paste(base_image)
-#
-#     # Add the image to the background.
-#     image = Image.open('/usr/src/app' + request.GET.get('image'))
-#     image = image.resize((int(request.GET.get('width')), int(request.GET.get('hight'))))
-#     background.paste(image, (int(request.GET.get('x')), int(request.GET.get('y'))), image)
-#
-#     # Save the background image.
-#     chars = ''.join(choice(ascii_uppercase) for i in range(12))
-#     background.save('/usr/src/app/users_photos/' + chars + '.jpg')
-#
-#     response = JsonResponse([{
-#         'new_image_name': chars
-#     }], safe=False)
-#
-#     return response
-
-
 def create_image(request):
     slug = request.GET.get('slug')
     name = request.GET.get('name')
