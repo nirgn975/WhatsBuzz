@@ -53,7 +53,6 @@ def post_detail(request, slug):
 def get_data(request, data_model, post_id):
     if data_model == 'user_name':
         # Get the user name from facebook API.
-        print(post_id)
         try:
             facebook_user_name = UserNameFB.objects.get(post__id=post_id)
             return JsonResponse([{

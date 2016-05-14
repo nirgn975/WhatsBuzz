@@ -11,7 +11,7 @@ var cssmin      = require('gulp-cssmin');
  * Convert SASS to CSS, minify all the files and add prefix.
  */
 gulp.task('sass', ['sass-admin'], function () {
-  return gulp.src('./whats_buzz/static/sass/main.scss')
+  return gulp.src('./static/sass/main.scss')
     //.pipe(sass().on('error', sass.logError))
     .pipe(sass({
       includePaths: ['css'],
@@ -19,7 +19,7 @@ gulp.task('sass', ['sass-admin'], function () {
     }))
     //.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
     .pipe(cssmin())
-    .pipe(gulp.dest('./whats_buzz/static/css'))
+    .pipe(gulp.dest('./static/css'))
     .pipe(browserSync.reload({stream:true}));
 });
 
@@ -27,7 +27,7 @@ gulp.task('sass', ['sass-admin'], function () {
  * Convert **Admin** SASS to CSS, minify all the files and add prefix.
  */
 gulp.task('sass-admin', function () {
-  return gulp.src('./whats_buzz/static/sass/admin.scss')
+  return gulp.src('./static/sass/admin.scss')
     //.pipe(sass().on('error', sass.logError))
     .pipe(sass({
       includePaths: ['css'],
@@ -35,7 +35,7 @@ gulp.task('sass-admin', function () {
     }))
     //.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
     .pipe(cssmin())
-    .pipe(gulp.dest('./whats_buzz/static/css'))
+    .pipe(gulp.dest('./static/css'))
     .pipe(browserSync.reload({stream:true}));
 });
 
@@ -45,13 +45,13 @@ gulp.task('sass-admin', function () {
 gulp.task('javascript', function() {
   //return gulp.src('./whats_buzz/static/javascript/partials/*.js')
   return gulp.src([
-      './whats_buzz/static/javascript/partials/facebook_init.js',
-      './whats_buzz/static/javascript/partials/facebook_data.js',
-      './whats_buzz/static/javascript/partials/app.js'
+      './static/javascript/partials/facebook_init.js',
+      './static/javascript/partials/facebook_data.js',
+      './static/javascript/partials/app.js'
     ])
     .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./whats_buzz/static/javascript/'))
+    .pipe(gulp.dest('./static/javascript/'))
     .pipe(browserSync.reload({stream:true}));
 });
 
@@ -69,9 +69,9 @@ gulp.task('browser-sync', ['sass', 'javascript'], function() {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('./whats_buzz/templates/**', browserSync.reload);
-    gulp.watch('./whats_buzz/static/javascript/partials/*.js', ['javascript']);
-    gulp.watch('./whats_buzz/static/sass/**', ['sass']);
+    gulp.watch('./templates/**', browserSync.reload);
+    gulp.watch('./static/javascript/partials/*.js', ['javascript']);
+    gulp.watch('./static/sass/**', ['sass']);
 });
 
 /**
