@@ -1,0 +1,15 @@
+{
+  "name": "WhatsBuzz-server",
+  "version": "1.0.0",
+  "description": "Server side of WhatsBuzz",
+  "type": "git",
+  "url": "https://github.com/Whats-Buzz/server",
+  "author": "Nir Galon",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-sass": "^2.2.0"
+  }
+}
