@@ -29,22 +29,22 @@ function shareThisPost(){
   // var image = baseHref + $('#FB-image-game').attr('src');
   // console.log(image);
 
-  FB.ui({
-    app_id: '1063610257017045',
-    method: 'share',
-    redirect_uri: href,
-    href: 'https://developers.facebook.com/docs/',
-  }, function(response){});
-
   // FB.ui({
-  //   method: 'feed',
-  //   redirect_uri: 'YOUR URL HERE',
-  //   link: 'https://developers.facebook.com/docs/reference/dialogs/',
-  //   picture: 'http://fbrell.com/f8.jpg',
-  //   name: 'Facebook Dialogs',
-  //   caption: 'Reference Documentation',
-  //   description: 'Using Dialogs to interact with people.'
+  //   app_id: '1063610257017045',
+  //   method: 'share',
+  //   redirect_uri: href,
+  //   href: 'https://developers.facebook.com/docs/',
   // }, function(response){});
+
+  FB.ui({
+    method: 'feed',
+    redirect_uri: 'YOUR URL HERE',
+    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+    picture: 'http://fbrell.com/f8.jpg',
+    name: 'Facebook Dialogs',
+    caption: 'Reference Documentation',
+    description: 'Using Dialogs to interact with people.'
+  }, function(response){});
 
   // FB.ui({
   //   // method: 'share',
