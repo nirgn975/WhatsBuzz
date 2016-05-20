@@ -72,8 +72,8 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'name'}, function (response) {
             if (response && !response.error) {
-              resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
               console.log(response.id);
+              resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
             }
           });
         });
