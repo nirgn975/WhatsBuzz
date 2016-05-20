@@ -29,6 +29,7 @@ function shareThisPost(){
   FB.ui({
     method: 'share',
     name: name,
+    title: name,
     picture: image,
     href: href,
     hashtag: '#WhatsBuzz',
