@@ -1,6 +1,10 @@
 {% load staticfiles %}
 
 <div class="long-post">
+    <div class="fb-share-button"
+		data-href="http://www.whatsbuzz.co.il"
+		data-layout="button_count">
+	</div>
     <div class="fb-like" data-href="http://whatsbuzz.co.il" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     {% for post in buzz_posts %}
         <a href="{% url 'post_detail' slug=post.slug %}" alt="post">
