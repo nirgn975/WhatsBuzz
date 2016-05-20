@@ -5,6 +5,7 @@ window.fbAsyncInit = function() {
     appId      : '1063610257017045',
     cookie     : true,
     xfbml      : true,
+    status     : true,
     version    : 'v2.5'
   });
 };
