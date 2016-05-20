@@ -32,6 +32,7 @@ function shareThisPost(){
   FB.ui({
     method: 'share',
     href: 'https://developers.facebook.com/docs/',
+    display: 'popup',
   }, function(response){});
 
   // FB.ui({
