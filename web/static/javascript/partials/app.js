@@ -20,7 +20,7 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
-  // var href = $(location).attr('href');
+  var href = $(location).attr('href');
   // var name = href.split("/")[4];
   // var description = $('#description').text();
   // var caption = $('#description').text();
@@ -29,7 +29,9 @@ function shareThisPost(){
   // console.log(image);
 
   FB.ui({
+    app_id: '1063610257017045',
     method: 'share',
+    redirect_uri: href,
     href: 'https://developers.facebook.com/docs/',
   }, function(response){});
 
