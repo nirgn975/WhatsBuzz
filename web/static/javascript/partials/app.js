@@ -7,11 +7,12 @@ var MEDIA_URL = '/staticuploads/';
  */
 $('.loginBtn--facebook').click(function(){
   event.preventDefault();
-  checkLoginState();
-
+  
   // Check if the "share" button was clicked.
   if($(this).hasClass('fb-share')) {
     shareThisPost();
+  } else {
+    checkLoginState();
   }
 });
 
