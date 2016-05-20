@@ -29,13 +29,13 @@ function shareThisPost(){
   console.log(image);
 
   FB.ui({
-    method: 'feed',
+    method: 'share',
     name: name,
-    // picture: image,
+    picture: image,
     href: href,
     description: description,
     caption: caption,
-    hashtag: '#WhatsBuzz',
+    hashtag: '#WhatsBuzz'
   }, function(response){});
 
   // FB.ui({
