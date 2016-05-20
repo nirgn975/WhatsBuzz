@@ -20,16 +20,21 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
-  // var captionText = $('#description').text();
-  // var url = $(location).attr('href');
-  // console.log(url);
+  var captionText = $('#description').text();
+  var url = $(location).attr('href');
+  console.log(url);
   // url = url.split("/")[0] + '//' + url.split("/")[2];
-  // var image = url + $('#FB-image-game').attr('src');
-  // console.log(image);
+  var image = url + $('#FB-image-game').attr('src');
+  console.log(image);
 
   FB.ui({
-    method: 'share',
-    href: 'https://developers.facebook.com/docs/',
+    method: 'feed',
+    name: 'Something',
+    picture: image,
+    href: url,
+    description: captionText,
+    caption: 'http://www.whatsbuzz.co.il',
+    hashtag: '#WhatsBuzz',
   }, function(response){});
 
   // FB.ui({
