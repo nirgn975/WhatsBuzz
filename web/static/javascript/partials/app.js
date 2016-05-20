@@ -7,7 +7,7 @@ var MEDIA_URL = '/staticuploads/';
  */
 $('.loginBtn--facebook').click(function(){
   event.preventDefault();
-  
+
   // Check if the "share" button was clicked.
   if($(this).hasClass('fb-share')) {
     shareThisPost();
@@ -24,17 +24,18 @@ function shareThisPost(){
   var url = $(location).attr('href');
   url = url.split("/")[0] + '//' + url.split("/")[2];
   var image = url + $('#FB-image-game').attr('src');
+  console.log(image);
 
-  FB.ui({
-    method: 'share',
-    name: 'Something',
-    picture: image,
-    href: url,
-    link: url,
-    description: captionText,
-    caption: 'http://www.whatsbuzz.co.il'
-
-  }, function(response){});
+  // FB.ui({
+  //   method: 'share',
+  //   name: 'Something',
+  //   picture: image,
+  //   href: url,
+  //   link: url,
+  //   description: captionText,
+  //   caption: 'http://www.whatsbuzz.co.il'
+  //
+  // }, function(response){});
 }
 
 /**
