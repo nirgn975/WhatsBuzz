@@ -20,8 +20,8 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
-  var href = $(location).attr('href');
-  console.log(href);
+  // var href = $(location).attr('href');
+  // console.log(href);
   // var name = href.split("/")[4];
   // var description = $('#description').text();
   // var caption = $('#description').text();
@@ -38,12 +38,12 @@ function shareThisPost(){
 
   FB.ui({
     method: 'feed',
-    redirect_uri: 'YOUR URL HERE',
+    // redirect_uri: 'YOUR URL HERE',
     link: 'https://developers.facebook.com/docs/reference/dialogs/',
-    picture: 'http://fbrell.com/f8.jpg',
+    // picture: 'http://fbrell.com/f8.jpg',
     name: 'Facebook Dialogs',
-    caption: 'Reference Documentation',
-    description: 'Using Dialogs to interact with people.'
+    // caption: 'Reference Documentation',
+    // description: 'Using Dialogs to interact with people.'
   }, function(response){});
 
   // FB.ui({
