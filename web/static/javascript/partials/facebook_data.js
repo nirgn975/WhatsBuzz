@@ -72,7 +72,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'name'}, function (response) {
             if (response && !response.error) {
-              resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+              resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
             }
           });
         });
@@ -80,7 +80,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'first_name'}, function (response) {
             if (response && !response.error) {
-              resolve({'text': response.first_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+              resolve({'text': response.first_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
             }
           });
         });
@@ -88,7 +88,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'last_name'}, function (response) {
             if (response && !response.error) {
-              resolve({'text': response.last_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=normal"});
+              resolve({'text': response.last_name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
             }
           });
         });
