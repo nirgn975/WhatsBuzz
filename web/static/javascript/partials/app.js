@@ -29,10 +29,10 @@ function shareThisPost(){
 
   FB.ui({
     method: 'feed',
-    name: 'Something',
-    picture: image,
-    href: url,
-    description: captionText,
+    name: $('.categories-header > h2').text(),
+    // picture: image,
+    href: $(location).attr('href'),
+    description: $('#description').text(),
     caption: 'http://www.whatsbuzz.co.il',
     hashtag: '#WhatsBuzz',
   }, function(response){});
