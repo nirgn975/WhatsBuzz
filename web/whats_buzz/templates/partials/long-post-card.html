@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <div class="long-post">
-    <div class="fb-like" data-href="http://whatsbuzz.co.il" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FWhatsBuz%2F&amp;layout=box_count&amp;locale=he_IL&amp;action=like&amp;show_faces=false&amp;share=false" scrolling="no" frameborder="0" allowtransparency="true" style="border: none; overflow: hidden; width: 55px; height: 65px;"></iframe>
     {% for post in buzz_posts %}
         <a href="{% url 'post_detail' slug=post.slug %}" alt="post">
             <div class="row">
