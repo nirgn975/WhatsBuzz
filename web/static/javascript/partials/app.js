@@ -21,14 +21,14 @@ $('.loginBtn--facebook').click(function(){
  */
 function shareThisPost(){
   var href = $(location).attr('href');
-  var name = href.split("/")[4];
+  var title = $('#post-title > h2').text;
   var description = $('#description').text();
   var baseHref = href.split("/")[0] + '//' + href.split("/")[2];
   var image = baseHref + $('#FB-image-game').attr('src');
 
   FB.ui({
     method: 'share',
-    title: name,
+    title: title,
     picture: image,
     href: href,
     hashtag: '#WhatsBuzz',
