@@ -79,7 +79,7 @@ def create_image(request):
         draw = ImageDraw.Draw(image)
         draw.text((int(x), int(y)), name, fill=color, font=font)
         chars = ''.join(choice(ascii_uppercase) for i in range(12))
-        image.save('/usr/src/app/users_photos/' + chars + '.jpg')
+        image.save('/usr/src/app/users_photos/' + chars + '.jpg', quality=90)
 
         base_image = '/usr/src/app/users_photos/' + chars + '.jpg'
     else:
@@ -114,7 +114,7 @@ def create_image(request):
 
         # Save the background image.
         chars = ''.join(choice(ascii_uppercase) for i in range(12))
-        background.save('/usr/src/app/users_photos/' + chars + '.jpg')
+        background.save('/usr/src/app/users_photos/' + chars + '.jpg', quality=90)
 
     # Return json with path to image.
     return JsonResponse([{
