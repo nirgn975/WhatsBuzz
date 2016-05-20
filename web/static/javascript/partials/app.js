@@ -20,27 +20,20 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
-  var href = $(location).attr('href');
-  var name = href.split("/")[4];
-  var description = $('#description').text();
-  var caption = $('#description').text();
-  var baseHref = href.split("/")[0] + '//' + href.split("/")[2];
-  var image = baseHref + $('#FB-image-game').attr('src');
-  console.log(image);
+  // var href = $(location).attr('href');
+  // var name = href.split("/")[4];
+  // var description = $('#description').text();
+  // var caption = $('#description').text();
+  // var baseHref = href.split("/")[0] + '//' + href.split("/")[2];
+  // var image = baseHref + $('#FB-image-game').attr('src');
+  // console.log(image);
 
   FB.ui({
     method: 'share',
-    name: name,
-    picture: image,
-    href: href,
-    description: description,
-    caption: caption,
-    hashtag: '#WhatsBuzz'
+    href: 'https://developers.facebook.com/docs/',
   }, function(response){});
 
   // FB.ui({
-  //   method: 'share',
-  //   href: 'https://developers.facebook.com/docs/',
   //   // method: 'share',
   //   // name: 'Something',
   //   // picture: image,
