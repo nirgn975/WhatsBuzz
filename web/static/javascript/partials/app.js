@@ -28,11 +28,11 @@ function shareThisPost(){
 
   FB.ui({
     method: 'share',
-    name: 'Something',
+    name: name,
     picture: image,
-    href: 'href',
-    hashtag: '#hashtag',
-    link: url,
+    href: href,
+    hashtag: '#WhatsBuzz',
+    link: baseHref,
     description: description,
     caption: 'http://www.whatsbuzz.co.il',
     display: 'popup',
