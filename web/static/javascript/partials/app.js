@@ -26,16 +26,22 @@ function shareThisPost(){
   var image = url + $('#FB-image-game').attr('src');
   console.log(image);
 
-  // FB.ui({
-  //   method: 'share',
-  //   name: 'Something',
-  //   picture: image,
-  //   href: url,
-  //   link: url,
-  //   description: captionText,
-  //   caption: 'http://www.whatsbuzz.co.il'
-  //
-  // }, function(response){});
+  FB.ui({
+    method: 'share',
+    name: 'Something',
+    picture: image,
+    // href: url,
+    // link: url,
+    // description: captionText,
+    // caption: 'http://www.whatsbuzz.co.il'
+
+  }, function(response){
+    if (response && response.post_id) {
+      console.log('share success');
+    } else {
+      console.log('share error');
+    }
+  });
 }
 
 /**
