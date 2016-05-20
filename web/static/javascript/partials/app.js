@@ -30,7 +30,8 @@ function shareThisPost(){
     method: 'share',
     name: 'Something',
     picture: image,
-    href: url
+    href: url.toString(),
+    hashtag: '#WhatsBuzz'
     // link: url,
     // description: captionText,
     // caption: 'http://www.whatsbuzz.co.il'
