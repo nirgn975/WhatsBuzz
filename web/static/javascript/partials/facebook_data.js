@@ -72,7 +72,6 @@ if (typeof(FB) != 'undefined' && FB != null ) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'name'}, function (response) {
             if (response && !response.error) {
-              console.log(response.id);
               resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
             }
           });
@@ -157,8 +156,8 @@ function getImageGame(textToPaste, imageToPaste) {
     url: '/create-image/',
     success: function (response) {
       $('.loader').hide();
-      $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg').show();
       $('.loginBtn--facebook').addClass('fb-share').removeClass('loading');
+      $('#FB-image-game').attr('src', '/users_photos/' + response[0].image_name + '.jpg').show();
     },
     error: function (response) {
       console.log('error2');

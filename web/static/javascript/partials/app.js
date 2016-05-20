@@ -6,6 +6,7 @@ var MEDIA_URL = '/staticuploads/';
  * Handle login with facebook button.
  */
 $('.loginBtn--facebook').click(function(){
+  event.preventDefault();
   checkLoginState();
 
   // Check if the "share" button was clicked.
@@ -22,7 +23,6 @@ function shareThisPost(){
   var url = $(location).attr('href');
   url = url.split("/")[0] + '//' + url.split("/")[2];
   var image = url + $('#FB-image-game').attr('src');
-  console.log(image);
 
   FB.ui({
     method: 'share',
