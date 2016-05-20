@@ -20,38 +20,29 @@ $('.loginBtn--facebook').click(function(){
  * Share a post to facebook.
  */
 function shareThisPost(){
-  // var href = $(location).attr('href');
-  // console.log(href);
-  // var name = href.split("/")[4];
-  // var description = $('#description').text();
-  // var caption = $('#description').text();
-  // var baseHref = href.split("/")[0] + '//' + href.split("/")[2];
-  // var image = baseHref + $('#FB-image-game').attr('src');
-  // console.log(image);
+  var href = $(location).attr('href');
+  var name = href.split("/")[4];
+  var description = $('#description').text();
+  var baseHref = href.split("/")[0] + '//' + href.split("/")[2];
+  var image = baseHref + $('#FB-image-game').attr('src');
 
   FB.ui({
     method: 'share',
-    href: 'https://developers.facebook.com/docs/',
+    name: 'Something',
+    picture: image,
+    href: 'href',
+    hashtag: '#hashtag',
+    link: url,
+    description: description,
+    caption: 'http://www.whatsbuzz.co.il',
     display: 'popup',
-  }, function(response){});
-
-  // FB.ui({
-  //   // method: 'share',
-  //   // name: 'Something',
-  //   // picture: image,
-  //   // href: url.toString(),
-  //   hashtag: '#WhatsBuzz'
-  //   // link: url,
-  //   // description: captionText,
-  //   // caption: 'http://www.whatsbuzz.co.il'
-  //
-  // }, function(response){
-  //   if (response && response.post_id) {
-  //     console.log('share success');
-  //   } else {
-  //     console.log('share error');
-  //   }
-  // });
+  }, function(response){
+    if (response && response.post_id) {
+      console.log('share success');
+    } else {
+      console.log('share error');
+    }
+  });
 }
 
 /**
