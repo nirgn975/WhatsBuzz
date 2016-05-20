@@ -106,8 +106,7 @@ def create_image(request):
         print(tmp_image_path)
         image = Image.open(tmp_image_path)
 
-
-        image = image.resize((int(profile_width), int(profile_height)))
+        image = image.resize((int(profile_width), int(profile_height)), Image.ANTIALIAS)
         print(image)
         # background.paste(image, (int(profile_image_x), int(profile_image_y)), image)
         background.paste(image, (int(profile_image_x), int(profile_image_y)))
