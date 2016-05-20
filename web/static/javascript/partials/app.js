@@ -31,7 +31,7 @@ function shareThisPost(){
     title: name,
     picture: image,
     href: href,
-    hashtag: '@WhatsBuzz',
+    hashtag: '#WhatsBuzz',
     link: baseHref,
     description: description,
     caption: 'http://www.whatsbuzz.co.il',
