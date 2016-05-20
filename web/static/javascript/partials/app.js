@@ -30,10 +30,10 @@ function shareThisPost(){
     method: 'share',
     name: 'Something',
     picture: image,
-    // href: url,
+    href: url,
     // link: url,
-    // description: captionText,
-    // caption: 'http://www.whatsbuzz.co.il'
+    description: captionText,
+    caption: 'http://www.whatsbuzz.co.il'
 
   }, function(response){
     if (response && response.post_id) {
