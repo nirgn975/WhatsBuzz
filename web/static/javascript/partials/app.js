@@ -21,6 +21,7 @@ $('.loginBtn--facebook').click(function(){
  */
 function shareThisPost(){
   var href = $(location).attr('href');
+  console.log(href);
   // var name = href.split("/")[4];
   // var description = $('#description').text();
   // var caption = $('#description').text();
@@ -34,6 +35,16 @@ function shareThisPost(){
     redirect_uri: href,
     href: 'https://developers.facebook.com/docs/',
   }, function(response){});
+
+  // FB.ui({
+  //   method: 'feed',
+  //   redirect_uri: 'YOUR URL HERE',
+  //   link: 'https://developers.facebook.com/docs/reference/dialogs/',
+  //   picture: 'http://fbrell.com/f8.jpg',
+  //   name: 'Facebook Dialogs',
+  //   caption: 'Reference Documentation',
+  //   description: 'Using Dialogs to interact with people.'
+  // }, function(response){});
 
   // FB.ui({
   //   // method: 'share',
