@@ -1,13 +1,16 @@
+import ssl
+import urllib.request
+
 from random import choice
 from string import ascii_uppercase
+from PIL import Image, ImageDraw, ImageFont
 
 from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
 from django.template.loader import get_template
-from PIL import Image, ImageDraw, ImageFont
-import urllib.request
 from django.http import JsonResponse
+
 from whats_buzz.forms import ContactForm
 from whats_buzz.models import Post, UserNameFB, GamesImagesFB, UserProfileImageFB
 
@@ -98,7 +101,7 @@ def create_image(request):
         background.paste(base_image)
 
         # Add the image to the background.
-        # image = Image.open('/usr/src/app' + request.GET.get('image'))
+        ssl._create_default_https_context = ssl._create_unverified_context
         (tmp_image_path, headers) = urllib.request.urlretrieve(request.GET.get('image'))
         print(tmp_image_path)
         image = Image.open(tmp_image_path)
