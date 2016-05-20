@@ -22,6 +22,7 @@ $('.loginBtn--facebook').click(function(){
 function shareThisPost(){
   var captionText = $('#description').text();
   var url = $(location).attr('href');
+  console.log(url);
   url = url.split("/")[0] + '//' + url.split("/")[2];
   var image = url + $('#FB-image-game').attr('src');
   console.log(image);
@@ -30,7 +31,8 @@ function shareThisPost(){
     method: 'share',
     name: 'Something',
     picture: image,
-    href: url.toString(),
+    // href: url.toString(),
+    href: 'https://developers.facebook.com/docs/dialogs/',
     hashtag: '#WhatsBuzz'
     // link: url,
     // description: captionText,
