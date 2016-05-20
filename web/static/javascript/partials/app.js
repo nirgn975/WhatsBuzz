@@ -29,10 +29,11 @@ function shareThisPost(){
 
   FB.ui({
     method: 'share',
-    name: 'Something',
-    picture: image,
+    href: 'https://developers.facebook.com/docs/',
+    // method: 'share',
+    // name: 'Something',
+    // picture: image,
     // href: url.toString(),
-    href: 'https://developers.facebook.com/docs/dialogs/',
     hashtag: '#WhatsBuzz'
     // link: url,
     // description: captionText,
