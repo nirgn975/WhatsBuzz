@@ -73,6 +73,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
           FB.api('/me', {fields: 'name'}, function (response) {
             if (response && !response.error) {
               resolve({'text': response.name, 'image': "http://graph.facebook.com/" + response.id + "/picture?type=large"});
+              console.log(response.id);
             }
           });
         });
