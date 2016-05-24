@@ -12,7 +12,7 @@ class IndexResultsSetPagination(PageNumberPagination):
     max_page_size = 5
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
@@ -20,13 +20,13 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class TestYourselfPostsViewSet(viewsets.ModelViewSet):
+class TestYourselfPostsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Post.objects.filter(post_type='test_yourself')
     serializer_class = PostSerializer
     pagination_class = IndexResultsSetPagination
 
 
-class FacebookGamesPostsViewSet(viewsets.ModelViewSet):
+class FacebookGamesPostsViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows posts to be viewed or edited.
     """
@@ -35,7 +35,7 @@ class FacebookGamesPostsViewSet(viewsets.ModelViewSet):
     pagination_class = IndexResultsSetPagination
 
 
-class BuzzViewSet(viewsets.ModelViewSet):
+class BuzzViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows posts to be viewed or edited.
     """
