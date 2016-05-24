@@ -76,7 +76,6 @@ def create_image(request):
     if fbTextPost:
         base_image = Image.open(base_image)
         image = base_image.copy()
-        # font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(size))
         font = ImageFont.truetype("/usr/src/app/static/fonts/Alef-Regular.ttf", int(size))
 
         draw = ImageDraw.Draw(image)
@@ -86,7 +85,6 @@ def create_image(request):
             reversed_name = name[::-1]
             name = reversed_name
 
-        # draw.text((int(x), int(y)), name, fill=color, font=font)
         draw.text((int(x), int(y)), name, fill=color, font=font)
         chars = ''.join(choice(ascii_uppercase) for i in range(12))
         image.save('/usr/src/app/users_photos/' + chars + '.jpg', quality=90)
