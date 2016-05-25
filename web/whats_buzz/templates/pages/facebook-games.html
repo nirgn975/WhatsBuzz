@@ -1,5 +1,13 @@
 {% extends 'layouts/base.html' %}
 
+{% block facebook %}
+    <meta property="og:url"           content="http://www.whatsbuzz.co.il/facebook-games" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="WhatsBuzz" />
+	<meta property="og:description"   content="כל מה שויראלי, כל מה שבאזז אצלכם בניוז פיד. מתעדכן כל יום, כל היום" />
+	<meta property="og:image"         content="http://www.whatsbuzz.co.il/static/images/fb-share-banner.jpg" />
+{% endblock %}
+
 {% block content %}
     <div id="main-content">
         <div class="col-sm-12">
