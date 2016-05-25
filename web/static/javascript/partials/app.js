@@ -5,7 +5,7 @@ var MEDIA_URL = '/staticuploads/';
 /**
  * Handle login with facebook button.
  */
-$('.loginBtn--facebook').click(function(){
+$('.loginBtn--facebook').click(function(event){
   event.preventDefault();
 
   // Check if the "share" button was clicked.
