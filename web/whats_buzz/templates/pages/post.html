@@ -6,7 +6,7 @@
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="{{ post.title }}" />
 	<meta property="og:description"   content="{{ post.body }}" />
-	<meta property="og:image"         content="http://www.whatsbuzz.co.il/{% static post.image_banner.url %}" />
+	<meta property="og:image"         content="http://www.whatsbuzz.co.il{% static post.image_banner.url %}" />
 {% endblock %}
 
 {% block content %}
