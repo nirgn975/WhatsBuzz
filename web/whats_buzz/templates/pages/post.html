@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block facebook %}
-    <meta property="og:url"           content="http://www.whatsbuzz.co.il/posts/{{ post.title }}" />
+    <meta property="og:url"           content="http://www.whatsbuzz.co.il/posts/{{ post.slug }}" />
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="{{ post.title }}" />
 	<meta property="og:description"   content="{{ post.body }}" />
