@@ -1,13 +1,12 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from api.views import UserViewSet, TestYourselfPostsViewSet, FacebookGamesPostsViewSet, BuzzViewSet
+from api.views import UserViewSet, PostsViewSet, BuzzViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, base_name='user')
-router.register(r'testYourself', TestYourselfPostsViewSet, base_name='testYourself')
-router.register(r'facebookGames', FacebookGamesPostsViewSet, base_name='facebookGames')
+router.register(r'posts', PostsViewSet, base_name='posts')
 router.register(r'buzz', BuzzViewSet, base_name='buzz')
 
 urlpatterns = [

@@ -20,19 +20,21 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
 
 
-class TestYourselfPostsViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Post.objects.filter(post_type='test_yourself')
+class PostsViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PostSerializer
-    pagination_class = IndexResultsSetPagination
 
-
-class FacebookGamesPostsViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows posts to be viewed or edited.
-    """
-    queryset = Post.objects.filter(post_type='facebook_games')
-    serializer_class = PostSerializer
-    pagination_class = IndexResultsSetPagination
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        post_type = self.request.query_params.get('post_type', None)
+        print(post_type)
+        if post_type is not None:
+            queryset = Post.objects.filter(post_type=post_type)
+        else:
+            queryset = Post.objects.all()
+        return queryset
 
 
 class BuzzViewSet(viewsets.ReadOnlyModelViewSet):
