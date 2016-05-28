@@ -4,26 +4,26 @@ from django.utils.translation import ugettext_lazy as _
 
 class PostType(object):
     choices = (
-        ('facebook_games', _('משחקי פייסבוק')),
-        ('test_yourself', _('בחן את עצמך')),
+        ('facebook_games', _('Facebook Games')),
+        ('test_yourself', _('Test Yourself')),
     )
 
 
 class AgeCategories(object):
     choices = (
-        ('default', _('ברירת מחדל')),
-        ('childrens', _('ילדים')),
-        ('youngs', _('נוער')),
-        ('adults', _('מבוגרים')),
+        ('default', _('Default')),
+        ('childrens', _('Childrens')),
+        ('youngs', _('Youngs')),
+        ('adults', _('Adults')),
     )
 
 
 class FacebookUserName(object):
     choices = (
         ('empty', ''),
-        ('first_name', _('שם פרטי')),
-        ('last_name', _('שם משפחה')),
-        ('full_name', _('שם פרטי ומשפחה')),
+        ('first_name', _('First Name')),
+        ('last_name', _('Last Name')),
+        ('full_name', _('First and Last Name')),
     )
 
 
