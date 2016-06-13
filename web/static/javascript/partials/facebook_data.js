@@ -67,7 +67,7 @@ if (typeof(FB) != 'undefined' && FB != null ) {
 
     var promise = new Promise(function(resolve, reject) {
       var post_id = $('#facebooklogin').data('post');
-      
+
       if (JSON.stringify(permissions)==JSON.stringify({profile_image: true, full_user_name: true})) {
         $.get("/posts/get_data/user_name/" + post_id, function (data) {
           FB.api('/me', {fields: 'name'}, function (response) {
@@ -154,6 +154,8 @@ function showSpinner() {
 function getImageGame(textToPaste, imageToPaste) {
   $.ajax({
     url: '/create-image/',
+    type: 'GET',
+    dataType: 'jsonp',
     success: function (response) {
       $('.loader').hide();
       $('.loginBtn--facebook').addClass('fb-share').removeClass('loading');
