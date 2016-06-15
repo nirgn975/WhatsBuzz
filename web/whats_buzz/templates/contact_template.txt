@@ -1,7 +1,0 @@
-שם מלא: {{ contact_name |striptags }}
-
-הרעיון:
-{{ form_content|striptags }}
-
-האם הוא מעוניין שהשם יופיע על המשחק:
-{{ content_checkbox|striptags }}
