@@ -1,0 +1,16 @@
+.categories-header {
+  background: #ffffff;
+  border-bottom: solid 2px rgba(60, 89, 153, .52);
+  padding: 5px 0;
+  border-radius: 4px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.categories-header > h2 {
+  text-align: center;
+  font-size: 30px;
+  padding: .5em 0;
+  margin: 0;
+  color: #181818
+}
