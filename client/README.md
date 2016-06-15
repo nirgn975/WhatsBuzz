@@ -1,25 +1,17 @@
-# WhatsBuzz Client side.
-The repo contains the client side of the WhatsBuzz project.
-WhatsBuzz contains everything that's interesting and funny on the web, facebook games, viral videos, gifs, etc.
+## Front-End
+The front end (client) part of the WhatsBuzz project written in [Angular 2.x](https://angularjs.org/).
 
-## Our Stack
-* [Angular 2.x](https://angular.io/)
-* [Bootstrap 4.x](http://valor-software.com/ng2-bootstrap/index-bs4.html)
-* [SASS](http://sass-lang.com/)
-* [webpack](https://webpack.github.io/)
+### Prerequisites
+
+* Install [Angular-cli](https://github.com/angular/angular-cli)
+* Install [npm](https://nodejs.org/en/)
 
 ## Installation
-* Make sure you have node.js installed
-* run `npm install -g webpack webpack-dev-server typings typescript` to install global dependencies
-* run `npm install` to install dependencies
-* run `npm start` to fire up dev server
-* open browser to [http://localhost:3000](http://localhost:3000)
+
+* Run `npm install` to install global dependencies.
+* Run `ng serve` to fire up the dev server.
+* Open browser to [http://localhost:4200](http://localhost:4200).
 
 ## Tests
-Nothing yet.
-
-## Contribute
-Just fork and do a pull request (;
-
-## License
-MIT
+* Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). (Before running the tests make sure you are serving the app via `ng serve`).
