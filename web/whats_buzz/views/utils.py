@@ -77,15 +77,18 @@ def create_image(request):
         base_image = Image.open(base_image)
         image = base_image.copy()
         font = ImageFont.truetype("/usr/src/app/static/fonts/Alef-Regular.ttf", int(size))
-
         draw = ImageDraw.Draw(image)
+
+        # Get the text x and y.
+        text_x, text_y = font.getsize(name)
+        width = x - (text_x / 2)
 
         # Reverse if the name is in hebrew
         if any("\u0590" <= c <= "\u05EA" for c in name):
             reversed_name = name[::-1]
             name = reversed_name
 
-        draw.text((int(x), int(y)), name, fill=color, font=font)
+        draw.text((int(width), int(y)), name, fill=color, font=font)
         chars = ''.join(choice(ascii_uppercase) for i in range(12))
         image.save('/usr/src/app/users_photos/' + chars + '.jpg', quality=90)
 
