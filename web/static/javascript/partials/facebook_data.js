@@ -155,6 +155,7 @@ function getImageGame(textToPaste, imageToPaste) {
   $.ajax({
     url: '/create-image/',
     type: 'GET',
+    async: false,
     dataType: 'jsonp',
     success: function (response) {
       $('.loader').hide();
