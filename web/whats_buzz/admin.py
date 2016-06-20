@@ -24,6 +24,7 @@ class UserNameAdmin(admin.StackedInline):
                 'name_y',
                 'font_color',
                 'font_size',
+                'text_align',
             )
         })
     )

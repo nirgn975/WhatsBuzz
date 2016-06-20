@@ -56,6 +56,12 @@ class UserNameFB(models.Model):
     name_y = models.PositiveIntegerField()
     font_color = models.CharField(max_length=255)
     font_size = models.PositiveIntegerField()
+    text_align = models.CharField(max_length=225,
+                                    choices=(
+                                        ('left', 'left'),
+                                        ('center', 'center'),
+                                    ),
+                                    default='left')
 
 
 class UserProfileImageFB(models.Model):
