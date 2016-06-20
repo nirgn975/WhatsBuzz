@@ -79,7 +79,7 @@ def create_image(request):
         font = ImageFont.truetype("/usr/src/app/static/fonts/Alef-Regular.ttf", int(size))
         draw = ImageDraw.Draw(image)
 
-        if fbTextPost.text_align = 'left':
+        if fbTextPost.text_align == 'left':
             # Get the text x and y.
             text_x, text_y = font.getsize(name)
             x = x - (text_x / 2)
