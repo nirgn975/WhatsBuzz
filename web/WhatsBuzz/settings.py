@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'WhatsBuzz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'whats_buzz',
         'USER': 'postgres',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }
