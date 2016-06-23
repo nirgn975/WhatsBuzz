@@ -4,4 +4,4 @@ Django==1.9.1
 psycopg2==2.6.1
 Pillow==2.9.0
 gunicorn==19.3.0
-django-analytical==2.0.0
+django-analytical==2.2.1
