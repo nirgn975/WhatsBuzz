@@ -1,0 +1,22 @@
+sudo: required
+
+language: python
+
+python:
+  - "3.5"
+
+services: postgresql
+
+before_install:
+  # Install nodejs for npm.
+  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+
+install:
+  # Install server dependencies.
+  - cd whatsbuzz
+  - pip install -r requirements.txt
+
+  # Install client dependencies.
+  - cd wb
+  - npm install

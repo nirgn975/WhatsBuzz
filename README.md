@@ -6,9 +6,14 @@ WhatsBuzz contains everything that's interesting and funny on the web, Facebook 
 ## Our Stack
 
 * [Angular 2](https://angular.io/)
-* [Angular CLI](https://github.com/angular/angular-cli)
 * [Django 1.10.x](https://www.djangoproject.com/)
 * [PostgreSQL](http://www.postgresql.org/)
+
+  **The tools we use**
+  * [Angular CLI](https://github.com/angular/angular-cli)
+  * [Bootstrap](http://getbootstrap.com/)
+  * [Pillow](https://python-pillow.org/)
+  * [Cloud SDK](https://cloud.google.com/sdk/)
 
 ## Installation
 
