@@ -1,21 +1,32 @@
-# Whats Buzz main website
-A Django App using:
- * Bootstrap
- * GulpJS
- * Facebook API
- * Pillow
- * Docker
+# WhatsBuzz
 
-## Pre Requirements
-1. install [docker](https://www.docker.com/).
-2. install [docker-compose](https://docs.docker.com/compose/install/).
-3. install [nodejs](https://nodejs.org/en/).
+This repo contains all the files of WhatsBuzz.
+WhatsBuzz contains everything that's interesting and funny on the web, Facebook games, viral videos, gifs, etc.
+
+## Our Stack
+
+* [Angular 2](https://angular.io/)
+* [Django 1.10.x](https://www.djangoproject.com/)
+* [PostgreSQL](http://www.postgresql.org/)
+
+  **The tools we use**
+  * [Angular CLI](https://github.com/angular/angular-cli)
+  * [Bootstrap](http://getbootstrap.com/)
+  * [Pillow](https://python-pillow.org/)
+  * [Cloud SDK](https://cloud.google.com/sdk/)
 
 ## Installation
-Install the project for development.
 
-1. run `$ docker-compose up` to..
-2. run `$ gulp`
+later..
 
 ## Deploy
-Not yet..
+
+later..
+
+## Contribute
+
+Just fork and do a pull request (;
+
+## License
+
+ISC
