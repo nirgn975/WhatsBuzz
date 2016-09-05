@@ -1,21 +1,27 @@
-# WhatsBuzz Server side.
-The repo contains the server side of the WhatsBuzz project.
-WhatsBuzz contains everying that's interesting and funny on the web, facebook games, viral videos, gifs, etc.
+# WhatsBuzz
 
-## Installation
-Install the project for development.
-
-1. `cd config` then `cp local_settings.template local_settings.py` and modify it by your local settings.
-2. ...
-3. That's it, no step two. Start coding! (:
-
+This repo contains all the files of WhatsBuzz.
+WhatsBuzz contains everything that's interesting and funny on the web, Facebook games, viral videos, gifs, etc.
 
 ## Our Stack
-* [Django 1.9.x](https://www.djangoproject.com/)
+
+* [Angular 2](https://angular.io/)
+* [Angular CLI](https://github.com/angular/angular-cli)
+* [Django 1.10.x](https://www.djangoproject.com/)
 * [PostgreSQL](http://www.postgresql.org/)
 
+## Installation
+
+later..
+
+## Deploy
+
+later..
+
 ## Contribute
+
 Just fork and do a pull request (;
 
 ## License
-MIT
+
+ISC
