@@ -1,7 +1,0 @@
-# Install with: `pip install -r requirements.txt`
-
-Django==1.9.7
-psycopg2==2.6.1
-Pillow==3.2.0
-gunicorn==19.3.0
-django-analytical==2.2.1
