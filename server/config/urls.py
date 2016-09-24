@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,8 +16,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
 ]
+
+urlpatterns += i18n_patterns(
+    url(r'^admin/', admin.site.urls),
+)
