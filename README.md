@@ -1,21 +1,25 @@
-# Whats Buzz main website
-A Django App using:
- * Bootstrap
- * GulpJS
- * Facebook API
- * Pillow
- * Docker
+# Whats Buzz
+
+Something about the project.
+
+## Our Stack
+
+  1. [Angular]()
+  2. [Angular-CLI]()
+  3. [Bootstrap]()
+  4. [Django]()
+  5. [Pillow]()
+  6. [Google Cloud Platform]()
+  7. [Facebook API]()
 
 ## Pre Requirements
-1. install [docker](https://www.docker.com/).
-2. install [docker-compose](https://docs.docker.com/compose/install/).
-3. install [nodejs](https://nodejs.org/en/).
+
+Not yet..
 
 ## Installation
-Install the project for development.
 
-1. run `$ docker-compose up` to..
-2. run `$ gulp`
+Not yet..
 
 ## Deploy
+
 Not yet..
