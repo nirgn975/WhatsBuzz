@@ -28,9 +28,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'api',
+    'whatsbuzz',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'corsheaders',
-
-    'whatsbuzz',
 ]
 
 MIDDLEWARE = [
