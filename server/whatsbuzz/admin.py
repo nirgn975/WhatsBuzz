@@ -1,4 +1,5 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from .models import Post
 from .models import FacebookUser
 from .models import UserNameFB
@@ -82,11 +83,25 @@ class PostAdmin(admin.ModelAdmin):
         }
 
 
-class FaceBookUsersAdmin(admin.ModelAdmin):
-    model = FacebookUser
-    list_display = ('first_name', 'last_name')
+# class FaceBookUsersAdmin(admin.ModelAdmin):
+#     model = FacebookUser
+#     list_display = ('first_name', 'last_name')
+
+
+class FacebookUserAdmin(TranslationAdmin):
+    pass
+
+    class Media:
+        js = (
+            'modeltranslation/js/force_jquery.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(FacebookUser, FaceBookUsersAdmin)
-
+# admin.site.register(FacebookUser, FaceBookUsersAdmin)
+admin.site.register(FacebookUser, FacebookUserAdmin)

@@ -11,3 +11,6 @@ django-filter==0.15.0
 
 # CORS
 django-cors-headers==1.1.0
+
+# Translations
+django-modeltranslation==0.12
