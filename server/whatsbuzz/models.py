@@ -26,7 +26,11 @@ class FacebookUserName(object):
         ('full_name', _('First and Last Name')),
     )
 
+
 class Post(models.Model):
+    """
+    Every post basic details.
+    """
     title = models.CharField(max_length=255, blank=True)
     body = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -38,16 +42,26 @@ class Post(models.Model):
 
 
 class GamesImagesFB(models.Model):
+    """
+    The background images for any `facebook game` post type.
+    """
     post = models.ForeignKey(Post, related_name='games_images')
     images = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
 
 
 class Quizzes(models.Model):
+    """
+    Quiz type post.
+    Entity for PlayBuzz quizzes.
+    """
     post = models.ForeignKey(Post, related_name='quizzes')
     code = models.TextField()
 
 
 class UserNameFB(models.Model):
+    """
+    Facebook username, for `facebook games` post type with the username.
+    """
     post = models.ForeignKey(Post, related_name='fb_users')
     facebook_user_name = models.CharField(max_length=255, choices=FacebookUserName.choices, default='empty')
     name_x = models.PositiveIntegerField()
@@ -57,6 +71,10 @@ class UserNameFB(models.Model):
 
 
 class UserProfileImageFB(models.Model):
+    """
+    Facebook user profile images.
+    Store the profile image data on how to place the profile image on `facebook game` post type.
+    """
     post = models.ForeignKey(Post, related_name='profile_image')
     profile_image_x = models.PositiveIntegerField()
     profile_image_y = models.PositiveIntegerField()
@@ -65,5 +83,8 @@ class UserProfileImageFB(models.Model):
 
 
 class FacebookUser(models.Model):
+    """
+    Store every facebook user data that logged in to the system.
+    """
     first_name = models.CharField(max_length=225)
     last_name = models.CharField(max_length=225)
