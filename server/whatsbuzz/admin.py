@@ -72,24 +72,26 @@ class QuizzesAdmin(admin.StackedInline):
     )
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(TranslationAdmin):
     model = Post
     list_display = ('title', 'body', 'post_type', 'image_banner', 'buzz')
     inlines = [GamesUploadImageAdmin, QuizzesAdmin, UserNameAdmin, UserProfileImageAdmin]
 
     class Media:
+        js = (
+            'modeltranslation/js/force_jquery.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
         css = {
-            "all": ("css/admin.css",)
+            "all": ("css/admin.css",),
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
 
 
-# class FaceBookUsersAdmin(admin.ModelAdmin):
-#     model = FacebookUser
-#     list_display = ('first_name', 'last_name')
-
-
 class FacebookUserAdmin(TranslationAdmin):
-    pass
+    model = FacebookUser
+    list_display = ('first_name', 'last_name')
 
     class Media:
         js = (
@@ -103,5 +105,4 @@ class FacebookUserAdmin(TranslationAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-# admin.site.register(FacebookUser, FaceBookUsersAdmin)
 admin.site.register(FacebookUser, FacebookUserAdmin)
