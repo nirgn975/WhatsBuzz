@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Post, GamesImagesFB, Quizzes, UserNameFB, UserProfileImageFB, FacebookUser
+from .models import Post, FacebookUser
 
 
 @register(Post)
@@ -12,7 +12,3 @@ class PostTranslation(TranslationOptions):
 class FacebookUserTranslation(TranslationOptions):
     fields = ('first_name', 'last_name',)
     required_languages = ('he',)
-
-
-
-

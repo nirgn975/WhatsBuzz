@@ -1,11 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import Post
-from .models import FacebookUser
-from .models import UserNameFB
-from .models import UserProfileImageFB
-from .models import GamesImagesFB
-from .models import Quizzes
+from .models import Post, FacebookUser, UserNameFB, UserProfileImageFB, GamesImagesFB, Quizzes
 
 
 class UserNameAdmin(admin.StackedInline):
