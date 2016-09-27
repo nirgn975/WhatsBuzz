@@ -89,7 +89,7 @@ DATABASES = {
     # Google Cloud Platform Database.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '/cloudsql/whatsbuzz-1325:whatsbuzz-2',
+        'NAME': 'whatsbuzz',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '173.194.246.176',
