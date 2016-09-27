@@ -1,34 +1,46 @@
 sudo: required
-#dist: trusty
+dist: trusty
 
 language: python
-python: 3.5
+python:
+  - 3.5
+  - 2.7
 
 services:
   - postgresql
 
 before_install:
-  # Install nodejs for npm packages.
-  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
+    # Install nodejs for npm packages.
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -;
+    sudo apt-get install -y nodejs;
+    fi
 
 install:
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.5 ]]; then
   # Install code sniffer.
-  - pip install pycodestyle
-  - pip install --upgrade pycodestyle
-  - source ~/.bash_profile
-  - source ~/.bashrc
+    pip install pycodestyle;
+    pip install --upgrade pycodestyle;
+    source ~/.bash_profile;
+    source ~/.bashrc;
+    fi
 
-  # Install Angular CLI
-  - npm install -g angular-cli
-  - cd client
-  - npm install
-  - cd ..
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
+    # Install Angular CLI
+    npm install -g angular-cli;
+    cd client;
+    npm install;
+    cd ..;
+    fi
 
 script:
-  # Run code sniffer on the server directory.
-  - pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.5 ]]; then
+    # Run code sniffer on the server directory.
+    pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server;
+    fi
 
-  # Run e2e tests on the client directory.
-  - cd client
-  - ng serve& ng e2e
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
+    # Run e2e tests on the client directory.
+    cd client;
+    ng serve& ng e2e;
+    fi
