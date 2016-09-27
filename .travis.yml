@@ -23,5 +23,9 @@ install:
   - npm install -g angular-cli
 
 script:
+  # Run code sniffer on the server directory.
   - pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server
+
+  # Run e2e tests on the client directory.
+  - cd client
   - ng serve& ng e2e
