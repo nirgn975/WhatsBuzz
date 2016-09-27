@@ -6,12 +6,14 @@ Something about the project.
 
 ## Our Stack
 
-  * [Angular](https://angular.io/)
-  * [Angular-CLI](https://cli.angular.io/)
-  * [Bootstrap](http://getbootstrap.com/)
+  * [Angular](https://angular.io/) 
   * [Django](https://www.djangoproject.com/)
   * [PostgreSQL](http://www.postgresql.org/)
-  * [Pillow](https://python-pillow.org/)
+
+**Tools we use***
+
+  * [Bootstrap](http://getbootstrap.com/)
+  * [Angular-CLI](https://cli.angular.io/)
   * [Google Cloud Platform](https://cloud.google.com/)
   * [Facebook API](https://developers.facebook.com/)
 

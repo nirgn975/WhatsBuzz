@@ -21,6 +21,9 @@ install:
 
   # Install Angular CLI
   - npm install -g angular-cli
+  - cd client
+  - npm install
+  - cd ..
 
 script:
   # Run code sniffer on the server directory.
