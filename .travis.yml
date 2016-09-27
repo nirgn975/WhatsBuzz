@@ -24,4 +24,4 @@ install:
 
 script:
   - pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server
-  - ng serve& && ng e2e
+  - ng serve& ng e2e
