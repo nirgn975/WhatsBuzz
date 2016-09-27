@@ -1,0 +1,27 @@
+sudo: required
+dist: trusty
+
+language: python
+python: 3.5
+
+services:
+  - postgresql
+
+before_install:
+  # Install nodejs for npm packages.
+  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+
+install:
+  # Install code sniffer.
+  - pip install pycodestyle
+  - pip install --upgrade pycodestyle
+  - source ~/.bash_profile
+  - source ~/.bashrc
+
+  # Install Angular CLI
+  - npm install -g angular-cli
+
+script:
+  - pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server
+  - ng serve& && ng e2e
