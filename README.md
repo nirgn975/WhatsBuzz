@@ -10,7 +10,7 @@ Something about the project.
   * [Django](https://www.djangoproject.com/)
   * [PostgreSQL](http://www.postgresql.org/)
 
-**Tools we use***
+**Tools we use**
 
   * [Bootstrap](http://getbootstrap.com/)
   * [Angular-CLI](https://cli.angular.io/)
