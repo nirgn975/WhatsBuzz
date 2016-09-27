@@ -28,6 +28,7 @@ install:
 
   # Install Angular CLI
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
+    npm install -g npm@latest;
     npm install -g angular-cli;
     cd client;
     npm install;
