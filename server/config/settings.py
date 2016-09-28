@@ -90,9 +90,11 @@ DATABASES = {
     # Google Cloud Platform Database.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/cloudsql/your-project-id:your-instance-name',
-        'NAME': 'database-name',
-        'USER': 'mysql-user',
+        'NAME': 'whatsbuzz',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '173.194.246.176',
+        'PORT': '3306',
     }
 }
 
@@ -149,7 +151,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # DATA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'data'))
 

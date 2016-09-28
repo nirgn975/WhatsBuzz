@@ -51,8 +51,13 @@ Something about the project.
 
   * Not yet.
 
-
 ## Translation
+
+**Client**
+
+Not yet..
+
+**Server**
 
 To make new strings for translation use the command
 
@@ -62,7 +67,20 @@ python manage.py makemessages -l he
 
 ## Deploy
 
-Not yet..
+**Client**
+  
+  1. Not yet..
+  
+**Server**
+
+  1. Migrate the database `python manage.py migrate`.
+  2. Create the admin user `python manage.py createsuperuser`.
+  3. Gather all the static content locally into one folder `python manage.py collectstatic`.
+  4. Make sure `STATIC_URL` point to your CGP CloudStorage.
+  5. Upload the static content to CloudStorage `gsutil rsync -R static/ gs://<your-gcs-bucket>/static`.
+  6. Add your `SECRET_KEY` to `settings.py`.
+  7. Make sure your don't have `server/config/local_settings.py` file.
+  8. Deploy the app to CGP app engine `gcloud app deploy`.
 
 [license-image]: https://img.shields.io/badge/license-ISC-blue.svg
 [license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
