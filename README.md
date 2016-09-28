@@ -1,6 +1,6 @@
 # Whats Buzz
 
-[![Build Status][travis-image]][travis-url]
+[![license](license-image)](license-url) [![Build Status][travis-image]][travis-url]
 
 Something about the project.
 
@@ -10,7 +10,7 @@ Something about the project.
   * [Django](https://www.djangoproject.com/)
   * [PostgreSQL](http://www.postgresql.org/)
 
-**Tools we use***
+**Tools we use**
 
   * [Bootstrap](http://getbootstrap.com/)
   * [Angular-CLI](https://cli.angular.io/)
@@ -64,5 +64,7 @@ python manage.py makemessages -l he
 
 Not yet..
 
+[license-image]: https://img.shields.io/badge/license-ISC-blue.svg
+[license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
 [travis-image]: https://travis-ci.org/nirgn975/WhatsBuzz.svg?branch=master
 [travis-url]: https://travis-ci.org/nirgn975/WhatsBuzz
