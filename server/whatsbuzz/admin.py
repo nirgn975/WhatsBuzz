@@ -69,7 +69,7 @@ class QuizzesAdmin(admin.StackedInline):
 
 class PostAdmin(TranslationAdmin):
     model = Post
-    list_display = ('title', 'body', 'post_type', 'image_banner', 'buzz')
+    list_display = ('title', 'body', 'post_type', 'image_banner', 'buzz', 'publish')
     inlines = [GamesUploadImageAdmin, QuizzesAdmin, UserNameAdmin, UserProfileImageAdmin]
 
     class Media:

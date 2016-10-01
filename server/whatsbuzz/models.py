@@ -38,6 +38,7 @@ class Post(models.Model):
     image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField(default=False)
     age_categories = models.CharField(max_length=25, choices=AgeCategories.choices, default='default')
+    publish = models.BooleanField(default=False)
     REQUIRED_FIELDS = ['title', 'body', 'image_banner', ]
 
 
