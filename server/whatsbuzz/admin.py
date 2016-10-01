@@ -1,6 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from .models import Post, FacebookUser, UserNameFB, UserProfileImageFB, GamesImagesFB, Quizzes
+from django_summernote.admin import SummernoteModelAdmin
 
 
 class UserNameAdmin(admin.StackedInline):
@@ -67,7 +68,7 @@ class QuizzesAdmin(admin.StackedInline):
     )
 
 
-class PostAdmin(TranslationAdmin):
+class PostAdmin(TranslationAdmin, SummernoteModelAdmin):
     model = Post
     list_display = ('title', 'body', 'post_type', 'image_banner', 'buzz', 'publish')
     inlines = [GamesUploadImageAdmin, QuizzesAdmin, UserNameAdmin, UserProfileImageAdmin]

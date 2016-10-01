@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'corsheaders',
+
+    'django_summernote',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -151,9 +153,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
+# STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # DATA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'data'))
+
+MEDIA_URL = '/staticuploads/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
+
+
+# Summernote WYSIWYG editor.
+# https://github.com/summernote/django-summernote/
+
+SUMMERNOTE_CONFIG = {
+    'width': '1000',
+    'height': '300',
+}
+
 
 # Importing local settings if exists.
 try:
