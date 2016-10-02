@@ -1,14 +1,20 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Post, FacebookUser
+from whatsbuzz.models import Trend, TestYourself, FacebookGame
 
 
-@register(Post)
+@register(Trend)
 class PostTranslation(TranslationOptions):
     fields = ('title', 'body',)
     required_languages = ('he',)
 
 
-@register(FacebookUser)
-class FacebookUserTranslation(TranslationOptions):
-    fields = ('first_name', 'last_name',)
+@register(TestYourself)
+class PostTranslation(TranslationOptions):
+    fields = ('title', 'body', 'code', )
+    required_languages = ('he',)
+
+
+@register(FacebookGame)
+class PostTranslation(TranslationOptions):
+    fields = ('title', 'body', )
     required_languages = ('he',)

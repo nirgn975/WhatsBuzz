@@ -1,77 +1,36 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import Post, FacebookUser, UserNameFB, UserProfileImageFB, GamesImagesFB, Quizzes
-from django_summernote.admin import SummernoteModelAdmin
+from whatsbuzz.models import User, Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
+    FacebookProfileImage
 
 
-class UserNameAdmin(admin.StackedInline):
-    model = UserNameFB
+class FacebookGamesImageAdmin(admin.TabularInline):
+    model = FacebookGamesImage
+    extra = 1
+    classes = ['collapse']
+
+
+class FacebookUsernameAdmin(admin.TabularInline):
+    model = FacebookUsername
     extra = 1
     max_num = 1
-    fieldsets = (
-        (None, {
-            'fields': ()
-        }),
-        ('Facebook - Name', {
-            'classes': ('collapse',),
-            'fields': (
-                'facebook_user_name',
-                'name_x',
-                'name_y',
-                'font_color',
-                'font_size',
-            )
-        })
-    )
+    classes = ['collapse']
 
 
-class GamesUploadImageAdmin(admin.TabularInline):
-    model = GamesImagesFB
-    extra = 1
-    list_display = ('images',)
-
-
-class UserProfileImageAdmin(admin.StackedInline):
-    model = UserProfileImageFB
+class FacebookProfileImageAdmin(admin.TabularInline):
+    model = FacebookProfileImage
     extra = 1
     max_num = 1
-    fieldsets = (
-        (None, {
-            'fields': ()
-        }),
-        ('Facebook - Profile Image', {
-            'classes': ('collapse',),
-            'fields': (
-                'profile_image_x',
-                'profile_image_y',
-                'profile_width',
-                'profile_height',
-            )
-        })
-    )
+    classes = ['collapse']
 
 
-class QuizzesAdmin(admin.StackedInline):
-    model = Quizzes
-    extra = 1
-    max_num = 1
-    fieldsets = (
-        (None, {
-            'fields': ()
-        }),
-        ('Quizzes', {
-            'classes': ('collapse',),
-            'fields': (
-                'code',
-            )
-        })
-    )
+class UserAdmin(admin.ModelAdmin):
+    model = User
+    list_display = ('token', 'email', 'name', 'last_time_visit')
 
 
-class PostAdmin(TranslationAdmin, SummernoteModelAdmin):
-    model = Post
-    list_display = ('title', 'body', 'post_type', 'image_banner', 'buzz', 'publish')
-    inlines = [GamesUploadImageAdmin, QuizzesAdmin, UserNameAdmin, UserProfileImageAdmin]
+class TrendAdmin(TranslationAdmin):
+    model = Trend
 
     class Media:
         js = (
@@ -85,9 +44,8 @@ class PostAdmin(TranslationAdmin, SummernoteModelAdmin):
         }
 
 
-class FacebookUserAdmin(TranslationAdmin):
-    model = FacebookUser
-    list_display = ('first_name', 'last_name')
+class TestYourselfAdmin(TranslationAdmin):
+    model = TestYourself
 
     class Media:
         js = (
@@ -96,9 +54,28 @@ class FacebookUserAdmin(TranslationAdmin):
             'modeltranslation/js/tabbed_translation_fields.js',
         )
         css = {
+            "all": ("css/admin.css",),
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
 
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(FacebookUser, FacebookUserAdmin)
+class FacebookGameAdmin(TranslationAdmin):
+    model = FacebookGame
+    inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
+
+    class Media:
+        js = (
+            'modeltranslation/js/force_jquery.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            "all": ("css/admin.css",),
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+
+admin.site.register(User, UserAdmin)
+admin.site.register(Trend, TrendAdmin)
+admin.site.register(TestYourself, TestYourselfAdmin)
+admin.site.register(FacebookGame, FacebookGameAdmin)

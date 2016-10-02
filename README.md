@@ -1,6 +1,6 @@
 # Whats Buzz
 
-[![license](license-image)](license-url) [![Build Status][travis-image]][travis-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 
 Something about the project.
 

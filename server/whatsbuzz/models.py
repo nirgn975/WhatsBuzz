@@ -2,13 +2,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
-class PostType(object):
-    choices = (
-        ('facebook_games', _('Facebook Games')),
-        ('test_yourself', _('Test Yourself')),
-    )
-
-
 class AgeCategories(object):
     choices = (
         ('default', _('Default')),
@@ -29,63 +22,76 @@ class FacebookUserName(object):
 
 class Post(models.Model):
     """
-    Every post basic details.
+    The basic fields for every post.
     """
     title = models.CharField(max_length=255, blank=True)
     body = models.TextField(blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    post_type = models.CharField(max_length=25, choices=PostType.choices, default='facebook_games')
-    image_banner = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    banner_image = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField(default=False)
     age_categories = models.CharField(max_length=25, choices=AgeCategories.choices, default='default')
-    publish = models.BooleanField(default=False)
-    REQUIRED_FIELDS = ['title', 'body', 'image_banner', ]
+    REQUIRED_FIELDS = ['title', 'body', 'banner_image', ]
+
+    class Meta:
+        abstract = True
 
 
-class GamesImagesFB(models.Model):
+class Trend(Post):
     """
-    The background images for any `facebook game` post type.
+    An article like post.
     """
-    post = models.ForeignKey(Post, related_name='games_images')
-    images = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
 
 
-class Quizzes(models.Model):
+class TestYourself(Post):
     """
-    Quiz type post.
-    Entity for PlayBuzz quizzes.
+    A quiz like post. The code should contain the quiz embedded code itself from playbuzz and alikes.
     """
-    post = models.ForeignKey(Post, related_name='quizzes')
     code = models.TextField()
 
 
-class UserNameFB(models.Model):
+class FacebookGame(Post):
     """
-    Facebook username, for `facebook games` post type with the username.
+    Facebook Game contains all the facebook related entities.
     """
-    post = models.ForeignKey(Post, related_name='fb_users')
-    facebook_user_name = models.CharField(max_length=255, choices=FacebookUserName.choices, default='empty')
-    name_x = models.PositiveIntegerField()
-    name_y = models.PositiveIntegerField()
-    font_color = models.CharField(max_length=255)
+
+
+class FacebookGamesImage(models.Model):
+    """
+    All the background images for a Facebook Game.
+    """
+    post = models.ForeignKey(FacebookGame, related_name='background_image')
+    background_image = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
+
+
+class FacebookUsername(models.Model):
+    """
+    The username options for a Facebook Game.
+    """
+    post = models.ForeignKey(FacebookGame, related_name='facebook_username')
+    username = models.CharField(max_length=255, choices=FacebookUserName.choices, default='empty')
+    x = models.PositiveIntegerField()
+    y = models.PositiveIntegerField()
+    color = models.CharField(max_length=255)
     font_size = models.PositiveIntegerField()
 
 
-class UserProfileImageFB(models.Model):
+class FacebookProfileImage(models.Model):
     """
-    Facebook user profile images.
-    Store the profile image data on how to place the profile image on `facebook game` post type.
+    The facebook profile image of the user, for a Facebook Game.
     """
-    post = models.ForeignKey(Post, related_name='profile_image')
-    profile_image_x = models.PositiveIntegerField()
-    profile_image_y = models.PositiveIntegerField()
-    profile_width = models.PositiveIntegerField()
-    profile_height = models.PositiveIntegerField()
+    post = models.ForeignKey(FacebookGame, related_name='facebook_profile_image')
+    width = models.PositiveIntegerField()
+    height = models.PositiveIntegerField()
+    x = models.PositiveIntegerField()
+    y = models.PositiveIntegerField()
 
 
-class FacebookUser(models.Model):
+class User(models.Model):
     """
-    Store every facebook user data that logged in to the system.
+    All the facebook users that ever logged in to the site.
     """
-    first_name = models.CharField(max_length=225)
-    last_name = models.CharField(max_length=225)
+    token = models.TextField()
+    email = models.CharField(max_length=225)
+    name = models.CharField(max_length=225)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_time_visit = models.DateTimeField()
