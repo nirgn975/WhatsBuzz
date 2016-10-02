@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -25,11 +26,12 @@ class Post(models.Model):
     The basic fields for every post.
     """
     title = models.CharField(max_length=255, blank=True)
-    body = models.TextField(blank=True)
+    body = RichTextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     banner_image = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField(default=False)
     age_categories = models.CharField(max_length=25, choices=AgeCategories.choices, default='default')
+    publish = models.BooleanField(default=False)
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', ]
 
     class Meta:
