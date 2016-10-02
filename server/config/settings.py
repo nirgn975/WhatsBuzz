@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'corsheaders',
+
+    'ckeditor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,7 +87,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
 DATABASES = {
     # Google Cloud Platform Database.
     'default': {
@@ -101,7 +102,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -120,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Django REST Framework
 # http://www.django-rest-framework.org/
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
@@ -131,7 +130,6 @@ REST_FRAMEWORK = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
 LANGUAGE_CODE = 'he'
 LANGUAGES = [
     ('he', _('Hebrew')),
@@ -151,9 +149,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
+# STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # DATA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'data'))
+
+MEDIA_URL = '/staticuploads/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
+
+
+# CKEditor - WYSIWYG editor.
+# https://github.com/django-ckeditor/django-ckeditor
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+            ['Link', 'Unlink'],
+            ['TextColor', 'BGColor'],
+        ]
+    }
+}
+
 
 # Importing local settings if exists.
 try:
