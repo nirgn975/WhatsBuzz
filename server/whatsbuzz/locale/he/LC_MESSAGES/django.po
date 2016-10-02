@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-01 13:23+0300\n"
+"POT-Creation-Date: 2016-10-02 23:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/settings.py:139
+#: config/settings.py:135
 msgid "Hebrew"
 msgstr "עברית"
 
-#: config/settings.py:140
+#: config/settings.py:136
 msgid "English"
 msgstr "אנגלית"
 
-#: whatsbuzz/models.py:7
-msgid "Facebook Games"
-msgstr "משחקי פייסבוק"
-
 #: whatsbuzz/models.py:8
-msgid "Test Yourself"
-msgstr "בחן את עצמך"
-
-#: whatsbuzz/models.py:14
 msgid "Default"
 msgstr "ברירת מחדל"
 
-#: whatsbuzz/models.py:15
+#: whatsbuzz/models.py:9
 msgid "Children"
 msgstr "ילדים"
 
-#: whatsbuzz/models.py:16
+#: whatsbuzz/models.py:10
 msgid "Young"
 msgstr "צעירים"
 
-#: whatsbuzz/models.py:17
+#: whatsbuzz/models.py:11
 msgid "Adults"
 msgstr "מבוגרים"
 
-#: whatsbuzz/models.py:24
+#: whatsbuzz/models.py:18
 msgid "First Name"
 msgstr "שם פרטי"
 
-#: whatsbuzz/models.py:25
+#: whatsbuzz/models.py:19
 msgid "Last Name"
 msgstr "שם משפחה"
 
-#: whatsbuzz/models.py:26
+#: whatsbuzz/models.py:20
 msgid "First and Last Name"
 msgstr "שם פרטי ומשפחה"
 
