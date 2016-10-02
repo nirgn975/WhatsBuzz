@@ -1,6 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from whatsbuzz.models import User, Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
+from whatsbuzz.models import User, Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
+    FacebookProfileImage
 
 
 class FacebookGamesImageAdmin(admin.TabularInline):
