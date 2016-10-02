@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'django_summernote',
+    'ckeditor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,7 +87,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
 DATABASES = {
     # Google Cloud Platform Database.
     'default': {
@@ -103,7 +102,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -122,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Django REST Framework
 # http://www.django-rest-framework.org/
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
@@ -133,7 +130,6 @@ REST_FRAMEWORK = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
 LANGUAGE_CODE = 'he'
 LANGUAGES = [
     ('he', _('Hebrew')),
@@ -162,12 +158,21 @@ MEDIA_URL = '/staticuploads/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
 
 
-# Summernote WYSIWYG editor.
-# https://github.com/summernote/django-summernote/
-
-SUMMERNOTE_CONFIG = {
-    'width': '1000',
-    'height': '300',
+# CKEditor - WYSIWYG editor.
+# https://github.com/django-ckeditor/django-ckeditor
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+            ['Link', 'Unlink'],
+            ['TextColor', 'BGColor'],
+        ]
+    }
 }
 
 
