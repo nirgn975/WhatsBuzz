@@ -30,7 +30,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     banner_image = models.ImageField(_('banner image'), upload_to='%Y/%m/%d/', blank=True)
     buzz = models.BooleanField(_('buzz'), default=False)
-    age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices, default='default')
+    age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices,
+                                      default='default')
     publish = models.BooleanField(_('publish'), default=False)
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', ]
 
