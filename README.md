@@ -63,6 +63,7 @@ To make new strings for translation use the command
 
 ```shell
 python manage.py makemessages -l he
+python manage.py compilemessages -l he
 ```
 
 ## Deploy
