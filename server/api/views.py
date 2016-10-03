@@ -1,21 +1,28 @@
 from rest_framework import viewsets
-from django.contrib.auth.models import User
-# from api.serializers import UserSerializer, FacebookUserSerializer
+from api.serializers import TrendSerializer, TestYourselfSerializer, FacebookGameSerializer
 
-# from whatsbuzz.models import FacebookUser
+from whatsbuzz.models import Trend, TestYourself, FacebookGame
 
 
-# class UserViewSet(viewsets.ReadOnlyModelViewSet):
-#     """
-#     API endpoint that allows users to be viewed or edited.
-#     """
-#     queryset = User.objects.all().order_by('-date_joined')
-#     serializer_class = UserSerializer
-#
-#
-# class FacebookUserViewSet(viewsets.ReadOnlyModelViewSet):
-#     """
-#     API endpoint that allows Facebook users to be viewed or edited.
-#     """
-#     queryset = FacebookUser.objects.all()
-#     serializer_class = FacebookUserSerializer
+class TrendViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Trend.objects.all().order_by('-created_at')
+    serializer_class = TrendSerializer
+
+
+class TestYourselfViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows Facebook users to be viewed or edited.
+    """
+    queryset = TestYourself.objects.all()
+    serializer_class = TestYourselfSerializer
+
+
+class FacebookGameViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows Facebook users to be viewed or edited.
+    """
+    queryset = FacebookGame.objects.all()
+    serializer_class = FacebookGameSerializer
