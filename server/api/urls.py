@@ -3,7 +3,7 @@ from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'trends', views.TrendViewSet, base_name='trends')
+router.register(r'trends', views.TrendViewSet)
 router.register(r'test-yourself', views.TestYourselfViewSet)
 router.register(r'facebook-games', views.FacebookGameViewSet)
 

@@ -6,7 +6,7 @@ from whatsbuzz.models import Trend, TestYourself, FacebookGame
 
 class TrendViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint to expose all 'Trends' posts.
     """
     queryset = Trend.objects.all().order_by('-created_at')
     serializer_class = TrendSerializer
@@ -14,15 +14,15 @@ class TrendViewSet(viewsets.ReadOnlyModelViewSet):
 
 class TestYourselfViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows Facebook users to be viewed or edited.
+    API endpoint to expose all 'Test Yourself' posts.
     """
-    queryset = TestYourself.objects.all()
+    queryset = TestYourself.objects.all().order_by('-created_at')
     serializer_class = TestYourselfSerializer
 
 
 class FacebookGameViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows Facebook users to be viewed or edited.
+    API endpoint to expose all 'Facebook Games' posts.
     """
-    queryset = FacebookGame.objects.all()
+    queryset = FacebookGame.objects.all().order_by('-created_at')
     serializer_class = FacebookGameSerializer
