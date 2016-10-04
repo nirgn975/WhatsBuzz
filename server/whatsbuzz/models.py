@@ -15,18 +15,18 @@ class AgeCategories(object):
 
 class FacebookUserName(object):
     choices = (
-        ('left', _('Left')),
-        ('center', _('Center')),
-        ('right', _('Right')),
+        ('empty', ''),
+        ('first_name', _('First Name')),
+        ('last_name', _('Last Name')),
+        ('full_name', _('First and Last Name')),
     )
 
 
 class UserNameAlign(object):
     choices = (
-        ('empty', ''),
-        ('first_name', _('First Name')),
-        ('last_name', _('Last Name')),
-        ('full_name', _('First and Last Name')),
+        ('left', _('Left')),
+        ('center', _('Center')),
+        ('right', _('Right')),
     )
 
 
@@ -101,7 +101,7 @@ class FacebookUsername(models.Model):
     y = models.PositiveIntegerField(_('y'))
     color = models.CharField(_('color'), max_length=255)
     font_size = models.PositiveIntegerField(_('font_size'))
-    text_align = models.CharField(_('text align'), max_length=225, choices=FacebookUserName.choices, default='center')
+    text_align = models.CharField(_('text align'), max_length=225, choices=UserNameAlign.choices, default='center')
 
     class Meta:
         verbose_name = _('facebook username')

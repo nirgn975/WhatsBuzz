@@ -152,7 +152,7 @@ msgstr "גודל פונט"
 
 #: whatsbuzz/models.py:104
 msgid "text align"
-msgstr ""
+msgstr "יישור טקסט"
 
 #: whatsbuzz/models.py:107
 msgid "facebook username"
