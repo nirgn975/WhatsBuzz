@@ -1,20 +1,13 @@
-import os
 from django.core.management import BaseCommand
-from django.utils import translation
-from whatsbuzz.models import Post
+from whatsbuzz.models import Trend, TestYourself, FacebookGame
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        # Activating Hebrew language.
-        translation.activate('he')
 
-        print("Started create dummy data in Hebrew.")
-        managing_body = Post.objects.get_or_create('')
-        print("Finish create dummy data in Hebrew.")
+        print("Started creating Trends dummy data.")
 
-        # Activating English language.
-        translation.activate('en')
-        print("Started create dummy data in English.")
-        managing_body = Post.objects.get_or_create('')
-        print("Finish create dummy data in English.")
+        Trend.objects.get_or_create(title='כותרת', body='תוכן', title_en='title2', body_en='body', buzz=True,
+                                    age_categories='children', publish=True)
+
+        print("Finish creating Trends dummy data.")
