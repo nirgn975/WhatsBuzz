@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.translation import ugettext_lazy as _
@@ -32,7 +33,7 @@ class Post(models.Model):
     buzz = models.BooleanField(_('buzz'), default=False)
     age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices,
                                       default='default')
-    publish = models.BooleanField(_('publish'), default=False)
+    publish = models.DateTimeField(_('publish'), default=datetime.datetime.now())
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', ]
 
     class Meta:
