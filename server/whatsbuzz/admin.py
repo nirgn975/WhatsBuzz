@@ -31,6 +31,8 @@ class UserAdmin(admin.ModelAdmin):
 
 class TrendAdmin(TranslationAdmin):
     model = Trend
+    list_display = ['title', 'buzz', 'age_categories', 'publish']
+    search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
         js = (
@@ -46,6 +48,8 @@ class TrendAdmin(TranslationAdmin):
 
 class TestYourselfAdmin(TranslationAdmin):
     model = TestYourself
+    list_display = ['title', 'buzz', 'age_categories', 'publish']
+    search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
         js = (
@@ -62,6 +66,8 @@ class TestYourselfAdmin(TranslationAdmin):
 class FacebookGameAdmin(TranslationAdmin):
     model = FacebookGame
     inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
+    list_display = ['title', 'buzz', 'age_categories', 'publish']
+    search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
         js = (
