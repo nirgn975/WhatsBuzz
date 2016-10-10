@@ -20,7 +20,6 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     url(r'^api/', include('api.urls')),
-    url(r'^summernote/', include('django_summernote.urls')),
 ]
 
 urlpatterns += i18n_patterns(
