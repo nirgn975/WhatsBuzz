@@ -155,7 +155,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # DATA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'data'))
 
 MEDIA_URL = '/staticuploads/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
 
 
 # CKEditor - WYSIWYG editor.
