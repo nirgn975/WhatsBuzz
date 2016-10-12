@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from whatsbuzz.models import Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
+from whatsbuzz.models import Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
+    FacebookProfileImage
 
 
 class TrendSerializer(serializers.HyperlinkedModelSerializer):
