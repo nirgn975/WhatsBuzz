@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.appService.getDummyData().subscribe(
-      (res) => this.title = res
-    );
+    // this.appService.getDummyData().subscribe(
+    //   (res) => this.title = res
+    // );
   }
 }
