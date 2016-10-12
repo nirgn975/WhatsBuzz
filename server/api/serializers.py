@@ -6,13 +6,13 @@ from whatsbuzz.models import Trend, TestYourself, FacebookGame, FacebookGamesIma
 class TrendSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Trend
-        fields = ('title', 'body', 'banner_image', 'buzz', 'age_categories')
+        fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories')
 
 
 class TestYourselfSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TestYourself
-        fields = ('title', 'body', 'banner_image', 'buzz', 'age_categories', 'code')
+        fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories', 'code')
 
 
 class FacebookGamesImageSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,5 +40,5 @@ class FacebookGameSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = FacebookGame
-        fields = ('title', 'body', 'banner_image', 'buzz', 'age_categories', 'background_image', 'facebook_username',
+        fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories', 'background_image', 'facebook_username',
                   'facebook_profile_image')
