@@ -41,5 +41,5 @@ class FacebookGameSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = FacebookGame
-        fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories', 'background_image', 'facebook_username',
-                  'facebook_profile_image')
+        fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories', 'background_image',
+                  'facebook_username', 'facebook_profile_image')
