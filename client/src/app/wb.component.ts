@@ -3,11 +3,12 @@ import { Observable } from 'rxjs/Observable';
 import { AppService } from './shared/app.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'wb-root',
+  template: `
+    <h1>{{ title }}</h1>
+  `
 })
-export class AppComponent implements OnInit {
+export class WhatsBuzzComponent implements OnInit {
   title = 'app works!';
 
   constructor(
