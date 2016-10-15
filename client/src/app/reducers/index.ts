@@ -7,7 +7,7 @@ export interface AppState {
 }
 
 const rootReducer: Reducer<AppState> = combineReducers<AppState>({
-  // trends: TrendsReducer
+  trends: TrendsReducer
 });
 
 export default rootReducer;
