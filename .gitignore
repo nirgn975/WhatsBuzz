@@ -120,3 +120,5 @@ pip-delete-this-directory.txt
 
 ### Custom ###
 local_settings.py
+server/staticuploads/
+server/static
