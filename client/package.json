@@ -21,7 +21,7 @@
     "@angular/platform-browser": "2.1.0",
     "@angular/platform-browser-dynamic": "2.1.0",
     "@angular/platform-server": "^2.1.0",
-    "@angular/router": "3.0.0",
+    "@angular/router": "3.1.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.8",
     "core-js": "^2.4.1",
     "redux": "^3.6.0",
