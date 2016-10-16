@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
-import { AppService } from './shared/app.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'wb-root',
@@ -13,15 +10,5 @@ import { AppService } from './shared/app.service';
     <wb-footer></wb-footer>
   `
 })
-export class WhatsBuzzComponent implements OnInit {
-
-  constructor(
-    private appService: AppService
-  ) { }
-
-  ngOnInit() {
-    // this.appService.getDummyData().subscribe(
-    //   (res) => this.title = res
-    // );
-  }
+export class WhatsBuzzComponent {
 }
