@@ -131,7 +131,7 @@ class User(models.Model):
     All the facebook users that ever logged in to the site.
     """
     token = models.TextField()
-    email = models.CharField(_('email'), max_length=225)
+    email = models.EmailField(_('email'), max_length=225)
     name = models.CharField(_('name'), max_length=225)
     created_at = models.DateTimeField(auto_now_add=True)
     last_time_visit = models.DateTimeField(_('last_time_visit'))
