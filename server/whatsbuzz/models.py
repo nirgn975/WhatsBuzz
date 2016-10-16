@@ -24,6 +24,14 @@ class FacebookUserName(object):
     )
 
 
+class UserNameAlign(object):
+    choices = (
+        ('left', _('Left')),
+        ('center', _('Center')),
+        ('right', _('Right')),
+    )
+
+
 class Post(models.Model):
     """
     The basic fields for every post.
@@ -47,6 +55,8 @@ class Trend(Post):
     """
     An article like post.
     """
+    code = models.TextField(_('code'))
+
     class Meta:
         verbose_name = _('Trend')
         verbose_name_plural = _('Trends')
@@ -94,6 +104,7 @@ class FacebookUsername(models.Model):
     y = models.PositiveIntegerField(_('y'))
     color = models.CharField(_('color'), max_length=255)
     font_size = models.PositiveIntegerField(_('font_size'))
+    text_align = models.CharField(_('text align'), max_length=225, choices=UserNameAlign.choices, default='center')
 
     class Meta:
         verbose_name = _('facebook username')
@@ -120,7 +131,7 @@ class User(models.Model):
     All the facebook users that ever logged in to the site.
     """
     token = models.TextField()
-    email = models.CharField(_('email'), max_length=225)
+    email = models.EmailField(_('email'), max_length=225)
     name = models.CharField(_('name'), max_length=225)
     created_at = models.DateTimeField(auto_now_add=True)
     last_time_visit = models.DateTimeField(_('last_time_visit'))

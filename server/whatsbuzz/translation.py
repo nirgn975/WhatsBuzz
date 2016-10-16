@@ -4,7 +4,7 @@ from whatsbuzz.models import Trend, TestYourself, FacebookGame
 
 @register(Trend)
 class PostTranslation(TranslationOptions):
-    fields = ('title', 'body', )
+    fields = ('title', 'body', 'code', )
     required_languages = ('he',)
 
 

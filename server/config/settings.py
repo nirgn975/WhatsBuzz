@@ -28,7 +28,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (
     '^(localhost:)*',
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -152,7 +152,6 @@ USE_TZ = True
 # STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# DATA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'data'))
 
 MEDIA_URL = '/staticuploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
