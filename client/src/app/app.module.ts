@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppStore } from './app-store';
-
 import { WhatsBuzzComponent } from './wb.component';
 import { HeaderComponent } from './components';
 import { FooterComponent } from './components';

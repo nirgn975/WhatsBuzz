@@ -13,18 +13,18 @@ export class HeaderComponent implements OnInit {
   }
 
   clicked(link) {
-    switch(link) {
-      case "Main":
-        console.log("Main");
+    switch (link) {
+      case 'Main':
+        console.log('Main');
         break;
-      case "Facebook-Games":
-        console.log("Facebook-Games");
+      case 'Facebook-Games':
+        console.log('Facebook-Games');
         break;
-      case "Test-Yourself":
-        console.log("Test-Yourself");
+      case 'Test-Yourself':
+        console.log('Test-Yourself');
         break;
-      case "Trends":
-        console.log("Trends");
+      case 'Trends':
+        console.log('Trends');
         break;
     }
   }
