@@ -1,23 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AppService } from './shared/app.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'wb-root',
   template: `
-    <h1>{{ title }}</h1>
+    <wb-header></wb-header>
+    <div class="container">
+      <h1>content here</h1>
+    </div>
+    <wb-footer></wb-footer>
   `
 })
-export class WhatsBuzzComponent implements OnInit {
-  title = 'app works!';
-
-  constructor(
-    private appService: AppService
-  ) { }
-
-  ngOnInit() {
-    // this.appService.getDummyData().subscribe(
-    //   (res) => this.title = res
-    // );
-  }
+export class WhatsBuzzComponent {
 }

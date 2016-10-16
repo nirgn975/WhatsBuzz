@@ -122,3 +122,5 @@ pip-delete-this-directory.txt
 local_settings.py
 server/staticuploads/
 server/static
+*.ngfactory.ts
+*.shim.ts
