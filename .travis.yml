@@ -9,9 +9,6 @@ python:
 services:
   - postgresql
 
-addons:
-  firefox: "39.0"
-
 before_install:
   # Install nodejs for npm packages.
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
