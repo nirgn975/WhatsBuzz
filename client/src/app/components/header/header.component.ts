@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
 
   clicked(link) {
     switch(link) {
-      case "Viral":
-        console.log("Viral");
+      case "Main":
+        console.log("Main");
         break;
       case "Facebook-Games":
         console.log("Facebook-Games");
@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
         console.log("Trends");
         break;
     }
-
   }
 
 }
