@@ -53,9 +53,9 @@ def create_trend_dummy_data():
         body='לפניכם 20 שאלות קצת מוזרות, על חלקן כמעט בלתי אפשרי לענות. השאלות מנוסחות בלשון '
              'זכר מטעמי נוחות בלבד, אחרי כל שאלה תוכלו לראות את התפלגות התשובות של כל מי שהיה לפניכם (אנונימי כמובן)',
         title_en='20 questions that could be answered, almost ...',
-        body_en='Here are 20 questions a bit weird, some of them almost impossible to answer. The questions are phrased'
-                ' in the masculine for convenience only, after all this you will see the distribution of answers to '
-                'anyone whos in front of you (anonymously, of course)',
+        body_en='Here are 20 questions a bit weird, some of them almost impossible to answer. The questions are '
+                'phrased in the masculine for convenience only, after all this you will see the distribution of '
+                'answers to anyone whos in front of you (anonymously, of course)',
         buzz=False,
         age_categories='young',
         publish=timezone.now(),
@@ -212,6 +212,7 @@ def create_facebook_games_dummy_data():
 
 
 def create_facebook_users_dummy_data():
+    # First Facebook User.
     User.objects.get_or_create(
         token='fFAGRNJru1FTz70BzhT3Zg',
         email='nir@gmail.com',
@@ -220,6 +221,7 @@ def create_facebook_users_dummy_data():
         last_time_visit=timezone.now(),
     )
 
+    # Second Facebook User.
     User.objects.get_or_create(
         token='oMsCeLvIaQm6bTrgtp7',
         email='yotam@gmail.com',
