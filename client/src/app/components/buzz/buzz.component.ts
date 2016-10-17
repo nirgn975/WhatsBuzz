@@ -17,7 +17,7 @@ export class BuzzComponent implements OnInit {
 
   ngOnInit() {
     this.buzzService.getBuzzPosts().subscribe(
-      res => {this.buzz = res; console.log(res)}
+      res => this.buzz = res
     );
   }
 }
