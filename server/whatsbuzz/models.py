@@ -47,9 +47,6 @@ class Post(models.Model):
     publish = models.DateTimeField(_('publish'), null=True)
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', 'publish']
 
-    class Meta:
-        abstract = True
-
 
 class Trend(Post):
     """
