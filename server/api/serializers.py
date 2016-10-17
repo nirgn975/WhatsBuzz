@@ -48,4 +48,4 @@ class FacebookGameSerializer(serializers.HyperlinkedModelSerializer):
 class BuzzSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ('unique_id', 'title', 'banner_image', 'publish')
+        fields = ('unique_id', 'title', 'banner_image')
