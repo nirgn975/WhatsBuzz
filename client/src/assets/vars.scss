@@ -1,6 +1,8 @@
 $post-text-color: #181818;
 $post-header-size: 28px;
 $post-background: #ffffff;
+$header-height: 68px;
+$header-color: #3b5998;
 
 @mixin post-header {
   border-bottom: solid 2px rgba(60,89,153,.52);
@@ -20,4 +22,10 @@ $post-background: #ffffff;
   border-radius: 4px;
   border: 1px solid #c7dce6;
   background: $post-background;
+}
+
+@mixin post-title {
+  margin: 0;
+  height: $header-height;
+  color: $header-color;
 }
