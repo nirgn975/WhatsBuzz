@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from whatsbuzz.models import Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
+from whatsbuzz.models import Post, Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
     FacebookProfileImage
 
 
@@ -43,3 +43,9 @@ class FacebookGameSerializer(serializers.HyperlinkedModelSerializer):
         model = FacebookGame
         fields = ('unique_id', 'title', 'body', 'banner_image', 'buzz', 'age_categories', 'background_image',
                   'facebook_username', 'facebook_profile_image')
+
+
+class BuzzSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('unique_id', 'title', 'banner_image')
