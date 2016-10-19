@@ -55,7 +55,7 @@ Something about the project.
 
 **Client**
 
-Not yet..
+Run `npm run i18n` to create `xlf` files.
 
 **Server**
 
@@ -70,7 +70,8 @@ python manage.py compilemessages -l he
 
 **Client**
   
-  1. Not yet..
+  1. Build the project `ng build -o dist -prod --aot`.
+  2. Run `ng github-pages:deploy` to deploy to Github Pages or `...` to deploy to Firebase.
   
 **Server**
 
