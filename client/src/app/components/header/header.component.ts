@@ -20,9 +20,6 @@ export class HeaderComponent implements OnInit {
       case 'Facebook-Games':
         console.log('Facebook-Games');
         break;
-      case 'Test-Yourself':
-        console.log('Test-Yourself');
-        break;
       case 'Trends':
         console.log('Trends');
         break;
