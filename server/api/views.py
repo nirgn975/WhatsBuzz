@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from itertools import chain
 from operator import itemgetter
 
-from api.serializers import TrendSerializer, TestYourselfSerializer, FacebookGameSerializer, BuzzSerializer
-from whatsbuzz.models import Post, Trend, TestYourself, FacebookGame
+from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer
+from whatsbuzz.models import Post, Trend, FacebookGame
 
 
 class TrendViewSet(viewsets.ReadOnlyModelViewSet):
@@ -14,14 +14,6 @@ class TrendViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Trend.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
     serializer_class = TrendSerializer
-
-
-class TestYourselfViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint to expose all 'Test Yourself' posts.
-    """
-    queryset = TestYourself.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
-    serializer_class = TestYourselfSerializer
 
 
 class FacebookGameViewSet(viewsets.ReadOnlyModelViewSet):

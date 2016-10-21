@@ -102,14 +102,6 @@ msgstr "טרנד"
 msgid "Trends"
 msgstr "טרנדים"
 
-#: whatsbuzz/models.py:69
-msgid "Test Yourself"
-msgstr "בחן את עצמך"
-
-#: whatsbuzz/models.py:70
-msgid "Tests Yourself"
-msgstr "בחן את עצמך"
-
 #: whatsbuzz/models.py:78
 msgid "Facebook Game"
 msgstr "משחק פייסבוק"

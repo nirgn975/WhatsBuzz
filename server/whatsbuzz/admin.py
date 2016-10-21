@@ -1,7 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from whatsbuzz.models import User, Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername, \
-    FacebookProfileImage
+from whatsbuzz.models import User, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
 
 
 class FacebookGamesImageAdmin(admin.TabularInline):
@@ -46,23 +45,6 @@ class TrendAdmin(TranslationAdmin):
         }
 
 
-class TestYourselfAdmin(TranslationAdmin):
-    model = TestYourself
-    list_display = ['title', 'buzz', 'age_categories', 'publish']
-    search_fields = ['title', 'buzz', 'age_categories', 'publish']
-
-    class Media:
-        js = (
-            'modeltranslation/js/force_jquery.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            "all": ("css/admin.css",),
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
-
 class FacebookGameAdmin(TranslationAdmin):
     model = FacebookGame
     inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
@@ -83,5 +65,4 @@ class FacebookGameAdmin(TranslationAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Trend, TrendAdmin)
-admin.site.register(TestYourself, TestYourselfAdmin)
 admin.site.register(FacebookGame, FacebookGameAdmin)
