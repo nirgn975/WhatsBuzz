@@ -16,6 +16,8 @@ import { DetailPostComponent } from './components';
 import { BuzzService } from './services';
 
 import { AppRoutingModule }     from './app-routing.module';
+import { MainComponent } from './components/main/main.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { AppRoutingModule }     from './app-routing.module';
     TrendsComponent,
     PostComponent,
     DetailPostComponent,
+    MainComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
