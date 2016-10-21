@@ -4,7 +4,6 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'trends', views.TrendViewSet)
-router.register(r'test-yourself', views.TestYourselfViewSet)
 router.register(r'facebook-games', views.FacebookGameViewSet)
 router.register(r'buzz', views.BuzzViewSet)
 

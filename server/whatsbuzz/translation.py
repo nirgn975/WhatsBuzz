@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from whatsbuzz.models import Post, Trend, TestYourself, FacebookGame
+from whatsbuzz.models import Post, Trend, FacebookGame
 
 
 @register(Post)
@@ -9,12 +9,6 @@ class PostTranslation(TranslationOptions):
 
 
 @register(Trend)
-class PostTranslation(TranslationOptions):
-    fields = ('code', )
-    required_languages = ('he',)
-
-
-@register(TestYourself)
 class PostTranslation(TranslationOptions):
     fields = ('code', )
     required_languages = ('he',)

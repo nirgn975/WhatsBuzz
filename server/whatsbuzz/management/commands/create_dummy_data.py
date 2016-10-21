@@ -1,7 +1,7 @@
 from django.core.files import File
 from django.utils import timezone
 from django.core.management import BaseCommand
-from whatsbuzz.models import Trend, TestYourself, FacebookGame, FacebookGamesImage, FacebookUsername,\
+from whatsbuzz.models import Trend, FacebookGame, FacebookGamesImage, FacebookUsername,\
     FacebookProfileImage, User
 
 
@@ -11,12 +11,6 @@ class Command(BaseCommand):
         print("Started creating Trends dummy data.")
         create_trend_dummy_data()
         print("Finish creating Trends dummy data.")
-
-        print("----------")
-
-        print("Started creating Test-Yourself dummy data.")
-        create_test_yourself_dummy_data()
-        print("Finish creating Test-Yourself dummy data.")
 
         print("----------")
 
@@ -76,52 +70,6 @@ def create_trend_dummy_data():
         banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
         code='foo-3',
         code_en='foo-3-english',
-    )
-
-
-def create_test_yourself_dummy_data():
-    # First Test Yourself post.
-    TestYourself.objects.get_or_create(
-        title='מה יהיה רשום על דלת המשרד שלכם בעוד 10 שנים',
-        body='כנסו וגלו איפה תעבדו'
-             ' בעוד 10 שנים ומה יהיה התפקיד שלכם לפי אלגוריתם מיוחד שסורק את הפרופיל שלכם, בדקו ושתפו את החברים שלכם',
-        title_en='What will be listed on your office door in 10 years',
-        body_en='Enter and find out where you will be working in 10 years and what will be your role by a special '
-                'algorithm that scans your profile, see and share your friends',
-        buzz=False,
-        age_categories='children',
-        publish=timezone.now(),
-        banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
-        code='bar-1',
-        code_en='bar-1-english',
-    )
-
-    # Second Test Yourself post.
-    TestYourself.objects.get_or_create(
-        title='לאן תהיה החופשה הבאה שלכם',
-        body='כנסו וגלו לאן כדאי לכם לצאת לחופשה הקרובה שלכם',
-        title_en='Where will your next vacation',
-        body_en='Enter and find out where you should leave your upcoming vacation',
-        buzz=True,
-        age_categories='young',
-        publish=timezone.now(),
-        banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
-        code='bar-2',
-        code_en='bar-2-english',
-    )
-
-    # Third Test Yourself post.
-    TestYourself.objects.get_or_create(
-        title='איזה פתגם מתאר אתכם הכי טוב',
-        body='כנסו וגלו איזה פתגם מתאר אתכם בצורה הטובה ביותר',
-        title_en='Which proverb best describes you',
-        body_en='Enter and discover a proverb describes you best',
-        buzz=False,
-        age_categories='adults',
-        publish=timezone.now(),
-        banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
-        code='bar-3',
-        code_en='bar-3-english',
     )
 
 

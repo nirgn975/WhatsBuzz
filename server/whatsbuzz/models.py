@@ -59,17 +59,6 @@ class Trend(Post):
         verbose_name_plural = _('Trends')
 
 
-class TestYourself(Post):
-    """
-    A quiz like post. The code should contain the quiz embedded code itself from playbuzz and alikes.
-    """
-    code = models.TextField(_('code'))
-
-    class Meta:
-        verbose_name = _('Test Yourself')
-        verbose_name_plural = _('Tests Yourself')
-
-
 class FacebookGame(Post):
     """
     Facebook Game contains all the facebook related entities.
