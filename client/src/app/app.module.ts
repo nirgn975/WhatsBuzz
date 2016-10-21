@@ -8,6 +8,10 @@ import { WhatsBuzzComponent } from './wb.component';
 import { HeaderComponent } from './components';
 import { FooterComponent } from './components';
 import { BuzzComponent } from './components';
+import { FacebookGamesComponent } from './components';
+import { TrendsComponent } from './components';
+import { PostComponent } from './components';
+import { DetailPostComponent } from './components';
 
 import { BuzzService } from './services';
 
@@ -19,6 +23,10 @@ import { AppRoutingModule }     from './app-routing.module';
     HeaderComponent,
     FooterComponent,
     BuzzComponent,
+    FacebookGamesComponent,
+    TrendsComponent,
+    PostComponent,
+    DetailPostComponent,
   ],
   imports: [
     BrowserModule,
