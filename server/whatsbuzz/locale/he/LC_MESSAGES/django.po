@@ -28,7 +28,7 @@ msgstr "אנגלית"
 
 #: whatsbuzz/forms.py:15 whatsbuzz/forms.py:28
 msgid "Select Tags"
-msgstr "בחר תגים"
+msgstr "בחר תגיות"
 
 #: whatsbuzz/models.py:10
 msgid "Default"
@@ -108,7 +108,7 @@ msgstr "לפרסם"
 
 #: whatsbuzz/models.py:55
 msgid "tags"
-msgstr "תגים"
+msgstr "תגיות"
 
 #: whatsbuzz/models.py:63
 msgid "code"

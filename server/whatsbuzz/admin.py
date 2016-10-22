@@ -2,7 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
 from .forms import TrendForm, FacebookGameForm
-from .models import User, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
+from .models import User, Tags, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
 
 
 class FacebookGamesImageAdmin(admin.TabularInline):
@@ -28,6 +28,22 @@ class FacebookProfileImageAdmin(admin.TabularInline):
 class UserAdmin(admin.ModelAdmin):
     model = User
     list_display = ('token', 'email', 'name', 'last_time_visit')
+
+
+class TagsAdmin(TranslationAdmin):
+    model = Tags
+    list_display = ('name',)
+
+    class Media:
+        js = (
+            'modeltranslation/js/force_jquery.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            "all": ("css/admin.css",),
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 class TrendAdmin(TranslationAdmin):
@@ -71,4 +87,5 @@ class FacebookGameAdmin(TranslationAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Trend, TrendAdmin)
+admin.site.register(Tags, TagsAdmin)
 admin.site.register(FacebookGame, FacebookGameAdmin)

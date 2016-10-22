@@ -35,7 +35,6 @@ class Tags(models.Model):
     name = models.CharField(_('tag'), max_length=255, unique=True)
 
     def __str__(self):
-        # return super().__str__()
         return "{0}".format(self.name)
 
     class Meta:
