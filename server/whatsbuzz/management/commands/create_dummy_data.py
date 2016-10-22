@@ -2,7 +2,7 @@ from django.core.files import File
 from django.utils import timezone
 from django.core.management import BaseCommand
 from whatsbuzz.models import Trend, FacebookGame, FacebookGamesImage, FacebookUsername,\
-    FacebookProfileImage, User
+    FacebookProfileImage, User, Tags
 
 
 class Command(BaseCommand):
@@ -26,6 +26,22 @@ class Command(BaseCommand):
 
 
 def create_trend_dummy_data():
+    # Create tags.
+    tag1 = Tags.objects.get_or_create(
+        name='ניר',
+        name_en='Nir',
+    )
+
+    tag2 = Tags.objects.get_or_create(
+        name='עדי',
+        name_en='Adi',
+    )
+
+    tag3 = Tags.objects.get_or_create(
+        name='יותם',
+        name_en='Yotam',
+    )
+
     # First Trend post.
     Trend.objects.get_or_create(
         title='מה קורה כשמנסים למחוץ רימון יד? דאורדורנט? כדור?',
@@ -39,7 +55,7 @@ def create_trend_dummy_data():
         banner_image=File(open('whatsbuzz/management/dummy_images/1.jpg', 'rb')),
         code='foo-1',
         code_en='foo-1-english',
-    )
+    )[0].tags.add(tag1[0])
 
     # Second Trend post.
     Trend.objects.get_or_create(
@@ -56,7 +72,7 @@ def create_trend_dummy_data():
         banner_image=File(open('whatsbuzz/management/dummy_images/3.jpg', 'rb')),
         code='foo-2',
         code_en='foo-2-english',
-    )
+    )[0].tags.add(tag1[0], tag2[0])
 
     # Third Trend post.
     Trend.objects.get_or_create(
@@ -70,10 +86,21 @@ def create_trend_dummy_data():
         banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
         code='foo-3',
         code_en='foo-3-english',
-    )
+    )[0].tags.add(tag3[0], tag2[0])
 
 
 def create_facebook_games_dummy_data():
+    # Create tags.
+    tag1 = Tags.objects.get_or_create(
+        name='יניב',
+        name_en='Yaniv',
+    )
+
+    tag2 = Tags.objects.get_or_create(
+        name='שחר',
+        name_en='Shahar',
+    )
+
     # First Facebook Game post.
     post = FacebookGame.objects.get_or_create(
         title='אתם מבוקשים! על מה ולמה?',
@@ -113,6 +140,7 @@ def create_facebook_games_dummy_data():
         x=340,
         y=190,
     )
+    post[0].tags.add(tag1[0])
 
     # Second Facebook Game post.
     post = FacebookGame.objects.get_or_create(
@@ -157,6 +185,7 @@ def create_facebook_games_dummy_data():
         x=340,
         y=190,
     )
+    post[0].tags.add(tag2[0])
 
 
 def create_facebook_users_dummy_data():
