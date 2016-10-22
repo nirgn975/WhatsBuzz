@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'api',
     'whatsbuzz',
 
+    'ckeditor',
+    'dal',
+    'dal_select2',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,8 +51,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'corsheaders',
-
-    'ckeditor',
 ]
 
 MIDDLEWARE_CLASSES = [

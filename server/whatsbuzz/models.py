@@ -2,7 +2,6 @@ import uuid
 
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -32,6 +31,10 @@ class UserNameAlign(object):
     )
 
 
+class Tags(models.Model):
+    name = models.CharField(_('Tag Name'), max_length=255, unique=True)
+
+
 class Post(models.Model):
     """
     The basic fields for every post.
@@ -45,6 +48,7 @@ class Post(models.Model):
     age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices,
                                       default='default')
     publish = models.DateTimeField(_('publish'), null=True)
+    tags = models.ForeignKey(Tags, null=True, blank=True, related_name='tag_name')
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', 'publish']
 
 

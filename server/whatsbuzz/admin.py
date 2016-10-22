@@ -1,6 +1,8 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from whatsbuzz.models import User, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
+
+from .forms import TrendForm, FacebookGameForm
+from .models import User, Tags, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
 
 
 class FacebookGamesImageAdmin(admin.TabularInline):
@@ -29,8 +31,8 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class TrendAdmin(TranslationAdmin):
+    form = TrendForm
     model = Trend
-    list_display = ['title', 'buzz', 'age_categories', 'publish']
     search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
@@ -38,6 +40,7 @@ class TrendAdmin(TranslationAdmin):
             'modeltranslation/js/force_jquery.js',
             'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
             'modeltranslation/js/tabbed_translation_fields.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
         )
         css = {
             "all": ("css/admin.css",),
@@ -46,6 +49,7 @@ class TrendAdmin(TranslationAdmin):
 
 
 class FacebookGameAdmin(TranslationAdmin):
+    form = FacebookGameForm
     model = FacebookGame
     inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
     list_display = ['title', 'buzz', 'age_categories', 'publish']
@@ -56,6 +60,7 @@ class FacebookGameAdmin(TranslationAdmin):
             'modeltranslation/js/force_jquery.js',
             'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
             'modeltranslation/js/tabbed_translation_fields.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
         )
         css = {
             "all": ("css/admin.css",),
