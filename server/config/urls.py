@@ -19,7 +19,10 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from whatsbuzz.views import TagsAutocomplete
+
+from dal import autocomplete
+
+from whatsbuzz.models import Tags
 
 urlpatterns = [
     url(r'^api/', include('api.urls')),
@@ -31,5 +34,9 @@ if settings.DEBUG:
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', admin.site.urls),
-    url(r'^tags-autocomplete/$', TagsAutocomplete.as_view(create_field='name'), name='tags-autocomplete', ),
+    url(
+        r'^tags-autocomplete/$',
+        autocomplete.Select2QuerySetView.as_view(model=Tags, create_field='name'),
+        name='tags-autocomplete',
+    ),
 )
