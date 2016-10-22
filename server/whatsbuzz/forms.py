@@ -11,7 +11,7 @@ class TrendForm(forms.ModelForm):
         model = Trend
         fields = ('title', 'body', 'banner_image', 'buzz', 'age_categories', 'publish', 'code', 'tags', )
         widgets = {
-            'tags': autocomplete.ModelSelect2(url='tags-autocomplete', attrs={
+            'tags': autocomplete.ModelSelect2Multiple(url='tags-autocomplete', attrs={
                 'data-placeholder': _('Select Tags'),
                 'data-multiple': 'multiple',
                 'style': 'width: 625px',
@@ -24,7 +24,9 @@ class FacebookGameForm(forms.ModelForm):
         model = FacebookGame
         fields = ('title', 'body', 'banner_image', 'buzz', 'age_categories', 'publish', 'tags', )
         widgets = {
-            'tags': autocomplete.ModelSelect2(url='tags-autocomplete', attrs={
+            'tags': autocomplete.ModelSelect2Multiple(url='tags-autocomplete', attrs={
                 'data-placeholder': _('Select Tags'),
+                'data-multiple': 'multiple',
+                'style': 'width: 625px',
             })
         }
