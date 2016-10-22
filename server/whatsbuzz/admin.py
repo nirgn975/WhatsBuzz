@@ -2,7 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
 from .forms import TrendForm, FacebookGameForm
-from .models import User, Tags, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
+from .models import User, Trend, FacebookGame, FacebookGamesImage, FacebookUsername, FacebookProfileImage
 
 
 class FacebookGamesImageAdmin(admin.TabularInline):
@@ -52,7 +52,7 @@ class FacebookGameAdmin(TranslationAdmin):
     form = FacebookGameForm
     model = FacebookGame
     inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
-    list_display = ['title', 'buzz', 'age_categories', 'publish']
+    # list_display = ['title', 'buzz', 'age_categories', 'publish']
     search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
