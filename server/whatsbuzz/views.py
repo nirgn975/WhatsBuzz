@@ -17,7 +17,4 @@ class TagsAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
     def get_result_label(self, result):
-        """
-        Return the label of a result.
-        """
-        return result.name
+        return super().get_result_label(result.name)

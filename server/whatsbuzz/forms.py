@@ -13,7 +13,8 @@ class TrendForm(forms.ModelForm):
         widgets = {
             'tags': autocomplete.ModelSelect2(url='tags-autocomplete', attrs={
                 'data-placeholder': _('Select Tags'),
-                'data-tags': 'true',
+                'data-multiple': 'multiple',
+                'style': 'width: 625px',
             })
         }
 
