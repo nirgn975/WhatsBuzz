@@ -48,7 +48,7 @@ class Post(models.Model):
     age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices,
                                       default='default')
     publish = models.DateTimeField(_('publish'), null=True)
-    tags = models.ForeignKey(Tags, null=True, blank=True, related_name='tag_name')
+    tags = models.ManyToManyField(Tags, null=True, blank=True, related_name='tag_name')
     REQUIRED_FIELDS = ['title', 'body', 'banner_image', 'publish']
 
 

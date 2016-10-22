@@ -52,7 +52,6 @@ class FacebookGameAdmin(TranslationAdmin):
     form = FacebookGameForm
     model = FacebookGame
     inlines = [FacebookGamesImageAdmin, FacebookUsernameAdmin, FacebookProfileImageAdmin]
-    # list_display = ['title', 'buzz', 'age_categories', 'publish']
     search_fields = ['title', 'buzz', 'age_categories', 'publish']
 
     class Media:
