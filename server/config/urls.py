@@ -34,9 +34,5 @@ if settings.DEBUG:
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', admin.site.urls),
-    url(
-        r'^tags-autocomplete/$',
-        autocomplete.Select2QuerySetView.as_view(model=Tags),
-        name='tags-autocomplete',
-    ),
+    url(r'^tags-autocomplete/$', autocomplete.Select2QuerySetView.as_view(model=Tags), name='tags-autocomplete'),
 )
