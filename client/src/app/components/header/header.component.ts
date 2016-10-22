@@ -12,18 +12,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  clicked(link) {
-    switch (link) {
-      case 'Main':
-        console.log('Main');
-        break;
-      case 'Facebook-Games':
-        console.log('Facebook-Games');
-        break;
-      case 'Trends':
-        console.log('Trends');
-        break;
-    }
-  }
-
 }
