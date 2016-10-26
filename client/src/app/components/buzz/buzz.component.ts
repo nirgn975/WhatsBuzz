@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
-import { BuzzService } from '../../services';
-import { Buzz } from '../../models';
+import { AppState } from '../../reducers';
+import { BuzzActions } from '../../actions';
 
 @Component({
   selector: 'wb-buzz',
   templateUrl: './buzz.component.html',
   styleUrls: ['./buzz.component.scss']
 })
-export class BuzzComponent implements OnInit {
-  private buzz: Buzz[];
+export class BuzzComponent {
+  buzz: Observable<any>;
 
   constructor(
-    private buzzService: BuzzService
-  ) { }
+    private store: Store<AppState>,
+      private buzzActions: BuzzActions
+  ) {
+    this.buzz = store.select('buzz');
+  }
 
   ngOnInit() {
-    this.buzzService.getBuzzPosts().subscribe(
-      res => this.buzz = res
-    );
+    this.store.dispatch(this.buzzActions.loadBuzz());
   }
 }
