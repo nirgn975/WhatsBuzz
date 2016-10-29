@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { AppState } from '../../reducers';
-import { BuzzActions } from '../../actions';
+import * as fromRoot from '../../reducers';
+import * as buzz from '../../actions/buzz';
+
 
 @Component({
   selector: 'wb-buzz',
@@ -14,13 +15,12 @@ export class BuzzComponent {
   buzz: Observable<any>;
 
   constructor(
-    private store: Store<AppState>,
-      private buzzActions: BuzzActions
+    private store: Store<fromRoot.State>
   ) {
-    this.buzz = store.select('buzz');
+    this.buzz = this.store.let(fromRoot.getBuzzEntities);
   }
 
   ngOnInit() {
-    this.store.dispatch(this.buzzActions.loadBuzz());
+    this.store.dispatch(new buzz.LoadAction());
   }
 }

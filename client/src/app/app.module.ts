@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { TranslateModule } from "ng2-translate/ng2-translate";
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { BuzzActions } from './actions';
 import { BuzzService } from './services';
-import { BuzzEffects } from './effects';
-import reducer from './reducers';
+import { BuzzEffects } from './effects/buzz';
+import { reducer } from './reducers';
 
 import { WhatsBuzzComponent } from './wb.component';
 import { HeaderComponent } from './components';
@@ -45,10 +45,10 @@ import { AppRoutingModule }     from './app-routing.module';
     AppRoutingModule,
     TranslateModule.forRoot(),
     StoreModule.provideStore(reducer),
-    EffectsModule.run(BuzzEffects)
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(BuzzEffects),
   ],
   providers: [
-    BuzzActions,
     BuzzService
   ],
   bootstrap: [WhatsBuzzComponent]

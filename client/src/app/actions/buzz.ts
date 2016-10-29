@@ -1,23 +1,24 @@
-import 'rxjs/add/operator/switchMap';
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-
 import { Buzz } from '../models';
+import { type } from '../util';
 
-@Injectable()
-export class BuzzActions {
-    static LOAD_BUZZ = '[Buzz] Load Buzz';
-    loadBuzz(): Action {
-        return {
-            type: BuzzActions.LOAD_BUZZ
-        };
-    }
+export const ActionTypes = {
+  LOAD: type('[Buzz] Load'),
+  LOAD_BUZZ_SUCCESS: type('[Buzz] Load Buzz Success'),
+};
 
-    static LOAD_BUZZ_SUCCESS = '[Buzz] Load Buzz Success';
-    loadBuzzSuccess(buzz): Action {
-        return {
-            type: BuzzActions.LOAD_BUZZ_SUCCESS,
-            payload: buzz
-        };
-    }
+export class LoadAction implements Action {
+  type = ActionTypes.LOAD;
+
+  constructor() { }
 }
+
+export class LoadSuccessAction implements Action {
+  type = ActionTypes.LOAD_BUZZ_SUCCESS;
+
+  constructor(public payload: Buzz[]) { }
+}
+
+export type Actions
+  = LoadAction
+  | LoadSuccessAction;

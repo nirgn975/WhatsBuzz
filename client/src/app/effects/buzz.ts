@@ -1,20 +1,30 @@
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/skip';
+import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { empty } from 'rxjs/observable/empty';
+import { of } from 'rxjs/observable/of';
 
-import { AppState } from '../reducers';
-import { BuzzActions } from '../actions';
-import { BuzzService } from '../services';
+import * as buzz from '../actions/buzz';
+import { BuzzService } from '../services'
+
 
 @Injectable()
 export class BuzzEffects {
-  constructor (
-    private update$: Actions,
-    private buzzActions: BuzzActions,
+  constructor(
+    private actions$: Actions,
     private buzzService: BuzzService,
-  ) {}
+  ) { }
 
-  @Effect() loadBuzz$ = this.update$
-    .ofType(BuzzActions.LOAD_BUZZ)
-    .switchMap(() => this.buzzService.getBuzzPosts())
-    .map(buzz => this.buzzActions.loadBuzzSuccess(buzz));
+
+  @Effect() loadBuzz$ = this.actions$
+  .ofType(buzz.ActionTypes.LOAD)
+  .switchMap(() => this.buzzService.getBuzzPosts())
+  .map(buzz => new buzz.LoadSuccessAction(buzz));
 }
