@@ -26,15 +26,16 @@ const productionReducer: ActionReducer<State> = combineReducers(reducers);
 
 export function reducer(state: any, action: any) {
   if (environment.production) {
-    console.log("in reducer");
     return productionReducer(state, action);
   }
   else {
+    console.log("in reducer");
     return developmentReducer(state, action);
   }
 }
 
- export function getBuzzState(state$: Observable<State>) {
+export function getBuzzState(state$: Observable<State>) {
+  console.log("get buzz state");
   return state$.select(state => state.buzz);
 }
 

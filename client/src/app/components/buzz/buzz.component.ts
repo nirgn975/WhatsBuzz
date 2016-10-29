@@ -1,10 +1,11 @@
+import 'rxjs/add/operator/let';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
 import * as buzz from '../../actions/buzz';
-
+import { Buzz } from '../../models';
 
 @Component({
   selector: 'wb-buzz',
