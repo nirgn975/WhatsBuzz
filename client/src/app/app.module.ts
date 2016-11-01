@@ -8,8 +8,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { BuzzService } from './services';
-import { BuzzEffects } from './effects/buzz';
-import { reducer } from './reducers';
+import { BuzzActions } from './actions';
+import { BuzzEffects } from './effects';
+import reducer from './reducers';
 
 import { WhatsBuzzComponent } from './wb.component';
 import { HeaderComponent } from './components';
@@ -45,10 +46,13 @@ import { AppRoutingModule }     from './app-routing.module';
     AppRoutingModule,
     TranslateModule.forRoot(),
     StoreModule.provideStore(reducer),
+    // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    // EffectsModule.run(BuzzEffects),
     EffectsModule.run(BuzzEffects),
   ],
   providers: [
+    BuzzActions,
     BuzzService
   ],
   bootstrap: [WhatsBuzzComponent]

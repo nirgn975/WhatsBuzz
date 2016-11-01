@@ -1,24 +1,38 @@
+import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+
 import { Buzz } from '../models';
-import { type } from '../util';
 
-export const ActionTypes = {
-  LOAD: type('[Buzz] Load'),
-  LOAD_BUZZ_SUCCESS: type('[Buzz] Load Buzz Success'),
-};
+@Injectable()
+export class BuzzActions {
+  static LOAD_BUZZS = '[Buzz] Load Buzzs';
+  loadBuzzs(): Action {
+    return {
+      type: BuzzActions.LOAD_BUZZS
+    };
+  }
 
-export class LoadAction implements Action {
-  type = ActionTypes.LOAD;
+  static LOAD_BUZZS_SUCCESS = '[Buzz] Load Buzzs Success';
+  loadBuzzsSuccess(buzzs): Action {
+    return {
+      type: BuzzActions.LOAD_BUZZS_SUCCESS,
+      payload: buzzs
+    };
+  }
 
-  constructor() { }
+  static GET_BUZZ = '[Buzz] Get Buzz';
+  getBuzz(id): Action {
+    return {
+      type: BuzzActions.GET_BUZZ,
+      payload: id
+    };
+  }
+
+  static GET_BUZZ_SUCCESS = '[Buzz] Get Buzz Success';
+  getBuzzSuccess(buzz): Action {
+    return {
+      type: BuzzActions.GET_BUZZ_SUCCESS,
+      payload: buzz
+    };
+  }
 }
-
-export class LoadSuccessAction implements Action {
-  type = ActionTypes.LOAD_BUZZ_SUCCESS;
-
-  constructor(public payload: Buzz[]) { }
-}
-
-export type Actions
-  = LoadAction
-  | LoadSuccessAction;
