@@ -46,9 +46,7 @@ import { AppRoutingModule }     from './app-routing.module';
     AppRoutingModule,
     TranslateModule.forRoot(),
     StoreModule.provideStore(reducer),
-    // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    // EffectsModule.run(BuzzEffects),
     EffectsModule.run(BuzzEffects),
   ],
   providers: [

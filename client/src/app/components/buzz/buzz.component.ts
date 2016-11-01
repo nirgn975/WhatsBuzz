@@ -1,10 +1,9 @@
-// import 'rxjs/add/operator/let';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-// import { Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
-// import * as fromRoot from '../../reducers';
-// import * as buzz from '../../actions/buzz';
+import { AppState } from '../../reducers';
+import { BuzzActions } from '../../actions';
 import { Buzz } from '../../models';
 
 @Component({
@@ -16,12 +15,13 @@ export class BuzzComponent {
   buzz: Observable<any>;
 
   constructor(
-    // private store: Store<fromRoot.State>
+    private store: Store<AppState>,
+    private buzzActions: BuzzActions,
   ) {
-    // this.buzz = this.store.let(fromRoot.getBuzzEntities);
+    this.buzz = store.select('buzz');
   }
 
   ngOnInit() {
-    // this.store.dispatch(new buzz.LoadAction());
+    this.store.dispatch(this.buzzActions.loadBuzzs());
   }
 }

@@ -12,15 +12,15 @@ const initialState: BuzzState = {
 };
 
 export default function (state = initialState, action: Action): BuzzState {
-    switch (action.type) {
-        case BuzzActions.LOAD_BUZZS: {
-            return initialState;
-        }
-        case BuzzActions.GET_BUZZ_SUCCESS: {
-            return action.payload;
-        }
-        default: {
-            return state;
-        }
+  switch (action.type) {
+    case BuzzActions.LOAD_BUZZS: {
+      return initialState;
     }
+    case BuzzActions.GET_BUZZ_SUCCESS: {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
 }

@@ -5,7 +5,7 @@ import { combineReducers } from '@ngrx/store';
 import buzzReducer, * as fromBuzz from './buzz';
 
 export interface AppState {
-    buzz: fromBuzz.BuzzState;
+  buzz: fromBuzz.BuzzState;
 };
 
 //uncomment the storeLogger import and this line
@@ -15,5 +15,5 @@ export interface AppState {
 
 //export default compose(storeLogger(), combineReducers)({
 export default compose(combineReducers)({
-    buzz: buzzReducer
+  buzz: buzzReducer
 });
