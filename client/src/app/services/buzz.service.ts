@@ -1,7 +1,5 @@
-// import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
@@ -20,7 +18,6 @@ export class BuzzService {
 
     return this.http.get(`${environment.API_PATH}/buzz`, options)
       .map(res => res.json().results)
-      .do(data => console.log(data))
       .catch(this.handleError);
   }
 

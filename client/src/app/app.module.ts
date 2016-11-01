@@ -7,23 +7,26 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { BuzzService } from './services';
 import { BuzzActions } from './actions';
 import { BuzzEffects } from './effects';
 import reducer from './reducers';
 
 import { WhatsBuzzComponent } from './wb.component';
-import { HeaderComponent } from './components';
-import { FooterComponent } from './components';
-import { BuzzComponent } from './components';
-import { FacebookGamesComponent } from './components';
-import { TrendsComponent } from './components';
-import { PostComponent } from './components';
-import { DetailPostComponent } from './components';
-import { MainComponent } from './components/';
-import { PrivacyPolicyComponent } from './components';
+import {
+  HeaderComponent,
+  FooterComponent,
+  BuzzComponent,
+  FacebookGamesComponent,
+  TrendsComponent,
+  PostComponent,
+  DetailPostComponent,
+  MainComponent,
+  PrivacyPolicyComponent
+} from './components';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { BuzzService } from './services';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
