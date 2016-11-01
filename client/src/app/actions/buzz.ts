@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
-import { Buzz } from '../models';
-
 @Injectable()
 export class BuzzActions {
   static LOAD_BUZZS = '[Buzz] Load Buzzs';

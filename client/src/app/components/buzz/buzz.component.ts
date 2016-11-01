@@ -4,15 +4,15 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { BuzzActions } from '../../actions';
-import { Buzz } from '../../models';
+// import { Buzz } from '../../models';
 
 @Component({
   selector: 'wb-buzz',
   templateUrl: './buzz.component.html',
   styleUrls: ['./buzz.component.scss']
 })
-export class BuzzComponent {
-  buzz: Observable<any>;
+export class BuzzComponent implements OnInit {
+  private buzz: Observable<any>;
 
   constructor(
     private store: Store<AppState>,

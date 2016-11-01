@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 
-import { AppState } from '../reducers';
 import { BuzzActions } from '../actions';
 import { BuzzService } from '../services';
 
