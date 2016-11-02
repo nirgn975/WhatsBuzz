@@ -48,5 +48,5 @@ script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
     cd client;
     ng lint;
-    ng serve& && ng e2e;
+    ng serve& ng e2e;
     fi
