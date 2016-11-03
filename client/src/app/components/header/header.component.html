@@ -2,13 +2,13 @@
   <div class="container">
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a (click)="clicked('Trends')">{{ 'HEADER.trends' | translate }}</a>
+        <a [routerLink]="['/trends']">{{ 'HEADER.trends' | translate }}</a>
       </li>
       <li>
-        <a (click)="clicked('Facebook-Games')">{{ 'HEADER.facebookGames' | translate }}</a>
+        <a [routerLink]="['/facebook-games']">{{ 'HEADER.facebookGames' | translate }}</a>
       </li>
       <li>
-        <a (click)="clicked('Main')">{{ 'HEADER.main' | translate }}</a>
+        <a [routerLink]="['/']">{{ 'HEADER.main' | translate }}</a>
       </li>
     </ul>
 
