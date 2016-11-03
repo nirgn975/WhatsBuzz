@@ -1,5 +1,5 @@
 export interface Buzz {
-  id: string;
+  unique_id: string;
   title: string;
-  banner: string;
+  banner_image: string;
 }
