@@ -2,6 +2,15 @@ nav {
   background: linear-gradient(#4e69a2,#3c5998);
   border-bottom: solid 2px #21366e;
   color: #ffffff;
+  padding: 0;
+
+  .container {
+    line-height: 5rem;
+  }
+
+  button {
+    vertical-align: middle;
+  }
 
   ul {
     float: right;
@@ -31,5 +40,6 @@ nav {
 
   img {
     float: left;
+    width: 15em;
   }
 }
