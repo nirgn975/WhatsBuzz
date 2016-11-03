@@ -11,7 +11,7 @@ import { BuzzActions } from './actions';
 import { BuzzEffects } from './effects';
 import reducer from './reducers';
 
-import { WhatsBuzzComponent } from './wb.component';
+import { WbComponent } from './wb.component';
 import {
   HeaderComponent,
   FooterComponent,
@@ -30,7 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    WhatsBuzzComponent,
+    WbComponent,
     HeaderComponent,
     FooterComponent,
     BuzzComponent,
@@ -56,6 +56,6 @@ import { AppRoutingModule } from './app-routing.module';
     BuzzActions,
     BuzzService
   ],
-  bootstrap: [WhatsBuzzComponent]
+  bootstrap: [WbComponent]
 })
 export class AppModule { }
