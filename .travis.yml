@@ -34,7 +34,6 @@ install:
     npm install -g angular-cli;
     cd client;
     npm install;
-    npm run pree2e;
     cd ..;
     fi
 
