@@ -17,20 +17,4 @@ export class BuzzActions {
       payload: buzzs
     };
   }
-
-  static GET_BUZZ = '[Buzz] Get Buzz';
-  getBuzz(id): Action {
-    return {
-      type: BuzzActions.GET_BUZZ,
-      payload: id
-    };
-  }
-
-  static GET_BUZZ_SUCCESS = '[Buzz] Get Buzz Success';
-  getBuzzSuccess(buzz): Action {
-    return {
-      type: BuzzActions.GET_BUZZ_SUCCESS,
-      payload: buzz
-    };
-  }
 }
