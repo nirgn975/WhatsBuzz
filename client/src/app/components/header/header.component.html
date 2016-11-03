@@ -1,17 +1,22 @@
-<nav>
+<nav class="navbar navbar-dark">
   <div class="container">
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a [routerLink]="['/trends']">{{ 'HEADER.trends' | translate }}</a>
-      </li>
-      <li>
-        <a [routerLink]="['/facebook-games']">{{ 'HEADER.facebookGames' | translate }}</a>
-      </li>
-      <li>
-        <a [routerLink]="['/']">{{ 'HEADER.main' | translate }}</a>
-      </li>
-    </ul>
+    <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <a class="navbar-brand" href="/">
+      <img src="/assets/Whats-Buzz-logo.svg" alt="WhatsBuzz Logo">
+    </a>
 
-    <img src="#" alt="WhatsBuzz Logo">
+    <div class="collapse navbar-toggleable-sm" id="navbarResponsive">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a [routerLink]="['/trends']">{{ 'HEADER.trends' | translate }}</a>
+        </li>
+        <li>
+          <a [routerLink]="['/facebook-games']">{{ 'HEADER.facebookGames' | translate }}</a>
+        </li>
+        <li>
+          <a [routerLink]="['/']">{{ 'HEADER.main' | translate }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
