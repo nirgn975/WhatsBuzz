@@ -14,6 +14,7 @@ Something about the project.
 
   * [Bootstrap](http://getbootstrap.com/)
   * [Angular-CLI](https://cli.angular.io/)
+  * [ngrx](https://github.com/ngrx)
   * [Google Cloud Platform](https://cloud.google.com/)
   * [Facebook API](https://developers.facebook.com/)
 
