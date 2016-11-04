@@ -29,3 +29,20 @@ $header-color: #3b5998;
   height: $header-height;
   color: $header-color;
 }
+
+@mixin button-link {
+  a {
+    margin-top: 10px;
+    background-color: #0088cb;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 4px;
+    transition: all 350ms ease;
+    font-size: 18px;
+    border-color: transparent;
+  }
+
+  a:hover {
+    background-color: #58bdf0;
+  }
+}
