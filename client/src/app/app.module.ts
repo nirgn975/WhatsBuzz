@@ -67,11 +67,11 @@ import {
     EffectsModule.run(TrendsEffects),
   ],
   providers: [
+    BuzzService,
+    PostsService,
     BuzzActions,
     FacebookGamesActions,
     TrendsActions,
-    BuzzService,
-    PostsService,
   ],
   bootstrap: [WbComponent]
 })

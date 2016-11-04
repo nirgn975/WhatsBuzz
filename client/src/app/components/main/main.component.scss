@@ -3,6 +3,11 @@
 .col-sm-6 {
   padding: 0 15px;
 
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    margin-bottom: 4em;
+  }
+
   .category-header {
     @include post-header;
 

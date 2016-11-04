@@ -15,7 +15,8 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   `
 })
 export class WbComponent {
-  constructor(translate: TranslateService) {
+  constructor(
+    private translate: TranslateService) {
     // this language will be used as a fallback when a translation isn't
     // found in the current language.
     translate.setDefaultLang('en');
