@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../reducers';
+import { FacebookGamesActions } from '../../actions';
 
 @Component({
   selector: 'wb-facebook-games',
@@ -6,10 +11,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facebook-games.component.scss']
 })
 export class FacebookGamesComponent implements OnInit {
+  private posts: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+    private facebookGamesActions: FacebookGamesActions,
+  ) {
+    this.posts = store.select('facebookGames');
+  }
 
   ngOnInit() {
+    this.store.dispatch(this.facebookGamesActions.loadPosts());
+  }
+
+  loadMore() {
+    console.log('load more posts');
   }
 
 }

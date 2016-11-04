@@ -8,17 +8,10 @@
     margin-bottom: 4em;
   }
 
+  @include category-header;
+
   .category-header {
-    @include post-header;
-
-    color: $post-text-color;
-    font-size: $post-header-size;
-    text-align: center;
-    background: $post-background;
-
-    h2 {
-      @include post-header-text;
-    }
+    margin: 10px 0;
   }
 
   @include button-link;

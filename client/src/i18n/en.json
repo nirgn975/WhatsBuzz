@@ -18,5 +18,8 @@
     },
     "POST": {
       "playButton": "Start Game"
+    },
+    "FACEBOOKGAMES": {
+      "header": "Facebook Games"
     }
 }

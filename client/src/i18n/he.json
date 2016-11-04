@@ -18,5 +18,8 @@
     },
     "POST": {
       "playButton": "התחל משחק"
+    },
+    "FACEBOOKGAMES": {
+      "header": "משחקי פייסבוק"
     }
 }
