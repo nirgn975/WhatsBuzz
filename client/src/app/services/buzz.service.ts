@@ -5,11 +5,11 @@ import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Buzz } from '../models';
 
-
 @Injectable()
 export class BuzzService {
   constructor(
-    private http: Http) {}
+    private http: Http
+  ) {}
 
   getBuzzPosts(): Observable<Buzz[]> {
     let headers = new Headers();

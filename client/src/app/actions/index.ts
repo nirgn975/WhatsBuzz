@@ -1,9 +1,15 @@
 import { BuzzActions } from './buzz';
+import { FacebookGamesActions } from './facebookGames';
+import { TrendsActions } from './trends';
 
 export {
-    BuzzActions
+  BuzzActions,
+  FacebookGamesActions,
+  TrendsActions
 };
 
 export default [
-    BuzzActions
+  BuzzActions,
+  FacebookGamesActions,
+  TrendsActions
 ];
