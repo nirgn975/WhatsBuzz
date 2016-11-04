@@ -8,7 +8,6 @@ import { FacebookGame, Trend } from '../models';
 
 @Injectable()
 export class PostsService {
-
   constructor(
     private http: Http,
     private translate: TranslateService
