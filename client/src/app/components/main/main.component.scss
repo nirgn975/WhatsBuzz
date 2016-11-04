@@ -1,0 +1,25 @@
+@import "../../../assets/vars.scss";
+
+.col-sm-6 {
+  padding: 0 15px;
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    margin-bottom: 4em;
+  }
+
+  .category-header {
+    @include post-header;
+
+    color: $post-text-color;
+    font-size: $post-header-size;
+    text-align: center;
+    background: $post-background;
+
+    h2 {
+      @include post-header-text;
+    }
+  }
+
+  @include button-link;
+}

@@ -7,11 +7,22 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { BuzzActions } from './actions';
-import { BuzzEffects } from './effects';
 import reducer from './reducers';
-
 import { WbComponent } from './wb.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import {
+  BuzzActions,
+  FacebookGamesActions,
+  TrendsActions
+} from './actions';
+
+import {
+  BuzzEffects,
+  FacebookGamesEffects,
+  TrendsEffects
+} from './effects';
+
 import {
   HeaderComponent,
   FooterComponent,
@@ -24,9 +35,10 @@ import {
   PrivacyPolicyComponent
 } from './components';
 
-import { BuzzService } from './services';
-
-import { AppRoutingModule } from './app-routing.module';
+import {
+  BuzzService,
+  PostsService
+} from './services';
 
 @NgModule({
   declarations: [
@@ -51,10 +63,15 @@ import { AppRoutingModule } from './app-routing.module';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(BuzzEffects),
+    EffectsModule.run(FacebookGamesEffects),
+    EffectsModule.run(TrendsEffects),
   ],
   providers: [
+    BuzzService,
+    PostsService,
     BuzzActions,
-    BuzzService
+    FacebookGamesActions,
+    TrendsActions,
   ],
   bootstrap: [WbComponent]
 })

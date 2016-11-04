@@ -2,7 +2,7 @@
   <div class="container">
     <p>
       {{ 'FOOTER.rights' | translate }} whatsbuzz.co.il |
-      <a href="/privacy-policy">{{ 'FOOTER.privacyPolicy' | translate }}</a>
+      <a [routerLink]="['/privacy-policy']">{{ 'FOOTER.privacyPolicy' | translate }}</a>
     </p>
   </div>
 </footer>

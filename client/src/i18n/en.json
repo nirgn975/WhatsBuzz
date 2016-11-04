@@ -10,5 +10,13 @@
     "FOOTER": {
       "rights": "All rights reserved",
       "privacyPolicy": "privacy policy"
+    },
+    "MAIN": {
+      "facebookGames": "Facebook Games",
+      "trends": "Trends",
+      "showMore": "Show More"
+    },
+    "POST": {
+      "playButton": "Start Game"
     }
 }
