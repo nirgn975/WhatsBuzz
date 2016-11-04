@@ -1,0 +1,18 @@
+@import "../../../assets/vars.scss";
+
+.card {
+  padding: 20px;
+
+  .card-title {
+    color: #3b5998;
+    font-size: 20px;
+    text-align: center;
+    height: 48px;
+  }
+
+  .card-img-top {
+    width: 100%;
+  }
+
+  @include button-link;
+}

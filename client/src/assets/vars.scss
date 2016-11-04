@@ -3,10 +3,12 @@ $post-header-size: 28px;
 $post-background: #ffffff;
 $header-height: 68px;
 $header-color: #3b5998;
+$button-background: #0088cb;
+$radius: 4px;
 
 @mixin post-header {
   border-bottom: solid 2px rgba(60,89,153,.52);
-  border-radius: 4px;
+  border-radius: $radius;
   padding: 5px 0;
   margin: 10px 0;
 }
@@ -19,7 +21,7 @@ $header-color: #3b5998;
 
 @mixin post {
   padding: 20px;
-  border-radius: 4px;
+  border-radius: $radius;
   border: 1px solid #c7dce6;
   background: $post-background;
 }
@@ -28,4 +30,21 @@ $header-color: #3b5998;
   margin: 0;
   height: $header-height;
   color: $header-color;
+}
+
+@mixin button-link {
+  a {
+    margin-top: 10px;
+    background-color: $button-background;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: $radius;
+    transition: all 350ms ease;
+    font-size: 18px;
+    border-color: transparent;
+  }
+
+  a:hover {
+    background-color: #58bdf0;
+  }
 }

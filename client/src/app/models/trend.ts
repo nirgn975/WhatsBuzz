@@ -1,8 +1,8 @@
 export interface Trend {
-  id: string;
+  unique_id: string;
   title: string;
   body: string;
-  banner: string;
+  banner_image: string;
   buzz: boolean;
   age_category: string;
 }

@@ -1,3 +1,17 @@
-<p>
-  main works!
-</p>
+<div class="col-sm-6">
+  <div class="category-header">
+    <h2>{{ 'MAIN.trends' | translate }}</h2>
+  </div>
+
+  <wb-post *ngFor="let post of trends | async | slice:[0]:[5]" [post]="post"></wb-post>
+  <a [routerLink]="['/trends']" class="btn btn-primary">{{ 'MAIN.showMore' | translate }}</a>
+</div>
+
+<div class="col-sm-6">
+  <div class="category-header">
+    <h2>{{ 'MAIN.facebookGames' | translate }}</h2>
+  </div>
+
+  <wb-post *ngFor="let post of facebookGames | async | slice:[0]:[5]" [post]="post"></wb-post>
+  <a [routerLink]="['/facebook-games']" class="btn btn-primary">{{ 'MAIN.showMore' | translate }}</a>
+</div>
