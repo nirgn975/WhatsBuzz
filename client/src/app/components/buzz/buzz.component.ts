@@ -18,7 +18,7 @@ export class BuzzComponent implements OnInit {
     private store: Store<AppState>,
     private buzzActions: BuzzActions,
   ) {
-    this.buzz = store.select('buzz');
+    this.buzz = store.select(state => state.buzz);
   }
 
   ngOnInit() {

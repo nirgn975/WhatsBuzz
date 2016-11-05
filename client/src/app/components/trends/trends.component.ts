@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
-import { TrendsActions } from '../../actions';
+import { TrendsActions, PagesActions } from '../../actions';
+import { Trend, Pages } from '../../models';
 
 @Component({
   selector: 'wb-trends',
@@ -11,21 +12,32 @@ import { TrendsActions } from '../../actions';
   styleUrls: ['./trends.component.scss']
 })
 export class TrendsComponent implements OnInit {
-  private posts: Observable<any>;
+  private posts: Observable<Trend[]>;
+  private pages: Pages;
 
   constructor(
     private store: Store<AppState>,
     private trendsActions: TrendsActions,
+    private pagesActions: PagesActions,
   ) {
-    this.posts = store.select('trends');
+    this.posts = store.select(state => state.trends);
+    store.select(state => state.pages).subscribe(
+      (res) => this.pages = res
+    );
   }
 
   ngOnInit() {
-    this.store.dispatch(this.trendsActions.loadPosts('1'));
+    if (this.pages.trends == 1) {
+      // Only if we're on the first page.
+      this.store.dispatch(this.trendsActions.loadPosts(this.pages.trends));
+    }
   }
 
   loadMore() {
-    console.log('in load more');
-    this.store.dispatch(this.trendsActions.loadMorePosts('2'));
+    // Get the posts of the next page.
+    this.store.dispatch(this.trendsActions.loadMorePosts(this.pages.trends));
+
+    // Move to next page.
+    this.store.dispatch(this.pagesActions.nextTrendsPage());
   }
 }

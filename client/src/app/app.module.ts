@@ -15,6 +15,7 @@ import {
   BuzzActions,
   FacebookGamesActions,
   TrendsActions,
+  PagesActions,
 } from './actions';
 
 import {
@@ -72,6 +73,7 @@ import {
     BuzzActions,
     FacebookGamesActions,
     TrendsActions,
+    PagesActions,
   ],
   bootstrap: [WbComponent]
 })
