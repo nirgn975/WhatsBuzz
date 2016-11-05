@@ -30,6 +30,9 @@ export class TrendsComponent implements OnInit {
     if (this.pages.trends == 1) {
       // Only if we're on the first page.
       this.store.dispatch(this.trendsActions.loadPosts(this.pages.trends));
+
+      // Move to next page.
+      this.store.dispatch(this.pagesActions.nextTrendsPage());
     }
   }
 

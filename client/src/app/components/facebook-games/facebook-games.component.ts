@@ -30,6 +30,9 @@ export class FacebookGamesComponent implements OnInit {
     if (this.pages.facebookGames == 1) {
       // Only if we're on the first page.
       this.store.dispatch(this.facebookGamesActions.loadPosts(this.pages.facebookGames));
+
+      // Move to next page.
+      this.store.dispatch(this.pagesActions.nextFacebookGamesPage());
     }
   }
 
