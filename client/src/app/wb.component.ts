@@ -12,7 +12,13 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
       <wb-buzz class="col-sm-4"></wb-buzz>
     </div>
     <wb-footer></wb-footer>
-  `
+  `,
+  styles: [`
+    .col-sm-8,
+    .col-sm-4 {
+      padding: 0;
+    }
+  `]
 })
 export class WbComponent {
   constructor(

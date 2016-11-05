@@ -1,25 +1,28 @@
 {
-    "HEADER": {
-      "trends": "Trends",
-      "facebookGames": "Facebook Games",
-      "main": "Main"
-    },
-    "BUZZ": {
-      "buzzHeader": "Week's Buzz"
-    },
-    "FOOTER": {
-      "rights": "All rights reserved",
-      "privacyPolicy": "privacy policy"
-    },
-    "MAIN": {
-      "facebookGames": "Facebook Games",
-      "trends": "Trends",
-      "showMore": "Show More"
-    },
-    "POST": {
-      "playButton": "Start Game"
-    },
-    "FACEBOOKGAMES": {
-      "header": "Facebook Games"
-    }
+  "HEADER": {
+    "trends": "Trends",
+    "facebookGames": "Facebook Games",
+    "main": "Main"
+  },
+  "BUZZ": {
+    "buzzHeader": "Week's Buzz"
+  },
+  "FOOTER": {
+    "rights": "All rights reserved",
+    "privacyPolicy": "privacy policy"
+  },
+  "MAIN": {
+    "facebookGames": "Facebook Games",
+    "trends": "Trends",
+    "showMore": "Show More"
+  },
+  "POST": {
+    "playButton": "Start Game"
+  },
+  "FACEBOOKGAMES": {
+    "header": "Facebook Games"
+  },
+  "TRENDS": {
+    "header": "Trends"
+  }
 }

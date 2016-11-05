@@ -1,25 +1,28 @@
 {
-    "HEADER": {
-      "trends": "טרנדים",
-      "facebookGames": "משחקי פייסבוק",
-      "main": "ראשי"
-    },
-    "BUZZ": {
-      "buzzHeader": "באזז השבוע"
-    },
-    "FOOTER": {
-      "rights": "כל הזכויות שמורות",
-      "privacyPolicy": "מדיניות פרטיות"
-    },
-    "MAIN": {
-      "facebookGames": "משחקים",
-      "trends": "טרנדים",
-      "showMore": "הצג עוד"
-    },
-    "POST": {
-      "playButton": "התחל משחק"
-    },
-    "FACEBOOKGAMES": {
-      "header": "משחקי פייסבוק"
-    }
+  "HEADER": {
+    "trends": "טרנדים",
+    "facebookGames": "משחקי פייסבוק",
+    "main": "ראשי"
+  },
+  "BUZZ": {
+    "buzzHeader": "באזז השבוע"
+  },
+  "FOOTER": {
+    "rights": "כל הזכויות שמורות",
+    "privacyPolicy": "מדיניות פרטיות"
+  },
+  "MAIN": {
+    "facebookGames": "משחקים",
+    "trends": "טרנדים",
+    "showMore": "הצג עוד"
+  },
+  "POST": {
+    "playButton": "התחל משחק"
+  },
+  "FACEBOOKGAMES": {
+    "header": "משחקי פייסבוק"
+  },
+  "TRENDS": {
+    "header": "טרנדים"
+  }
 }
