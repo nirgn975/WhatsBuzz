@@ -21,11 +21,11 @@ export class FacebookGamesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.facebookGamesActions.loadPosts());
+    this.store.dispatch(this.facebookGamesActions.loadPosts('1'));
   }
 
   loadMore() {
-    console.log('load more posts');
+    console.log('in load more');
+    this.store.dispatch(this.facebookGamesActions.loadMorePosts('2'));
   }
-
 }

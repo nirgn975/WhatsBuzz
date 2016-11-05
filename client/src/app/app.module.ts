@@ -14,13 +14,13 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   BuzzActions,
   FacebookGamesActions,
-  TrendsActions
+  TrendsActions,
 } from './actions';
 
 import {
   BuzzEffects,
   FacebookGamesEffects,
-  TrendsEffects
+  TrendsEffects,
 } from './effects';
 
 import {

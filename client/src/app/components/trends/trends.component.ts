@@ -21,10 +21,11 @@ export class TrendsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.trendsActions.loadPosts());
+    this.store.dispatch(this.trendsActions.loadPosts('1'));
   }
 
   loadMore() {
-    console.log('load more posts');
+    console.log('in load more');
+    this.store.dispatch(this.trendsActions.loadMorePosts('2'));
   }
 }

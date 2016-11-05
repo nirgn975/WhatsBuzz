@@ -24,8 +24,8 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.facebookGamesActions.loadPosts());
-    this.store.dispatch(this.trendsActions.loadPosts());
+    this.store.dispatch(this.facebookGamesActions.loadPosts('1'));
+    this.store.dispatch(this.trendsActions.loadPosts('1'));
   }
 
 }
