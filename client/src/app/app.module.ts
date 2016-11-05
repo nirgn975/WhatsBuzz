@@ -14,13 +14,14 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   BuzzActions,
   FacebookGamesActions,
-  TrendsActions
+  TrendsActions,
+  PagesActions,
 } from './actions';
 
 import {
   BuzzEffects,
   FacebookGamesEffects,
-  TrendsEffects
+  TrendsEffects,
 } from './effects';
 
 import {
@@ -72,6 +73,7 @@ import {
     BuzzActions,
     FacebookGamesActions,
     TrendsActions,
+    PagesActions,
   ],
   bootstrap: [WbComponent]
 })

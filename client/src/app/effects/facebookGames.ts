@@ -14,6 +14,11 @@ export class FacebookGamesEffects {
 
     @Effect() loadFacebookGamesPosts$ = this.update$
       .ofType(FacebookGamesActions.LOAD_POSTS)
-      .switchMap(() => this.svc.getFacebookGamePosts())
+      .switchMap((page) => this.svc.getFacebookGamePosts(page.payload))
       .map(posts => this.facebookGamesActions.loadPostsSuccess(posts));
+
+    @Effect() loadMoreFacebookGamesPosts$ = this.update$
+      .ofType(FacebookGamesActions.LOAD_MORE_POSTS)
+      .switchMap((nextPage) => this.svc.getFacebookGamePosts(nextPage.payload))
+      .map(posts => this.facebookGamesActions.loadMorePostsSuccess(posts));
 }
