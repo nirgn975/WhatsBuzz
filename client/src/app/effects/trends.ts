@@ -19,6 +19,6 @@ export class TrendsEffects {
 
     @Effect() loadMoreTrendsPosts$ = this.update$
       .ofType(TrendsActions.LOAD_MORE_POSTS)
-      .switchMap((nextPage) => this.svc.getTrendPosts(nextPage.payload))
+      .switchMap((page) => this.svc.getTrendPosts(page.payload))
       .map(posts => this.trendsActions.loadMorePostsSuccess(posts));
 }

@@ -5,7 +5,7 @@
 
   // Medium devices (tablets, 768px and up)
   @media (min-width: 768px) {
-    margin-bottom: 4em;
+    margin-bottom: $footer-margin-bottom;
   }
 
   @include category-header;

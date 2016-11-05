@@ -1,0 +1,8 @@
+@import "../../../assets/vars.scss";
+
+@include category-header;
+
+.card {
+  direction: ltr;
+  margin-bottom: $footer-margin-bottom;
+}
