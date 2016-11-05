@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { BuzzActions } from '../../actions';
-// import { Buzz } from '../../models';
+import { Buzz } from '../../models';
 
 @Component({
   selector: 'wb-buzz',
@@ -12,13 +12,13 @@ import { BuzzActions } from '../../actions';
   styleUrls: ['./buzz.component.scss']
 })
 export class BuzzComponent implements OnInit {
-  private buzz: Observable<any>;
+  private buzz: Observable<Buzz[]>;
 
   constructor(
     private store: Store<AppState>,
     private buzzActions: BuzzActions,
   ) {
-    this.buzz = store.select('buzz');
+    this.buzz = store.select(state => state.buzz);
   }
 
   ngOnInit() {

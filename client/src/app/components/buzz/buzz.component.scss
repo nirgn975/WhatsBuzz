@@ -1,17 +1,6 @@
 @import "../../../assets/vars.scss";
 
-.category-header {
-  @include post-header;
-
-  color: $post-text-color;
-  font-size: $post-header-size;
-  text-align: center;
-  background: $post-background;
-
-  h2 {
-    @include post-header-text;
-  }
-}
+@include category-header;
 
 .post {
   @include post;

@@ -22,6 +22,9 @@ export default function (state = initialState, action: Action): FacebookGamesSta
     case FacebookGamesActions.LOAD_POSTS_SUCCESS: {
       return action.payload;
     }
+    case FacebookGamesActions.LOAD_MORE_POSTS_SUCCESS: {
+      return state.concat(action.payload);
+    }
     default: {
       return state;
     }
