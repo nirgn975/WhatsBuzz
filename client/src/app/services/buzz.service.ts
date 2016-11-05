@@ -8,15 +8,18 @@ import { Buzz } from '../models';
 
 @Injectable()
 export class BuzzService {
+  private headers;
+
   constructor(
     private http: Http,
     private translate: TranslateService
-  ) {}
+  ) {
+    this.headers = new Headers();
+    this.headers.append('Accept-Language', this.translate.currentLang);
+  }
 
   getBuzzPosts(): Observable<Buzz[]> {
-    let headers = new Headers();
-    headers.append('Accept-Language', this.translate.currentLang);
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({ headers: this.headers });
 
     return this.http.get(`${environment.API_PATH}/buzz`, options)
       .map(res => res.json().results)
