@@ -19,7 +19,6 @@ export default function (state = initialState, action: Action): PagesState {
       };
     }
     case PagesActions.NEXT_TRENDS_PAGE: {
-      console.log('in reducer trends');
       return {
         facebookGames: state.facebookGames,
         trends: state.trends + 1
