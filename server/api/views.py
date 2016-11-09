@@ -1,10 +1,7 @@
 from django.utils import timezone
 from rest_framework import viewsets
-from rest_framework.response import Response
-from itertools import chain
-from operator import itemgetter
 
-from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer
+from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer
 from whatsbuzz.models import Post, Trend, FacebookGame
 
 
@@ -30,3 +27,12 @@ class BuzzViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Post.objects.filter(publish__lte=timezone.now()).filter(buzz=True).order_by('-created_at')[:5]
     serializer_class = BuzzSerializer
+
+
+class DetailPostViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint to expose all Buzz posts.
+    """
+    queryset = Post.objects.all()
+    serializer_class = DetailPostSerializer
+    lookup_field = 'unique_id'
