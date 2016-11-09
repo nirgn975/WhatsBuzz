@@ -16,12 +16,14 @@ import {
   FacebookGamesActions,
   TrendsActions,
   PagesActions,
+  DetailPostActions,
 } from './actions';
 
 import {
   BuzzEffects,
   FacebookGamesEffects,
   TrendsEffects,
+  DetailPostEffects,
 } from './effects';
 
 import {
@@ -38,7 +40,8 @@ import {
 
 import {
   BuzzService,
-  PostsService
+  PostsService,
+  DetailPostService,
 } from './services';
 
 @NgModule({
@@ -66,14 +69,17 @@ import {
     EffectsModule.run(BuzzEffects),
     EffectsModule.run(FacebookGamesEffects),
     EffectsModule.run(TrendsEffects),
+    EffectsModule.run(DetailPostEffects),
   ],
   providers: [
     BuzzService,
     PostsService,
     BuzzActions,
+    DetailPostService,
     FacebookGamesActions,
     TrendsActions,
     PagesActions,
+    DetailPostActions,
   ],
   bootstrap: [WbComponent]
 })
