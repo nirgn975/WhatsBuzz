@@ -10,7 +10,10 @@ const initialState: DetailPostState = {
   title: '',
   body: '',
   banner_image: '',
-  age_category: ''
+  age_category: '',
+  tags: [
+    {}
+  ]
 };
 
 export default function (state = initialState, action: Action): DetailPostState {

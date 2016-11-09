@@ -13,13 +13,17 @@ import { DetailPost } from '../../models';
   styleUrls: ['./detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit {
-  private detailPost: Observable<DetailPost>;
+  private detailPost: DetailPost;
 
   constructor(
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private detailPostActions: DetailPostActions
-  ) { }
+  ) {
+    store.select(state => state.detailPost).subscribe(
+      (res) => this.detailPost = res
+    );
+  }
 
   ngOnInit() {
     let postId = this.route.snapshot.params['uuid'];

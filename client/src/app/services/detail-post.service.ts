@@ -21,7 +21,7 @@ export class DetailPostService {
     this.params = new URLSearchParams();
   }
 
-  getDetailPost(postId): Observable<DetailPost[]> {
+  getDetailPost(postId): Observable<DetailPost> {
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.get(`${environment.API_PATH}/posts/${postId}`, options)

@@ -1,3 +1,12 @@
-<p>
-  detail-post works!
-</p>
+<div class="category-header">
+  <h2>{{ detailPost.title }}</h2>
+</div>
+
+<div class="card">
+  <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
+  <p>{{ detailPost.body }}</p>
+
+  <div *ngFor="let tag of detailPost.tags">
+    <span>{{ tag.name }}</span>
+  </div>
+</div>

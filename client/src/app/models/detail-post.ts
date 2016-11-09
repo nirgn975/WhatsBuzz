@@ -4,4 +4,7 @@ export interface DetailPost {
   body: string;
   banner_image: string;
   age_category: string;
+  tags: [
+    {}
+  ];
 }
