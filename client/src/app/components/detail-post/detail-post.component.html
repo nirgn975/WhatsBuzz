@@ -7,7 +7,7 @@
   <p class="description">{{ detailPost.body }}</p>
 
   <div class="row btn-social">
-    <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick()">
+    <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick(detailPost.unique_id)">
       {{ 'DETAIL-POST.facebook-button' | translate }}
     </button>
   </div>
