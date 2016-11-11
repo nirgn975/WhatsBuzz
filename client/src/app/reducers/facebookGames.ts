@@ -8,10 +8,7 @@ export type FacebookGamesState = FacebookGame[];
 const initialState: FacebookGamesState = [{
   unique_id: '',
   title: '',
-  body: '',
   banner_image: '',
-  buzz: false,
-  age_category: ''
 }];
 
 export default function (state = initialState, action: Action): FacebookGamesState {
