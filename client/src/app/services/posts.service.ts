@@ -46,5 +46,4 @@ export class PostsService {
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
-
 }

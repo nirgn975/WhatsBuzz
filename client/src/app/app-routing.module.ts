@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'facebook-games', component: FacebookGamesComponent },
   { path: 'trends', component: TrendsComponent },
-  { path: ':posts/:uuid', component: DetailPostComponent },
+  { path: 'posts/:uuid', component: DetailPostComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent }
 ];
 

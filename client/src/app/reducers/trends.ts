@@ -8,10 +8,7 @@ export type TrendsState = Trend[];
 const initialState: TrendsState = [{
   unique_id: '',
   title: '',
-  body: '',
   banner_image: '',
-  buzz: false,
-  age_category: ''
 }];
 
 export default function (state = initialState, action: Action): TrendsState {

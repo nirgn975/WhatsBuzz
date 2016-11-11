@@ -19,13 +19,16 @@
   "POST": {
     "playButton": "Start Game"
   },
-  "FACEBOOKGAMES": {
+  "FACEBOOK-GAMES": {
     "header": "Facebook Games"
   },
   "TRENDS": {
     "header": "Trends"
   },
-  "PRIVACYPOLICY": {
+  "PRIVACY-POLICY": {
     "header": "Privacy Policy"
+  },
+  "DETAIL-POST": {
+    "facebook-button": "Continue With Facebook"
   }
 }
