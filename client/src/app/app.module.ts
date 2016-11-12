@@ -35,13 +35,15 @@ import {
   PostComponent,
   DetailPostComponent,
   MainComponent,
-  PrivacyPolicyComponent
+  PrivacyPolicyComponent,
+  RecommandationComponent,
 } from './components';
 
 import {
   BuzzService,
   PostsService,
   DetailPostService,
+  RecommandationService,
 } from './services';
 
 @NgModule({
@@ -57,6 +59,7 @@ import {
     MainComponent,
     PrivacyPolicyComponent,
     BuzzComponent,
+    RecommandationComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import {
     PostsService,
     BuzzActions,
     DetailPostService,
+    RecommandationService,
     FacebookGamesActions,
     TrendsActions,
     PagesActions,
