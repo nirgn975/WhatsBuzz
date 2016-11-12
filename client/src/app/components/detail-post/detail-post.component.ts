@@ -9,8 +9,6 @@ import { AppState } from '../../reducers';
 import { DetailPostActions } from '../../actions';
 import { DetailPost } from '../../models';
 
-import { DetailPostService } from '../../services';
-
 @Component({
   selector: 'wb-detail-post',
   templateUrl: './detail-post.component.html',
@@ -25,7 +23,6 @@ export class DetailPostComponent implements OnInit, DoCheck {
     private route: ActivatedRoute,
     private detailPostActions: DetailPostActions,
     private fb: FacebookService,
-     private detailPostService: DetailPostService,
   ) {
     store.select(state => state.detailPost).subscribe(
       (res) => this.detailPost = res
@@ -58,7 +55,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
     this.fb.login().then(
       (response: FacebookLoginResponse) => {
         if (response.status = 'connected') {
-          this.detailPostService.getGame(gameId);
+          this.store.dispatch(this.detailPostActions.loadFacebookGamePost(this.correntId));
         }
       }
     );

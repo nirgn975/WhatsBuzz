@@ -56,7 +56,7 @@ class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
         return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
 
 
-class GetGame(APIView):
+class CreateGame(APIView):
     """
     A custom endpoint for GET Facebook Game request.
     """
@@ -65,6 +65,8 @@ class GetGame(APIView):
         """
         Return a hardcoded response.
         """
-        game_unique_id = self.request.query_params.get('id', None)
-        print(game_unique_id)
+        unique_id = self.request.query_params.get('id', None)
+        token = self.request.query_params.get('token', None)
+        print(unique_id)
+        print(token)
         return Response({"success": True, "content": "Hello World!"})
