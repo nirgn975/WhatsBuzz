@@ -3,13 +3,15 @@ import { FacebookGamesActions } from './facebookGames';
 import { TrendsActions } from './trends';
 import { PagesActions } from './pages';
 import { DetailPostActions } from './detail-post';
+import { RecommendationsActions } from './recommendations';
 
 export {
   BuzzActions,
   FacebookGamesActions,
   TrendsActions,
   PagesActions,
-  DetailPostActions
+  DetailPostActions,
+  RecommendationsActions
 };
 
 export default [
@@ -17,5 +19,6 @@ export default [
   FacebookGamesActions,
   TrendsActions,
   PagesActions,
-  DetailPostActions
+  DetailPostActions,
+  RecommendationsActions
 ];

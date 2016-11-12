@@ -8,19 +8,10 @@ import {FacebookService, FacebookInitParams} from 'ng2-facebook-sdk/dist';
   template: `
     <wb-header></wb-header>
     <div class="container">
-      <div class="col-sm-8">
-        <router-outlet></router-outlet>
-      </div>
-      <wb-buzz class="col-sm-4"></wb-buzz>
+      <router-outlet></router-outlet>
     </div>
     <wb-footer></wb-footer>
-  `,
-  styles: [`
-    .col-sm-8,
-    .col-sm-4 {
-      padding: 0;
-    }
-  `]
+  `
 })
 export class WbComponent {
   constructor(

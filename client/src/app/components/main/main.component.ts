@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { FacebookGamesActions, TrendsActions, PagesActions } from '../../actions';
-import { FacebookGame, Trend, Pages } from '../../models';
+import { PrePost, Pages } from '../../models';
 
 @Component({
   selector: 'wb-main',
@@ -12,8 +12,8 @@ import { FacebookGame, Trend, Pages } from '../../models';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  private facebookGames: Observable<FacebookGame[]>;
-  private trends: Observable<Trend[]>;
+  private facebookGames: Observable<PrePost[]>;
+  private trends: Observable<PrePost[]>;
   private pages: Pages;
 
   constructor(

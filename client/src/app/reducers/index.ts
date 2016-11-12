@@ -7,6 +7,7 @@ import facebookGamesReducer, * as fromFacebookGames from './facebookGames';
 import trendsReducer, * as fromTrends from './trends';
 import pagesReducer, * as fromPages from './pages';
 import detailPostReducer, * as fromDetailPost from './detail-post';
+import recommandationReducer, * as fromRecommandation from './recommandation';
 
 export interface AppState {
   buzz: fromBuzz.BuzzState;
@@ -14,6 +15,7 @@ export interface AppState {
   trends: fromTrends.TrendsState;
   pages: fromPages.PagesState;
   detailPost: fromDetailPost.DetailPostState;
+  recommandations: fromRecommandation.RecommendationsState;
 };
 
 export default compose(combineReducers)({
@@ -21,5 +23,6 @@ export default compose(combineReducers)({
   facebookGames: facebookGamesReducer,
   trends: trendsReducer,
   pages: pagesReducer,
-  detailPost: detailPostReducer
+  detailPost: detailPostReducer,
+  recommandations: recommandationReducer
 });

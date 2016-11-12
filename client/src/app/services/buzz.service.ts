@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 import { environment } from '../../environments/environment';
-import { Buzz } from '../models';
+import { PrePost } from '../models';
 
 @Injectable()
 export class BuzzService {
@@ -18,7 +18,7 @@ export class BuzzService {
     this.headers.append('Accept-Language', this.translate.currentLang);
   }
 
-  getBuzzPosts(): Observable<Buzz[]> {
+  getBuzzPosts(): Observable<PrePost[]> {
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.get(`${environment.API_PATH}/buzz`, options)

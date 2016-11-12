@@ -7,24 +7,22 @@
 }
 
 .long-post {
-  .fb-page {
-    margin-bottom: 10px;
-  }
+  padding: 0;
 
   .row {
     margin: 5px 0;
+    padding: 10px;
     border-bottom: 1px solid #c7dce6;
 
     h3 {
       @include post-title;
-      font-size: 17px;
-      width: 68%;
-      display: inline-block;
+      text-align: center;
+      font-size: 18px;
+      height: 50px;
     }
 
     .buzz-hero-image {
-      height: 70px;
-      width: 100px;
+      width: 100%;
     }
   }
 

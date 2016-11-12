@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -19,6 +20,7 @@ import {
   TrendsActions,
   PagesActions,
   DetailPostActions,
+  RecommendationsActions,
 } from './actions';
 
 import {
@@ -26,6 +28,7 @@ import {
   FacebookGamesEffects,
   TrendsEffects,
   DetailPostEffects,
+  RecommandationEffects,
 } from './effects';
 
 import {
@@ -37,13 +40,15 @@ import {
   PostComponent,
   DetailPostComponent,
   MainComponent,
-  PrivacyPolicyComponent
+  PrivacyPolicyComponent,
+  RecommendationsComponent,
 } from './components';
 
 import {
   BuzzService,
   PostsService,
   DetailPostService,
+  RecommandationService,
 } from './services';
 
 @NgModule({
@@ -59,6 +64,7 @@ import {
     MainComponent,
     PrivacyPolicyComponent,
     BuzzComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,17 +78,20 @@ import {
     EffectsModule.run(FacebookGamesEffects),
     EffectsModule.run(TrendsEffects),
     EffectsModule.run(DetailPostEffects),
+    EffectsModule.run(RecommandationEffects),
   ],
   providers: [
     FacebookService,
-    BuzzService,
-    PostsService,
-    BuzzActions,
-    DetailPostService,
     FacebookGamesActions,
     TrendsActions,
+    BuzzService,
+    BuzzActions,
+    PostsService,
     PagesActions,
+    DetailPostService,
     DetailPostActions,
+    RecommandationService,
+    RecommendationsActions,
   ],
   bootstrap: [WbComponent]
 })
