@@ -3,12 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
+import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
+
 import { AppState } from '../../reducers';
 import { DetailPostActions } from '../../actions';
 import { DetailPost } from '../../models';
-
-import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
-import { DetailPostService } from '../../services';
 
 @Component({
   selector: 'wb-detail-post',
@@ -23,7 +22,6 @@ export class DetailPostComponent implements OnInit {
     private route: ActivatedRoute,
     private detailPostActions: DetailPostActions,
     private fb: FacebookService,
-    private detailPostService: DetailPostService
   ) {
     store.select(state => state.detailPost).subscribe(
       (res) => this.detailPost = res
@@ -44,12 +42,13 @@ export class DetailPostComponent implements OnInit {
   }
 
   onFacebookLoginClick(gameId) {
-    this.fb.login().then(
-      (response: FacebookLoginResponse) => {
-        if (response.status = 'connected') {
-          this.detailPostService.getGame(gameId);
-        }
-      }
-    );
+    console.log('login with facebook');
+    // this.fb.login().then(
+    //   (response: FacebookLoginResponse) => {
+    //     if (response.status = 'connected') {
+    //       this.detailPostService.getGame(gameId);
+    //     }
+    //   }
+    // );
   }
 }

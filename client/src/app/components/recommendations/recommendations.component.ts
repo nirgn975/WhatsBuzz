@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
-import { BuzzActions } from '../../actions';
-import { Buzz } from '../../models';
+import { RecommendationsActions } from '../../actions';
+import { Recommendation } from '../../models';
 
 @Component({
   selector: 'wb-recommendations',
@@ -12,16 +12,16 @@ import { Buzz } from '../../models';
   styleUrls: ['./recommendations.component.scss']
 })
 export class RecommendationsComponent implements OnInit {
-  private buzz: Observable<Buzz[]>;
+  private recommendations: Observable<Recommendation[]>;
 
   constructor(
     private store: Store<AppState>,
-    private buzzActions: BuzzActions,
+    private recommendationsActions: RecommendationsActions,
   ) {
-    this.buzz = store.select(state => state.buzz);
+    this.recommendations = store.select(state => state.recommandations);
   }
 
   ngOnInit() {
-    this.store.dispatch(this.buzzActions.loadBuzzs());
+    this.store.dispatch(this.recommendationsActions.loadRecommendations('children'));
   }
 }

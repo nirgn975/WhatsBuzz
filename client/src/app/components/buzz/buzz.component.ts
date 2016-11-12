@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
+import { FacebookService, FacebookInitParams } from 'ng2-facebook-sdk/dist';
+
 import { AppState } from '../../reducers';
 import { BuzzActions } from '../../actions';
 import { Buzz } from '../../models';
@@ -17,8 +19,17 @@ export class BuzzComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private buzzActions: BuzzActions,
+    private fb: FacebookService,
   ) {
     this.buzz = store.select(state => state.buzz);
+
+    let fbParams: FacebookInitParams = {
+      appId   : '1063610257017045',
+      cookie  : true,  // enable cookies to allow the server to access the session
+      xfbml   : true,  // parse social plugins on this page
+      version : 'v2.7' // use graph api version 2.7
+    };
+    this.fb.init(fbParams);
   }
 
   ngOnInit() {

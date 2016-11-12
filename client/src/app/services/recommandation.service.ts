@@ -27,7 +27,7 @@ export class RecommandationService {
       headers: this.headers, search: this.params
     });
 
-    return this.http.get(`${environment.API_PATH}/facebook-games`, options)
+    return this.http.get(`${environment.API_PATH}/age-categories`, options)
       .map(res => res.json().results)
       .catch(this.handleError);
   }

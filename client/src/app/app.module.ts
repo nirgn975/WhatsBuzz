@@ -19,6 +19,7 @@ import {
   TrendsActions,
   PagesActions,
   DetailPostActions,
+  RecommendationsActions,
 } from './actions';
 
 import {
@@ -26,6 +27,7 @@ import {
   FacebookGamesEffects,
   TrendsEffects,
   DetailPostEffects,
+  RecommandationEffects,
 } from './effects';
 
 import {
@@ -75,18 +77,24 @@ import {
     EffectsModule.run(FacebookGamesEffects),
     EffectsModule.run(TrendsEffects),
     EffectsModule.run(DetailPostEffects),
+    EffectsModule.run(RecommandationEffects),
   ],
   providers: [
     FacebookService,
-    BuzzService,
-    PostsService,
-    BuzzActions,
-    DetailPostService,
-    RecommandationService,
     FacebookGamesActions,
     TrendsActions,
+
+    BuzzService,
+    BuzzActions,
+
+    PostsService,
     PagesActions,
+
+    DetailPostService,
     DetailPostActions,
+
+    RecommandationService,
+    RecommendationsActions,
   ],
   bootstrap: [WbComponent]
 })

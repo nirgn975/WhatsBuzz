@@ -3,10 +3,10 @@
 </div>
 
 <div class="post long-post">
-  <div class="row" *ngFor="let b of buzz | async">
-    <a [routerLink]="['/posts', b.unique_id ]">
-      <h3>{{ b.title }}</h3>
-      <img class="buzz-hero-image pull-left" src="{{ b.banner_image }}">
+  <div class="row" *ngFor="let r of recommendations | async">
+    <a [routerLink]="['/posts', r.unique_id ]">
+      <h3>{{ r.title }}</h3>
+      <img class="buzz-hero-image pull-left" src="{{ r.banner_image }}">
     </a>
   </div>
 </div>
