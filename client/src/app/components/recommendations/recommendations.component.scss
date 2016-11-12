@@ -1,0 +1,30 @@
+@import "../../../assets/vars.scss";
+
+@include category-header;
+
+.post {
+  @include post;
+}
+
+.long-post {
+  .row {
+    margin: 5px 0;
+    border-bottom: 1px solid #c7dce6;
+
+    h3 {
+      @include post-title;
+      font-size: 17px;
+      width: 64%;
+      display: inline-block;
+    }
+
+    .buzz-hero-image {
+      height: 70px;
+      width: 100px;
+    }
+  }
+
+  :hover {
+    background: #ebf4f8;
+  }
+}

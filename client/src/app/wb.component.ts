@@ -6,10 +6,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   template: `
     <wb-header></wb-header>
     <div class="container">
-      <div class="col-sm-8">
-        <router-outlet></router-outlet>
-      </div>
-      <wb-buzz class="col-sm-4"></wb-buzz>
+      <router-outlet></router-outlet>
     </div>
     <wb-footer></wb-footer>
   `,

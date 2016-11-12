@@ -36,7 +36,7 @@ import {
   DetailPostComponent,
   MainComponent,
   PrivacyPolicyComponent,
-  RecommandationComponent,
+  RecommendationsComponent,
 } from './components';
 
 import {
@@ -59,7 +59,7 @@ import {
     MainComponent,
     PrivacyPolicyComponent,
     BuzzComponent,
-    RecommandationComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,

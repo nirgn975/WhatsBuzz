@@ -9,11 +9,11 @@ import { PrivacyPolicyComponent } from './components';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'posts/1', pathMatch: 'full' },
-  { path: '', component: MainComponent },
   { path: 'facebook-games', component: FacebookGamesComponent },
   { path: 'trends', component: TrendsComponent },
   { path: 'posts/:uuid', component: DetailPostComponent },
-  { path: 'privacy-policy', component: PrivacyPolicyComponent }
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: '', component: MainComponent },
 ];
 
 @NgModule({

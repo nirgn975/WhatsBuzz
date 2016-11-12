@@ -1,21 +1,27 @@
-<div class="category-header">
-  <h2>{{ detailPost.title }}</h2>
+<div class="col-sm-8">
+  <div class="category-header">
+    <h2>{{ detailPost.title }}</h2>
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
+    <p class="description">{{ detailPost.body }}</p>
+
+    <div class="row btn-social">
+      <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick()">
+        {{ 'DETAIL-POST.facebook-button' | translate }}
+      </button>
+    </div>
+
+    <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost.unique_id }}" data-width="100%"></div>
+
+    <div class="row tags">
+      <span>תגיות:</span>
+      <span *ngFor="let tag of detailPost.tags">{{ tag.name }}</span>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-  <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
-  <p class="description">{{ detailPost.body }}</p>
-
-  <div class="row btn-social">
-    <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick()">
-      {{ 'DETAIL-POST.facebook-button' | translate }}
-    </button>
-  </div>
-
-  <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost.unique_id }}" data-width="100%"></div>
-
-  <div class="row tags">
-    <span>תגיות:</span>
-    <span *ngFor="let tag of detailPost.tags">{{ tag.name }}</span>
-  </div>
+<div class="col-sm-4">
+  <wb-recommendations></wb-recommendations>
 </div>

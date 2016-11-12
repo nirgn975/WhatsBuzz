@@ -7,4 +7,4 @@ export * from './trends/trends.component';
 export * from './post/post.component';
 export * from './detail-post/detail-post.component';
 export * from './privacy-policy/privacy-policy.component';
-export * from './recommandation/recommandation.component';
+export * from './recommendations/recommendations.component';
