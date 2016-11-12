@@ -10,4 +10,5 @@ router.register(r'posts', views.DetailPostViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^get-game/$', views.GetGame.as_view()),
 ]

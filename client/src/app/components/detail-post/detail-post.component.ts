@@ -8,6 +8,7 @@ import { DetailPostActions } from '../../actions';
 import { DetailPost } from '../../models';
 
 import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
+import { DetailPostService } from '../../services';
 
 @Component({
   selector: 'wb-detail-post',
@@ -21,7 +22,8 @@ export class DetailPostComponent implements OnInit {
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private detailPostActions: DetailPostActions,
-    private fb: FacebookService
+    private fb: FacebookService,
+    private detailPostService: DetailPostService
   ) {
     store.select(state => state.detailPost).subscribe(
       (res) => this.detailPost = res
@@ -45,8 +47,7 @@ export class DetailPostComponent implements OnInit {
     this.fb.login().then(
       (response: FacebookLoginResponse) => {
         if (response.status = 'connected') {
-          console.log(gameId);
-          console.log(response);
+          this.detailPostService.getGame(gameId);
         }
       }
     );
