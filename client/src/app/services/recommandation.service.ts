@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 import { environment } from '../../environments/environment';
-import { FacebookGame } from '../models';
+import { PrePost } from '../models';
 
 @Injectable()
 export class RecommandationService {
@@ -21,7 +21,7 @@ export class RecommandationService {
     this.params = new URLSearchParams();
   }
 
-  getRecommendation(category): Observable<FacebookGame[]> {
+  getRecommendation(category): Observable<PrePost[]> {
     this.params.set('age_categories', category);
     let options = new RequestOptions({
       headers: this.headers, search: this.params

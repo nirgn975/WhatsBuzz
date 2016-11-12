@@ -11,5 +11,4 @@ router.register(r'age-categories', views.AgeCategoriesViewSet, base_name='age-ca
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^get-game/$', views.GetGame.as_view()),
 ]

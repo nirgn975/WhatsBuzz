@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 
-import { Recommendation } from '../models';
+import { PrePost } from '../models';
 import { RecommendationsActions } from '../actions';
 
-export type RecommendationsState = Recommendation[];
+export type RecommendationsState = PrePost[];
 
 const initialState: RecommendationsState = [{
   unique_id: '',

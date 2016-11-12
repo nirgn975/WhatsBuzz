@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { RecommendationsActions } from '../../actions';
-import { Recommendation } from '../../models';
+import { PrePost } from '../../models';
 
 @Component({
   selector: 'wb-recommendations',
@@ -12,7 +12,7 @@ import { Recommendation } from '../../models';
   styleUrls: ['./recommendations.component.scss']
 })
 export class RecommendationsComponent implements OnInit {
-  private recommendations: Observable<Recommendation[]>;
+  private recommendations: Observable<PrePost[]>;
 
   constructor(
     private store: Store<AppState>,

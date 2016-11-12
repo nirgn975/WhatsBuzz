@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 import { environment } from '../../environments/environment';
-import { FacebookGame, Trend } from '../models';
+import { PrePost } from '../models';
 
 @Injectable()
 export class PostsService {
@@ -21,7 +21,7 @@ export class PostsService {
     this.params = new URLSearchParams();
   }
 
-  getFacebookGamePosts(page): Observable<FacebookGame[]> {
+  getFacebookGamePosts(page): Observable<PrePost[]> {
     this.params.set('page', page);
     let options = new RequestOptions({
       headers: this.headers, search: this.params
@@ -32,7 +32,7 @@ export class PostsService {
       .catch(this.handleError);
   }
 
-  getTrendPosts(page): Observable<Trend[]> {
+  getTrendPosts(page): Observable<PrePost[]> {
     this.params.set('page', page);
     let options = new RequestOptions({
       headers: this.headers, search: this.params
