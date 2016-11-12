@@ -1,7 +1,8 @@
 from django.utils import timezone
 from rest_framework import viewsets
 
-from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer
+from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer, \
+    AgeCategoriesSerializer
 from whatsbuzz.models import Post, Trend, FacebookGame
 
 
@@ -36,3 +37,18 @@ class DetailPostViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Post.objects.all()
     serializer_class = DetailPostSerializer
     lookup_field = 'unique_id'
+
+
+class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint to expose all posts by age categories.
+    """
+    serializer_class = AgeCategoriesSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        age_categories = self.request.query_params.get('age_categories')
+        return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
