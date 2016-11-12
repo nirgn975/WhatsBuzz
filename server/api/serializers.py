@@ -32,3 +32,9 @@ class DetailPostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
         fields = ('unique_id', 'title', 'body', 'banner_image', 'age_categories', 'tags')
+
+
+class AgeCategoriesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('unique_id', 'title', 'banner_image')

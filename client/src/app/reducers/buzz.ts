@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 
-import { Buzz } from '../models';
+import { PrePost } from '../models';
 import { BuzzActions } from '../actions';
 
-export type BuzzState = Buzz[];
+export type BuzzState = PrePost[];
 
 const initialState: BuzzState = [{
   unique_id: '',

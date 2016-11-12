@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 
-import { FacebookGame } from '../models';
+import { PrePost } from '../models';
 import { FacebookGamesActions } from '../actions';
 
-export type FacebookGamesState = FacebookGame[];
+export type FacebookGamesState = PrePost[];
 
 const initialState: FacebookGamesState = [{
   unique_id: '',

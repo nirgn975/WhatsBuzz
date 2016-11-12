@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { PrePost } from '../models';
 
 @Injectable()
-export class PostsService {
+export class RecommandationService {
   private headers;
   private params;
 
@@ -21,24 +21,13 @@ export class PostsService {
     this.params = new URLSearchParams();
   }
 
-  getFacebookGamePosts(page): Observable<PrePost[]> {
-    this.params.set('page', page);
+  getRecommendation(category): Observable<PrePost[]> {
+    this.params.set('age_categories', category);
     let options = new RequestOptions({
       headers: this.headers, search: this.params
     });
 
-    return this.http.get(`${environment.API_PATH}/facebook-games`, options)
-      .map(res => res.json().results)
-      .catch(this.handleError);
-  }
-
-  getTrendPosts(page): Observable<PrePost[]> {
-    this.params.set('page', page);
-    let options = new RequestOptions({
-      headers: this.headers, search: this.params
-    });
-
-    return this.http.get(`${environment.API_PATH}/trends`, options)
+    return this.http.get(`${environment.API_PATH}/age-categories`, options)
       .map(res => res.json().results)
       .catch(this.handleError);
   }
@@ -46,4 +35,5 @@ export class PostsService {
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }
+
 }

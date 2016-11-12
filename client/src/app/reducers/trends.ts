@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 
-import { Trend } from '../models';
+import { PrePost } from '../models';
 import { TrendsActions } from '../actions';
 
-export type TrendsState = Trend[];
+export type TrendsState = PrePost[];
 
 const initialState: TrendsState = [{
   unique_id: '',
