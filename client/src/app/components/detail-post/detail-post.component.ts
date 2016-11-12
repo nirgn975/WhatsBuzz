@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -16,8 +16,9 @@ import { DetailPostService } from '../../services';
   templateUrl: './detail-post.component.html',
   styleUrls: ['./detail-post.component.scss']
 })
-export class DetailPostComponent implements OnInit {
+export class DetailPostComponent implements OnInit, DoCheck {
   private detailPost: DetailPost;
+  private correntId = '';
 
   constructor(
     private store: Store<AppState>,
@@ -40,8 +41,16 @@ export class DetailPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    let postId = this.route.snapshot.params['uuid'];
-    this.store.dispatch(this.detailPostActions.loadDetailPost(postId));
+    this.correntId = this.route.snapshot.params['uuid'];
+    this.store.dispatch(this.detailPostActions.loadDetailPost(this.correntId));
+  }
+
+  ngDoCheck() {
+    // Check if the url has changed, if it is, change the data (dispatch an action).
+    if (this.correntId !== this.route.snapshot.params['uuid']) {
+      this.correntId = this.route.snapshot.params['uuid'];
+      this.store.dispatch(this.detailPostActions.loadDetailPost(this.correntId));
+    }
   }
 
   onFacebookLoginClick(gameId) {
