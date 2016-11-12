@@ -32,7 +32,7 @@ class BuzzViewSet(viewsets.ReadOnlyModelViewSet):
 
 class DetailPostViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint to expose all Buzz posts.
+    API endpoint to expose all detail posts.
     """
     queryset = Post.objects.all()
     serializer_class = DetailPostSerializer
@@ -52,3 +52,17 @@ class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
         """
         age_categories = self.request.query_params.get('age_categories')
         return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
+
+
+class GetGame(APIView):
+    """
+    A custom endpoint for GET Facebook Game request.
+    """
+
+    def get(self, request, format=None):
+        """
+        Return a hardcoded response.
+        """
+        game_unique_id = self.request.query_params.get('id', None)
+        print(game_unique_id)
+        return Response({"success": True, "content": "Hello World!"})

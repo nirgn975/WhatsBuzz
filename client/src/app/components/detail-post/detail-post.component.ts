@@ -7,7 +7,8 @@ import { AppState } from '../../reducers';
 import { DetailPostActions } from '../../actions';
 import { DetailPost } from '../../models';
 
-declare const FB:any;
+import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
+import { DetailPostService } from '../../services';
 
 @Component({
   selector: 'wb-detail-post',
@@ -20,43 +21,35 @@ export class DetailPostComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private route: ActivatedRoute,
-    private detailPostActions: DetailPostActions
+    private detailPostActions: DetailPostActions,
+    private fb: FacebookService,
+    private detailPostService: DetailPostService
   ) {
     store.select(state => state.detailPost).subscribe(
       (res) => this.detailPost = res
     );
 
-    FB.init({
-      appId      : '1063610257017045',
-      cookie     : true,  // enable cookies to allow the server to access
-                          // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.5' // use graph api version 2.5
-    });
+    let fbParams: FacebookInitParams = {
+      appId   : '1063610257017045',
+      cookie  : true,  // enable cookies to allow the server to access the session
+      xfbml   : true,  // parse social plugins on this page
+      version : 'v2.7' // use graph api version 2.7
+    };
+    this.fb.init(fbParams);
   }
 
   ngOnInit() {
     let postId = this.route.snapshot.params['uuid'];
     this.store.dispatch(this.detailPostActions.loadDetailPost(postId));
-
-    FB.getLoginStatus(response => {
-      this.statusChangeCallback(response);
-    });
   }
 
-  onFacebookLoginClick() {
-    FB.login();
+  onFacebookLoginClick(gameId) {
+    this.fb.login().then(
+      (response: FacebookLoginResponse) => {
+        if (response.status = 'connected') {
+          this.detailPostService.getGame(gameId);
+        }
+      }
+    );
   }
-
-  statusChangeCallback(resp) {
-    if (resp.status === 'connected') {
-      console.log(resp);
-      // connect here with your server for facebook login by passing access token given by facebook
-    } else if (resp.status === 'not_authorized') {
-      console.log(resp);
-    } else {
-      console.log(resp);
-    }
-  }
-
 }
