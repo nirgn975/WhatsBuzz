@@ -192,7 +192,7 @@ def create_facebook_users_dummy_data():
     # First Facebook User.
     User.objects.get_or_create(
         token='fFAGRNJru1FTz70BzhT3Zg',
-        email='nir@gmail.com',
+        user_id='1324567',
         name='Nir Galon',
         created_at=timezone.now(),
         last_time_visit=timezone.now(),
@@ -201,7 +201,7 @@ def create_facebook_users_dummy_data():
     # Second Facebook User.
     User.objects.get_or_create(
         token='oMsCeLvIaQm6bTrgtp7',
-        email='yotam@gmail.com',
+        user_id='1234568',
         name='Yotam Emergy',
         created_at=timezone.now(),
         last_time_visit=timezone.now(),

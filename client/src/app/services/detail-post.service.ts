@@ -29,8 +29,10 @@ export class DetailPostService {
       .catch(this.handleError);
   }
 
-  getGame(postId): Observable<{}> {
-    this.params.set('id', postId);
+  getGame(gameData): Observable<{}> {    
+    this.params.set('userID', gameData.userID);
+    this.params.set('accessToken', gameData.accessToken);
+    this.params.set('unique_id', gameData.unique_id);
     let options = new RequestOptions({
       headers: this.headers, search: this.params
     });

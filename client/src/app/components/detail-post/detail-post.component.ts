@@ -51,11 +51,15 @@ export class DetailPostComponent implements OnInit, DoCheck {
   }
 
   onFacebookLoginClick(gameId) {
-    console.log('login with facebook');
     this.fb.login().then(
       (response: FacebookLoginResponse) => {
         if (response.status = 'connected') {
-          this.store.dispatch(this.detailPostActions.loadFacebookGamePost(this.correntId));
+          let game = {
+            userID: response.authResponse.userID,
+            accessToken: response.authResponse.accessToken,
+            unique_id: this.correntId
+          }
+          this.store.dispatch(this.detailPostActions.loadFacebookGamePost(game));
         }
       }
     );

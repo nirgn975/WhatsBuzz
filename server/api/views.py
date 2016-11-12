@@ -65,8 +65,9 @@ class CreateGame(APIView):
         """
         Return a hardcoded response.
         """
-        unique_id = self.request.query_params.get('id', None)
-        token = self.request.query_params.get('token', None)
-        print(unique_id)
-        print(token)
+        unique_id = self.request.query_params.get('unique_id', None)
+        token = self.request.query_params.get('accessToken', None)
+        user_id = self.request.query_params.get('userID', None)
+
+
         return Response({"success": True, "content": "Hello World!"})
