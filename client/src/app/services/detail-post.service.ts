@@ -29,23 +29,6 @@ export class DetailPostService {
       .catch(this.handleError);
   }
 
-  getGame(postId): Observable<{}> {
-    this.params.set('id', postId);
-    let options = new RequestOptions({
-      headers: this.headers, search: this.params
-    });
-
-    // return this.http.get(`${environment.API_PATH}/get-game`, options)
-    //   .map(res => res.json())
-    //   .catch(this.handleError);
-
-    console.log(`${environment.API_PATH}/get-game/?id=2f02d238-fa2d-4504-ac3d-aa1c4cf820c5`);
-    return this.http.get(`${environment.API_PATH}/get-game`, options)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
-  }
-
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }

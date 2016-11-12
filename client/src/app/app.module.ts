@@ -83,16 +83,12 @@ import {
     FacebookService,
     FacebookGamesActions,
     TrendsActions,
-
     BuzzService,
     BuzzActions,
-
     PostsService,
     PagesActions,
-
     DetailPostService,
     DetailPostActions,
-
     RecommandationService,
     RecommendationsActions,
   ],
