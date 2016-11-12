@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { FacebookGamesActions, PagesActions } from '../../actions';
-import { FacebookGame, Pages } from '../../models';
+import { PrePost, Pages } from '../../models';
 
 @Component({
   selector: 'wb-facebook-games',
@@ -12,7 +12,7 @@ import { FacebookGame, Pages } from '../../models';
   styleUrls: ['./facebook-games.component.scss']
 })
 export class FacebookGamesComponent implements OnInit {
-  private posts: Observable<FacebookGame[]>;
+  private posts: Observable<PrePost[]>;
   private pages: Pages;
 
   constructor(

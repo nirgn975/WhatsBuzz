@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../reducers';
 import { TrendsActions, PagesActions } from '../../actions';
-import { Trend, Pages } from '../../models';
+import { PrePost, Pages } from '../../models';
 
 @Component({
   selector: 'wb-trends',
@@ -12,7 +12,7 @@ import { Trend, Pages } from '../../models';
   styleUrls: ['./trends.component.scss']
 })
 export class TrendsComponent implements OnInit {
-  private posts: Observable<Trend[]>;
+  private posts: Observable<PrePost[]>;
   private pages: Pages;
 
   constructor(
