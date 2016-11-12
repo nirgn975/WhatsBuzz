@@ -69,5 +69,4 @@ class CreateGame(APIView):
         token = self.request.query_params.get('accessToken', None)
         user_id = self.request.query_params.get('userID', None)
 
-
         return Response({"success": True, "content": "Hello World!"})
