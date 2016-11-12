@@ -15,6 +15,7 @@ import { PrePost } from '../../models';
 })
 export class BuzzComponent implements OnInit {
   private buzz: Observable<PrePost[]>;
+  private loadBuzz: boolean = false;
 
   constructor(
     private store: Store<AppState>,
@@ -33,6 +34,10 @@ export class BuzzComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.buzzActions.loadBuzzs());
+    if (!this.loadBuzz) {
+      // Load Buzz posts only once.
+      this.store.dispatch(this.buzzActions.loadBuzzs());
+      this.loadBuzz = true;
+    }
   }
 }
