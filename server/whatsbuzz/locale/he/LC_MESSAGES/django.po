@@ -192,7 +192,7 @@ msgstr "פייסבוק - תמונת פרופיל"
 
 #: whatsbuzz/models.py:131
 msgid "user_id"
-msgstr "מזהה יחודיי"
+msgstr "מזהה יחודי"
 
 #: whatsbuzz/models.py:132
 msgid "name"
