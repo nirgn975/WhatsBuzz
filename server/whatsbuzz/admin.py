@@ -27,7 +27,7 @@ class FacebookProfileImageAdmin(admin.TabularInline):
 
 class UserAdmin(admin.ModelAdmin):
     model = User
-    list_display = ('token', 'email', 'name', 'last_time_visit')
+    list_display = ('token', 'user_id', 'name', 'last_time_visit')
 
 
 class TagsAdmin(TranslationAdmin):

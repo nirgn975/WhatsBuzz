@@ -29,6 +29,20 @@ export class DetailPostService {
       .catch(this.handleError);
   }
 
+  getGame(gameData): Observable<{}> {    
+    this.params.set('userID', gameData.userID);
+    this.params.set('accessToken', gameData.accessToken);
+    this.params.set('unique_id', gameData.unique_id);
+    let options = new RequestOptions({
+      headers: this.headers, search: this.params
+    });
+
+    return this.http.get(`${environment.API_PATH}/create-game`, options)
+      .map(res => res.json())
+      .do(data => console.log(data))
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }

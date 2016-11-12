@@ -1,5 +1,7 @@
 from django.utils import timezone
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer, \
     AgeCategoriesSerializer
@@ -52,3 +54,19 @@ class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
         """
         age_categories = self.request.query_params.get('age_categories')
         return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
+
+
+class CreateGame(APIView):
+    """
+    A custom endpoint for GET Facebook Game request.
+    """
+
+    def get(self, request, format=None):
+        """
+        Return a hardcoded response.
+        """
+        unique_id = self.request.query_params.get('unique_id', None)
+        token = self.request.query_params.get('accessToken', None)
+        user_id = self.request.query_params.get('userID', None)
+
+        return Response({"success": True, "content": "Hello World!"})

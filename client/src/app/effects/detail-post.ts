@@ -16,4 +16,9 @@ export class DetailPostEffects {
       .ofType(DetailPostActions.LOAD_DETAIL_POST)
       .switchMap((postId) => this.svc.getDetailPost(postId.payload))
       .map(detailPost => this.detailPostActions.loadDetailPostSuccess(detailPost));
+
+    @Effect() loadFacebookGame$ = this.update$
+      .ofType(DetailPostActions.LOAD_FACEBOOK_GAME)
+      .switchMap((data) => this.svc.getGame(data.payload))
+      .map(gameCode => this.detailPostActions.loadFacebookGameSuccess(gameCode));
 }

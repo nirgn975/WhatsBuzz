@@ -3,6 +3,9 @@
 Django==1.10.1
 psycopg2==2.6.2
 django-extensions==1.7.4
+
+# Facebook
+django-facebook==6.0.3
 Pillow==3.3.1
 
 # Admin
