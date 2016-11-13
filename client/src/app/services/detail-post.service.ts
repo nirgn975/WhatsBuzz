@@ -29,10 +29,11 @@ export class DetailPostService {
       .catch(this.handleError);
   }
 
-  getGame(gameData): Observable<{}> {    
+  getGame(gameData): Observable<{}> {
     this.params.set('userID', gameData.userID);
     this.params.set('accessToken', gameData.accessToken);
-    this.params.set('unique_id', gameData.unique_id);
+    this.params.set('uniqueId', gameData.unique_id);
+    this.params.set('postLanguage', this.translate.currentLang);
     let options = new RequestOptions({
       headers: this.headers, search: this.params
     });

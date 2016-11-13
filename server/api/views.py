@@ -1,4 +1,6 @@
+import requests
 from django.utils import timezone
+from django.views.i18n import set_language
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -65,8 +67,41 @@ class CreateGame(APIView):
         """
         Return a hardcoded response.
         """
-        unique_id = self.request.query_params.get('unique_id', None)
+        unique_id = self.request.query_params.get('uniqueId', None)
         token = self.request.query_params.get('accessToken', None)
+        post_language = self.request.query_params.get('postLanguage', None)
         user_id = self.request.query_params.get('userID', None)
 
+        try:
+            self.get_trend_game(Trend.objects.get(unique_id=unique_id), post_language)
+        except Exception as e:
+            print(e)
+
+        try:
+            game = self.get_facebook_game(FacebookGame.objects.get(unique_id=unique_id), post_language)
+        except Exception as e:
+            print(e)
+
+        # Get the user data.
+        r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
+                         params={"access_token": token},
+                         headers={'Content-type': 'application/json'})
+
+        if r.status_code != requests.codes.ok:
+            # Error
+            pass
+
+        data = r.json()
+        print(data['name'])
+
         return Response({"success": True, "content": "Hello World!"})
+
+    def get_trend_game(self, post, post_language):
+        language_field = 'code_' + post_language
+        return Response({
+            "success": True,
+            "content": post.__dict__[language_field]
+        })
+
+    def get_facebook_game(self, post, post_language):
+        return 'any'
