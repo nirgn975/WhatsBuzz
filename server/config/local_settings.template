@@ -1,4 +1,6 @@
 SECRET_KEY = '{{secret_key}}'
+FACEBOOK_APP_ID = '{app_id}'
+FACEBOOK_APP_SECRET = '{app_secret_token}'
 
 DATABASES = {
     'default': {
