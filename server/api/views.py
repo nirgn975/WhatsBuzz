@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer, \
     AgeCategoriesSerializer
-from whatsbuzz.models import Post, Trend, FacebookGame
+from whatsbuzz.models import Post, Trend, FacebookGame, User
 
 
 class TrendViewSet(viewsets.ReadOnlyModelViewSet):
@@ -73,18 +73,35 @@ class CreateGame(APIView):
         user_id = self.request.query_params.get('userID', None)
 
         try:
-            self.get_trend_game(Trend.objects.get(unique_id=unique_id), post_language)
+            trend = self.get_trend_game(Trend.objects.get(unique_id=unique_id), post_language)
+            self.get_the_user_fb_data(token, user_id)
+            return trend
         except Exception as e:
             print(e)
 
         try:
             game = self.get_facebook_game(FacebookGame.objects.get(unique_id=unique_id), post_language)
+            print('Were in a game')
         except Exception as e:
             print(e)
 
+        return Response({'success': True, 'content': 'Hello World!'})
+
+    def get_trend_game(self, post, post_language):
+        language_field = 'code_' + post_language
+        return Response({
+            'success': True,
+            'content': post.__dict__[language_field]
+        })
+
+    def get_facebook_game(self, post, post_language):
+        return 'any'
+
+    def get_the_user_fb_data(token, user_id, post_language):
+        print('In trend')
         # Get the user data.
         r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
-                         params={"access_token": token},
+                         params={'access_token': token},
                          headers={'Content-type': 'application/json'})
 
         if r.status_code != requests.codes.ok:
@@ -92,16 +109,19 @@ class CreateGame(APIView):
             pass
 
         data = r.json()
-        print(data['name'])
-
-        return Response({"success": True, "content": "Hello World!"})
-
-    def get_trend_game(self, post, post_language):
-        language_field = 'code_' + post_language
-        return Response({
-            "success": True,
-            "content": post.__dict__[language_field]
-        })
-
-    def get_facebook_game(self, post, post_language):
-        return 'any'
+        print(data)
+        # user = User.objects.get_or_create(
+        #     token = token,
+        #     user_id = user_id,
+        #     name = data['name'],
+        #     created_at = timezone.now(),
+        #     last_time_visit = timezone.now(),
+        # )
+        User.objects.get_or_create(
+            token='12345',
+            user_id='0123',
+            name='Nir Test',
+            created_at=timezone.now(),
+            last_time_visit=timezone.now(),
+        )
+        print(User)
