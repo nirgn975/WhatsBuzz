@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-19 15:40+0200\n"
+"POT-Creation-Date: 2016-11-19 18:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/settings.py:140
+#: config/settings.py:137
 msgid "Hebrew"
 msgstr "עברית"
 
-#: config/settings.py:141
+#: config/settings.py:138
 msgid "English"
 msgstr "אנגלית"
 
@@ -114,103 +114,99 @@ msgstr "תגיות"
 msgid "code"
 msgstr "קוד להטמעה"
 
-#: whatsbuzz/models.py:67 whatsbuzz/models.py:78
-msgid "type"
-msgstr "סוג"
-
-#: whatsbuzz/models.py:70
+#: whatsbuzz/models.py:69
 msgid "Trend"
 msgstr "טרנד"
 
-#: whatsbuzz/models.py:71
+#: whatsbuzz/models.py:70
 msgid "Trends"
 msgstr "טרנדים"
 
-#: whatsbuzz/models.py:81
+#: whatsbuzz/models.py:78
 msgid "Facebook Game"
 msgstr "משחק פייסבוק"
 
-#: whatsbuzz/models.py:82
+#: whatsbuzz/models.py:79
 msgid "Facebook Games"
 msgstr "משחקי פייסבוק"
 
-#: whatsbuzz/models.py:90
+#: whatsbuzz/models.py:87
 msgid "background image"
 msgstr "תמונת רקע"
 
-#: whatsbuzz/models.py:93
+#: whatsbuzz/models.py:90
 msgid "facebook background image"
 msgstr "פייסבוק - תמונת רקע"
 
-#: whatsbuzz/models.py:94
+#: whatsbuzz/models.py:91
 msgid "facebook background images"
 msgstr "פייסבוק - תמונות רקע"
 
-#: whatsbuzz/models.py:102
+#: whatsbuzz/models.py:99
 msgid "username"
 msgstr "שם משתמש"
 
-#: whatsbuzz/models.py:103 whatsbuzz/models.py:121
+#: whatsbuzz/models.py:100 whatsbuzz/models.py:118
 msgid "x"
 msgstr "ציר x"
 
-#: whatsbuzz/models.py:104 whatsbuzz/models.py:122
+#: whatsbuzz/models.py:101 whatsbuzz/models.py:119
 msgid "y"
 msgstr "ציר y"
 
-#: whatsbuzz/models.py:105
+#: whatsbuzz/models.py:102
 msgid "color"
 msgstr "צבע"
 
-#: whatsbuzz/models.py:106
+#: whatsbuzz/models.py:103
 msgid "font_size"
 msgstr "גודל פונט"
 
-#: whatsbuzz/models.py:107
+#: whatsbuzz/models.py:104
 msgid "text align"
 msgstr "יישור טקסט"
 
-#: whatsbuzz/models.py:110
+#: whatsbuzz/models.py:107
 msgid "facebook username"
 msgstr "פייסבוק - שם משתמש"
 
-#: whatsbuzz/models.py:111
+#: whatsbuzz/models.py:108
 msgid "facebook usernames"
 msgstr "פייסבוק - שם משתמש"
 
-#: whatsbuzz/models.py:119
+#: whatsbuzz/models.py:116
 msgid "width"
 msgstr "רוחב"
 
-#: whatsbuzz/models.py:120
+#: whatsbuzz/models.py:117
 msgid "height"
 msgstr "אורך"
 
-#: whatsbuzz/models.py:125
+#: whatsbuzz/models.py:122
 msgid "facebook profile image"
 msgstr "פייסבוק - תמונת פרופיל"
 
-#: whatsbuzz/models.py:126
+#: whatsbuzz/models.py:123
 msgid "facebook profile images"
 msgstr "פייסבוק - תמונת פרופיל"
 
-#: whatsbuzz/models.py:134
+#: whatsbuzz/models.py:131
 msgid "user_id"
 msgstr "מזהה יחודי"
 
-#: whatsbuzz/models.py:135
+#: whatsbuzz/models.py:132
 msgid "name"
 msgstr "שם"
 
-#: whatsbuzz/models.py:137
+#: whatsbuzz/models.py:134
 msgid "last_time_visit"
 msgstr "נראה לאחרונה ב"
 
-#: whatsbuzz/models.py:140
+#: whatsbuzz/models.py:137
 msgid "Facebook User"
 msgstr "משתמש פייסבוק"
 
-#: whatsbuzz/models.py:141
+#: whatsbuzz/models.py:138
 msgid "Facebook Users"
 msgstr "משתמשי פייסבוק"
 
