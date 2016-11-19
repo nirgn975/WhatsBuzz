@@ -64,6 +64,7 @@ class Trend(Post):
     An article like post.
     """
     code = models.TextField(_('code'))
+    type = models.TextField(_('type'), default='Trend', editable=False)
 
     class Meta:
         verbose_name = _('Trend')
@@ -74,6 +75,8 @@ class FacebookGame(Post):
     """
     Facebook Game contains all the facebook related entities.
     """
+    type = models.TextField(_('type'), default='Facebook', editable=False)
+
     class Meta:
         verbose_name = _('Facebook Game')
         verbose_name_plural = _('Facebook Games')
