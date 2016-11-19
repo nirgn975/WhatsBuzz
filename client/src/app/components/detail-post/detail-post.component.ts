@@ -51,6 +51,8 @@ export class DetailPostComponent implements OnInit, DoCheck {
   }
 
   onFacebookLoginClick(gameId) {
+    this.loadPlaybuzzScript();
+
     this.fb.login().then(
       (response: FacebookLoginResponse) => {
         if (response.status = 'connected') {
@@ -63,5 +65,14 @@ export class DetailPostComponent implements OnInit, DoCheck {
         }
       }
     );
+  }
+
+  loadPlaybuzzScript() {
+    let node = document.createElement('script');
+    node.src = '//cdn.playbuzz.com/widget/feed.js';
+    node.type = 'text/javascript';
+    node.async = true;
+    node.charset = 'utf-8';
+    document.getElementsByTagName('head')[0].appendChild(node);
   }
 }

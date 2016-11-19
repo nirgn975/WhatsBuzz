@@ -7,4 +7,5 @@ export interface DetailPost {
   tags: [
     {}
   ];
+  content: string;
 }
