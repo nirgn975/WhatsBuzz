@@ -35,6 +35,14 @@ export class DetailPostComponent implements OnInit, DoCheck {
       version : 'v2.7' // use graph api version 2.7
     };
     this.fb.init(fbParams);
+
+    // Load static share buttons.
+    let node = document.createElement('script');
+    node.src = 'https://static.addtoany.com/menu/page.js';
+    node.type = 'text/javascript';
+    node.async = true;
+    node.charset = 'utf-8';
+    document.getElementsByTagName('head')[0].appendChild(node);
   }
 
   ngOnInit() {
