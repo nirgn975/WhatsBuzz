@@ -50,6 +50,8 @@ import {
   RecommandationService,
 } from './services';
 
+import { SafeHtmlPipe } from './pipes';
+
 @NgModule({
   declarations: [
     WbComponent,
@@ -64,6 +66,7 @@ import {
     PrivacyPolicyComponent,
     BuzzComponent,
     RecommendationsComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,

@@ -38,9 +38,8 @@ export class DetailPostService {
       headers: this.headers, search: this.params
     });
 
-    return this.http.get(`${environment.API_PATH}/create-game`, options)
+    return this.http.get(`${environment.API_PATH}/get-game`, options)
       .map(res => res.json())
-      .do(data => console.log(data))
       .catch(this.handleError);
   }
 

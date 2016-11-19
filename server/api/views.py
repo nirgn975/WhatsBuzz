@@ -58,7 +58,7 @@ class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
         return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
 
 
-class GetTrendGame(APIView):
+class GetGame(APIView):
     """
     A custom endpoint for GET Trend Game request.
     """
@@ -71,8 +71,11 @@ class GetTrendGame(APIView):
         :return:
         """
         unique_id = self.request.query_params.get('uniqueId', None)
+        token = self.request.query_params.get('accessToken', None)
         post_language = self.request.query_params.get('postLanguage', None)
+        user_id = self.request.query_params.get('userID', None)
 
+        # Return the trend code, if it's a trend.
         try:
             trend = Trend.objects.get(unique_id=unique_id)
             language_field = 'code_' + post_language
@@ -83,31 +86,42 @@ class GetTrendGame(APIView):
         except Exception as e:
             print(e)
 
-
-class GetFacebookGame(APIView):
-    """
-    A custom endpoint for GET Facebook Game request.
-    """
-
-    def get(self, request, format=None):
-
-        unique_id = self.request.query_params.get('uniqueId', None)
-        token = self.request.query_params.get('accessToken', None)
-        post_language = self.request.query_params.get('postLanguage', None)
-        user_id = self.request.query_params.get('userID', None)
-
-        try:
-            facebook_data = get_facebook_data(token)
-            save_user(token, user_id, facebook_data['name'])
-            game = create_facebook_game(FacebookGame.objects.get(unique_id=unique_id), post_language)
-        except Exception as e:
-            print(e)
-
+        # If it isn't a trend, it's a facebook game.
+        create_facebook_game(unique_id, token, post_language, user_id)
         return Response({'success': True, 'content': 'Hello World!'})
 
 
-def create_facebook_game(post, post_language):
-    return 'any'
+def create_facebook_game(unique_id, token, post_language, user_id):
+    """
+
+    :param unique_id:
+    :param token:
+    :param post_language:
+    :param user_id:
+    :return:
+    """
+    try:
+        # Get data from Facebook API.
+        facebook_data = get_facebook_data(token)
+
+        # Save the user data.
+        save_user(token, user_id, facebook_data['name'])
+
+        # Create the post image.
+        create_fb_image()
+
+        # Save the post image in Google storage.
+        save_fb_image()
+    except Exception as e:
+        print(e)
+
+
+def create_fb_image():
+    pass
+
+
+def save_fb_image():
+    pass
 
 
 def get_facebook_data(token):

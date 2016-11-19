@@ -7,10 +7,13 @@
     <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
     <p class="description">{{ detailPost.body }}</p>
 
-    <div class="row btn-social">
+    <div class="row btn-social" *ngIf="!detailPost.content">
       <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick(detailPost.unique_id)">
         {{ 'DETAIL-POST.facebook-button' | translate }}
       </button>
+    </div>
+
+    <div class="game" *ngIf="detailPost.content" [innerHTML]="detailPost.content | safeHtml">
     </div>
 
     <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost.unique_id }}" data-width="100%"></div>
