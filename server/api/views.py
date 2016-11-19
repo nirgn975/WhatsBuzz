@@ -1,6 +1,6 @@
 import requests
 from django.utils import timezone
-from django.views.i18n import set_language
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -58,70 +58,102 @@ class AgeCategoriesViewSet(viewsets.ReadOnlyModelViewSet):
         return Post.objects.filter(age_categories=age_categories).order_by('?')[:5]
 
 
-class CreateGame(APIView):
+class GetTrendGame(APIView):
+    """
+    A custom endpoint for GET Trend Game request.
+    """
+
+    def get(self, request, format=None):
+        """
+
+        :param request:
+        :param format:
+        :return:
+        """
+        unique_id = self.request.query_params.get('uniqueId', None)
+        post_language = self.request.query_params.get('postLanguage', None)
+
+        try:
+            trend = Trend.objects.get(unique_id=unique_id)
+            language_field = 'code_' + post_language
+            return Response({
+                'success': True,
+                'content': trend.__dict__[language_field]
+            })
+        except Exception as e:
+            print(e)
+
+
+class GetFacebookGame(APIView):
     """
     A custom endpoint for GET Facebook Game request.
     """
 
     def get(self, request, format=None):
-        """
-        Return a hardcoded response.
-        """
+
         unique_id = self.request.query_params.get('uniqueId', None)
         token = self.request.query_params.get('accessToken', None)
         post_language = self.request.query_params.get('postLanguage', None)
         user_id = self.request.query_params.get('userID', None)
 
         try:
-            trend = self.get_trend_game(Trend.objects.get(unique_id=unique_id), post_language)
-            self.get_the_user_fb_data(token, user_id)
-            return trend
-        except Exception as e:
-            print(e)
-
-        try:
-            game = self.get_facebook_game(FacebookGame.objects.get(unique_id=unique_id), post_language)
-            print('Were in a game')
+            facebook_data = get_facebook_data(token)
+            save_user(token, user_id, facebook_data['name'])
+            game = create_facebook_game(FacebookGame.objects.get(unique_id=unique_id), post_language)
         except Exception as e:
             print(e)
 
         return Response({'success': True, 'content': 'Hello World!'})
 
-    def get_trend_game(self, post, post_language):
-        language_field = 'code_' + post_language
-        return Response({
-            'success': True,
-            'content': post.__dict__[language_field]
-        })
 
-    def get_facebook_game(self, post, post_language):
-        return 'any'
+def create_facebook_game(post, post_language):
+    return 'any'
 
-    def get_the_user_fb_data(token, user_id, post_language):
-        print('In trend')
-        # Get the user data.
-        r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
-                         params={'access_token': token},
-                         headers={'Content-type': 'application/json'})
 
-        if r.status_code != requests.codes.ok:
-            # Error
-            pass
+def get_facebook_data(token):
+    """
+    Get facebook username and image by the user token.
 
-        data = r.json()
-        print(data)
-        # user = User.objects.get_or_create(
-        #     token = token,
-        #     user_id = user_id,
-        #     name = data['name'],
-        #     created_at = timezone.now(),
-        #     last_time_visit = timezone.now(),
-        # )
+    :param (sting) token:
+        Facebook user token.
+    :param (sting) user_id:
+        Facebook user ID.
+    :return:
+        None.
+    """
+    r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
+                     params={'access_token': token},
+                     headers={'Content-type': 'application/json'})
+
+    if r.status_code != requests.codes.ok:
+        # Error
+        pass
+    return r.json()
+
+
+def save_user(token, user_id, user_name):
+    """
+    If the user exist, update his last time visit. Else create a new user.
+
+    :param (sting) token:
+        Facebook user token.
+    :param (sting) user_id:
+        Facebook user ID.
+    :param (sting) user_name:
+        Facebook user name
+    :return:
+        None.
+    """
+    try:
+        # The user does exist, update info.
+        user = User.objects.get(user_id=user_id)
+        user.last_time_visit = timezone.now()
+        user.save()
+    except ObjectDoesNotExist:
+        # The user doesn't exit, create it.
         User.objects.get_or_create(
-            token='12345',
-            user_id='0123',
-            name='Nir Test',
-            created_at=timezone.now(),
+            token=token,
+            user_id=user_id,
+            name=user_name,
             last_time_visit=timezone.now(),
         )
-        print(User)
