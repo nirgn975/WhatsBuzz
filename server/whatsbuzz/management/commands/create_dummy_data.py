@@ -53,8 +53,13 @@ def create_trend_dummy_data():
         age_categories='children',
         publish=timezone.now(),
         banner_image=File(open('whatsbuzz/management/dummy_images/1.jpg', 'rb')),
-        code='foo-1',
-        code_en='foo-1-english',
+        code='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div class="pb_feed"'
+             ' data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" data-game="/whatsb10/11-6-2016-7-32-38-am" '
+             'data-recommend="false" data-game-info="false" data-comments="false" ></div>',
+        code_en='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div '
+                'class="pb_feed" data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" '
+                'data-game="/whatsb10/11-6-2016-7-32-38-am" data-recommend="false" data-game-info="false" '
+                'data-comments="false" ></div>',
     )[0].tags.add(tag1[0])
 
     # Second Trend post.
@@ -70,8 +75,14 @@ def create_trend_dummy_data():
         age_categories='young',
         publish=timezone.now(),
         banner_image=File(open('whatsbuzz/management/dummy_images/3.jpg', 'rb')),
-        code='foo-2',
-        code_en='foo-2-english',
+        code='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div '
+             'class="pb_feed" data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" '
+             'data-game="/whatsb10/10-1-2016-7-19-49-pm" data-recommend="false" data-game-info="false" '
+             'data-comments="false" data-shares="false" ></div>',
+        code_en='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div '
+                'class="pb_feed" data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" '
+                'data-game="/whatsb10/10-1-2016-7-19-49-pm" data-recommend="false" data-game-info="false" '
+                'data-comments="false" data-shares="false" ></div>',
     )[0].tags.add(tag1[0], tag2[0])
 
     # Third Trend post.
@@ -84,8 +95,14 @@ def create_trend_dummy_data():
         age_categories='adults',
         publish=timezone.now(),
         banner_image=File(open('whatsbuzz/management/dummy_images/4.jpg', 'rb')),
-        code='foo-3',
-        code_en='foo-3-english',
+        code='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div '
+             'class="pb_feed" data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" '
+             'data-game="/whatsb10/10-1-2016-11-04-40-am" data-recommend="false" data-game-info="false" '
+             'data-comments="false" ></div>',
+        code_en='<script type="text/javascript" src="//cdn.playbuzz.com/widget/feed.js"></script><div '
+                'class="pb_feed" data-embed-by="28ab7615-b158-460d-bb33-56ac88e36211" '
+                'data-game="/whatsb10/10-1-2016-11-04-40-am" data-recommend="false" data-game-info="false" '
+                'data-comments="false" ></div>',
     )[0].tags.add(tag3[0], tag2[0])
 
 
