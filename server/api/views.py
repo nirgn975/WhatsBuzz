@@ -1,13 +1,17 @@
 import requests
+from random import choice
+from string import ascii_uppercase
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from PIL import Image, ImageFont, ImageDraw
 
 from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer, \
     AgeCategoriesSerializer
-from whatsbuzz.models import Post, Trend, FacebookGame, User
+from whatsbuzz.models import Post, Trend, FacebookGame, User, FacebookGamesImage, FacebookUsername, \
+    FacebookProfileImage
 
 
 class TrendViewSet(viewsets.ReadOnlyModelViewSet):
@@ -108,7 +112,7 @@ def create_facebook_game(unique_id, token, post_language, user_id):
         save_user(token, user_id, facebook_data['name'])
 
         # Create the post image.
-        create_fb_image()
+        create_fb_image(unique_id, facebook_data)
 
         # Save the post image in Google storage.
         save_fb_image()
@@ -116,8 +120,64 @@ def create_facebook_game(unique_id, token, post_language, user_id):
         print(e)
 
 
-def create_fb_image():
-    pass
+def create_fb_image(unique_id, facebook_data):
+    # https://github.com/nirgn975/WhatsBuzz/blob/8a9f05e514263d5d658fd092746c8a4a183f57f5/web/whats_buzz/views/utils.py
+    facebook_post = FacebookGame.objects.get(unique_id=unique_id)
+
+    try:
+        # Get one random image from the Facebook game images.
+        facebook_game_image = FacebookGamesImage.objects.get(post=facebook_post).order_by('?').first()
+    except FacebookGamesImage.DoesNotExist:
+        facebook_game_image = None
+
+    try:
+        facebook_game_username = FacebookUsername.objects.get(post=facebook_post)
+    except FacebookUsername.DoesNotExist:
+        facebook_game_username = None
+
+    try:
+        facebook_game_profile_image = FacebookProfileImage.objects.get(post=facebook_post)
+    except FacebookProfileImage.DoesNotExist:
+        facebook_game_profile_image = None
+
+    random_image_name = facebook_data['name'].join(choice(ascii_uppercase) for i in range(12))
+    base_image = Image.open(facebook_game_image)
+    image = base_image.copy()
+
+    # Paste the username text.
+    if facebook_game_username:
+        font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(facebook_game_username['font_size']))
+        draw = ImageDraw.Draw(image)
+        draw.text(
+            (int(facebook_game_username['x']),
+             int(facebook_game_username['y'])),
+            facebook_game_username['username'],
+            fill=facebook_game_username['color'],
+            font=font
+        )
+
+    # Paste the Facebook profile image.
+    if facebook_game_profile_image:
+        # Create alpha background with the same width and height as the original background.
+        background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+        background.paste(base_image)
+
+        # Add the image to the background.
+        profile_image = Image.open(facebook_data['picture']['data']['url'])
+
+        profile_image = profile_image.resize((
+            int(facebook_game_profile_image['width']),
+            int(facebook_game_profile_image['height'])
+        ))
+        print(profile_image)
+
+        background.paste(
+            profile_image,
+            (int(facebook_game_profile_image['x']), int(facebook_game_profile_image['y']))
+        )
+
+    # Save the background image.
+    image.save('./' + random_image_name + '.jpg')
 
 
 def save_fb_image():
