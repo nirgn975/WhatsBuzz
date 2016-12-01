@@ -151,7 +151,7 @@ def create_fb_image(unique_id, facebook_data):
 
     # Paste the username text.
     if facebook_game_username:
-        # font = ImageFont.truetype("/usr/src/app/static/fonts/Helvetica.ttf", int(facebook_game_username['font_size']))
+        # font = ImageFont.truetype("fonts/Helvetica.ttf", int(facebook_game_username['font_size']))
         draw = ImageDraw.Draw(image)
         draw.text(
             (int(facebook_game_username.x),
