@@ -50,7 +50,7 @@ class Post(models.Model):
     title = models.CharField(_('title'), max_length=255, blank=True)
     body = RichTextField(_('body'), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    banner_image = models.ImageField(_('banner image'), upload_to='%Y/%m/%d/', blank=True)
+    banner_image = models.ImageField(_('banner image'), upload_to='posts/%Y/%m/%d/', blank=True)
     buzz = models.BooleanField(_('buzz'), default=False)
     age_categories = models.CharField(_('age categories'), max_length=25, choices=AgeCategories.choices,
                                       default='default')
@@ -84,7 +84,7 @@ class FacebookGamesImage(models.Model):
     All the background images for a Facebook Game.
     """
     post = models.ForeignKey(FacebookGame, related_name='background_image')
-    background_image = models.ImageField(_('background image'), upload_to='%Y/%m/%d/', blank=True)
+    background_image = models.ImageField(_('background image'), upload_to='posts/%Y/%m/%d/', blank=True)
 
     class Meta:
         verbose_name = _('facebook background image')
