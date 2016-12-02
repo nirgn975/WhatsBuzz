@@ -58,7 +58,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
     }
   }
 
-  onFacebookLoginClick(gameId) {
+  onFacebookLogin(gameId) {
     this.loadPlaybuzzScript();
 
     this.fb.login().then(
@@ -73,6 +73,10 @@ export class DetailPostComponent implements OnInit, DoCheck {
         }
       }
     );
+  }
+
+  onFacebookShare(gameId) {
+    console.log('share the post');
   }
 
   loadPlaybuzzScript() {
