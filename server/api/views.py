@@ -90,32 +90,35 @@ class GetGame(APIView):
                 'content': trend.__dict__[language_field]
             })
         except Exception as e:
-            print(e)
+            pass
 
         # If it isn't a trend, it's a facebook game.
-        link = create_facebook_game(unique_id, token, post_language, user_id)
+        link = create_facebook_game(unique_id, token, user_id)
         return Response({'success': True, 'content': link})
 
 
-def create_facebook_game(unique_id, token, post_language, user_id):
+def create_facebook_game(unique_id, token, user_id):
     """
 
     :param unique_id:
     :param token:
-    :param post_language:
     :param user_id:
     :return:
     """
     try:
+        # Get post game data.
+        data_list = get_post_game_data(unique_id)
+
         # Get data from Facebook API.
-        facebook_data = get_facebook_data(token)
+        facebook_data = get_facebook_data(token, data_list[1], data_list[2])
 
         # Save the user data.
         save_user(token, user_id, facebook_data['name'])
 
         # Create the post image.
-        image = create_fb_image(unique_id, facebook_data)
+        image = create_fb_image(facebook_data, data_list[0], data_list[1], data_list[2])
 
+        # Create random name for the user image.
         random_image_name = facebook_data['name'].strip() + ''.join(choice(ascii_uppercase) for i in range(12))
 
         # Save the post image in Google storage.
@@ -124,26 +127,15 @@ def create_facebook_game(unique_id, token, post_language, user_id):
         print(e)
 
 
-def create_fb_image(unique_id, facebook_data):
-    # https://github.com/nirgn975/WhatsBuzz/blob/8a9f05e514263d5d658fd092746c8a4a183f57f5/web/whats_buzz/views/utils.py
-    facebook_post = FacebookGame.objects.get(unique_id=unique_id)
+def create_fb_image(facebook_data, facebook_game_image, facebook_game_username, facebook_game_profile_image):
+    """
 
-    try:
-        # Get one random image from the Facebook game images.
-        facebook_game_image = FacebookGamesImage.objects.filter(post=facebook_post).order_by('?').first()
-    except FacebookGamesImage.DoesNotExist:
-        facebook_game_image = None
-
-    try:
-        facebook_game_username = FacebookUsername.objects.get(post=facebook_post)
-    except FacebookUsername.DoesNotExist:
-        facebook_game_username = None
-
-    try:
-        facebook_game_profile_image = FacebookProfileImage.objects.get(post=facebook_post)
-    except FacebookProfileImage.DoesNotExist:
-        facebook_game_profile_image = None
-
+    :param facebook_data:
+    :param facebook_game_image:
+    :param facebook_game_username:
+    :param facebook_game_profile_image:
+    :return:
+    """
     response = requests.get(
         'https://storage.googleapis.com/whatsbuzz-prod-150319/' + str(facebook_game_image.background_image))
     base_image = Image.open(BytesIO(response.content))
@@ -162,32 +154,42 @@ def create_fb_image(unique_id, facebook_data):
         )
 
     # Paste the Facebook profile image.
-    # if facebook_game_profile_image:
-    #     # Create alpha background with the same width and height as the original background.
-    #     background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
-    #     background.paste(base_image)
-    #
-    #     # Add the image to the background.
-    #     profile_image = Image.open(facebook_data['picture']['data']['url'])
-    #
-    #     profile_image = profile_image.resize((
-    #         int(facebook_game_profile_image.width),
-    #         int(facebook_game_profile_image.height)
-    #     ))
-    #     print(profile_image)
-    #
-    #     background.paste(
-    #         profile_image,
-    #         (int(facebook_game_profile_image.x), int(facebook_game_profile_image.y))
-    #     )
+    if facebook_game_profile_image:
+        # Create alpha background with the same width and height as the original background.
+        background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+        background.paste(image)
 
-    return image
+        # Add the image to the background.
+        fb_user_image = requests.get(facebook_data['picture']['data']['url']).content
+        profile_image = Image.open(BytesIO(fb_user_image))
+
+        profile_image = profile_image.resize((
+            int(facebook_game_profile_image.width),
+            int(facebook_game_profile_image.height)
+        ))
+
+        background.paste(
+            profile_image,
+            (int(facebook_game_profile_image.x), int(facebook_game_profile_image.y))
+        )
+
+    return background
 
 
 def save_fb_image(image, image_name):
+    """
+    Save the image on Google bucket and return it's HTML code.
+
+    :param image:
+        Image game object.
+    :param image_name:
+        Image name.
+    :return:
+        HTML public image url from bucket.
+    """
     client = storage.Client()
     bucket = client.get_bucket('whatsbuzz-prod-150319')
-    blob = bucket.blob(image_name)
+    blob = bucket.blob('users_pictures/' + image_name)
 
     img_byte = BytesIO()
     image.save(img_byte, format='PNG')
@@ -200,25 +202,72 @@ def save_fb_image(image, image_name):
     return '<img src="' + url + '" style="width: 100%;" />'
 
 
-def get_facebook_data(token):
+def get_facebook_data(token, facebook_game_username, facebook_game_profile_image):
     """
     Get facebook username and image by the user token.
 
     :param (sting) token:
         Facebook user token.
-    :param (sting) user_id:
-        Facebook user ID.
+    :param (object) facebook_game_username:
+        Facebook game username data.
+    :param (object) facebook_game_profile_image:
+        Facebook game user profile image data.
     :return:
-        None.
+        Facebook json data.
     """
-    r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
-                     params={'access_token': token},
-                     headers={'Content-type': 'application/json'})
+    query = 'https://graph.facebook.com/v2.8/me?fields='
+    if facebook_game_username:
+        if facebook_game_username.username == 'full_name':
+            query += 'name'
+        if facebook_game_username.username == 'first_name':
+            query += 'first_name'
+        if facebook_game_username.username == 'last_name':
+            query += 'last_name'
+
+    if facebook_game_username and facebook_game_profile_image:
+        query += ','
+
+    if facebook_game_profile_image:
+        query += 'picture'
+        query += '.width(' + str(facebook_game_profile_image.width) + ')'
+        query += '.height(' + str(facebook_game_profile_image.height) + ')'
+
+    r = requests.get(query, params={'access_token': token}, headers={'Content-type': 'application/json'})
 
     if r.status_code != requests.codes.ok:
         # Error
         pass
+
     return r.json()
+
+
+def get_post_game_data(unique_id):
+    """
+
+    :param unique_id:
+        Post unique id.
+    :return:
+        None.
+    """
+    facebook_post = FacebookGame.objects.get(unique_id=unique_id)
+
+    try:
+        # Get one random image from the Facebook game images.
+        facebook_game_image = FacebookGamesImage.objects.filter(post=facebook_post).order_by('?').first()
+    except FacebookGamesImage.DoesNotExist:
+        facebook_game_image = None
+
+    try:
+        facebook_game_username = FacebookUsername.objects.get(post=facebook_post)
+    except FacebookUsername.DoesNotExist:
+        facebook_game_username = None
+
+    try:
+        facebook_game_profile_image = FacebookProfileImage.objects.get(post=facebook_post)
+    except FacebookProfileImage.DoesNotExist:
+        facebook_game_profile_image = None
+
+    return [facebook_game_image, facebook_game_username, facebook_game_profile_image]
 
 
 def save_user(token, user_id, user_name):
