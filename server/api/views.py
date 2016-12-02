@@ -197,7 +197,7 @@ def save_fb_image(image, image_name):
 
     url = blob.public_url
 
-    return '<img src="' + url + '" />'
+    return '<img src="' + url + '" style="width: 100%;" />'
 
 
 def get_facebook_data(token):

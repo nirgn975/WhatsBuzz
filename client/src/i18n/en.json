@@ -29,6 +29,8 @@
     "header": "Privacy Policy"
   },
   "DETAIL-POST": {
-    "facebook-button": "Continue With Facebook"
+    "facebook-login-button": "Continue With Facebook",
+    "facebook-share-button": "Share In Facebook",
+    "facebook-retry-button": "Retry"
   }
 }

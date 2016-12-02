@@ -29,6 +29,8 @@
     "header": "מדיניות פרטיות"
   },
   "DETAIL-POST": {
-    "facebook-button": "המשך עם פייסבוק"
+    "facebook-login-button": "המשך עם פייסבוק",
+    "facebook-share-button": "שתף בפייסבוק",
+    "facebook-retry-button": "נסה שוב"
   }
 }
