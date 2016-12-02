@@ -90,7 +90,7 @@ class GetGame(APIView):
                 'content': trend.__dict__[language_field]
             })
         except Exception as e:
-            print(e)
+            pass
 
         # If it isn't a trend, it's a facebook game.
         link = create_facebook_game(unique_id, token, user_id)
@@ -154,26 +154,26 @@ def create_fb_image(facebook_data, facebook_game_image, facebook_game_username, 
         )
 
     # Paste the Facebook profile image.
-    # if facebook_game_profile_image:
-    #     # Create alpha background with the same width and height as the original background.
-    #     background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
-    #     background.paste(base_image)
-    #
-    #     # Add the image to the background.
-    #     profile_image = Image.open(facebook_data['picture']['data']['url'])
-    #
-    #     profile_image = profile_image.resize((
-    #         int(facebook_game_profile_image.width),
-    #         int(facebook_game_profile_image.height)
-    #     ))
-    #     print(profile_image)
-    #
-    #     background.paste(
-    #         profile_image,
-    #         (int(facebook_game_profile_image.x), int(facebook_game_profile_image.y))
-    #     )
+    if facebook_game_profile_image:
+        # Create alpha background with the same width and height as the original background.
+        background = Image.new('RGBA', (base_image.width, base_image.height), (255, 255, 255, 255))
+        background.paste(image)
 
-    return image
+        # Add the image to the background.
+        fb_user_image = requests.get(facebook_data['picture']['data']['url']).content
+        profile_image = Image.open(BytesIO(fb_user_image))
+
+        profile_image = profile_image.resize((
+            int(facebook_game_profile_image.width),
+            int(facebook_game_profile_image.height)
+        ))
+
+        background.paste(
+            profile_image,
+            (int(facebook_game_profile_image.x), int(facebook_game_profile_image.y))
+        )
+
+    return background
 
 
 def save_fb_image(image, image_name):
@@ -189,7 +189,7 @@ def save_fb_image(image, image_name):
     """
     client = storage.Client()
     bucket = client.get_bucket('whatsbuzz-prod-150319')
-    blob = bucket.blob(image_name)
+    blob = bucket.blob('users_pictures/' + image_name)
 
     img_byte = BytesIO()
     image.save(img_byte, format='PNG')
@@ -215,15 +215,24 @@ def get_facebook_data(token, facebook_game_username, facebook_game_profile_image
     :return:
         Facebook json data.
     """
+    query = 'https://graph.facebook.com/v2.8/me?fields='
     if facebook_game_username:
-        pass
+        if facebook_game_username.username == 'full_name':
+            query += 'name'
+        if facebook_game_username.username == 'first_name':
+            query += 'first_name'
+        if facebook_game_username.username == 'last_name':
+            query += 'last_name'
+
+    if facebook_game_username and facebook_game_profile_image:
+        query += ','
 
     if facebook_game_profile_image:
-        pass
+        query += 'picture'
+        query += '.width(' + str(facebook_game_profile_image.width) + ')'
+        query += '.height(' + str(facebook_game_profile_image.height) + ')'
 
-    r = requests.get("https://graph.facebook.com/v2.8/me?fields=name",
-                     params={'access_token': token},
-                     headers={'Content-type': 'application/json'})
+    r = requests.get(query, params={'access_token': token}, headers={'Content-type': 'application/json'})
 
     if r.status_code != requests.codes.ok:
         # Error
