@@ -26,6 +26,7 @@ nav {
       margin: 5px;
       float: left;
 
+      .active,
       :hover {
         background: rgba(35,53,92,.57);
       }
