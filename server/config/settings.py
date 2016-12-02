@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 CORS_ORIGIN_REGEX_WHITELIST = (
     '^(localhost:)*',
 )
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'corsheaders',
+    'storages',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -96,7 +97,7 @@ DATABASES = {
         'NAME': 'whatsbuzz',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '173.194.246.176',
+        'HOST': '207.223.173.123',
         'PORT': '3306',
     }
 }
@@ -150,13 +151,26 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_URL = '/staticuploads/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
 
-# STATIC_URL = 'https://storage.googleapis.com/whatsbuzz/static/'
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/staticuploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'staticuploads')
+# Google Cloud Storage
+# http://django-storages.readthedocs.org/en/latest/backends/apache_libcloud.html
+LIBCLOUD_PROVIDERS = {
+    'google': {
+        'type': 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
+        'user': 'GOOGTXY772JWVIJRQ6PE',
+        'key': 'CWUxkOm3YDkjbHEGuLoMDGBT0DdsXLFU8w12j/qV',
+        'bucket': 'whatsbuzz-prod-150319',
+    }
+}
+
+DEFAULT_LIBCLOUD_PROVIDER = 'google'
+DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
+STATIC_URL = 'http://storage.googleapis.com/whatsbuzz-prod-150319/static/'
 
 
 # CKEditor - WYSIWYG editor.
