@@ -4,22 +4,44 @@
   </div>
 
   <div class="card">
+    <!-- post-top -->
+    <ng2-adsense
+      [adClient]="'ca-pub-7396544532701990'"
+      [adSlot]="8345875466">
+    </ng2-adsense>
+
     <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
+    
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="margin: 10px 0">
       <a class="a2a_button_whatsapp"></a>
       <a class="a2a_button_facebook"></a>
       <a class="a2a_button_email"></a>
       <a class="a2a_button_facebook_messenger"></a>
     </div>
+
+    <!-- post-login -->
+    <ng2-adsense
+      [adClient]="'ca-pub-7396544532701990'"
+      [adSlot]="9822608662">
+    </ng2-adsense>
+
     <p class="description">{{ detailPost.body }}</p>
 
-    <div class="row btn-social" *ngIf="!detailPost.content">
-      <button class="btn btn-lg btn-facebook" (click)="onFacebookLoginClick(detailPost.unique_id)">
-        {{ 'DETAIL-POST.facebook-button' | translate }}
-      </button>
+    <div class="game" *ngIf="detailPost.content" [innerHTML]="detailPost.content | safeHtml">
     </div>
 
-    <div class="game" *ngIf="detailPost.content" [innerHTML]="detailPost.content | safeHtml">
+    <div class="row btn-social">
+      <button *ngIf="!detailPost.content" class="btn btn-lg btn-facebook login" (click)="onFacebookLogin(detailPost.unique_id)">
+        {{ 'DETAIL-POST.facebook-login-button' | translate }}
+      </button>
+
+      <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook share" (click)="onFacebookShare(detailPost.unique_id)">
+        {{ 'DETAIL-POST.facebook-share-button' | translate }}
+      </button>
+
+      <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook retry" (click)="onFacebookLogin(detailPost.unique_id)">
+        {{ 'DETAIL-POST.facebook-retry-button' | translate }}
+      </button>
     </div>
 
     <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost.unique_id }}" data-width="100%"></div>
