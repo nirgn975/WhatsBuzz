@@ -11,7 +11,12 @@
     border: 1px solid #c7dce6;
     border-radius: $radius;
     padding: 10px;
+    margin: 0 10px;
   }
+
+  @include card-title;
+
+  @include post-image;
 
   @include button-link;
 }

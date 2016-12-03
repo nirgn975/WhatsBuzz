@@ -64,3 +64,18 @@ $footer-margin-bottom: 1em;
     background-color: #58bdf0;
   }
 }
+
+@mixin card-title {
+  .card-title {
+    color: #3b5998;
+    font-size: 20px;
+    text-align: center;
+    height: 48px;
+  }
+}
+
+@mixin post-image {
+  .card-img-top {
+    width: 100%;
+  }
+}
