@@ -6,6 +6,7 @@ import { FacebookGamesComponent } from './components';
 import { TrendsComponent } from './components';
 import { DetailPostComponent } from './components';
 import { PrivacyPolicyComponent } from './components';
+import { NotFoundComponent } from './components';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: MainComponent },
   { path: 'posts/:uuid', component: DetailPostComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

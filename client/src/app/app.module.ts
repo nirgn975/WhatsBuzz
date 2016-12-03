@@ -42,6 +42,7 @@ import {
   MainComponent,
   PrivacyPolicyComponent,
   RecommendationsComponent,
+  NotFoundComponent,
 } from './components';
 
 import {
@@ -68,6 +69,7 @@ import { SafeHtmlPipe } from './pipes';
     BuzzComponent,
     RecommendationsComponent,
     SafeHtmlPipe,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

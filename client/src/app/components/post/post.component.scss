@@ -3,16 +3,9 @@
 .card {
   padding: 20px;
 
-  .card-title {
-    color: #3b5998;
-    font-size: 20px;
-    text-align: center;
-    height: 48px;
-  }
+  @include card-title;
 
-  .card-img-top {
-    width: 100%;
-  }
+  @include post-image;
 
   @include button-link;
 }

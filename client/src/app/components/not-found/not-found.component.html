@@ -1,0 +1,25 @@
+<div class="col-sm-8">
+  <div class="card">
+    <h2>{{ 'NOT-FOUND.title' | translate }}</h2>
+
+    <img src="/assets/404.png" alt="WhatsBuzz 404 Picture">
+
+    <p>{{ 'NOT-FOUND.description' | translate }}</p>
+
+    <div class="inner-card" *ngFor="let post of facebookGames | async | slice:[0]:[1]">
+      <h4 class="card-title">{{ post.title }}</h4>
+      <img class="card-img-top" src="{{ post.banner_image }}" alt="{{ post.title }}">
+      <a [routerLink]="['/posts', post.unique_id ]" class="btn btn-primary">{{ 'POST.playButton' | translate }}</a>
+    </div>
+
+    <div class="inner-card" *ngFor="let post of trends | async | slice:[0]:[1]">
+      <h4 class="card-title">{{ post.title }}</h4>
+      <img class="card-img-top" src="{{ post.banner_image }}" alt="{{ post.title }}">
+      <a [routerLink]="['/posts', post.unique_id ]" class="btn btn-primary">{{ 'POST.playButton' | translate }}</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <wb-buzz></wb-buzz>
+</div>
