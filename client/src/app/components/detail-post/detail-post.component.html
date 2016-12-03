@@ -11,7 +11,7 @@
     </ng2-adsense>
 
     <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
-    
+
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="margin: 10px 0">
       <a class="a2a_button_whatsapp"></a>
       <a class="a2a_button_facebook"></a>
@@ -29,6 +29,8 @@
 
     <div class="game" *ngIf="detailPost.content" [innerHTML]="detailPost.content | safeHtml">
     </div>
+
+    <img id="spinner" *ngIf="showSpinner && !detailPost.content" src="/assets/spinner.svg" alt="WhatsBuzz Game Spinner">
 
     <div class="row btn-social">
       <button *ngIf="!detailPost.content" class="btn btn-lg btn-facebook login" (click)="onFacebookLogin(detailPost.unique_id)">
