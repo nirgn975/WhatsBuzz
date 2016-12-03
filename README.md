@@ -34,8 +34,8 @@ Something about the project.
 
 **Server**
 
-  1. `cd server/config` then `cp local_settings.template local_settings.py` and modify it by your local settings.
-  2. Install requirements with `pip install -r requirements.txt` (located under `server` directory).
+  1. Install requirements with `pip install -r requirements.txt` (located under `server` directory).
+  2. `cd server/config` then `cp local_settings.template local_settings.py` and modify it by your local settings.
   3. Migrate the data with `python manage.py migrate`.
   4. Import the dummy data with `python manage.py import_data`.
   5. Run the server with `python manage.py runserver`.
@@ -50,7 +50,7 @@ Something about the project.
 
 **Server**
 
-  * Not yet.
+  * Run `pycodestyle --show-source --max-line-length=119 --exclude=server/whatsbuzz/migrations --show-pep8 server;` to check for PEP-8.
 
 ## Translation
 
@@ -80,10 +80,11 @@ python manage.py compilemessages -l he
   2. Create the admin user `python manage.py createsuperuser`.
   3. Gather all the static content locally into one folder `python manage.py collectstatic`.
   4. Make sure `STATIC_URL` point to your CGP CloudStorage.
-  5. Upload the static content to CloudStorage `gsutil rsync -R static/ gs://<your-gcs-bucket>/static`.
-  6. Add your `SECRET_KEY` to `settings.py`.
-  7. Make sure your don't have `server/config/local_settings.py` file.
-  8. Deploy the app to CGP app engine `gcloud app deploy`.
+  5. To make the bucket public `gsutil defacl set public-read gs://<your-gcs-bucket>`.
+  6. Upload the static content to CloudStorage `gsutil rsync -R static/ gs://<your-gcs-bucket>/static`.
+  7. Add your `SECRET_KEY` to `settings.py`.
+  8. Make sure your don't have `server/config/local_settings.py` file.
+  9. Deploy the app to CGP app engine `gcloud app deploy`.
 
 [license-image]: https://img.shields.io/badge/license-ISC-blue.svg
 [license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
