@@ -32,5 +32,9 @@
     "facebook-login-button": "Continue With Facebook",
     "facebook-share-button": "Share In Facebook",
     "facebook-retry-button": "Retry"
+  },
+  "NOT-FOUND": {
+    "title": "Oops.. page does not exist",
+    "description": "There is nothing interesting here, but in the meantime you should see what make our week"
   }
 }
