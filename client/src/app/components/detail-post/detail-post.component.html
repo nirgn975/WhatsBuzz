@@ -27,7 +27,9 @@
 
     <p class="description">{{ detailPost.body }}</p>
 
-    <div class="game" *ngIf="detailPost.content">
+    <!-- The game -->
+    <div class="game" *ngIf="detailPost.type == 'trend'" [innerHTML]="detailPost.content | safeHtml"></div>
+    <div class="game" *ngIf="detailPost.type == 'facebook-game'">
       <img src="{{ detailPost.content }}">
     </div>
 

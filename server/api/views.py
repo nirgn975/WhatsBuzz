@@ -88,14 +88,15 @@ class GetGame(APIView):
             language_field = 'code_' + post_language
             return Response({
                 'success': True,
-                'content': trend.__dict__[language_field]
+                'content': trend.__dict__[language_field],
+                'type': 'trend'
             })
         except Exception as e:
             pass
 
         # If it isn't a trend, it's a facebook game.
         link = create_facebook_game(unique_id, token, user_id)
-        return Response({'success': True, 'content': link})
+        return Response({'success': True, 'content': link, 'type': 'facebook-game'})
 
 
 def create_facebook_game(unique_id, token, user_id):
