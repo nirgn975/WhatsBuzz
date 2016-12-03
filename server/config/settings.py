@@ -94,10 +94,10 @@ DATABASES = {
     # Google Cloud Platform Database.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'whatsbuzz',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '207.223.173.123',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '3306',
     }
 }
@@ -151,18 +151,19 @@ USE_TZ = True
 
 # Google Cloud Storage
 # http://django-storages.readthedocs.org/en/latest/backends/apache_libcloud.html
+BUCKET_NAME = ''
 LIBCLOUD_PROVIDERS = {
     'google': {
         'type': 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
-        'user': 'GOOGTXY772JWVIJRQ6PE',
-        'key': 'CWUxkOm3YDkjbHEGuLoMDGBT0DdsXLFU8w12j/qV',
-        'bucket': 'whatsbuzz-prod-150319',
+        'user': '',
+        'key': '',
+        'bucket': BUCKET_NAME,
     }
 }
 
 DEFAULT_LIBCLOUD_PROVIDER = 'google'
 DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
-STATIC_URL = 'http://storage.googleapis.com/whatsbuzz-prod-150319/static/'
+STATIC_URL = 'http://storage.googleapis.com/' + BUCKET_NAME + '/static/'
 
 
 # CKEditor - WYSIWYG editor.
