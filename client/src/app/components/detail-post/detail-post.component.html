@@ -27,7 +27,8 @@
 
     <p class="description">{{ detailPost.body }}</p>
 
-    <div class="game" *ngIf="detailPost.content" [innerHTML]="detailPost.content | safeHtml">
+    <div class="game" *ngIf="detailPost.content">
+      <img src="{{ detailPost.content }}">
     </div>
 
     <img id="spinner" *ngIf="showSpinner && !detailPost.content" src="/assets/spinner.svg" alt="WhatsBuzz Game Spinner">
