@@ -94,10 +94,10 @@ DATABASES = {
     # Google Cloud Platform Database.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'whatsbuzz',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '207.223.173.123',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '3306',
     }
 }
@@ -151,12 +151,12 @@ USE_TZ = True
 
 # Google Cloud Storage
 # http://django-storages.readthedocs.org/en/latest/backends/apache_libcloud.html
-BUCKET_NAME = 'whatsbuzz-prod'
+BUCKET_NAME = ''
 LIBCLOUD_PROVIDERS = {
     'google': {
         'type': 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
-        'user': 'GOOGTXY772JWVIJRQ6PE',
-        'key': 'CWUxkOm3YDkjbHEGuLoMDGBT0DdsXLFU8w12j/qV',
+        'user': '',
+        'key': '',
         'bucket': BUCKET_NAME,
     }
 }
