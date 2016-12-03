@@ -17,6 +17,7 @@ import { DetailPost } from '../../models';
 export class DetailPostComponent implements OnInit, DoCheck {
   private detailPost: DetailPost;
   private correntId = '';
+  private showSpinner: boolean = false;
 
   constructor(
     private store: Store<AppState>,
@@ -58,7 +59,17 @@ export class DetailPostComponent implements OnInit, DoCheck {
     }
   }
 
+  enableSpinner() {
+    this.showSpinner = true;
+
+    // Only when the user retry.
+    if (this.detailPost.content) {
+      this.detailPost.content = '';
+    }
+  }
+
   onFacebookLogin(gameId) {
+    this.enableSpinner();
     this.loadPlaybuzzScript();
 
     this.fb.login().then(
