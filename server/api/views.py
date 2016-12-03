@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from io import BytesIO
 from PIL import Image, ImageFont, ImageDraw
 from google.cloud import storage
+from django.conf import settings
 
 from api.serializers import TrendSerializer, FacebookGameSerializer, BuzzSerializer, DetailPostSerializer, \
     AgeCategoriesSerializer
@@ -137,7 +138,7 @@ def create_fb_image(facebook_data, facebook_game_image, facebook_game_username, 
     :return:
     """
     response = requests.get(
-        'https://storage.googleapis.com/whatsbuzz-prod-150319/' + str(facebook_game_image.background_image))
+        'https://storage.googleapis.com/' + settings.BUCKET_NAME + '/' + str(facebook_game_image.background_image))
     base_image = Image.open(BytesIO(response.content))
     image = base_image.copy()
 
@@ -188,7 +189,7 @@ def save_fb_image(image, image_name):
         HTML public image url from bucket.
     """
     client = storage.Client()
-    bucket = client.get_bucket('whatsbuzz-prod-150319')
+    bucket = client.get_bucket(settings.BUCKET_NAME)
     blob = bucket.blob('users_pictures/' + image_name)
 
     img_byte = BytesIO()
@@ -197,9 +198,7 @@ def save_fb_image(image, image_name):
 
     blob.upload_from_string(img_byte, content_type='image/jpeg')
 
-    url = blob.public_url
-
-    return '<img src="' + url + '" style="width: 100%;" />'
+    return blob.public_url
 
 
 def get_facebook_data(token, facebook_game_username, facebook_game_profile_image):
