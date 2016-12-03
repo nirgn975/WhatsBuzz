@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
+import { FacebookService, FacebookInitParams, FacebookLoginResponse, FacebookUiParams } from 'ng2-facebook-sdk/dist';
 
 import { AppState } from '../../reducers';
 import { DetailPostActions } from '../../actions';
@@ -87,7 +87,18 @@ export class DetailPostComponent implements OnInit, DoCheck {
   }
 
   onFacebookShare(gameId) {
-    console.log('share the post');
+    let shareParams: FacebookUiParams = {
+      method: 'share',
+      title: this.detailPost.title,
+      picture: this.detailPost.content,
+      href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost.unique_id,
+      hashtag: '#WhatsBuzz',
+      link: 'http://www.whatsbuzz.co.il',
+      description: this.detailPost.body,
+      caption: 'http://www.whatsbuzz.co.il',
+      display: 'popup',
+    };
+    this.fb.ui(shareParams);
   }
 
   loadPlaybuzzScript() {
