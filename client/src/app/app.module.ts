@@ -45,6 +45,8 @@ import {
   NotFoundComponent,
 } from './components';
 
+import { SafeHtmlPipe } from './pipes';
+
 import {
   BuzzService,
   PostsService,
@@ -67,6 +69,7 @@ import {
     BuzzComponent,
     RecommendationsComponent,
     NotFoundComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
