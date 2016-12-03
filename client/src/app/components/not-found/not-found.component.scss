@@ -1,0 +1,17 @@
+@import "../../../assets/vars.scss";
+
+.card {
+  padding: 20px;
+  margin: 10px 15px;
+  text-align: center;
+
+  .inner-card {
+    width: 40%;
+    display: inline-block;
+    border: 1px solid #c7dce6;
+    border-radius: $radius;
+    padding: 10px;
+  }
+
+  @include button-link;
+}

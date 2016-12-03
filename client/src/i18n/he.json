@@ -32,5 +32,9 @@
     "facebook-login-button": "המשך עם פייסבוק",
     "facebook-share-button": "שתף בפייסבוק",
     "facebook-retry-button": "נסה שוב"
+  },
+  "NOT-FOUND": {
+    "title": "אופס.. העמוד לא קיים",
+    "description": "אין כאן שום דבר מעניין, אבל בנתיים כדאי לכם לראות את הדברים שעשו לנו את השבוע"
   }
 }
