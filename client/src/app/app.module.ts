@@ -45,14 +45,14 @@ import {
   NotFoundComponent,
 } from './components';
 
-import { SafeHtmlPipe } from './pipes';
-
 import {
   BuzzService,
   PostsService,
   DetailPostService,
   RecommandationService,
 } from './services';
+
+import { SafeHtmlPipe } from './pipes';
 
 @NgModule({
   declarations: [
