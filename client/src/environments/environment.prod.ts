@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_PATH: 'https://whatsbuzz-production-env.appspot.com/api'
+  API_PATH: 'https://whatsbuzz-prod-150319.appspot.com/api'
 };

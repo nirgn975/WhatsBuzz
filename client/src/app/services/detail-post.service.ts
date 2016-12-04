@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { TranslateService } from 'ng2-translate/ng2-translate';
 
 import { environment } from '../../environments/environment';
 import { DetailPost } from '../models';
@@ -13,10 +12,9 @@ export class DetailPostService {
 
   constructor(
     private http: Http,
-    private translate: TranslateService
   ) {
     this.headers = new Headers();
-    this.headers.append('Accept-Language', this.translate.currentLang);
+    this.headers.append('Accept-Language', 'he');
 
     this.params = new URLSearchParams();
   }
@@ -33,7 +31,7 @@ export class DetailPostService {
     this.params.set('userID', gameData.userID);
     this.params.set('accessToken', gameData.accessToken);
     this.params.set('uniqueId', gameData.unique_id);
-    this.params.set('postLanguage', this.translate.currentLang);
+    this.params.set('postLanguage', 'he');
     let options = new RequestOptions({
       headers: this.headers, search: this.params
     });
