@@ -6,7 +6,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { TranslateModule } from 'ng2-translate/ng2-translate';
 import { FacebookService } from 'ng2-facebook-sdk/dist';
 import { AdsenseModule } from 'ng2-adsense';
 
@@ -77,7 +76,6 @@ import { SafeHtmlPipe } from './pipes';
     HttpModule,
     AppRoutingModule,
     AdsenseModule,
-    TranslateModule.forRoot(),
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(BuzzEffects),
