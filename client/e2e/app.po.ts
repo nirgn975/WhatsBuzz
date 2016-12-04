@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class WbPage {
+export class WhatsBuzzPage {
   navigateTo() {
     return browser.get('/');
   }

@@ -37,15 +37,15 @@
 
     <div class="row btn-social">
       <button *ngIf="!detailPost.content" class="btn btn-lg btn-facebook login" (click)="onFacebookLogin(detailPost.unique_id)">
-        {{ 'DETAIL-POST.facebook-login-button' | translate }}
+        המשך עם פייסבוק
       </button>
 
       <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook share" (click)="onFacebookShare(detailPost.unique_id)">
-        {{ 'DETAIL-POST.facebook-share-button' | translate }}
+        שתף בפייסבוק
       </button>
 
       <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook retry" (click)="onFacebookLogin(detailPost.unique_id)">
-        {{ 'DETAIL-POST.facebook-retry-button' | translate }}
+        נסה שוב
       </button>
     </div>
 

@@ -1,11 +1,11 @@
 <div class="col-sm-8">
   <div class="category-header">
-    <h2>{{ 'TRENDS.header' | translate }}</h2>
+    <h2>טרנדים</h2>
   </div>
 
   <wb-post *ngFor="let post of posts | async" [post]="post" class="col-sm-6"></wb-post>
   <div class="col-sm-12">
-    <a (click)="loadMore()" class="btn btn-primary">{{ 'MAIN.showMore' | translate }}</a>
+    <a (click)="loadMore()" class="btn btn-primary">הצג עוד</a>
   </div>
 </div>
 
