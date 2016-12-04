@@ -37,7 +37,7 @@ class TagsAdmin(TranslationAdmin):
     class Media:
         js = (
             'modeltranslation/js/force_jquery.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
             'modeltranslation/js/tabbed_translation_fields.js',
         )
         css = {
@@ -55,9 +55,9 @@ class TrendAdmin(TranslationAdmin):
     class Media:
         js = (
             'modeltranslation/js/force_jquery.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
             'modeltranslation/js/tabbed_translation_fields.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+            '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
         )
         css = {
             "all": ("css/admin.css",),
@@ -75,9 +75,9 @@ class FacebookGameAdmin(TranslationAdmin):
     class Media:
         js = (
             'modeltranslation/js/force_jquery.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
             'modeltranslation/js/tabbed_translation_fields.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+            '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
         )
         css = {
             "all": ("css/admin.css",),

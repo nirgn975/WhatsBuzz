@@ -26,6 +26,8 @@ SECRET_KEY = ''
 DEBUG = False
 CORS_ORIGIN_REGEX_WHITELIST = (
     '^(localhost:)*',
+    '^(https://whatsbuzz-production-env.appspot.com)*',
+    '^(https://whatsbuzz-production-env.firebaseapp.com)*',
 )
 
 ALLOWED_HOSTS = ['*']
@@ -163,7 +165,7 @@ LIBCLOUD_PROVIDERS = {
 
 DEFAULT_LIBCLOUD_PROVIDER = 'google'
 DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
-STATIC_URL = 'http://storage.googleapis.com/' + BUCKET_NAME + '/static/'
+STATIC_URL = 'https://storage.googleapis.com/' + BUCKET_NAME + '/static/'
 
 
 # CKEditor - WYSIWYG editor.
