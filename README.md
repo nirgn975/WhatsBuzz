@@ -1,12 +1,12 @@
 # Whats Buzz
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Donate][donate-image]][donate-url]
 
 Something about the project.
 
 ## Our Stack
 
-  * [Angular](https://angular.io/) 
+  * [Angular](https://angular.io/)
   * [Django](https://www.djangoproject.com/)
   * [PostgreSQL](http://www.postgresql.org/)
 
@@ -70,10 +70,10 @@ python manage.py compilemessages -l he
 ## Deploy
 
 **Client**
-  
+
   1. Build the project `ng build -o dist -prod --aot`.
   2. Run `ng github-pages:deploy` to deploy to Github Pages or `...` to deploy to Firebase.
-  
+
 **Server**
 
   1. Migrate the database `python manage.py migrate`.
@@ -90,3 +90,5 @@ python manage.py compilemessages -l he
 [license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
 [travis-image]: https://travis-ci.org/nirgn975/WhatsBuzz.svg?branch=master
 [travis-url]: https://travis-ci.org/nirgn975/WhatsBuzz
+[donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
+[donate-url]: https://www.paypal.me/nirgn/2
