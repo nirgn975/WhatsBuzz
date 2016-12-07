@@ -9,26 +9,28 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FacebookService } from 'ng2-facebook-sdk/dist';
 import { AdsenseModule } from 'ng2-adsense';
 
-import reducer from './reducers';
+// import reducer from './reducers';
 import { WbComponent } from './wb.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import {
-  BuzzActions,
-  FacebookGamesActions,
-  TrendsActions,
-  PagesActions,
-  DetailPostActions,
-  RecommendationsActions,
-} from './actions';
+import { reducer } from './reducers';
 
-import {
-  BuzzEffects,
-  FacebookGamesEffects,
-  TrendsEffects,
-  DetailPostEffects,
-  RecommandationEffects,
-} from './effects';
+// import {
+//   // BuzzActions,
+//   FacebookGamesActions,
+//   TrendsActions,
+//   PagesActions,
+//   DetailPostActions,
+//   RecommendationsActions,
+// } from './actions';
+
+// import {
+//   BuzzEffects,
+//   FacebookGamesEffects,
+//   TrendsEffects,
+//   DetailPostEffects,
+//   RecommandationEffects,
+// } from './effects';
 
 import {
   HeaderComponent,
@@ -78,24 +80,24 @@ import { SafeHtmlPipe } from './pipes';
     AdsenseModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(BuzzEffects),
-    EffectsModule.run(FacebookGamesEffects),
-    EffectsModule.run(TrendsEffects),
-    EffectsModule.run(DetailPostEffects),
-    EffectsModule.run(RecommandationEffects),
+    // EffectsModule.run(BuzzEffects),
+    // EffectsModule.run(FacebookGamesEffects),
+    // EffectsModule.run(TrendsEffects),
+    // EffectsModule.run(DetailPostEffects),
+    // EffectsModule.run(RecommandationEffects),
   ],
   providers: [
     FacebookService,
-    FacebookGamesActions,
-    TrendsActions,
+    // FacebookGamesActions,
+    // TrendsActions,
     BuzzService,
-    BuzzActions,
+    // BuzzActions,
     PostsService,
-    PagesActions,
+    // PagesActions,
     DetailPostService,
-    DetailPostActions,
+    // DetailPostActions,
     RecommandationService,
-    RecommendationsActions,
+    // RecommendationsActions,
   ],
   bootstrap: [WbComponent]
 })
