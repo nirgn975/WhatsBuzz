@@ -1,6 +1,6 @@
 # Whats Buzz
 
-[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Donate][donate-image]][donate-url]
+[![license][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Python 3][python-image]][python-url] [![Updates][updates-image]][updates-url] [![Donate][donate-image]][donate-url]
 
 Something about the project.
 
@@ -90,5 +90,9 @@ python manage.py compilemessages -l he
 [license-url]: https://github.com/nirgn975/WhatsBuzz/blob/master/LICENSE
 [travis-image]: https://travis-ci.org/nirgn975/WhatsBuzz.svg?branch=master
 [travis-url]: https://travis-ci.org/nirgn975/WhatsBuzz
+[python-image]: https://pyup.io/repos/github/nirgn975/whatsbuzz/python-3-shield.svg
+[python-url]: https://pyup.io/repos/github/nirgn975/whatsbuzz
+[updates-image]: https://pyup.io/repos/github/nirgn975/whatsbuzz/shield.svg
+[updates-url]: https://pyup.io/repos/github/nirgn975/whatsbuzz
 [donate-image]: https://img.shields.io/badge/Donate-PayPal-lightgrey.svg
 [donate-url]: https://www.paypal.me/nirgn/2
