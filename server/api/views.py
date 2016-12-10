@@ -257,10 +257,13 @@ def get_facebook_data(token, facebook_game_username, facebook_game_profile_image
 
     # Something
     request = r.json()
-    if request['first_name']:
-        request['name'] = request['first_name']
-    elif request['last_name']:
-        request['name'] = request['last_name']
+    try:
+        if request['first_name']:
+            request['name'] = request['first_name']
+        elif request['last_name']:
+            request['name'] = request['last_name']
+    except Exception as e:
+        print(e)
 
     return request
 
