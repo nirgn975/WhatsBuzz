@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { PrePost } from '../models/pre-post';
 import { type } from '../util';
 
 
@@ -18,19 +19,19 @@ export class LoadPostsAction implements Action {
 export class LoadPostsSuccessAction implements Action {
   type = ActionTypes.LOAD_POSTS_SUCCESS;
 
-  constructor(public payload: any) { }
+  constructor(public payload: PrePost[]) { }
 }
 
 export class LoadMorePostsAction implements Action {
   type = ActionTypes.LOAD_MORE_POSTS;
 
-  constructor(public payload: any) { }
+  constructor(public payload: number) { }
 }
 
 export class LoadMorePostsSuccessAction implements Action {
   type = ActionTypes.LOAD_MORE_POSTS_SUCCESS;
 
-  constructor(public payload: any) { }
+  constructor(public payload: PrePost[]) { }
 }
 
 export type Actions

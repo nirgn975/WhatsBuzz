@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { DetailPost } from '../models/detail-post';
+import { PrePost } from '../models/pre-post';
 import { type } from '../util';
 
 
@@ -25,13 +26,13 @@ export class LoadDetailPostSuccessAction implements Action {
 export class LoadFacebookGamePostAction implements Action {
   type = ActionTypes.LOAD_FACEBOOK_GAME;
 
-  constructor(public payload: any) { }
+  constructor(public payload: string) { }
 }
 
 export class LoadFacebookGameSuccessAction implements Action {
   type = ActionTypes.LOAD_FACEBOOK_GAME_SUCCESS;
 
-  constructor(public payload: any) { }
+  constructor(public payload: string) { }
 }
 
 export type Actions
