@@ -1,24 +1,27 @@
+import 'rxjs/add/operator/switchMap';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import { DetailPostActions } from '../actions';
-import { DetailPostService } from '../services';
+import { DetailPostService } from '../services/detail-post.service';
+import * as detailPost from '../actions/detail-post';
+
 
 @Injectable()
 export class DetailPostEffects {
-    constructor (
-      private update$: Actions,
-      private detailPostActions: DetailPostActions,
-      private svc: DetailPostService,
-    ) {}
+  constructor(private actions$: Actions, private detailPostService: DetailPostService) { }
 
-    @Effect() loadBuzz$ = this.update$
-      .ofType(DetailPostActions.LOAD_DETAIL_POST)
-      .switchMap((postId) => this.svc.getDetailPost(postId.payload))
-      .map(detailPost => this.detailPostActions.loadDetailPostSuccess(detailPost));
+    @Effect()
+    loadBuzz$: Observable<Action>= this.actions$
+      .ofType(detailPost.ActionTypes.LOAD_DETAIL_POST)
+      .switchMap((postId) => this.detailPostService.getDetailPost(postId.payload))
+      .map(detailPostData => new detailPost.LoadDetailPostSuccessAction(detailPostData));
 
-    @Effect() loadFacebookGame$ = this.update$
-      .ofType(DetailPostActions.LOAD_FACEBOOK_GAME)
-      .switchMap((data) => this.svc.getGame(data.payload))
-      .map(gameCode => this.detailPostActions.loadFacebookGameSuccess(gameCode));
+    @Effect()
+    loadFacebookGame$: Observable<Action>= this.actions$
+      .ofType(detailPost.ActionTypes.LOAD_FACEBOOK_GAME)
+      .switchMap((data) => this.detailPostService.getGame(data.payload))
+      .map(gameCode => new detailPost.LoadFacebookGameSuccessAction(gameCode));
+
 }

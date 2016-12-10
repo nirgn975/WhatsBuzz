@@ -21,24 +21,30 @@ class TrendViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint to expose all 'Trends' posts.
     """
-    queryset = Trend.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
     serializer_class = TrendSerializer
+
+    def get_queryset(self):
+        return Trend.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
 
 
 class FacebookGameViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint to expose all 'Facebook Games' posts.
     """
-    queryset = FacebookGame.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
     serializer_class = FacebookGameSerializer
+
+    def get_queryset(self):
+        return FacebookGame.objects.filter(publish__lte=timezone.now()).order_by('-created_at')
 
 
 class BuzzViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint to expose all Buzz posts.
     """
-    queryset = Post.objects.filter(publish__lte=timezone.now()).filter(buzz=True).order_by('-created_at')[:5]
     serializer_class = BuzzSerializer
+
+    def get_queryset(self):
+        return Post.objects.filter(publish__lte=timezone.now()).filter(buzz=True).order_by('-created_at')[:5]
 
 
 class DetailPostViewSet(viewsets.ReadOnlyModelViewSet):
@@ -69,7 +75,6 @@ class GetGame(APIView):
     """
     A custom endpoint for GET Trend Game request.
     """
-
     def get(self, request, format=None):
         """
 

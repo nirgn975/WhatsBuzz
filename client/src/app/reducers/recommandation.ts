@@ -1,24 +1,26 @@
-import { Action } from '@ngrx/store';
+import { createSelector } from 'reselect';
+import { PrePost } from '../models/pre-post';
+import * as recommendations from '../actions/recommendations';
 
-import { PrePost } from '../models';
-import { RecommendationsActions } from '../actions';
 
-export type RecommendationsState = PrePost[];
+export type  State = PrePost[];
 
-const initialState: RecommendationsState = [{
+const initialState: State = [{
   unique_id: '',
   title: '',
-  banner_image: ''
+  banner_image: '',
 }];
 
-export default function (state = initialState, action: Action): RecommendationsState {
+export function reducer(state = initialState, action: recommendations.Actions): State {
   switch (action.type) {
-    case RecommendationsActions.LOAD_RECOMMENDATIONS: {
+    case recommendations.ActionTypes.LOAD_RECOMMENDATIONS: {
       return initialState;
     }
-    case RecommendationsActions.LOAD_RECOMMENDATIONS_SUCCESS: {
+
+    case recommendations.ActionTypes.LOAD_RECOMMENDATIONS_SUCCESS: {
       return action.payload;
     }
+
     default: {
       return state;
     }

@@ -3,7 +3,7 @@
     <h2>טרנדים</h2>
   </div>
 
-  <wb-post *ngFor="let post of posts | async" [post]="post" class="col-sm-6"></wb-post>
+  <wb-post *ngFor="let post of posts$ | async" [post]="post" class="col-sm-6"></wb-post>
   <div class="col-sm-12">
     <a (click)="loadMore()" class="btn btn-primary">הצג עוד</a>
   </div>

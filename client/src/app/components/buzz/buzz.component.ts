@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams } from 'ng2-facebook-sdk/dist';
 
-import { AppState } from '../../reducers';
-import { BuzzActions } from '../../actions';
-import { PrePost } from '../../models';
+import * as fromRoot from '../../reducers';
+import * as buzzAction from '../../actions/buzz';
+import { PrePost } from '../../models/pre-post';
 
 @Component({
   selector: 'wb-buzz',
@@ -14,15 +14,14 @@ import { PrePost } from '../../models';
   styleUrls: ['./buzz.component.scss']
 })
 export class BuzzComponent implements OnInit {
-  private buzz: Observable<PrePost[]>;
+  private buzz$: Observable<PrePost[]>;
   private loadBuzz: boolean = false;
 
   constructor(
-    private store: Store<AppState>,
-    private buzzActions: BuzzActions,
+    private store: Store<fromRoot.State>,
     private fb: FacebookService,
   ) {
-    this.buzz = store.select(state => state.buzz);
+    this.buzz$ = store.select(fromRoot.getBuzzState);
 
     let fbParams: FacebookInitParams = {
       appId   : '1063610257017045',
@@ -36,7 +35,7 @@ export class BuzzComponent implements OnInit {
   ngOnInit() {
     if (!this.loadBuzz) {
       // Load Buzz posts only once.
-      this.store.dispatch(this.buzzActions.loadBuzzs());
+      this.store.dispatch(new buzzAction.LoadBuzzsAction());
       this.loadBuzz = true;
     }
   }
