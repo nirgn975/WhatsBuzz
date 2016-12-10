@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
 
-import { AppState } from '../../reducers';
-import { DetailPostActions } from '../../actions';
-import { DetailPost } from '../../models';
+import * as fromRoot from '../../reducers';
+import * as detailPostAction from '../../actions/detail-post';
+import { DetailPost } from '../../models/detail-post';
 
 @Component({
   selector: 'wb-detail-post',
@@ -15,18 +15,17 @@ import { DetailPost } from '../../models';
   styleUrls: ['./detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit, DoCheck {
-  private detailPost: DetailPost;
+  private detailPost$: DetailPost;
   private correntId = '';
   private showSpinner: boolean = false;
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<fromRoot.State>,
     private route: ActivatedRoute,
-    private detailPostActions: DetailPostActions,
     private fb: FacebookService,
   ) {
-    store.select(state => state.detailPost).subscribe(
-      (res) => this.detailPost = res
+    this.store.select(fromRoot.getDetailPostState).subscribe(
+      (res) => this.detailPost$ = res
     );
 
     let fbParams: FacebookInitParams = {
@@ -48,14 +47,14 @@ export class DetailPostComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.correntId = this.route.snapshot.params['uuid'];
-    this.store.dispatch(this.detailPostActions.loadDetailPost(this.correntId));
+    this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.correntId));
   }
 
   ngDoCheck() {
     // Check if the url has changed, if it is, change the data (dispatch an action).
     if (this.correntId !== this.route.snapshot.params['uuid']) {
       this.correntId = this.route.snapshot.params['uuid'];
-      this.store.dispatch(this.detailPostActions.loadDetailPost(this.correntId));
+      this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.correntId));
     }
   }
 
@@ -63,8 +62,8 @@ export class DetailPostComponent implements OnInit, DoCheck {
     this.showSpinner = true;
 
     // Only when the user retry.
-    if (this.detailPost.content) {
-      this.detailPost.content = '';
+    if (this.detailPost$.content) {
+      this.detailPost$.content = '';
     }
   }
 
@@ -80,7 +79,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
             accessToken: response.authResponse.accessToken,
             unique_id: this.correntId
           }
-          this.store.dispatch(this.detailPostActions.loadFacebookGamePost(game));
+          // this.store.dispatch(this.detailPostActions.loadFacebookGamePost(game));
         }
       }
     );
@@ -89,12 +88,12 @@ export class DetailPostComponent implements OnInit, DoCheck {
   onFacebookShare(gameId) {
     let shareParams = {
       method: 'share',
-      title: this.detailPost.title,
-      picture: this.detailPost.content,
-      href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost.unique_id,
+      title: this.detailPost$.title,
+      picture: this.detailPost$.content,
+      href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
       hashtag: '#WhatsBuzz',
       link: 'http://www.whatsbuzz.co.il',
-      description: this.detailPost.body,
+      description: this.detailPost$.body,
       caption: 'http://www.whatsbuzz.co.il',
       display: 'popup',
     };

@@ -1,6 +1,6 @@
 <div class="col-sm-8">
   <div class="category-header">
-    <h2>{{ detailPost.title }}</h2>
+    <h2>{{ detailPost$.title }}</h2>
   </div>
 
   <div class="card">
@@ -10,7 +10,7 @@
       [adSlot]="8345875466">
     </ng2-adsense>
 
-    <img class="card-img-top" src="{{ detailPost.banner_image }}" alt="{{ detailPost.title }}">
+    <img class="card-img-top" src="{{ detailPost$.banner_image }}" alt="{{ detailPost$.title }}">
 
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="margin: 10px 0">
       <a class="a2a_button_whatsapp"></a>
@@ -25,35 +25,35 @@
       [adSlot]="9822608662">
     </ng2-adsense>
 
-    <p class="description">{{ detailPost.body }}</p>
+    <p class="description">{{ detailPost$.body }}</p>
 
     <!-- The game -->
-    <div class="game" *ngIf="detailPost.type == 'trend'" [innerHTML]="detailPost.content | safeHtml"></div>
-    <div class="game" *ngIf="detailPost.type == 'facebook-game'">
-      <img src="{{ detailPost.content }}">
+    <div class="game" *ngIf="detailPost$.type == 'trend'" [innerHTML]="detailPost$.content | safeHtml"></div>
+    <div class="game" *ngIf="detailPost$.type == 'facebook-game'">
+      <img src="{{ detailPost$.content }}">
     </div>
 
-    <img id="spinner" *ngIf="showSpinner && !detailPost.content" src="/assets/spinner.svg" alt="WhatsBuzz Game Spinner">
+    <img id="spinner" *ngIf="showSpinner && !detailPost$.content" src="/assets/spinner.svg" alt="WhatsBuzz Game Spinner">
 
     <div class="row btn-social">
-      <button *ngIf="!detailPost.content" class="btn btn-lg btn-facebook login" (click)="onFacebookLogin(detailPost.unique_id)">
+      <button *ngIf="!detailPost$.content" class="btn btn-lg btn-facebook login" (click)="onFacebookLogin(detailPost$.unique_id)">
         המשך עם פייסבוק
       </button>
 
-      <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook share" (click)="onFacebookShare(detailPost.unique_id)">
+      <button *ngIf="detailPost$.content" class="btn btn-lg btn-facebook share" (click)="onFacebookShare(detailPost$.unique_id)">
         שתף בפייסבוק
       </button>
 
-      <button *ngIf="detailPost.content" class="btn btn-lg btn-facebook retry" (click)="onFacebookLogin(detailPost.unique_id)">
+      <button *ngIf="detailPost$.content" class="btn btn-lg btn-facebook retry" (click)="onFacebookLogin(detailPost$.unique_id)">
         נסה שוב
       </button>
     </div>
 
-    <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost.unique_id }}" data-width="100%"></div>
+    <div class="fb-comments" attr.data-href="http://whatsbuzz.co.il/{{ detailPost$.unique_id }}" data-width="100%"></div>
 
     <div class="row tags">
       <span>תגיות:</span>
-      <span *ngFor="let tag of detailPost.tags">{{ tag.name }} </span>
+      <span *ngFor="let tag of detailPost$.tags">{{ tag.name }} </span>
     </div>
   </div>
 </div>

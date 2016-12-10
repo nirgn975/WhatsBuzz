@@ -1,4 +1,4 @@
-export interface DetailPost {
+  export interface DetailPost {
   unique_id: string;
   title: string;
   body: string;

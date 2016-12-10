@@ -9,49 +9,34 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FacebookService } from 'ng2-facebook-sdk/dist';
 import { AdsenseModule } from 'ng2-adsense';
 
-import reducer from './reducers';
+import { reducer } from './reducers';
 import { WbComponent } from './wb.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import {
-  BuzzActions,
-  FacebookGamesActions,
-  TrendsActions,
-  PagesActions,
-  DetailPostActions,
-  RecommendationsActions,
-} from './actions';
+import { BuzzEffects } from './effects/buzz';
+import { FacebookGamesEffects } from './effects/facebookGames';
+import { TrendsEffects } from './effects/trends';
+import { DetailPostEffects } from './effects/detail-post';
+import { RecommandationEffects } from './effects/recommandations';
 
-import {
-  BuzzEffects,
-  FacebookGamesEffects,
-  TrendsEffects,
-  DetailPostEffects,
-  RecommandationEffects,
-} from './effects';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BuzzComponent } from './components/buzz/buzz.component';
+import { FacebookGamesComponent } from './components/facebook-games/facebook-games.component';
+import { TrendsComponent } from './components/trends/trends.component';
+import { PostComponent } from './components/post/post.component';
+import { DetailPostComponent } from './components/detail-post/detail-post.component';
+import { MainComponent } from './components/main/main.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
-import {
-  HeaderComponent,
-  FooterComponent,
-  BuzzComponent,
-  FacebookGamesComponent,
-  TrendsComponent,
-  PostComponent,
-  DetailPostComponent,
-  MainComponent,
-  PrivacyPolicyComponent,
-  RecommendationsComponent,
-  NotFoundComponent,
-} from './components';
+import { BuzzService  } from './services/buzz.service';
+import { PostsService  } from './services/posts.service';
+import { DetailPostService  } from './services/detail-post.service';
+import { RecommandationService } from './services/recommandation.service';
 
-import {
-  BuzzService,
-  PostsService,
-  DetailPostService,
-  RecommandationService,
-} from './services';
-
-import { SafeHtmlPipe } from './pipes';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -86,16 +71,10 @@ import { SafeHtmlPipe } from './pipes';
   ],
   providers: [
     FacebookService,
-    FacebookGamesActions,
-    TrendsActions,
     BuzzService,
-    BuzzActions,
     PostsService,
-    PagesActions,
     DetailPostService,
-    DetailPostActions,
     RecommandationService,
-    RecommendationsActions,
   ],
   bootstrap: [WbComponent]
 })

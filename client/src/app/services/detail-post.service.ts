@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
-import { DetailPost } from '../models';
+import { DetailPost } from '../models/detail-post';
 
 @Injectable()
 export class DetailPostService {

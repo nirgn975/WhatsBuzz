@@ -1,11 +1,11 @@
-import { Action } from '@ngrx/store';
+import { createSelector } from 'reselect';
+import { DetailPost } from '../models/detail-post';
+import * as detailPost from '../actions/detail-post';
 
-import { DetailPost } from '../models';
-import { DetailPostActions } from '../actions';
 
-export type DetailPostState = DetailPost;
+export type  State = DetailPost;
 
-const initialState: DetailPostState = {
+const initialState: State = {
   unique_id: '',
   title: '',
   body: '',
@@ -17,19 +17,25 @@ const initialState: DetailPostState = {
   content: '',
 };
 
-export default function (state = initialState, action: Action): DetailPostState {
+export function reducer(state = initialState, action: detailPost.Actions): State {
   switch (action.type) {
-    case DetailPostActions.LOAD_DETAIL_POST: {
+    case detailPost.ActionTypes.LOAD_DETAIL_POST: {
       return initialState;
     }
-    case DetailPostActions.LOAD_DETAIL_POST_SUCCESS: {
+
+    case detailPost.ActionTypes.LOAD_DETAIL_POST_SUCCESS: {
       return action.payload;
     }
-    case DetailPostActions.LOAD_FACEBOOK_GAME_SUCCESS: {
+
+    case detailPost.ActionTypes.LOAD_FACEBOOK_GAME_SUCCESS: {
       return Object.assign({}, state, action.payload);
     }
+
     default: {
       return state;
     }
   }
 }
+
+
+// export const getDetailPost = (state: State) => state;

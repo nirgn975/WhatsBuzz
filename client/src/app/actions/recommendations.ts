@@ -1,21 +1,24 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { type } from '../util';
 
-@Injectable()
-export class RecommendationsActions {
-  static LOAD_RECOMMENDATIONS = '[Recommendations] Load Recommendations';
-  loadRecommendations(category): Action {
-    return {
-      type: RecommendationsActions.LOAD_RECOMMENDATIONS,
-      payload: category
-    };
-  }
 
-  static LOAD_RECOMMENDATIONS_SUCCESS = '[Recommendations] Load Recommendations Success';
-  loadRecommendationsSuccess(recommendations): Action {
-    return {
-      type: RecommendationsActions.LOAD_RECOMMENDATIONS_SUCCESS,
-      payload: recommendations
-    };
-  }
+export const ActionTypes = {
+  LOAD_RECOMMENDATIONS:         type('[Recommendations] Load Recommendations'),
+  LOAD_RECOMMENDATIONS_SUCCESS: type('[Recommendations] Load Recommendations Success'),
+};
+
+export class LoadRecommendationsAction implements Action {
+  type = ActionTypes.LOAD_RECOMMENDATIONS;
+
+  constructor(public payload: any) { }
 }
+
+export class LoadRecommendationsSuccessAction implements Action {
+  type = ActionTypes.LOAD_RECOMMENDATIONS_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export type Actions
+  = LoadRecommendationsAction
+  | LoadRecommendationsSuccessAction;

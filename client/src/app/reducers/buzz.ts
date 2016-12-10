@@ -1,26 +1,31 @@
-import { Action } from '@ngrx/store';
+import { createSelector } from 'reselect';
+import { PrePost } from '../models/pre-post';
+import * as buzz from '../actions/buzz';
 
-import { PrePost } from '../models';
-import { BuzzActions } from '../actions';
 
-export type BuzzState = PrePost[];
+export type  State = PrePost[];
 
-const initialState: BuzzState = [{
+const initialState: State = [{
   unique_id: '',
   title: '',
-  banner_image: ''
+  banner_image: '',
 }];
 
-export default function (state = initialState, action: Action): BuzzState {
+export function reducer(state = initialState, action: buzz.Actions): State {
   switch (action.type) {
-    case BuzzActions.LOAD_BUZZS: {
+    case buzz.ActionTypes.LOAD_BUZZS: {
       return initialState;
     }
-    case BuzzActions.LOAD_BUZZS_SUCCESS: {
+
+    case buzz.ActionTypes.LOAD_BUZZS_SUCCESS: {
       return action.payload;
     }
+
     default: {
       return state;
     }
   }
 }
+
+
+// export const getBuzzPosts = (state: State) => state;

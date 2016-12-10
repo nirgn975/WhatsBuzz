@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { AppState } from '../../reducers';
-import { RecommendationsActions } from '../../actions';
-import { PrePost, DetailPost } from '../../models';
+import * as fromRoot from '../../reducers';
+import * as recommendationsActions from '../../actions/recommendations';
+import { PrePost } from '../../models/pre-post';
+import { DetailPost } from '../../models/detail-post';
 
 @Component({
   selector: 'wb-recommendations',
@@ -12,16 +13,15 @@ import { PrePost, DetailPost } from '../../models';
   styleUrls: ['./recommendations.component.scss']
 })
 export class RecommendationsComponent {
-  private recommendations: Observable<PrePost[]>;
-  private detailPost: DetailPost;
+  private recommendations$: Observable<PrePost[]>;
+  private detailPost$: DetailPost;
 
   constructor(
-    private store: Store<AppState>,
-    private recommendationsActions: RecommendationsActions,
+    private store: Store<fromRoot.State>,
   ) {
-    this.recommendations = store.select(state => state.recommandations);
-    store.select(state => state.detailPost).subscribe(
-      (res) => this.detailPost = res
+    this.recommendations$ = store.select(fromRoot.getRecommandationState);
+    this.store.select(fromRoot.getDetailPostState).subscribe(
+      (res) => this.detailPost$ = res
     );
   }
 }

@@ -1,19 +1,24 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { type } from '../util';
 
-@Injectable()
-export class PagesActions {
-  static NEXT_FACEBOOKGAMES_PAGE = '[Page] Next Facebook Games Page';
-  nextFacebookGamesPage(): Action {
-    return {
-      type: PagesActions.NEXT_FACEBOOKGAMES_PAGE,
-    };
-  }
 
-  static NEXT_TRENDS_PAGE = '[Page] Next Trends Page';
-  nextTrendsPage(): Action {
-    return {
-      type: PagesActions.NEXT_TRENDS_PAGE,
-    };
-  }
+export const ActionTypes = {
+  NEXT_FACEBOOKGAMES_PAGE: type('[Page] Next Facebook Games Page'),
+  NEXT_TRENDS_PAGE:        type('[Page] Next Trends Page'),
+};
+
+export class NextFacebookGamesPageAction implements Action {
+  type = ActionTypes.NEXT_FACEBOOKGAMES_PAGE;
+
+  constructor() { }
 }
+
+export class NextTrendsPageAction implements Action {
+  type = ActionTypes.NEXT_TRENDS_PAGE;
+
+  constructor() { }
+}
+
+export type Actions
+  = NextFacebookGamesPageAction
+  | NextTrendsPageAction;
