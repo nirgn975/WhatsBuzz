@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
-import { PrePost } from '../models';
+import { PrePost } from '../models/pre-post';
 
 @Injectable()
 export class RecommandationService {

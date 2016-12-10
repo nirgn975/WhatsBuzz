@@ -1,19 +1,20 @@
+import 'rxjs/add/operator/switchMap';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import { BuzzActions } from '../actions';
-import { BuzzService } from '../services';
+import { BuzzService } from '../services/buzz.service';
+import * as buzz from '../actions/buzz';
+
 
 @Injectable()
 export class BuzzEffects {
-    constructor (
-      private update$: Actions,
-      private buzzActions: BuzzActions,
-      private svc: BuzzService,
-    ) {}
+  constructor(private actions$: Actions, private buzzService: BuzzService) { }
 
-    @Effect() loadBuzz$ = this.update$
-      .ofType(BuzzActions.LOAD_BUZZS)
-      .switchMap(() => this.svc.getBuzzPosts())
-      .map(buzzs => this.buzzActions.loadBuzzsSuccess(buzzs));
+    @Effect()
+    loadBuzz$: Observable<Action>= this.actions$
+      .ofType(buzz.ActionTypes.LOAD_BUZZS)
+      .switchMap(() => this.buzzService.getBuzzPosts())
+      .map(buzzs => new buzz.LoadBuzzsSuccessAction(buzzs));
 }

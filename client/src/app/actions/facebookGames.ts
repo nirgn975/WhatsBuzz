@@ -1,37 +1,40 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { type } from '../util';
 
-@Injectable()
-export class FacebookGamesActions {
-  static LOAD_POSTS = '[FacebookGames] Load FacebookGames Posts';
-  loadPosts(page): Action {
-    return {
-      type: FacebookGamesActions.LOAD_POSTS,
-      payload: page
-    };
-  }
 
-  static LOAD_POSTS_SUCCESS = '[FacebookGames] Load FacebookGames Posts Success';
-  loadPostsSuccess(posts): Action {
-    return {
-      type: FacebookGamesActions.LOAD_POSTS_SUCCESS,
-      payload: posts
-    };
-  }
+export const ActionTypes = {
+  LOAD_POSTS:              type('[FacebookGames] Load FacebookGames Posts'),
+  LOAD_POSTS_SUCCESS:      type('[FacebookGames] Load FacebookGames Posts Success'),
+  LOAD_MORE_POSTS:         type('[FacebookGames] Load More FacebookGames Posts'),
+  LOAD_MORE_POSTS_SUCCESS: type('[FacebookGames] Load More FacebookGames Posts Success'),
+};
 
-  static LOAD_MORE_POSTS = '[FacebookGames] Load More FacebookGames Posts';
-  loadMorePosts(nextPage): Action {
-    return {
-      type: FacebookGamesActions.LOAD_MORE_POSTS,
-      payload: nextPage
-    };
-  }
+export class LoadPostsAction implements Action {
+  type = ActionTypes.LOAD_POSTS;
 
-  static LOAD_MORE_POSTS_SUCCESS = '[FacebookGames] Load More FacebookGames Posts Success';
-  loadMorePostsSuccess(posts): Action {
-    return {
-      type: FacebookGamesActions.LOAD_MORE_POSTS_SUCCESS,
-      payload: posts
-    };
-  }
+  constructor(public payload: number) { }
 }
+
+export class LoadPostsSuccessAction implements Action {
+  type = ActionTypes.LOAD_POSTS_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export class LoadMorePostsAction implements Action {
+  type = ActionTypes.LOAD_MORE_POSTS;
+
+  constructor(public payload: number) { }
+}
+
+export class LoadMorePostsSuccessAction implements Action {
+  type = ActionTypes.LOAD_MORE_POSTS_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export type Actions
+  = LoadPostsAction
+  | LoadPostsSuccessAction
+  | LoadMorePostsAction
+  | LoadMorePostsSuccessAction;

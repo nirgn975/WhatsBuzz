@@ -1,37 +1,41 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { DetailPost } from '../models/detail-post';
+import { type } from '../util';
 
-@Injectable()
-export class DetailPostActions {
-  static LOAD_DETAIL_POST = '[DetailPost] Load Detail Post';
-  loadDetailPost(postId): Action {
-    return {
-      type: DetailPostActions.LOAD_DETAIL_POST,
-      payload: postId
-    };
-  }
 
-  static LOAD_DETAIL_POST_SUCCESS = '[DetailPost] Load Detail Post Success';
-  loadDetailPostSuccess(detailPost): Action {
-    return {
-      type: DetailPostActions.LOAD_DETAIL_POST_SUCCESS,
-      payload: detailPost
-    };
-  }
+export const ActionTypes = {
+  LOAD_DETAIL_POST:           type('[DetailPost] Load Detail Post'),
+  LOAD_DETAIL_POST_SUCCESS:   type('[DetailPost] Load Detail Post Success'),
+  LOAD_FACEBOOK_GAME:         type('[DetailPost] Load Facebook Game'),
+  LOAD_FACEBOOK_GAME_SUCCESS: type('[DetailPost] Load Facebook Game Success'),
+};
 
-  static LOAD_FACEBOOK_GAME = '[DetailPost] Load Facebook Game';
-  loadFacebookGamePost(data): Action {
-    return {
-      type: DetailPostActions.LOAD_FACEBOOK_GAME,
-      payload: data
-    };
-  }
+export class LoadDetailPostAction implements Action {
+  type = ActionTypes.LOAD_DETAIL_POST;
 
-  static LOAD_FACEBOOK_GAME_SUCCESS = '[DetailPost] Load Facebook Game Success';
-  loadFacebookGameSuccess(gameCode): Action {
-    return {
-      type: DetailPostActions.LOAD_FACEBOOK_GAME_SUCCESS,
-      payload: gameCode
-    };
-  }
+  constructor(public payload: string) { }
 }
+
+export class LoadDetailPostSuccessAction implements Action {
+  type = ActionTypes.LOAD_DETAIL_POST_SUCCESS;
+
+  constructor(public payload: DetailPost) { }
+}
+
+export class LoadFacebookGamePostAction implements Action {
+  type = ActionTypes.LOAD_FACEBOOK_GAME;
+
+  constructor(public payload: any) { }
+}
+
+export class LoadFacebookGameSuccessAction implements Action {
+  type = ActionTypes.LOAD_FACEBOOK_GAME_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export type Actions
+  = LoadDetailPostAction
+  | LoadDetailPostSuccessAction
+  | LoadFacebookGamePostAction
+  | LoadFacebookGameSuccessAction;

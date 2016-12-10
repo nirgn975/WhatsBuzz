@@ -1,27 +1,30 @@
-import { Action } from '@ngrx/store';
+import { createSelector } from 'reselect';
+import { PrePost } from '../models/pre-post';
+import * as facebookGames from '../actions/facebookGames';
 
-import { PrePost } from '../models';
-import { FacebookGamesActions } from '../actions';
 
-export type FacebookGamesState = PrePost[];
+export type  State = PrePost[];
 
-const initialState: FacebookGamesState = [{
+const initialState: State = [{
   unique_id: '',
   title: '',
   banner_image: '',
 }];
 
-export default function (state = initialState, action: Action): FacebookGamesState {
+export function reducer(state = initialState, action: facebookGames.Actions): State {
   switch (action.type) {
-    case FacebookGamesActions.LOAD_POSTS: {
+    case facebookGames.ActionTypes.LOAD_POSTS: {
       return initialState;
     }
-    case FacebookGamesActions.LOAD_POSTS_SUCCESS: {
+
+    case facebookGames.ActionTypes.LOAD_POSTS_SUCCESS: {
       return action.payload;
     }
-    case FacebookGamesActions.LOAD_MORE_POSTS_SUCCESS: {
+
+    case facebookGames.ActionTypes.LOAD_MORE_POSTS_SUCCESS: {
       return state.concat(action.payload);
     }
+
     default: {
       return state;
     }

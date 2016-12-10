@@ -1,24 +1,27 @@
+import 'rxjs/add/operator/switchMap';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import { TrendsActions } from '../actions';
-import { PostsService } from '../services';
+import { PostsService } from '../services/posts.service';
+import * as trends from '../actions/trends';
+
 
 @Injectable()
 export class TrendsEffects {
-    constructor (
-      private update$: Actions,
-      private trendsActions: TrendsActions,
-      private svc: PostsService,
-    ) {}
+  constructor(private actions$: Actions, private postsService: PostsService) { }
 
-    @Effect() loadTrendsPosts$ = this.update$
-      .ofType(TrendsActions.LOAD_POSTS)
-      .switchMap((page) => this.svc.getTrendPosts(page.payload))
-      .map(posts => this.trendsActions.loadPostsSuccess(posts));
+    @Effect()
+    loadTrendsPosts$: Observable<Action>= this.actions$
+      .ofType(trends.ActionTypes.LOAD_POSTS)
+      .switchMap((page) => this.postsService.getTrendPosts(page.payload))
+      .map(posts => new trends.LoadPostsSuccessAction(posts));
 
-    @Effect() loadMoreTrendsPosts$ = this.update$
-      .ofType(TrendsActions.LOAD_MORE_POSTS)
-      .switchMap((page) => this.svc.getTrendPosts(page.payload))
-      .map(posts => this.trendsActions.loadMorePostsSuccess(posts));
+    @Effect()
+    loadMoreTrendsPosts$: Observable<Action>= this.actions$
+      .ofType(trends.ActionTypes.LOAD_MORE_POSTS)
+      .switchMap((page) => this.postsService.getTrendPosts(page.payload))
+      .map(posts => new trends.LoadMorePostsSuccessAction(posts));
+
 }
