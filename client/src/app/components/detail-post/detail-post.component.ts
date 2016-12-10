@@ -79,7 +79,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
             accessToken: response.authResponse.accessToken,
             unique_id: this.correntId
           }
-          // this.store.dispatch(this.detailPostActions.loadFacebookGamePost(game));
+          this.store.dispatch(new detailPostAction.LoadFacebookGamePostAction(game));
         }
       }
     );
