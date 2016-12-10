@@ -2,6 +2,10 @@ import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
+import { PrePost } from '../models/pre-post';
+import { DetailPost } from '../models/detail-post';
+import { Pages } from '../models/pages';
+
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
  * it any number of functions and it returns a function. This new function
