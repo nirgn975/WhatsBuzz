@@ -211,7 +211,7 @@ def save_fb_image(image, image_name):
     blob = bucket.blob('users_pictures/' + image_name)
 
     img_byte = BytesIO()
-    image.save(img_byte, format='PNG')
+    image.save(img_byte, format='PNG', quality=80)
     img_byte = img_byte.getvalue()
 
     blob.upload_from_string(img_byte, content_type='image/jpeg')
