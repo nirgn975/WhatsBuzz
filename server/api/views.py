@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from io import BytesIO
+from io import BytesIO, StringIO
 from PIL import Image, ImageFont, ImageDraw
 from google.cloud import storage
 from django.conf import settings
@@ -150,14 +150,26 @@ def create_fb_image(facebook_data, facebook_game_image, facebook_game_username, 
 
     # Paste the username text.
     if facebook_game_username:
-        # font = ImageFont.truetype("fonts/Helvetica.ttf", int(facebook_game_username['font_size']))
+        font_response = requests.get('https://storage.googleapis.com/' + settings.BUCKET_NAME + '/Arimo-Regular.ttf')
+        font = ImageFont.truetype(BytesIO(font_response.content), int(facebook_game_username.font_size))
         draw = ImageDraw.Draw(image)
+
+        if facebook_game_username.text_align == 'left':
+            # Get the text x and y.
+            text_x, text_y = font.getsize(facebook_data['name'])
+            facebook_game_username.x = facebook_game_username.x - (text_x / 2)
+
+        # Reverse if the name is in Hebrew.
+        if any("\u0590" <= c <= "\u05EA" for c in facebook_data['name']):
+            reversed_name = facebook_data['name'][::-1]
+            facebook_data['name'] = reversed_name
+
         draw.text(
             (int(facebook_game_username.x),
              int(facebook_game_username.y)),
             facebook_data['name'],
             fill=facebook_game_username.color,
-            # font=font
+            font=font
         )
 
     # Paste the Facebook profile image.
@@ -224,9 +236,9 @@ def get_facebook_data(token, facebook_game_username, facebook_game_profile_image
     if facebook_game_username:
         if facebook_game_username.username == 'full_name':
             query += 'name'
-        if facebook_game_username.username == 'first_name':
+        elif facebook_game_username.username == 'first_name':
             query += 'first_name'
-        if facebook_game_username.username == 'last_name':
+        elif facebook_game_username.username == 'last_name':
             query += 'last_name'
 
     if facebook_game_username and facebook_game_profile_image:
@@ -243,7 +255,14 @@ def get_facebook_data(token, facebook_game_username, facebook_game_profile_image
         # Error
         pass
 
-    return r.json()
+    # Something
+    request = r.json()
+    if request['first_name']:
+        request['name'] = request['first_name']
+    elif request['last_name']:
+        request['name'] = request['last_name']
+
+    return request
 
 
 def get_post_game_data(unique_id):

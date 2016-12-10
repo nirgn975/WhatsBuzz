@@ -28,6 +28,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (
     '^(localhost:)*',
     '^(https://whatsbuzz-production-env.appspot.com)*',
     '^(https://whatsbuzz-production-env.firebaseapp.com)*',
+    '^(https://whatsbuzz.co.il)*'
 )
 
 ALLOWED_HOSTS = ['*']
