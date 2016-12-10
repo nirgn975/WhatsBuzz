@@ -26,7 +26,7 @@ export class LoadDetailPostSuccessAction implements Action {
 export class LoadFacebookGamePostAction implements Action {
   type = ActionTypes.LOAD_FACEBOOK_GAME;
 
-  constructor(public payload: string) { }
+  constructor(public payload: any) { }
 }
 
 export class LoadFacebookGameSuccessAction implements Action {
