@@ -26,6 +26,3 @@ export function reducer(state = initialState, action: buzz.Actions): State {
     }
   }
 }
-
-
-// export const getBuzzPosts = (state: State) => state;

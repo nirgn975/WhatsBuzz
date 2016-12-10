@@ -36,6 +36,3 @@ export function reducer(state = initialState, action: detailPost.Actions): State
     }
   }
 }
-
-
-// export const getDetailPost = (state: State) => state;
