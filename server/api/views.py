@@ -211,7 +211,7 @@ def save_fb_image(image, image_name):
     blob = bucket.blob('users_pictures/' + image_name)
 
     img_byte = BytesIO()
-    image.save(img_byte, format='PNG')
+    image.save(img_byte, format='PNG', quality=80)
     img_byte = img_byte.getvalue()
 
     blob.upload_from_string(img_byte, content_type='image/jpeg')
@@ -257,10 +257,13 @@ def get_facebook_data(token, facebook_game_username, facebook_game_profile_image
 
     # Something
     request = r.json()
-    if request['first_name']:
-        request['name'] = request['first_name']
-    elif request['last_name']:
-        request['name'] = request['last_name']
+    try:
+        if request['first_name']:
+            request['name'] = request['first_name']
+        elif request['last_name']:
+            request['name'] = request['last_name']
+    except Exception as e:
+        print(e)
 
     return request
 

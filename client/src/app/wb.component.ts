@@ -4,13 +4,8 @@ import { FacebookService, FacebookInitParams } from 'ng2-facebook-sdk/dist';
 
 @Component({
   selector: 'wb-root',
-  template: `
-    <wb-header></wb-header>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-    <wb-footer></wb-footer>
-  `
+  templateUrl: './wb.component.html',
+  styleUrls: ['./wb.component.scss']
 })
 export class WbComponent {
   constructor(
