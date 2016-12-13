@@ -2,6 +2,15 @@
 
 @include category-header;
 
+@mixin button {
+  position: relative;
+  padding: 0 15px 0 45px;
+  background-image: linear-gradient(#4C69BA,#3B55A0);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 34px;
+}
+
 .card {
   padding: 20px;
   margin: 0px 15px;
@@ -41,12 +50,7 @@
     margin: 15px 0;
 
     .btn-facebook {
-      position: relative;
-      background-image: linear-gradient(#4C69BA,#3B55A0);
-      padding: 0 15px 0 45px;
-      color: #ffffff;
-      font-size: 16px;
-      line-height: 34px;
+      @include button;
 
       &:before {
         content: "";
@@ -58,6 +62,20 @@
         background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
       }
     }
+
+    .retry {
+      @include button;
+
+      i {
+        float: left;
+        position: absolute;
+        left: 0;
+        height: 35px;
+        padding: 2px;
+        border-right: #364e92 1px solid;
+      }
+    }
+
   }
 
   .tags {

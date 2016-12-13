@@ -4,7 +4,7 @@ from .models import Post, Tags, Trend, FacebookGame
 
 @register(Post)
 class PostTranslation(TranslationOptions):
-    fields = ('title', 'body', )
+    fields = ('title', 'body',)
     required_languages = ('he',)
 
 
@@ -16,7 +16,7 @@ class TagsTranslation(TranslationOptions):
 
 @register(Trend)
 class PostTranslation(TranslationOptions):
-    fields = ('code', )
+    fields = ('code',)
     required_languages = ('he',)
 
 

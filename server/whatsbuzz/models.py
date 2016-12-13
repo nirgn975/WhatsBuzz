@@ -32,7 +32,7 @@ class UserNameAlign(object):
 
 
 class Tags(models.Model):
-    name = models.CharField(_('tag'), max_length=255, unique=True)
+    name = models.CharField(_('tag'), max_length=255)
 
     def __str__(self):
         return "{0}".format(self.name)
