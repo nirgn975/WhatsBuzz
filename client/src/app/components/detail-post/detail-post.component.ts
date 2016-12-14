@@ -90,17 +90,34 @@ export class DetailPostComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   onFacebookShare(gameId) {
-    let shareParams = {
-      method: 'share',
-      title: this.detailPost$.title,
-      picture: this.detailPost$.content,
-      href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
-      hashtag: '#WhatsBuzz',
-      link: 'http://www.whatsbuzz.co.il',
-      description: this.detailPost$.body,
-      caption: 'http://www.whatsbuzz.co.il',
-      display: 'popup',
-    };
+    let shareParams;
+    if (this.detailPost$.type == 'facebook-game') {
+      // Facebook Game.
+      shareParams = {
+        method: 'share',
+        title: this.detailPost$.title,
+        picture: this.detailPost$.content,
+        href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
+        hashtag: '#WhatsBuzz',
+        link: 'http://www.whatsbuzz.co.il',
+        description: this.detailPost$.body,
+        caption: 'http://www.whatsbuzz.co.il',
+        display: 'popup',
+      };
+    } else {
+      // Trends.
+      shareParams = {
+        method: 'share',
+        title: this.detailPost$.title,
+        picture: this.detailPost$.banner_image,
+        href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
+        hashtag: '#WhatsBuzz',
+        link: 'http://www.whatsbuzz.co.il',
+        description: this.detailPost$.body,
+        caption: 'http://www.whatsbuzz.co.il',
+        display: 'popup',
+      };
+    }
     this.fb.ui(shareParams);
   }
 
