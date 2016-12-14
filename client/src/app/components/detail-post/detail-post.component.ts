@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { DetailPost } from '../../models/detail-post';
   templateUrl: './detail-post.component.html',
   styleUrls: ['./detail-post.component.scss']
 })
-export class DetailPostComponent implements OnInit, DoCheck, OnDestroy {
+export class DetailPostComponent implements OnInit, DoCheck {
   private detailPost$: DetailPost;
   private correntId = '';
   private showSpinner: boolean = false;
@@ -53,13 +53,10 @@ export class DetailPostComponent implements OnInit, DoCheck, OnDestroy {
   ngDoCheck() {
     // Check if the url has changed, if it is, change the data (dispatch an action).
     if (this.correntId !== this.route.snapshot.params['uuid']) {
+      this.showSpinner = false;
       this.correntId = this.route.snapshot.params['uuid'];
       this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.correntId));
     }
-  }
-
-  ngOnDestroy() {
-    this.showSpinner = false;
   }
 
   enableSpinner() {
