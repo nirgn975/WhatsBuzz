@@ -8,4 +8,5 @@
     {}
   ];
   content: string;
+  type: string;
 }

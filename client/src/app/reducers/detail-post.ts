@@ -15,6 +15,7 @@ const initialState: State = {
     {}
   ],
   content: '',
+  type: '',
 };
 
 export function reducer(state = initialState, action: detailPost.Actions): State {
