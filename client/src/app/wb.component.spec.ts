@@ -1,19 +1,20 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { WbComponent } from './app.component';
+import { WbComponent } from './wb.component';
 
-describe('App: Wb', () => {
+describe('WbComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        WbComponent
       ],
     });
+    TestBed.compileComponents();
   });
 
   it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
+    let fixture = TestBed.createComponent(WbComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
