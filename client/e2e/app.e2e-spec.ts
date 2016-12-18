@@ -6,4 +6,9 @@ describe('whats-buzz App', function() {
   beforeEach(() => {
     page = new WhatsBuzzPage();
   });
+
+  it('should display message saying app works', () => {
+    page.navigateTo();
+    // expect(page.getParagraphText()).toEqual('app works!');
+  });
 });
