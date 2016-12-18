@@ -27,7 +27,7 @@ export class FacebookGamesComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.pages$.facebookGames == 1) {
+    if (this.pages$.facebookGames === 1) {
       // Only if we're on the first page.
       this.store.dispatch(new facebookGamesActions.LoadPostsAction(this.pages$.facebookGames));
 
