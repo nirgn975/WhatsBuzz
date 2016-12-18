@@ -27,7 +27,7 @@ export class TrendsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.pages$.trends == 1) {
+    if (this.pages$.trends === 1) {
       // Only if we're on the first page.
       this.store.dispatch(new trendsActions.LoadPostsAction(this.pages$.trends));
 

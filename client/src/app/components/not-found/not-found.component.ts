@@ -30,12 +30,12 @@ export class NotFoundComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.pages$.facebookGames == 1) {
+    if (this.pages$.facebookGames === 1) {
       // Only if we're on the first page.
       this.store.dispatch(new facebookGamesActions.LoadPostsAction(this.pages$.facebookGames));
     }
 
-    if (this.pages$.trends == 1) {
+    if (this.pages$.trends === 1) {
       // Only if we're on the first page.
       this.store.dispatch(new trendsActions.LoadPostsAction(this.pages$.trends));
     }

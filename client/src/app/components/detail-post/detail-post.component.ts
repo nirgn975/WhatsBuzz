@@ -16,9 +16,9 @@ import { SeoService } from '../../services/seo.service';
   styleUrls: ['./detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit, DoCheck {
-  private detailPost$: DetailPost;
   private correntId = '';
   private showSpinner: boolean = false;
+  public detailPost$: DetailPost;
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -86,7 +86,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
             userID: response.authResponse.userID,
             accessToken: response.authResponse.accessToken,
             unique_id: this.correntId
-          }
+          };
           this.store.dispatch(new detailPostAction.LoadFacebookGamePostAction(game));
         }
       }
@@ -95,7 +95,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
 
   onFacebookShare(gameId) {
     let shareParams;
-    if (this.detailPost$.type == 'facebook-game') {
+    if (this.detailPost$.type === 'facebook-game') {
       // Facebook Game.
       shareParams = {
         method: 'share',
