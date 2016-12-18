@@ -1,9 +1,9 @@
-import { WbPage } from './app.po';
+import { WhatsBuzzPage } from './app.po';
 
-describe('wb App', function() {
-  let page: WbPage;
+describe('whats-buzz App', function() {
+  let page: WhatsBuzzPage;
 
   beforeEach(() => {
-    page = new WbPage();
+    page = new WhatsBuzzPage();
   });
 });
