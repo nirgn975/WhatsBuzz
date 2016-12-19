@@ -13,6 +13,7 @@ class facebookCarwlerMiddleware(object):
         ]
 
         # Not Facebook crawler.
+        print('1111111111')
         if request.META['HTTP_USER_AGENT'] not in facebook_crawler:
             return None
 
@@ -23,7 +24,8 @@ class facebookCarwlerMiddleware(object):
             data = self.get_data(unique_id)
 
         # Return the html page.
-        return render(request, 'index.html', {
+        print('22222222')
+        return render(request, 'index_crawler.html', {
             'og:url': 'http://www.whatsbuzz.co.il',
             'og:type': 'website',
             'og:title': 'WhatsBuzz',
