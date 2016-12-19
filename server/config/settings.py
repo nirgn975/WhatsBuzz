@@ -67,6 +67,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'api.middleware.facebook_carwler_middleware.facebookCarwlerMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
