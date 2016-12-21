@@ -67,7 +67,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'api.middleware.facebook_carwler_middleware.facebookCarwlerMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -168,6 +167,7 @@ LIBCLOUD_PROVIDERS = {
 DEFAULT_LIBCLOUD_PROVIDER = 'google'
 DEFAULT_FILE_STORAGE = 'storages.backends.apache_libcloud.LibCloudStorage'
 STATIC_URL = 'https://storage.googleapis.com/' + BUCKET_NAME + '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # CKEditor - WYSIWYG editor.
@@ -183,7 +183,8 @@ CKEDITOR_CONFIGS = {
              'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
             ['Link', 'Unlink'],
             ['TextColor', 'BGColor'],
-        ]
+        ],
+        'forcePasteAsPlainText': True,
     }
 }
 

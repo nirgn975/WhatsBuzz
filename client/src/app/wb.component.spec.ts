@@ -12,10 +12,4 @@ describe('WbComponent', () => {
     });
     TestBed.compileComponents();
   });
-
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(WbComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
 });

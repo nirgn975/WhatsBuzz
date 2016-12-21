@@ -1,6 +1,6 @@
-import { TestingProdPage } from './app.po';
+import { WhatsBuzzPage } from './app.po';
 
-describe('testing-prod App', function() {
+describe('whats-buzz App', function() {
   let page: TestingProdPage;
 
   beforeEach(() => {
