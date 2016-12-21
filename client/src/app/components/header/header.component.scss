@@ -7,6 +7,12 @@ nav {
   padding: 0;
   border-radius: inherit;
 
+  @media (max-width: 768px) {
+    .navbar-brand {
+      margin: 0;
+    }
+  }
+
   .container {
     line-height: 5rem;
   }
@@ -25,6 +31,10 @@ nav {
       padding: 3px;
       margin: 5px;
       float: left;
+
+      @media (max-width: 768px) {
+        margin: 0;
+      }
 
       .active,
       :hover {
