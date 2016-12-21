@@ -31,10 +31,11 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-import { BuzzService  } from './services/buzz.service';
-import { PostsService  } from './services/posts.service';
-import { DetailPostService  } from './services/detail-post.service';
+import { BuzzService } from './services/buzz.service';
+import { PostsService } from './services/posts.service';
+import { DetailPostService } from './services/detail-post.service';
 import { RecommandationService } from './services/recommandation.service';
+import { SeoService } from './services/seo.service';
 
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
@@ -75,6 +76,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     PostsService,
     DetailPostService,
     RecommandationService,
+    SeoService,
   ],
   bootstrap: [WbComponent]
 })
