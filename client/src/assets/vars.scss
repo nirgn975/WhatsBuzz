@@ -5,7 +5,7 @@ $header-height: 68px;
 $header-color: #3b5998;
 $button-background: #0088cb;
 $radius: 4px;
-$footer-margin-bottom: 1em;
+$footer-margin-bottom: 4em;
 
 @mixin post-header {
   border-bottom: solid 2px rgba(60,89,153,.52);
@@ -17,6 +17,11 @@ $footer-margin-bottom: 1em;
 @mixin post-header-text {
   font-size: 30px;
   margin: 10px 0 5px 0;
+
+  // Medium devices (tablets, 768px and down)
+  @media (max-width: 768px) {
+    font-size: 23px;
+  }
 }
 
 @mixin post {
