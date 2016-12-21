@@ -29,6 +29,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
     this.store.select(fromRoot.getDetailPostState).subscribe(
       (res) => { this.detailPost$ = res, this.updateFacebookMetaTags() }
     );
+
     let fbParams: FacebookInitParams = {
       appId   : '1063610257017045',
       cookie  : true,  // enable cookies to allow the server to access the session
@@ -105,6 +106,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
         href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
         hashtag: '#WhatsBuzz',
         link: 'http://www.whatsbuzz.co.il',
+        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""),
         caption: 'http://www.whatsbuzz.co.il',
         display: 'popup',
       };
@@ -117,6 +119,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
         href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
         hashtag: '#WhatsBuzz',
         link: 'http://www.whatsbuzz.co.il',
+        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""),
         caption: 'http://www.whatsbuzz.co.il',
         display: 'popup',
       };
