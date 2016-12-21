@@ -32,7 +32,7 @@ export class LoadFacebookGamePostAction implements Action {
 export class LoadFacebookGameSuccessAction implements Action {
   type = ActionTypes.LOAD_FACEBOOK_GAME_SUCCESS;
 
-  constructor(public payload: string) { }
+  constructor(public payload: any) { }
 }
 
 export type Actions

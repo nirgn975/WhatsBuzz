@@ -1,10 +1,10 @@
-import { WhatsBuzzPage } from './app.po';
+import { TestingProdPage } from './app.po';
 
-describe('whats-buzz App', function() {
-  let page: WhatsBuzzPage;
+describe('testing-prod App', function() {
+  let page: TestingProdPage;
 
   beforeEach(() => {
-    page = new WhatsBuzzPage();
+    page = new TestingProdPage();
   });
 
   it('should display message saying app works', () => {
