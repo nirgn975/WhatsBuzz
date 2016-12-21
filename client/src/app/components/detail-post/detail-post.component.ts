@@ -63,6 +63,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
   updateFacebookMetaTags() {
     this.seoService.setMetaOgUrl('http://www.whatsbuzz.co.il' + this.detailPost$.unique_id);
     this.seoService.setMetaOgTitle(this.detailPost$.title);
+    this.seoService.setMetaOgDescription(this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""));
     this.seoService.setMetaOgImage(this.detailPost$.banner_image);
   }
 
