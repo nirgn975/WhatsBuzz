@@ -1,10 +1,10 @@
 import { WhatsBuzzPage } from './app.po';
 
 describe('whats-buzz App', function() {
-  let page: TestingProdPage;
+  let page: WhatsBuzzPage;
 
   beforeEach(() => {
-    page = new TestingProdPage();
+    page = new WhatsBuzzPage();
   });
 
   it('should display message saying app works', () => {
