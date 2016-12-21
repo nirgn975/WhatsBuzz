@@ -71,8 +71,8 @@ python manage.py compilemessages -l he
 
 **Client**
 
-  1. Build the project `ng build -o dist -prod --aot`.
-  2. Run `ng github-pages:deploy` to deploy to Github Pages or `...` to deploy to Firebase.
+  1. Build the project `ng build --prod --aot` inside the `client` directory.
+  2. Run `firebase deploy` to deploy to deploy to Firebase.
 
 **Server**
 

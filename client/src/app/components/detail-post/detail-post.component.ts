@@ -16,7 +16,7 @@ import { SeoService } from '../../services/seo.service';
   styleUrls: ['./detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit, DoCheck {
-  private correntId = '';
+  private currentId = '';
   private showSpinner: boolean = false;
   public detailPost$: DetailPost;
 
@@ -48,16 +48,16 @@ export class DetailPostComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.correntId = this.route.snapshot.params['uuid'];
-    this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.correntId));
+    this.currentId = this.route.snapshot.params['uuid'];
+    this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.currentId));
   }
 
   ngDoCheck() {
     // Check if the url has changed, if it is, change the data (dispatch an action).
-    if (this.correntId !== this.route.snapshot.params['uuid']) {
+    if (this.currentId !== this.route.snapshot.params['uuid']) {
       this.showSpinner = false;
-      this.correntId = this.route.snapshot.params['uuid'];
-      this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.correntId));
+      this.currentId = this.route.snapshot.params['uuid'];
+      this.store.dispatch(new detailPostAction.LoadDetailPostAction(this.currentId));
     }
   }
 
@@ -87,7 +87,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
           let game = {
             userID: response.authResponse.userID,
             accessToken: response.authResponse.accessToken,
-            unique_id: this.correntId
+            unique_id: this.currentId
           };
           this.store.dispatch(new detailPostAction.LoadFacebookGamePostAction(game));
         }

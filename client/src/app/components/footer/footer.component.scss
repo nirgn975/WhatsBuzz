@@ -9,10 +9,20 @@ footer {
   p {
     text-align: center;
     margin: 0.5em 0;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   a {
     text-decoration: none;
     color: #a7bac9;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0;
+    }
   }
 }
