@@ -48,6 +48,6 @@ script:
     cd client;
     ng build --prod --aot;
     ng lint;
-    cd dist && ws&;
+    cd dist & ws&;
     ng e2e;
     fi
