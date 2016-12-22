@@ -44,10 +44,10 @@ script:
     fi
 
   # Run e2e tests on the client directory.
-  # - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
-  - cd client;
-  - ng build --prod --aot;
-  - ng lint;
-  - cd dist & ws&;
-  - ng e2e;
-    # fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then
+    cd client;
+    ng build --prod --aot;
+    ng lint;
+    cd dist;
+    ws& && ng e2e;
+    fi
