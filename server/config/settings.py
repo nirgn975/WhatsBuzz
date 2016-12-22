@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'admin_honeypot',
     'django_extensions',
     'rest_framework',
     'corsheaders',
