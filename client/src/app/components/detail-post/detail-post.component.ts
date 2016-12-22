@@ -27,7 +27,10 @@ export class DetailPostComponent implements OnInit, DoCheck {
     private seoService: SeoService,
   ) {
     this.store.select(fromRoot.getDetailPostState).subscribe(
-      (res) => { this.detailPost$ = res, this.updateFacebookMetaTags() }
+      (res) => {
+        this.detailPost$ = res;
+        this.updateFacebookMetaTags();
+      }
     );
 
     let fbParams: FacebookInitParams = {
@@ -64,7 +67,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
   updateFacebookMetaTags() {
     this.seoService.setMetaOgUrl('http://www.whatsbuzz.co.il' + this.detailPost$.unique_id);
     this.seoService.setMetaOgTitle(this.detailPost$.title);
-    this.seoService.setMetaOgDescription(this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""));
+    this.seoService.setMetaOgDescription(this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''));
     this.seoService.setMetaOgImage(this.detailPost$.banner_image);
   }
 
@@ -106,7 +109,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
         href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
         hashtag: '#WhatsBuzz',
         link: 'http://www.whatsbuzz.co.il',
-        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""),
+        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''),
         caption: 'http://www.whatsbuzz.co.il',
         display: 'popup',
       };
@@ -119,7 +122,7 @@ export class DetailPostComponent implements OnInit, DoCheck {
         href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
         hashtag: '#WhatsBuzz',
         link: 'http://www.whatsbuzz.co.il',
-        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ""),
+        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''),
         caption: 'http://www.whatsbuzz.co.il',
         display: 'popup',
       };

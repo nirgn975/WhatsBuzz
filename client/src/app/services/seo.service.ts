@@ -16,7 +16,7 @@ export class SeoService {
 
   // Inject the Angular 2 Title Service
   // @param titleService
-  constructor(){
+  constructor() {
     this.DOM = getDOM();
 
     // get the <head> Element
