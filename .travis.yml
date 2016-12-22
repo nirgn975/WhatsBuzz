@@ -49,5 +49,5 @@ script:
     ng build --prod --aot;
     ng lint;
     cd dist;
-    ws& && ng e2e;
+    ws& ng e2e;
     fi
