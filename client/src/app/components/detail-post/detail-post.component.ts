@@ -40,14 +40,6 @@ export class DetailPostComponent implements OnInit, DoCheck {
       version : 'v2.7' // use graph api version 2.7
     };
     this.fb.init(fbParams);
-
-    // Load static share buttons.
-    let node = document.createElement('script');
-    node.src = 'https://static.addtoany.com/menu/page.js';
-    node.type = 'text/javascript';
-    node.async = true;
-    node.charset = 'utf-8';
-    document.getElementsByTagName('head')[0].appendChild(node);
   }
 
   ngOnInit() {
@@ -98,36 +90,35 @@ export class DetailPostComponent implements OnInit, DoCheck {
     );
   }
 
-  onFacebookShare(gameId) {
+  onFacebookShare() {
     let shareParams;
     if (this.detailPost$.type === 'facebook-game') {
       // Facebook Game.
-      shareParams = {
-        method: 'share',
-        title: this.detailPost$.title,
-        picture: this.detailPost$.content,
-        href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
-        hashtag: '#WhatsBuzz',
-        link: 'http://www.whatsbuzz.co.il',
-        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''),
-        caption: 'http://www.whatsbuzz.co.il',
-        display: 'popup',
-      };
+      shareParams = this.createFacebookShare(this.detailPost$.content);
     } else {
       // Trends.
-      shareParams = {
-        method: 'share',
-        title: this.detailPost$.title,
-        picture: this.detailPost$.banner_image,
-        href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
-        hashtag: '#WhatsBuzz',
-        link: 'http://www.whatsbuzz.co.il',
-        description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''),
-        caption: 'http://www.whatsbuzz.co.il',
-        display: 'popup',
-      };
+      shareParams = this.createFacebookShare(this.detailPost$.banner_image);
     }
     this.fb.ui(shareParams);
+  }
+
+  facebookSharePage() {
+    let shareParams = this.createFacebookShare(this.detailPost$.banner_image);
+    this.fb.ui(shareParams);
+  }
+
+  createFacebookShare(picture) {
+    return {
+      method: 'share',
+      title: this.detailPost$.title,
+      picture: picture,
+      href: 'http://www.whatsbuzz.co.il/posts/' + this.detailPost$.unique_id,
+      hashtag: '#WhatsBuzz',
+      link: 'http://www.whatsbuzz.co.il',
+      description: this.detailPost$.body.replace(/<\/?[^>]+(>|$)/g, ''),
+      caption: 'http://www.whatsbuzz.co.il',
+      display: 'popup',
+    };
   }
 
   loadPlaybuzzScript() {
