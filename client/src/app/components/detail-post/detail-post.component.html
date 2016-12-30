@@ -13,8 +13,13 @@
     <img class="card-img-top" src="{{ detailPost$.banner_image }}" alt="{{ detailPost$.title }}">
 
     <div class="share_post_page">
-      <a class="share_button_whatsapp" (click)="facebookSharePage()"></a>
-      <a class="share_button_facebook"></a>
+      <a (click)="facebookSharePage()">
+        <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+        <!-- <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> -->
+      </a>
+      <a href="whatsapp://send?text=http://www.whatsbuzz.co.il/posts/{{ detailPost$.unique_id }}" data-action="share/whatsapp/share">
+        <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+      </a>
     </div>
 
     <!-- post-login -->
