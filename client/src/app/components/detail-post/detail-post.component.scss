@@ -19,6 +19,26 @@
     width: 100%;
   }
 
+  .share_post_page {
+    margin: 10px 0;
+    float: left;
+
+    .fa-facebook {
+      cursor: pointer;
+      color: #ffffff;
+      background-color: #3b5998;
+      padding: 2px 4px 2px 13px;
+      border-radius: 4px;
+    }
+
+    .fa-whatsapp {
+      color: #ffffff;
+      background-color: #25d366;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  }
+
   .description {
     text-align: center;
     font-size: 20px;
