@@ -10,7 +10,7 @@ django-admin-honeypot==1.0.0
 
 # Facebook
 requests==2.12.4
-Pillow==3.4.2
+Pillow==4.0.0
 
 # Admin
 django-ckeditor==5.1.1
