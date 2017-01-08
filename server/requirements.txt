@@ -13,7 +13,7 @@ requests==2.12.4
 Pillow==4.0.0
 
 # Admin
-django-ckeditor==5.1.1
+django-ckeditor==5.2.0
 django-autocomplete-light==3.2.1
 
 # Rest Framework
