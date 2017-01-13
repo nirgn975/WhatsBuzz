@@ -1,7 +1,11 @@
 import { browser, element, by } from 'protractor';
 
-export class WhatsBuzzPage {
+export class WhatsbuzzPage {
   navigateTo() {
     return browser.get('/');
+  }
+
+  getParagraphText() {
+    return element(by.css('app-root h1')).getText();
   }
 }

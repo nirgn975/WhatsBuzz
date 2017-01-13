@@ -4,14 +4,14 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams } from 'ng2-facebook-sdk/dist';
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../.';
 import * as buzzAction from '../../actions/buzz';
 import { PrePost } from '../../models/pre-post';
 
 @Component({
   selector: 'wb-buzz',
-  templateUrl: './buzz.component.html',
-  styleUrls: ['./buzz.component.scss']
+  templateUrl: 'buzz.component.html',
+  styleUrls: ['buzz.component.scss']
 })
 export class BuzzComponent implements OnInit {
   private buzz$: Observable<PrePost[]>;

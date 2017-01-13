@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../.';
 import * as facebookGamesActions from '../../actions/facebookGames';
 import * as trendsActions from '../../actions/trends';
 import * as pagesActions from '../../actions/pages';

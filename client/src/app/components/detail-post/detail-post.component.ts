@@ -5,15 +5,15 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../.';
 import * as detailPostAction from '../../actions/detail-post';
 import { DetailPost } from '../../models/detail-post';
 import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'wb-detail-post',
-  templateUrl: './detail-post.component.html',
-  styleUrls: ['./detail-post.component.scss']
+  templateUrl: 'detail-post.component.html',
+  styleUrls: ['detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit, DoCheck {
   private currentId = '';

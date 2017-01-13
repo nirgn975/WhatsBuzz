@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../.';
 import * as facebookGamesActions from '../../actions/facebookGames';
 import * as pagesActions from '../../actions/pages';
 import { PrePost } from '../../models/pre-post';
@@ -10,8 +10,8 @@ import { Pages } from '../../models/pages';
 
 @Component({
   selector: 'wb-facebook-games',
-  templateUrl: './facebook-games.component.html',
-  styleUrls: ['./facebook-games.component.scss']
+  templateUrl: 'facebook-games.component.html',
+  styleUrls: ['facebook-games.component.scss']
 })
 export class FacebookGamesComponent implements OnInit {
   private posts$: Observable<PrePost[]>;
