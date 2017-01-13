@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../.';
+import * as fromRoot from '../../reducers';
 import * as recommendationsActions from '../../actions/recommendations';
 import { PrePost } from '../../models/pre-post';
 import { DetailPost } from '../../models/detail-post';

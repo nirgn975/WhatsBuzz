@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FacebookService } from 'ng2-facebook-sdk/dist';
 import { AdsenseModule } from 'ng2-adsense';
 
-import { reducer } from '../../.';
+import { reducer } from './reducers';
 import { WbComponent } from './wb.component';
 import { AppRoutingModule } from './app-routing.module';
 

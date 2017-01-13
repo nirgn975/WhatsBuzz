@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams, FacebookLoginResponse } from 'ng2-facebook-sdk/dist';
 
-import * as fromRoot from '../.';
+import * as fromRoot from '../../reducers';
 import * as detailPostAction from '../../actions/detail-post';
 import { DetailPost } from '../../models/detail-post';
 import { SeoService } from '../../services/seo.service';

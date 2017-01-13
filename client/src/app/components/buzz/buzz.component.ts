@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { FacebookService, FacebookInitParams } from 'ng2-facebook-sdk/dist';
 
-import * as fromRoot from '../.';
+import * as fromRoot from '../../reducers';
 import * as buzzAction from '../../actions/buzz';
 import { PrePost } from '../../models/pre-post';
 
