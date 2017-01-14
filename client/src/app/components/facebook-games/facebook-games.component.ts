@@ -10,8 +10,8 @@ import { Pages } from '../../models/pages';
 
 @Component({
   selector: 'wb-facebook-games',
-  templateUrl: './facebook-games.component.html',
-  styleUrls: ['./facebook-games.component.scss']
+  templateUrl: 'facebook-games.component.html',
+  styleUrls: ['facebook-games.component.scss']
 })
 export class FacebookGamesComponent implements OnInit {
   private posts$: Observable<PrePost[]>;

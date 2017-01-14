@@ -21,9 +21,6 @@ export class WbComponent {
         return previous.url === current.url;
       }
       return true;
-    }).subscribe((x: any) => {
-      console.log('router.change', x);
-      ga('send', 'pageview', x.url);
-    });
+    }).subscribe((x: any) => ga('send', 'pageview', x.url));
   }
 }

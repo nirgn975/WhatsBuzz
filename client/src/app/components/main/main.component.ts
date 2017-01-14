@@ -11,8 +11,8 @@ import { Pages } from '../../models/pages';
 
 @Component({
   selector: 'wb-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  templateUrl: 'main.component.html',
+  styleUrls: ['main.component.scss']
 })
 export class MainComponent implements OnInit {
   private facebookGames$: Observable<PrePost[]>;

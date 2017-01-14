@@ -10,8 +10,8 @@ import { PrePost } from '../../models/pre-post';
 
 @Component({
   selector: 'wb-buzz',
-  templateUrl: './buzz.component.html',
-  styleUrls: ['./buzz.component.scss']
+  templateUrl: 'buzz.component.html',
+  styleUrls: ['buzz.component.scss']
 })
 export class BuzzComponent implements OnInit {
   private buzz$: Observable<PrePost[]>;
