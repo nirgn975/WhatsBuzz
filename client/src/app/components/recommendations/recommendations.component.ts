@@ -9,8 +9,8 @@ import { DetailPost } from '../../models/detail-post';
 
 @Component({
   selector: 'wb-recommendations',
-  templateUrl: './recommendations.component.html',
-  styleUrls: ['./recommendations.component.scss']
+  templateUrl: 'recommendations.component.html',
+  styleUrls: ['recommendations.component.scss']
 })
 export class RecommendationsComponent {
   private recommendations$: Observable<PrePost[]>;

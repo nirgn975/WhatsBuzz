@@ -12,8 +12,8 @@ import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'wb-detail-post',
-  templateUrl: './detail-post.component.html',
-  styleUrls: ['./detail-post.component.scss']
+  templateUrl: 'detail-post.component.html',
+  styleUrls: ['detail-post.component.scss']
 })
 export class DetailPostComponent implements OnInit, DoCheck {
   private currentId = '';
