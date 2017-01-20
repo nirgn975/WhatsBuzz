@@ -9,7 +9,7 @@ gunicorn==19.6.0
 django-admin-honeypot==1.0.0
 
 # Facebook
-requests==2.12.4
+requests==2.12.5
 Pillow==4.0.0
 
 # Admin
