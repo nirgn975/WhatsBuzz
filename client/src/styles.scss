@@ -1,15 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html {
-  height: 100%;
-}
-
 body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
   font-family: 'Arimo', sans-serif;
   background-color: #EBF4F8;
   direction: rtl;
   position: relative;
-  min-height: 100%;
 }
 
 a {

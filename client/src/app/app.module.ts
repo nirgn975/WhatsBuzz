@@ -10,7 +10,7 @@ import { FacebookService } from 'ng2-facebook-sdk/dist';
 import { AdsenseModule } from 'ng2-adsense';
 
 import { reducer } from './reducers';
-import { WbComponent } from './wb.component';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BuzzEffects } from './effects/buzz';
@@ -41,7 +41,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
-    WbComponent,
+    AppComponent,
     HeaderComponent,
     FooterComponent,
     BuzzComponent,
@@ -78,6 +78,6 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     RecommandationService,
     SeoService,
   ],
-  bootstrap: [WbComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
