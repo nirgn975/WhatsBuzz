@@ -1,14 +1,14 @@
-import { WhatsbuzzPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('whatsbuzz App', function() {
-  let page: WhatsbuzzPage;
+describe('whatsbuzz App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new WhatsbuzzPage();
+    page = new AppPage();
   });
 
-  // it('should display message saying app works', () => {
-  //   page.navigateTo();
-  //   expect(page.getParagraphText()).toEqual('app works!');
-  // });
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  });
 });
