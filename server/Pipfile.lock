@@ -1,0 +1,119 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "66ae54978539b000cfe441205be67d64d3ab24e1205057da90b88c2b5b6dbe8d"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "version": "==2017.7.27.1"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "click": {
+            "version": "==6.7"
+        },
+        "django": {
+            "version": "==1.11.4"
+        },
+        "django-admin-honeypot": {
+            "version": "==1.0.0"
+        },
+        "django-autocomplete-light": {
+            "version": "==3.2.10"
+        },
+        "django-ckeditor": {
+            "version": "==5.3.0"
+        },
+        "django-cors-headers": {
+            "version": "==2.1.0"
+        },
+        "django-extensions": {
+            "version": "==1.9.0"
+        },
+        "django-filter": {
+            "version": "==1.0.4"
+        },
+        "django-flat-responsive": {
+            "version": "==1.4.1"
+        },
+        "django-js-asset": {
+            "version": "==0.1.1"
+        },
+        "django-modeltranslation": {
+            "version": "==0.12.1"
+        },
+        "djangorestframework": {
+            "version": "==3.6.4"
+        },
+        "flask": {
+            "version": "==0.12.2"
+        },
+        "gevent": {
+            "version": "==1.1.1"
+        },
+        "greenlet": {
+            "version": "==0.4.12"
+        },
+        "gunicorn": {
+            "version": "==19.7.1"
+        },
+        "idna": {
+            "version": "==2.6"
+        },
+        "itsdangerous": {
+            "version": "==0.24"
+        },
+        "jinja2": {
+            "version": "==2.9.6"
+        },
+        "locustio": {
+            "version": "==0.7.5"
+        },
+        "markdown": {
+            "version": "==2.6.9"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "msgpack-python": {
+            "version": "==0.4.8"
+        },
+        "olefile": {
+            "version": "==0.44"
+        },
+        "pillow": {
+            "version": "==4.2.1"
+        },
+        "psycopg2": {
+            "version": "==2.7.3.1"
+        },
+        "python-logstash": {
+            "version": "==0.4.6"
+        },
+        "pytz": {
+            "version": "==2017.2"
+        },
+        "requests": {
+            "version": "==2.18.4"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        },
+        "werkzeug": {
+            "version": "==0.12.2"
+        }
+    },
+    "develop": {}
+}
