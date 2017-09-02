@@ -1,0 +1,27 @@
+@import "../../../assets/scss/vars.scss";
+
+md-card {
+  padding: 20px;
+
+  md-card-title {
+    color: #3b5998;
+    font-size: 20px;
+    text-align: center;
+    height: auto;
+  }
+
+  md-card-image {
+    width: 100%;
+  }
+
+  button.mat-button {
+    margin-top: 10px;
+    background-color: $button-background;
+    width: 100%;
+    padding: 15px 0;
+    color: #ffffff;
+    border-radius: $radius;
+    transition: all 350ms ease;
+    font-size: 18px;
+  }
+}

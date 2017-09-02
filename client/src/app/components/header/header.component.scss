@@ -1,0 +1,30 @@
+@import "../../../assets/scss/vars.scss";
+
+md-toolbar.mat-toolbar.mat-primary  {
+  background: linear-gradient(#4e69a2, #3c5998);
+  border-bottom: solid 2px #21366e;
+  padding: 0;
+
+  button {
+    transition: all 350ms ease;
+    padding: 1rem;
+    margin: 1rem;
+    line-height: 2rem;
+    border-radius: $radius;
+    color: #ffffff;
+
+    .active,
+    :hover {
+      background: rgba(35, 53, 92, .57);
+    }
+  }
+
+  a#website-logo {
+    position: absolute;
+    left: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}

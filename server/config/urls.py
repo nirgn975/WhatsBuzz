@@ -28,12 +28,12 @@ urlpatterns = [
 ]
 
 # Serve static uploaded files if in debug mode.
-# if settings.DEBUG:
-#     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns += [
+urlpatterns += i18n_patterns(
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     url(r'^secret-admin/', admin.site.urls),
     url(r'^tags-autocomplete/$', autocomplete.Select2QuerySetView.as_view(model=Tags), name='tags-autocomplete'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)

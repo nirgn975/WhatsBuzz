@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <wb-buzz></wb-buzz>
+
+  <div>
+    <h2>משחקים</h2>
+    <wb-post *ngFor="let post of facebookGames$ | async | slice:[0]:[5]" [post]="post"></wb-post>
+    <a [routerLink]="['/facebook-games']" class="btn btn-primary">הצג עוד</a>
+  </div>
+
+  <div>
+    <h2>טרנדים</h2>
+    <wb-post *ngFor="let post of trends$ | async | slice:[0]:[5]" [post]="post"></wb-post>
+    <a [routerLink]="['/trends']" class="btn btn-primary">הצג עוד</a>
+  </div>
+</div>

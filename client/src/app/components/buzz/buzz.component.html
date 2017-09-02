@@ -1,0 +1,16 @@
+<div>
+  <h2>באזז השבוע</h2>
+</div>
+
+<div>
+  <div>
+    <div class="fb-page" data-href="https://www.facebook.com/WhatsBuz/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/WhatsBuz/"><a href="https://www.facebook.com/WhatsBuz/">WhatsBuzz</a></blockquote></div></div>
+  </div>
+
+  <div *ngFor="let b of buzz$ | async">
+    <a [routerLink]="['/posts', b.unique_id ]">
+      <h3>{{ b.title }}</h3>
+      <img class="buzz-hero-image pull-left" src="{{ b.banner_image }}">
+    </a>
+  </div>
+</div>
