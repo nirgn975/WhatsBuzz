@@ -1,26 +1,5 @@
 @import "../../../assets/scss/vars.scss";
 
-.category-header {
-  border-bottom: solid 2px rgba(60,89,153,.52);
-  border-radius: $radius;
-  padding: 5px 0;
-  margin: 10px 15px;
-  color: $post-text-color;
-  font-size: $post-header-size;
-  text-align: center;
-  background: $post-background;
-
-  h2 {
-    font-size: 30px;
-    margin: 10px 0 5px 0;
-
-    // Medium devices (tablets, 768px and down)
-    @media (max-width: 768px) {
-      font-size: 23px;
-    }
-  }
-}
-
 .post {
   padding: 5px;
   margin: 0 15px;

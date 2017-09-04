@@ -246,4 +246,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+### Custom ###
+staticuploads/
+
 # End of https://www.gitignore.io/api/python,django,node,sass,virtualenv,jetbrains

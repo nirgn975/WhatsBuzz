@@ -23,6 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostComponent } from './components/post/post.component';
 import { BuzzComponent } from './components/buzz/buzz.component';
+import { FacebookGamesComponent } from './components/facebook-games/facebook-games.component';
+import { TrendsComponent } from './components/trends/trends.component';
 
 import { PostsService } from './services/posts.service';
 import { BuzzService } from './services/buzz.service';
@@ -41,6 +43,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     PostComponent,
     BuzzComponent,
+    FacebookGamesComponent,
+    TrendsComponent,
   ],
   imports: [
     BrowserModule,
