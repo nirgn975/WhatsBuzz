@@ -28,10 +28,12 @@ import { TrendsComponent } from './components/trends/trends.component';
 
 import { PostsService } from './services/posts.service';
 import { BuzzService } from './services/buzz.service';
+import { FbService } from './services/fb.service';
 
 import { FacebookGamesEffects } from './effects/facebookGames';
 import { TrendsEffects } from './effects/trends';
 import { BuzzEffects } from './effects/buzz';
+import { FbEffects } from './effects/fb';
 
 import { environment } from '../environments/environment';
 
@@ -62,11 +64,13 @@ import { environment } from '../environments/environment';
       FacebookGamesEffects,
       TrendsEffects,
       BuzzEffects,
+      FbEffects,
    ]),
   ],
   providers: [
     PostsService,
     BuzzService,
+    FbService,
   ],
   bootstrap: [WbComponent]
 })

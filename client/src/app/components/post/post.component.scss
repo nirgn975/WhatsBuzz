@@ -1,23 +1,26 @@
 @import "../../../assets/scss/vars.scss";
 
-md-card {
+.mat-card {
   padding: 20px;
 
-  md-card-title {
+  .mat-card-title {
     color: #3b5998;
     font-size: 20px;
     text-align: center;
     height: auto;
   }
 
-  md-card-image {
-    width: 100%;
+  .mat-card-image {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
   }
 
   button.mat-button {
-    margin-top: 10px;
+    margin: 10px auto 20px auto;
     background-color: $button-background;
-    width: 100%;
+    width: 90%;
+    display: block;
     padding: 15px 0;
     color: #ffffff;
     border-radius: $radius;

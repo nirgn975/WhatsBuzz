@@ -1,12 +1,13 @@
-<div>
-  <div>
-    <div class="fb-page" data-href="https://www.facebook.com/WhatsBuz/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/WhatsBuz/"><a href="https://www.facebook.com/WhatsBuz/">WhatsBuzz</a></blockquote></div></div>
+<md-card>
+  <div id="fb-banner">
+    <!-- <div class="fb-page" data-href="https://www.facebook.com/WhatsBuz/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/WhatsBuz/"><a href="https://www.facebook.com/WhatsBuz/">WhatsBuzz</a></blockquote></div></div> -->
+    <fb-page href="https://facebook.com/WhatsBuz"></fb-page>
   </div>
 
-  <div *ngFor="let b of buzz$ | async">
+  <div class="row" *ngFor="let b of buzz$ | async">
     <a [routerLink]="['/posts', b.unique_id ]">
       <h3>{{ b.title }}</h3>
-      <img class="buzz-hero-image pull-left" src="{{ b.banner_image }}">
+      <img class="buzz-hero-image" src="{{ b.banner_image }}">
     </a>
   </div>
-</div>
+</md-card>

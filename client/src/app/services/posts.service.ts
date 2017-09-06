@@ -14,15 +14,25 @@ export class PostsService {
   ) { }
 
   getTrendsPosts(): Observable<PostResponse> {
-    return this.http.get(`/api/trends`)
+    const options = this.appendToken();
+
+    return this.http.get(`/api/trends`, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   getFacebookGamesPosts(): Observable<PostResponse> {
-    return this.http.get(`/api/facebook-games`)
+    const options = this.appendToken();
+
+    return this.http.get(`/api/facebook-games`, options)
       .map(res => res.json())
       .catch(this.handleError);
+  }
+
+  private appendToken(): RequestOptions {
+    const headers = new Headers();
+    headers.append('Authorization', 'Token 3a84e4c37171a9ca1ad89584dd8312c25ffbe155');
+    return new RequestOptions({ headers: headers });
   }
 
   private handleError(error: Response) {

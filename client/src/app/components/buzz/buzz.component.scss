@@ -1,17 +1,9 @@
 @import "../../../assets/scss/vars.scss";
 
-.post {
-  padding: 5px;
-  margin: 0 15px;
-  border-radius: $radius;
-  border: 1px solid #c7dce6;
-  background: $post-background;
-}
-
-.long-post {
+.mat-card {
   margin-bottom: $footer-margin-bottom;
 
-  .fb-page {
+  #fb-banner {
     margin-bottom: 10px;
   }
 
@@ -21,7 +13,6 @@
 
     h3 {
       margin: 0;
-      height: $header-height;
       color: $header-color;
       font-size: 17px;
       width: 68%;

@@ -1,6 +1,6 @@
 @import "../../../assets/scss/vars.scss";
 
-md-toolbar.mat-toolbar.mat-primary  {
+md-toolbar.mat-toolbar  {
   background: linear-gradient(#4e69a2, #3c5998);
   border-bottom: solid 2px #21366e;
   padding: 0;
@@ -13,7 +13,7 @@ md-toolbar.mat-toolbar.mat-primary  {
     border-radius: $radius;
     color: #ffffff;
 
-    .active,
+    &.active,
     :hover {
       background: rgba(35, 53, 92, .57);
     }
