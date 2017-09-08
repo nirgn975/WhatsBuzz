@@ -60,3 +60,13 @@ export const getBuzzEntities = createSelector(
   getBuzzState,
   fromBuzz.getEntities
 );
+
+export const getFacebookGamesNextPage = createSelector(
+  getFacebookGamesState,
+  fromFacebookGames.getNextPage
+);
+
+export const getTrendsNextPage = createSelector(
+  getTrendsState,
+  fromTrends.getNextPage
+);

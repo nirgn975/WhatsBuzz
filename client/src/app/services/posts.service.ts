@@ -29,6 +29,15 @@ export class PostsService {
       .catch(this.handleError);
   }
 
+  getNextPosts(url: string): Observable<PostResponse> {
+    const options = this.appendToken();
+
+    return this.http.get(url, options)
+      .map(res => res.json())
+      .catch(this.handleError);
+
+  }
+
   private appendToken(): RequestOptions {
     const headers = new Headers();
     headers.append('Authorization', 'Token 3a84e4c37171a9ca1ad89584dd8312c25ffbe155');

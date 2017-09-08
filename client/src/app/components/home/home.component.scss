@@ -1,26 +1,36 @@
 @import "../../../assets/scss/vars.scss";
 
-wb-post {
-  padding: 0 15px;
-}
+#main {
+  margin-bottom: 60px;
 
-.category-header {
-  border-bottom: solid 2px rgba(60,89,153,.52);
-  border-radius: $radius;
-  padding: 5px 0;
-  margin: 10px 0;
-  color: $post-text-color;
-  font-size: $post-header-size;
-  text-align: center;
-  background: $post-background;
+  .category-header {
+    border-bottom: solid 2px rgba(60,89,153,.52);
+    border-radius: $radius;
+    padding: 5px 0;
+    margin-top: 10px;
+    color: $post-text-color;
+    font-size: $post-header-size;
+    text-align: center;
+    background: $post-background;
 
-  h2 {
-    font-size: 30px;
-    margin: 10px 0 5px 0;
+    h2 {
+      font-size: 30px;
+      margin: 10px 0 5px 0;
 
-    // Medium devices (tablets, 768px and down)
-    @media (max-width: 768px) {
-      font-size: 23px;
+      // Medium devices (tablets, 768px and down)
+      @media (max-width: 768px) {
+        font-size: 23px;
+      }
     }
+  }
+
+  button.more-button {
+    background-color: $button-background;
+    width: 100%;
+    padding: 15px 0;
+    color: #ffffff;
+    border-radius: $radius;
+    transition: all 350ms ease;
+    font-size: 18px;
   }
 }

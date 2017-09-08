@@ -20,4 +20,17 @@ export class TrendsComponent {
     this.trends$ = this.store.select(fromRoot.getTrendsEntities);
   }
 
+  ngOnInit () {
+    this.store.dispatch(new trendsAction.LoadTrendsPostsAction());
+  }
+
+  loadMore() {
+    let nextPostUrl;
+    this.store.select(fromRoot.getTrendsNextPage).subscribe(
+      res => nextPostUrl = res
+    );
+
+    this.store.dispatch(new trendsAction.LoadTrendsNextPostsAction(nextPostUrl))
+  }
+
 }

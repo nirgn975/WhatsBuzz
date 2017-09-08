@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -11,13 +11,23 @@ import { Post } from '../../models/post';
   templateUrl: './facebook-games.component.html',
   styleUrls: ['./facebook-games.component.scss']
 })
-export class FacebookGamesComponent {
+export class FacebookGamesComponent implements OnInit {
   public facebookGames$: Observable<Post[]>;
 
   constructor(
     private store: Store<fromRoot.State>,
   ) {
     this.facebookGames$ = this.store.select(fromRoot.getFacebookGamesEntities);
+  }
+
+  ngOnInit () {
+    this.store.dispatch(new facebookGamesAction.LoadFacebookGamesPostsAction());
+  }
+
+  loadMore() {
+    this.store.select(fromRoot.getFacebookGamesNextPage).subscribe(
+      res => this.store.dispatch(new facebookGamesAction.LoadFacebookGamesNextPostsAction(res))
+    );
   }
 
 }

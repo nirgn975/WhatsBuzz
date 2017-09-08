@@ -1,12 +1,18 @@
 import { Tag } from './tag';
 
-export class Post {
+export class DetailPost {
   unique_id: string;
   title: string;
   body: string;
   banner_image: string;
   age_categories: string;
   tags: Array<Tag>;
+}
+
+export class Post {
+  unique_id: string;
+  title: string;
+  banner_image: string;
 }
 
 export class PostResponse {

@@ -10,12 +10,7 @@ const initialState: State = {
   results: [{
     unique_id: '',
     title: '',
-    body: '',
     banner_image: '',
-    age_categories: '',
-    tags: [{
-      'name': ''
-    }],
   }],
 };
 
@@ -29,6 +24,15 @@ export function reducer(state = initialState, action: facebookGames.Actions): St
       return Object.assign({}, state, action.payload);
     }
 
+    case facebookGames.LOAD_FACEBOOK_GAMES_NEXT_POSTS_SUCCESS: {
+      return {
+        count: action.payload.count,
+        next: action.payload.next,
+        previous: action.payload.previous,
+        results: state.results.concat(action.payload.results),
+      };
+    }
+
     default: {
       return state;
     }
@@ -36,3 +40,4 @@ export function reducer(state = initialState, action: facebookGames.Actions): St
 }
 
 export const getEntities = (state: State) => state.results;
+export const getNextPage = (state: State) => state.next;

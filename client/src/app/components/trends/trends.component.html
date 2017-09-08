@@ -1,14 +1,24 @@
-<div class="col-sm-8">
-  <div class="category-header">
-    <h2>טרנדים</h2>
+<div id="main" fxLayout="row">
+  <div fxFlex="14"></div>
+
+  <div fxFlex="18">
+    <div class="category-header"><h2>באזז השבוע</h2></div>
+    <div id="wb-buzz-section">
+      <wb-buzz></wb-buzz>
+    </div>
   </div>
 
-  <wb-post *ngFor="let post of posts$ | async" [post]="post" class="col-sm-6"></wb-post>
-  <div class="col-sm-12">
-    <a (click)="loadMore()" class="btn btn-primary">הצג עוד</a>
-  </div>
-</div>
+  <div fxFlex="5"></div>
 
-<div class="col-sm-4">
-  <wb-buzz></wb-buzz>
+  <div fxFlex="60">
+    <div class="category-header"><h2>טרנדים</h2></div>
+    <div id="posts-section">
+      <div *ngFor="let post of trends$ | async">
+        <wb-post [post]="post"></wb-post>
+    </div>
+    </div>
+    <button md-button color="accent" (click)="loadMore()" class="more-button">הצג עוד</button>
+  </div>
+
+  <div fxFlex="14"></div>
 </div>
