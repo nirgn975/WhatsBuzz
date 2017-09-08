@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { BuzzResponse } from '../models/buzz';;
+import { BuzzResponse } from '../models/buzz';
 
 import { environment } from '../../environments/environment';
 

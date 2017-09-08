@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -11,7 +11,7 @@ import { Post } from '../../models/post';
   templateUrl: './trends.component.html',
   styleUrls: ['./trends.component.scss']
 })
-export class TrendsComponent {
+export class TrendsComponent implements OnInit {
   public trends$: Observable<Post[]>;
 
   constructor(
@@ -30,7 +30,7 @@ export class TrendsComponent {
       res => nextPostUrl = res
     );
 
-    this.store.dispatch(new trendsAction.LoadTrendsNextPostsAction(nextPostUrl))
+    this.store.dispatch(new trendsAction.LoadTrendsNextPostsAction(nextPostUrl));
   }
 
 }

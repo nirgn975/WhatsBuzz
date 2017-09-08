@@ -4,6 +4,6 @@
   </md-card-header>
   <img md-card-image src="{{ post.banner_image }}" alt="{{ post.title }}">
   <md-card-actions>
-    <button md-button [routerLink]="['/posts', post.unique_id ]">התחל משחק</button>
+    <a md-button [routerLink]="['/posts', post.unique_id ]">התחל משחק</a>
   </md-card-actions>
 </md-card>

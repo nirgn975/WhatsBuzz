@@ -25,6 +25,9 @@ import { PostComponent } from './components/post/post.component';
 import { BuzzComponent } from './components/buzz/buzz.component';
 import { FacebookGamesComponent } from './components/facebook-games/facebook-games.component';
 import { TrendsComponent } from './components/trends/trends.component';
+import { DetailPostComponent } from './components/detail-post/detail-post.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { PostsService } from './services/posts.service';
 import { BuzzService } from './services/buzz.service';
@@ -47,6 +50,9 @@ import { environment } from '../environments/environment';
     BuzzComponent,
     FacebookGamesComponent,
     TrendsComponent,
+    PrivacyPolicyComponent,
+    NotFoundComponent,
+    DetailPostComponent,
   ],
   imports: [
     BrowserModule,

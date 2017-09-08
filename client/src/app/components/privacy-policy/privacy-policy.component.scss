@@ -24,24 +24,14 @@
     }
   }
 
+  md-card {
+    padding: 10px;
+    margin: 0 10px;
+    width: 96%;
+    direction: ltr;
+  }
+
   #wb-buzz-section {
     padding: 0 10px 0 20px;
-  }
-
-  #posts-section > div {
-    width: 48%;
-    display: inline-block;
-    padding: 0 10px;
-  }
-
-  button.more-button {
-    background-color: $button-background;
-    width: 98%;
-    padding: 15px 0;
-    margin: 10px 10px 10px 20px;
-    color: #ffffff;
-    border-radius: $radius;
-    transition: all 350ms ease;
-    font-size: 18px;
   }
 }

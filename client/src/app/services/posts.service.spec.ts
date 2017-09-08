@@ -1,11 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 
 import { PostsService } from './posts.service';
 
 describe('PostsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PostsService]
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        PostsService,
+      ]
     });
   });
 

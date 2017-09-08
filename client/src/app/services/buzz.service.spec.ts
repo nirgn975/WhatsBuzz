@@ -1,11 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpModule, Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 
 import { BuzzService } from './buzz.service';
 
 describe('BuzzService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BuzzService]
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        BuzzService,
+      ]
     });
   });
 

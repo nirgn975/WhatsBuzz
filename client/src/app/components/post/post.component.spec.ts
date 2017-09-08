@@ -1,3 +1,5 @@
+import { MaterialModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostComponent } from './post.component';
@@ -8,7 +10,13 @@ describe('PostComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostComponent ]
+      declarations: [
+        PostComponent,
+      ],
+      imports: [
+        MaterialModule,
+        RouterTestingModule,
+      ],
     })
     .compileComponents();
   }));

@@ -10,7 +10,7 @@ export class FbService {
   ) { }
 
   initFbService(): Observable<any> {
-    let initParams: InitParams = {
+    const initParams: InitParams = {
       appId: '1063610257017045',
       xfbml: true,
       version: 'v2.8'

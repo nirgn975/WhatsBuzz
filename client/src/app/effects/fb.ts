@@ -18,7 +18,7 @@ export class FbEffects {
   initFB$: Observable<Action>= this.actions$
     .ofType(fb.INIT_FACEBOOK_SERVICE)
     .switchMap(_ => this.fbService.initFbService()
-      .map(_ => new fb.InitFacebookServiceSuccessAction())
+      .map(fbService => new fb.InitFacebookServiceSuccessAction())
       // .catch(error => Observable.of(getPostsFail(error)))
     );
 
